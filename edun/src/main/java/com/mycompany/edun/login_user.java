@@ -5,6 +5,9 @@
 
 package com.mycompany.edun;
 
+import java.awt.Font;
+import java.io.File;
+
 /**
  *
  * @author nadiaag
@@ -14,6 +17,14 @@ public class login_user extends javax.swing.JFrame {
     /** Creates new form login_user */
     public login_user() {
         initComponents();
+//      Add Customize Font
+        try{
+           File fontStyle = new File("src/main/resources/fonts/Nunito-Black.ttf");
+           Font font = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(44f);
+           bg_pattern.setFont(font);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /** This method is called from within the constructor to
@@ -25,20 +36,38 @@ public class login_user extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        kGradientPanel1 = new keeptoo.KGradientPanel();
+        bg_pattern = new javax.swing.JLabel();
+        button_Play = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login User");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        kGradientPanel1.setkEndColor(new java.awt.Color(217, 119, 6));
+        kGradientPanel1.setkGradientFocus(1000);
+        kGradientPanel1.setkStartColor(new java.awt.Color(250, 204, 21));
+        kGradientPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pack();
+        bg_pattern.setIcon(new javax.swing.ImageIcon("/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/asset/BG Pattern.png")); // NOI18N
+        kGradientPanel1.add(bg_pattern, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        button_Play.setBackground(new java.awt.Color(124, 58, 237));
+        button_Play.setFont(new java.awt.Font("SK Pupok", 0, 18)); // NOI18N
+        button_Play.setForeground(new java.awt.Color(255, 255, 255));
+        button_Play.setText("MULAI PERMAINAN");
+        button_Play.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(152, 58, 237), new java.awt.Color(153, 153, 153)));
+        button_Play.setMargin(new java.awt.Insets(15, 20, 2, 15));
+        kGradientPanel1.add(button_Play, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 690, 200, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Cartoon.png"))); // NOI18N
+        kGradientPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(479, 154, 460, 340));
+
+        getContentPane().add(kGradientPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-8, -7, 5660, 4720));
+
+        setSize(new java.awt.Dimension(1440, 1052));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -77,6 +106,10 @@ public class login_user extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel bg_pattern;
+    private javax.swing.JButton button_Play;
+    private javax.swing.JLabel jLabel1;
+    private keeptoo.KGradientPanel kGradientPanel1;
     // End of variables declaration//GEN-END:variables
 
 }
