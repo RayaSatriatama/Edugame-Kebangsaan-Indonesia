@@ -12,7 +12,7 @@ public class Edun {
 
     public static void main(String[] args) {
 //        Customize Font
-          login_user f = new login_user();
-          f.setVisible(true);
+          splashscreen s = new splashscreen();
+          s.setVisible(true);
     }
 }

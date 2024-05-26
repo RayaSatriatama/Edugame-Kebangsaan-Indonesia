@@ -22,7 +22,7 @@ splashscreen sp;
         initComponents();
         setLocationRelativeTo(this);
         aksi();
-        timer = new Timer(100, action);
+        timer = new Timer(50, action);
         timer.start();
     }
 
@@ -35,30 +35,17 @@ splashscreen sp;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        background = new javax.swing.JLabel();
         loadingbar = new javax.swing.JProgressBar();
+        background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Splashscreen.png"))); // NOI18N
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         loadingbar.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(loadingbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 630, 560, 50));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(loadingbar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(background, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background)
-            .addComponent(loadingbar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Splashscreen.png"))); // NOI18N
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
