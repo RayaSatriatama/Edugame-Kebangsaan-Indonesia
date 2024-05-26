@@ -7,21 +7,50 @@ package com.mycompany.edun;
 
 import java.awt.Font;
 import java.io.File;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
  * @author nadiaag
  */
+
+
+
 public class login_user extends javax.swing.JFrame {
 
     /** Creates new form login_user */
     public login_user() {
         initComponents();
-//      Add Customize Font
+
         try{
-           File fontStyle = new File("src/main/resources/fonts/Nunito-Black.ttf");
-           Font font = Font.createFont(Font.TRUETYPE_FONT, fontStyle).deriveFont(44f);
-           bg_pattern.setFont(font);
+           // Add Customize Font Button
+           File fontButton = new File("src/main/resources/fonts/Nunito-Black.ttf");
+           Font font_button = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(24f);
+           button_Play.setFont(font_button);
+           
+           // Add Customize Font 20 Black
+           File font20 = new File("src/main/resources/fonts/Nunito-Black.ttf");
+           Font font_20 = Font.createFont(Font.TRUETYPE_FONT, font20).deriveFont(18f);
+           text_name.setFont(font_20);
+           
+           // Add Customize Font 24 Black
+           File font24 = new File("src/main/resources/fonts/Nunito-Black.ttf");
+           Font font_24 = Font.createFont(Font.TRUETYPE_FONT, font24).deriveFont(20f);
+           input_name.setFont(font_24);
+           
+           // Rounded Textfield
+           JTextField field = new customBorder(24);
+           JPanel panel = new JPanel();
+           panel.add(field);
+           JFrame frame = new JFrame();
+           frame.add(panel);
+           frame.setSize(300, 200);
+           frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+           frame.setVisible(true);
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -36,39 +65,59 @@ public class login_user extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        kGradientPanel1 = new keeptoo.KGradientPanel();
+        input_name = new javax.swing.JTextField();
+        text_name = new javax.swing.JLabel();
+        button_Play = new rojerusan.RSMaterialButtonRectangle();
+        bg_name = new javax.swing.JLabel();
+        character_kids = new javax.swing.JLabel();
         bg_pattern = new javax.swing.JLabel();
-        button_Play = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login User");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        kGradientPanel1.setkEndColor(new java.awt.Color(217, 119, 6));
-        kGradientPanel1.setkGradientFocus(1000);
-        kGradientPanel1.setkStartColor(new java.awt.Color(250, 204, 21));
-        kGradientPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        input_name.setFont(new java.awt.Font("Nunito", 1, 24)); // NOI18N
+        input_name.setForeground(new java.awt.Color(15, 23, 42));
+        input_name.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        input_name.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, new java.awt.Color(148, 163, 184)));
+        input_name.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        input_name.setMargin(new java.awt.Insets(100, 6, 2, 6));
+        input_name.setName(""); // NOI18N
+        input_name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                input_nameActionPerformed(evt);
+            }
+        });
+        getContentPane().add(input_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 480, 430, 60));
 
-        bg_pattern.setIcon(new javax.swing.ImageIcon("/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/asset/BG Pattern.png")); // NOI18N
-        kGradientPanel1.add(bg_pattern, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        text_name.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
+        text_name.setForeground(new java.awt.Color(51, 65, 85));
+        text_name.setText("SIAPA NAMA KAMU?");
+        getContentPane().add(text_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 440, -1, -1));
 
         button_Play.setBackground(new java.awt.Color(124, 58, 237));
-        button_Play.setFont(new java.awt.Font("SK Pupok", 0, 18)); // NOI18N
-        button_Play.setForeground(new java.awt.Color(255, 255, 255));
+        button_Play.setIcon(new javax.swing.ImageIcon("/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/resources/assets/Icon-Play.png")); // NOI18N
         button_Play.setText("MULAI PERMAINAN");
-        button_Play.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(152, 58, 237), new java.awt.Color(153, 153, 153)));
-        button_Play.setMargin(new java.awt.Insets(15, 20, 2, 15));
-        kGradientPanel1.add(button_Play, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 690, 200, 40));
+        button_Play.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
+        getContentPane().add(button_Play, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 660, 410, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Cartoon.png"))); // NOI18N
-        kGradientPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(479, 154, 460, 340));
+        bg_name.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BG-Name.png"))); // NOI18N
+        getContentPane().add(bg_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 370, 510, 330));
 
-        getContentPane().add(kGradientPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-8, -7, 5660, 4720));
+        character_kids.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Cartoon.png"))); // NOI18N
+        getContentPane().add(character_kids, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 460, 340));
 
-        setSize(new java.awt.Dimension(1440, 1052));
+        bg_pattern.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BG.png"))); // NOI18N
+        getContentPane().add(bg_pattern, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1440, 1040));
+
+        pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void input_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_input_nameActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_input_nameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -98,6 +147,7 @@ public class login_user extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        // Rounded Button Display
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new login_user().setVisible(true);
@@ -106,10 +156,12 @@ public class login_user extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel bg_name;
     private javax.swing.JLabel bg_pattern;
-    private javax.swing.JButton button_Play;
-    private javax.swing.JLabel jLabel1;
-    private keeptoo.KGradientPanel kGradientPanel1;
+    private rojerusan.RSMaterialButtonRectangle button_Play;
+    private javax.swing.JLabel character_kids;
+    private javax.swing.JTextField input_name;
+    private javax.swing.JLabel text_name;
     // End of variables declaration//GEN-END:variables
 
 }
