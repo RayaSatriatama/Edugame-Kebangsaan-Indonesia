@@ -10,6 +10,11 @@ import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -38,9 +43,10 @@ public class login_admin extends javax.swing.JFrame {
         label_username = new javax.swing.JLabel();
         input_username = new javax.swing.JTextField();
         label_password = new javax.swing.JLabel();
-        input_password = new javax.swing.JTextField();
+        input_password = new javax.swing.JPasswordField();
         button_login = new rojerusan.RSMaterialButtonRectangle();
         button_back_game = new javax.swing.JButton();
+        shw_password = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -71,6 +77,11 @@ public class login_admin extends javax.swing.JFrame {
         });
 
         button_login.setText("Log In");
+        button_login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_loginActionPerformed(evt);
+            }
+        });
 
         button_back_game.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         button_back_game.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Back-Arrow-Black.png"))); // NOI18N
@@ -82,6 +93,13 @@ public class login_admin extends javax.swing.JFrame {
             }
         });
 
+        shw_password.setText("Show Password");
+        shw_password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                shw_passwordActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panel_login_adminLayout = new javax.swing.GroupLayout(panel_login_admin);
         panel_login_admin.setLayout(panel_login_adminLayout);
         panel_login_adminLayout.setHorizontalGroup(
@@ -89,17 +107,19 @@ public class login_admin extends javax.swing.JFrame {
             .addGroup(panel_login_adminLayout.createSequentialGroup()
                 .addGroup(panel_login_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_login_adminLayout.createSequentialGroup()
-                        .addGap(217, 217, 217)
-                        .addGroup(panel_login_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(label_password)
-                            .addComponent(label_username)
-                            .addComponent(label_login_admin)
-                            .addComponent(input_username)
-                            .addComponent(input_password)
-                            .addComponent(button_login, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panel_login_adminLayout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addComponent(button_back_game)))
+                        .addComponent(button_back_game))
+                    .addGroup(panel_login_adminLayout.createSequentialGroup()
+                        .addGap(217, 217, 217)
+                        .addGroup(panel_login_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(shw_password)
+                            .addGroup(panel_login_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(label_password)
+                                .addComponent(label_username)
+                                .addComponent(label_login_admin)
+                                .addComponent(input_username)
+                                .addComponent(button_login, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
+                                .addComponent(input_password)))))
                 .addContainerGap(192, Short.MAX_VALUE))
         );
         panel_login_adminLayout.setVerticalGroup(
@@ -117,7 +137,9 @@ public class login_admin extends javax.swing.JFrame {
                 .addComponent(label_password)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(input_password, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(shw_password)
+                .addGap(14, 14, 14)
                 .addComponent(button_login, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(94, Short.MAX_VALUE))
         );
@@ -141,16 +163,64 @@ public class login_admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_input_usernameActionPerformed
 
-    private void input_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_input_passwordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_input_passwordActionPerformed
-
     private void button_back_gameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_back_gameActionPerformed
         // TODO add your handling code here:
         login_user user = new login_user();
         user.setVisible(true);
         user.setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_button_back_gameActionPerformed
+    
+    public void bersih_form_login(){
+        input_username.setText("");
+        input_password.setText("");
+    }
+    
+    private void button_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_loginActionPerformed
+        // TODO add your handling code here:
+        try {
+        String inputUsername = input_username.getText();
+        String inputPassword = new String(input_password.getPassword());
+        String perintah_SQL =  "SELECT * FROM admin WHERE username = '"+inputUsername+"' AND password = '"+inputPassword+"';";
+        
+        Connection penghubung = (Connection)koneksi_db.konfigurasi_koneksiDB();
+        
+        Statement pernyataanSQL = penghubung.createStatement();
+        
+        ResultSet hasil_SQL = pernyataanSQL.executeQuery(perintah_SQL);
+       
+            if (hasil_SQL.next()) {
+             
+              JOptionPane.showMessageDialog(null, "Login Berhasil!");
+              //dashboard_admin lanjutframe = new dashboard_admin();
+              //lanjutframe.setVisible(true);
+              this.setVisible(false);
+            } else {
+            
+              JOptionPane.showMessageDialog(null, "Username/Password Invalid!");
+              bersih_form_login();
+            }
+        
+        } catch (Exception e) {
+        
+        JOptionPane.showMessageDialog(null, "Gagal, Login! \n"+e.getMessage());
+        }
+    }//GEN-LAST:event_button_loginActionPerformed
+
+    private void input_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_input_passwordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_input_passwordActionPerformed
+
+    
+    
+    private void shw_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shw_passwordActionPerformed
+        // TODO add your handling code here:
+        if(shw_password.isSelected()) {
+            input_password.setEchoChar((char)0);
+        }
+        else {
+            input_password.setEchoChar('*');
+        }
+    }//GEN-LAST:event_shw_passwordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,11 +260,12 @@ public class login_admin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_back_game;
     private rojerusan.RSMaterialButtonRectangle button_login;
-    private javax.swing.JTextField input_password;
+    private javax.swing.JPasswordField input_password;
     private javax.swing.JTextField input_username;
     private javax.swing.JLabel label_login_admin;
     private javax.swing.JLabel label_password;
     private javax.swing.JLabel label_username;
     private javax.swing.JPanel panel_login_admin;
+    private javax.swing.JCheckBox shw_password;
     // End of variables declaration//GEN-END:variables
 }
