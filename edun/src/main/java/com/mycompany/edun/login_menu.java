@@ -101,7 +101,7 @@ public class login_menu extends javax.swing.JFrame {
         login_user user = new login_user();
         jDesktopPane1.add(user);
         user.setVisible(true);
-        //user.setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
+        user.setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_button_playActionPerformed
 
     /**
