@@ -100,7 +100,7 @@ splashscreen sp;
                 if (loadingbar.getPercentComplete()==1.0) {
                     timer.stop();
                     dispose();
-                    login_user n = new login_user();
+                    login_menu n = new login_menu();
                     n.setVisible(true);
                 }
             }
