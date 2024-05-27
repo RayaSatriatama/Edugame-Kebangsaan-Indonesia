@@ -53,7 +53,6 @@ public class login_user extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
         input_name = new javax.swing.JTextField();
         text_name = new javax.swing.JLabel();
@@ -72,9 +71,6 @@ public class login_user extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login User");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jDesktopPane1.setOpaque(false);
-        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, 690, 530));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -185,9 +181,7 @@ public class login_user extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         login_admin admin = new login_admin();
-        jDesktopPane1.add(admin);
         admin.setVisible(true);
-        admin.setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_button_AdminActionPerformed
 
     private void icon_adminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_adminMouseClicked
@@ -241,7 +235,6 @@ public class login_user extends javax.swing.JFrame {
     private rojerusan.RSPanelImage icon_home;
     private rojerusan.RSPanelImage icon_play;
     private javax.swing.JTextField input_name;
-    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel text_name;
     // End of variables declaration//GEN-END:variables
