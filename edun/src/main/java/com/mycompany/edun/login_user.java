@@ -30,13 +30,11 @@ public class login_user extends javax.swing.JFrame {
            button_Admin.setFont(font_button);
            
            // Add Customize Font 20 Black
-           File font20 = new File("src/main/resources/fonts/Nunito-Black.ttf");
-           Font font_20 = Font.createFont(Font.TRUETYPE_FONT, font20).deriveFont(18f);
+           Font font_20 = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(18f);
            text_name.setFont(font_20);
            
            // Add Customize Font 24 Black
-           File font24 = new File("src/main/resources/fonts/Nunito-Black.ttf");
-           Font font_24 = Font.createFont(Font.TRUETYPE_FONT, font24).deriveFont(20f);
+           Font font_24 = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(20f);
            input_name.setFont(font_24);
 
         // Set the frame visible
@@ -185,7 +183,6 @@ public class login_user extends javax.swing.JFrame {
 
     private void button_AdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_AdminActionPerformed
         // TODO add your handling code here:
-//        jDesktopPane1.removeAll();
         
         login_admin admin = new login_admin();
         jDesktopPane1.add(admin);
@@ -195,12 +192,6 @@ public class login_user extends javax.swing.JFrame {
 
     private void icon_adminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_adminMouseClicked
         // TODO add your handling code here:
-//        jDesktopPane1.removeAll();
-//        jDesktopPane1.repaint();
-//        
-//        login_admin admin = new login_admin();
-//        jDesktopPane1.add(admin);
-//        admin.setVisible(true);
     }//GEN-LAST:event_icon_adminMouseClicked
 
     /**
