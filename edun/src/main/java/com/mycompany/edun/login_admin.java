@@ -4,6 +4,13 @@
  */
 package com.mycompany.edun;
 
+import java.awt.Font;
+import java.io.File;
+import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author nadiaag
@@ -140,7 +147,9 @@ public class login_admin extends javax.swing.JFrame {
 
     private void button_back_gameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_back_gameActionPerformed
         // TODO add your handling code here:
-        dispose();
+        login_user user = new login_user();
+        user.setVisible(true);
+        user.setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_button_back_gameActionPerformed
 
     /**

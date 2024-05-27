@@ -67,6 +67,7 @@ public class login_user extends javax.swing.JFrame {
         button_Home = new rojerusan.RSMaterialButtonRectangle();
         button_Admin = new rojerusan.RSMaterialButtonRectangle();
         bg_pattern = new javax.swing.JLabel();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login User");
@@ -97,7 +98,6 @@ public class login_user extends javax.swing.JFrame {
         jPanel1.add(icon_play, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 700, 30, 30));
 
         button_Play.setBackground(new java.awt.Color(124, 58, 237));
-        button_Play.setIcon(new javax.swing.ImageIcon("/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/resources/assets/Icon-Play.png")); // NOI18N
         button_Play.setText("MULAI PERMAINAN");
         button_Play.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
         button_Play.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -158,6 +158,9 @@ public class login_user extends javax.swing.JFrame {
         bg_pattern.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BG.png"))); // NOI18N
         jPanel1.add(bg_pattern, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1440, 1040));
 
+        jDesktopPane1.setOpaque(false);
+        jPanel1.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, 690, 530));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -175,13 +178,16 @@ public class login_user extends javax.swing.JFrame {
 
     private void button_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_BackActionPerformed
         // TODO add your handling code here:
+        login_menu menu = new login_menu();
+        menu.setVisible(true);
+        menu.setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_button_BackActionPerformed
 
     private void button_AdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_AdminActionPerformed
         // TODO add your handling code here:
-        
         login_admin admin = new login_admin();
         admin.setVisible(true);
+        admin.setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_button_AdminActionPerformed
 
     private void icon_adminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_adminMouseClicked
@@ -235,6 +241,7 @@ public class login_user extends javax.swing.JFrame {
     private rojerusan.RSPanelImage icon_home;
     private rojerusan.RSPanelImage icon_play;
     private javax.swing.JTextField input_name;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel text_name;
     // End of variables declaration//GEN-END:variables
