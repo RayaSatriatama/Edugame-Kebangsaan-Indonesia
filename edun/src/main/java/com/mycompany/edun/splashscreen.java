@@ -86,11 +86,6 @@ splashscreen sp;
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel background;
-    private javax.swing.JProgressBar loadingbar;
-    // End of variables declaration//GEN-END:variables
-
     private void aksi() {
         action = new ActionListener() {
             
@@ -100,10 +95,17 @@ splashscreen sp;
                 if (loadingbar.getPercentComplete()==1.0) {
                     timer.stop();
                     dispose();
-                    login_menu n = new login_menu();
-                    n.setVisible(true);
+                    login_menu m = new login_menu();
+                    m.setVisible(true);
                 }
             }
         };
     }
+    
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel background;
+    private javax.swing.JProgressBar loadingbar;
+    // End of variables declaration//GEN-END:variables
+
+    
 }

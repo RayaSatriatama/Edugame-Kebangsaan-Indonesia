@@ -7,8 +7,9 @@ package com.mycompany.edun;
 
 import java.awt.Font;
 import java.io.File;
-import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -26,8 +27,6 @@ public class login_user extends javax.swing.JFrame {
            Font font_button = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(24f);
            button_Play.setFont(font_button);
            button_Back.setFont(font_button);
-           button_Home.setFont(font_button);
-           button_Admin.setFont(font_button);
            
            // Add Customize Font 20 Black
            Font font_20 = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(18f);
@@ -62,12 +61,17 @@ public class login_user extends javax.swing.JFrame {
         character_kids = new javax.swing.JLabel();
         icon_back = new rojerusan.RSPanelImage();
         button_Back = new rojerusan.RSMaterialButtonRectangle();
-        icon_admin = new rojerusan.RSPanelImage();
         icon_home = new rojerusan.RSPanelImage();
         button_Home = new rojerusan.RSMaterialButtonRectangle();
-        button_Admin = new rojerusan.RSMaterialButtonRectangle();
         bg_pattern = new javax.swing.JLabel();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        eduN = new javax.swing.JMenu();
+        credits = new javax.swing.JMenuItem();
+        about = new javax.swing.JMenuItem();
+        quit = new javax.swing.JMenuItem();
+        tools = new javax.swing.JMenu();
+        loginAdmin = new javax.swing.JMenuItem();
+        logoutAdmin = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login User");
@@ -101,6 +105,11 @@ public class login_user extends javax.swing.JFrame {
         button_Play.setText("MULAI PERMAINAN");
         button_Play.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
         button_Play.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        button_Play.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_PlayActionPerformed(evt);
+            }
+        });
         jPanel1.add(button_Play, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 680, 410, -1));
 
         bg_name.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BG-Name.png"))); // NOI18N
@@ -126,16 +135,8 @@ public class login_user extends javax.swing.JFrame {
         });
         jPanel1.add(button_Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 230, -1));
 
-        icon_admin.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-User.png"))); // NOI18N
-        icon_admin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                icon_adminMouseClicked(evt);
-            }
-        });
-        jPanel1.add(icon_admin, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 110, 30, 30));
-
         icon_home.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Home.png"))); // NOI18N
-        jPanel1.add(icon_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 110, 30, 30));
+        jPanel1.add(icon_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 110, 30, 30));
 
         button_Home.setBackground(new java.awt.Color(2, 132, 199));
         button_Home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Home.png"))); // NOI18N
@@ -144,24 +145,55 @@ public class login_user extends javax.swing.JFrame {
                 button_HomeActionPerformed(evt);
             }
         });
-        jPanel1.add(button_Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 90, 90, -1));
-
-        button_Admin.setBackground(new java.awt.Color(5, 150, 105));
-        button_Admin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Home.png"))); // NOI18N
-        button_Admin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_AdminActionPerformed(evt);
-            }
-        });
-        jPanel1.add(button_Admin, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 90, 90, -1));
+        jPanel1.add(button_Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 90, 90, -1));
 
         bg_pattern.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BG.png"))); // NOI18N
-        jPanel1.add(bg_pattern, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1440, 1040));
-
-        jDesktopPane1.setOpaque(false);
-        jPanel1.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, 690, 530));
+        jPanel1.add(bg_pattern, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1440, 1060));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        eduN.setText("eduN");
+
+        credits.setText("Credits");
+        credits.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                creditsActionPerformed(evt);
+            }
+        });
+        eduN.add(credits);
+
+        about.setText("About");
+        eduN.add(about);
+
+        quit.setText("Keluar eduN");
+        eduN.add(quit);
+
+        jMenuBar1.add(eduN);
+
+        tools.setText("Alat");
+        tools.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        loginAdmin.setText("Masuk Admin");
+        loginAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginAdminActionPerformed(evt);
+            }
+        });
+        tools.add(loginAdmin);
+
+        logoutAdmin.setText("Keluar Admin");
+        logoutAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        logoutAdmin.setEnabled(false);
+        logoutAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutAdminActionPerformed(evt);
+            }
+        });
+        tools.add(logoutAdmin);
+
+        jMenuBar1.add(tools);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
         setLocationRelativeTo(null);
@@ -174,25 +206,57 @@ public class login_user extends javax.swing.JFrame {
 
     private void button_HomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_HomeActionPerformed
         // TODO add your handling code here:
+        login_menu menu = new login_menu();
+        menu.setVisible(true);
     }//GEN-LAST:event_button_HomeActionPerformed
 
     private void button_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_BackActionPerformed
         // TODO add your handling code here:
         login_menu menu = new login_menu();
         menu.setVisible(true);
-        menu.setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_button_BackActionPerformed
 
-    private void button_AdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_AdminActionPerformed
+    private void button_PlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_PlayActionPerformed
+        // TODO add your handling code here:
+        
+        // 01. Tangkap variable inputan dari GUI
+        String username = input_name.getText();
+        
+        try{
+            // 02. Query SQL
+            String addNewUser = "INSERT INTO users (username) VALUES ('"+username+"')";
+            
+            // 03. Menghubungkan JAVA & SQL
+            Connection penghubung = (Connection)koneksi_db.konfigurasi_koneksiDB();
+            
+            // 04. Statement SQL dengan akses database langsung (memodifikasi data)
+            PreparedStatement newUser = penghubung.prepareStatement(addNewUser);
+            
+            // 05. Eksekusi perintah SQL
+            newUser.execute();
+            
+            // 06. Validasi SQL
+            choose_game game = new choose_game(username);
+            game.setVisible(true);
+            
+        } catch (Exception e){
+            // 07. Salah system
+        }
+    }//GEN-LAST:event_button_PlayActionPerformed
+
+    private void creditsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_creditsActionPerformed
+
+    private void loginAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginAdminActionPerformed
         // TODO add your handling code here:
         login_admin admin = new login_admin();
         admin.setVisible(true);
-        admin.setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
-    }//GEN-LAST:event_button_AdminActionPerformed
+    }//GEN-LAST:event_loginAdminActionPerformed
 
-    private void icon_adminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_adminMouseClicked
+    private void logoutAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutAdminActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_icon_adminMouseClicked
+    }//GEN-LAST:event_logoutAdminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,21 +293,26 @@ public class login_user extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem about;
     private javax.swing.JLabel bg_name;
     private javax.swing.JLabel bg_pattern;
-    private rojerusan.RSMaterialButtonRectangle button_Admin;
     private rojerusan.RSMaterialButtonRectangle button_Back;
     private rojerusan.RSMaterialButtonRectangle button_Home;
     private rojerusan.RSMaterialButtonRectangle button_Play;
     private javax.swing.JLabel character_kids;
-    private rojerusan.RSPanelImage icon_admin;
+    private javax.swing.JMenuItem credits;
+    private javax.swing.JMenu eduN;
     private rojerusan.RSPanelImage icon_back;
     private rojerusan.RSPanelImage icon_home;
     private rojerusan.RSPanelImage icon_play;
     private javax.swing.JTextField input_name;
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuItem loginAdmin;
+    private javax.swing.JMenuItem logoutAdmin;
+    private javax.swing.JMenuItem quit;
     private javax.swing.JLabel text_name;
+    private javax.swing.JMenu tools;
     // End of variables declaration//GEN-END:variables
 
 }

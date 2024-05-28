@@ -55,7 +55,7 @@ public class login_admin extends javax.swing.JFrame {
 
         panel_login_admin.setBackground(new java.awt.Color(241, 245, 249));
 
-        label_login_admin.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        label_login_admin.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         label_login_admin.setText("Login Admin");
 
         label_username.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
@@ -84,8 +84,7 @@ public class login_admin extends javax.swing.JFrame {
         });
 
         button_back_game.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        button_back_game.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Back-Arrow-Black.png"))); // NOI18N
-        button_back_game.setText("Ke Permainan");
+        button_back_game.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Close.png"))); // NOI18N
         button_back_game.setIconTextGap(12);
         button_back_game.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,29 +104,28 @@ public class login_admin extends javax.swing.JFrame {
         panel_login_adminLayout.setHorizontalGroup(
             panel_login_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_login_adminLayout.createSequentialGroup()
+                .addGap(217, 217, 217)
                 .addGroup(panel_login_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_login_adminLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(button_back_game))
-                    .addGroup(panel_login_adminLayout.createSequentialGroup()
-                        .addGap(217, 217, 217)
-                        .addGroup(panel_login_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(shw_password)
-                            .addGroup(panel_login_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(label_password)
-                                .addComponent(label_username)
-                                .addComponent(label_login_admin)
-                                .addComponent(input_username)
-                                .addComponent(button_login, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
-                                .addComponent(input_password)))))
+                    .addComponent(shw_password)
+                    .addGroup(panel_login_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(label_password)
+                        .addComponent(label_username)
+                        .addComponent(label_login_admin)
+                        .addComponent(input_username)
+                        .addComponent(button_login, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
+                        .addComponent(input_password)))
                 .addContainerGap(192, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_login_adminLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(button_back_game, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45))
         );
         panel_login_adminLayout.setVerticalGroup(
             panel_login_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_login_adminLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(35, 35, 35)
                 .addComponent(button_back_game, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
+                .addGap(46, 46, 46)
                 .addComponent(label_login_admin)
                 .addGap(18, 18, 18)
                 .addComponent(label_username)
@@ -167,7 +165,6 @@ public class login_admin extends javax.swing.JFrame {
         // TODO add your handling code here:
         login_user user = new login_user();
         user.setVisible(true);
-        user.setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_button_back_gameActionPerformed
     
     public void bersih_form_login(){
