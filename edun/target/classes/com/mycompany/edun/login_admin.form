@@ -49,33 +49,36 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="217" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="shw_password" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="label_password" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="label_username" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="label_login_admin" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="input_username" alignment="0" max="32767" attributes="0"/>
-                          <Component id="button_login" alignment="0" pref="309" max="32767" attributes="0"/>
-                          <Component id="input_password" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <Component id="button_back_game" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="217" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="shw_password" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="label_password" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="label_username" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="label_login_admin" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="input_username" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="button_login" alignment="0" pref="309" max="32767" attributes="0"/>
+                                  <Component id="input_password" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace pref="192" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="button_back_game" min="-2" pref="38" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="button_back_game" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                   <Component id="label_login_admin" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="label_username" min="-2" max="-2" attributes="0"/>
@@ -98,7 +101,7 @@
         <Component class="javax.swing.JLabel" name="label_login_admin">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Helvetica Neue" size="24" style="1"/>
+              <Font name="Helvetica Neue" size="18" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Login Admin"/>
           </Properties>
@@ -143,8 +146,9 @@
               <Font name="Helvetica Neue" size="14" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/assets/Icon-Close.png"/>
+              <Image iconType="3" name="/assets/Back-Arrow-Black.png"/>
             </Property>
+            <Property name="text" type="java.lang.String" value="Ke Permainan"/>
             <Property name="iconTextGap" type="int" value="12"/>
           </Properties>
           <Events>
