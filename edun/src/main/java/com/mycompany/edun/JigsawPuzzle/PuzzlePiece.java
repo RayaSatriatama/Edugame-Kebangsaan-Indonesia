@@ -85,31 +85,28 @@ public class PuzzlePiece extends JButton {
 
     // Snap the piece to the nearest grid position within the puzzle area
     private void snapToGrid() {
+        // Calculate relative position to the entire JFrame
         int x = getX();
         int y = getY();
-        int snappedX = (x + pieceWidth / 2) / pieceWidth * pieceWidth;
-        int snappedY = (y + pieceHeight / 2) / pieceHeight * pieceHeight;
 
-        int gridX = snappedX / pieceWidth;
-        int gridY = snappedY / pieceHeight;
+        // Check if the piece is within the bounds of the puzzlePanel
+        if (x >= puzzle.puzzlePanel.getX() && x < puzzle.puzzlePanel.getX() + puzzle.puzzlePanel.getWidth() &&
+            y >= puzzle.puzzlePanel.getY() && y < puzzle.puzzlePanel.getY() + puzzle.puzzlePanel.getHeight()) {
 
-        // Check if the grid position is within bounds
-        if (gridX >= 0 && gridX < puzzle.grid[0].length && gridY >= 0 && gridY < puzzle.grid.length) {
-            PuzzlePiece otherPiece = puzzle.grid[gridY][gridX];
-            // Only swap if the other piece is not locked
-            if (!otherPiece.isLocked()) {
-                puzzle.swapPieces(this, otherPiece);
-            } else {
-                // Move back to current position if the other piece is locked
-                setLocation(currentX * pieceWidth, currentY * pieceHeight);
-            }
+            // Snap to grid within the puzzlePanel
+            int snappedX = (x - puzzle.puzzlePanel.getX() + pieceWidth / 2) / pieceWidth * pieceWidth;
+            int snappedY = (y - puzzle.puzzlePanel.getY() + pieceHeight / 2) / pieceHeight * pieceHeight;
+
+            int gridX = snappedX / pieceWidth;
+            int gridY = snappedY / pieceHeight;
+
+            // Additional checks here as needed
+
+            setLocation(snappedX + puzzle.puzzlePanel.getX(), snappedY + puzzle.puzzlePanel.getY());
         } else {
-            // Move back to current position if out of bounds
-            setLocation(currentX * pieceWidth, currentY * pieceHeight);
+            // If outside, place it back or allow free placement
+            setLocation(x, y); // Allows the piece to be placed freely outside the puzzlePanel
         }
-
-        // Lock the piece if it is in its correct position
-        checkAndLock();
     }
 
     // Check and lock the piece if it is in the correct position

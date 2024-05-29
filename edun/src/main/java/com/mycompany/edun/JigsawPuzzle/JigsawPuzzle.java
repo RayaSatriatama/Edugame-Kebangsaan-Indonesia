@@ -14,6 +14,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -21,20 +22,24 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public class JigsawPuzzle extends JFrame {
+    Random r = new Random();
+    int low = 4;
+    int high = 5;
+    int randomResult = r.nextInt(high-low) + low;
     private BufferedImage image; // The puzzle image
-    private int rows = 4; // Number of rows in the puzzle
-    private int cols = 4; // Number of columns in the puzzle
+    private int rows = randomResult; // Number of rows in the puzzle
+    private int cols = randomResult; // Number of columns in the puzzle
     private int pieceWidth; // Width of each puzzle piece
     private int pieceHeight; // Height of each puzzle piece
     private ArrayList<PuzzlePiece> pieces; // List of puzzle pieces
     PuzzlePiece[][] grid; // Grid to track piece positions
-    private JPanel puzzlePanel; // Panel to hold the puzzle pieces
+    JPanel puzzlePanel; // Panel to hold the puzzle pieces
     private int borderSize = 10; // Border size for the puzzle area
 
     public JigsawPuzzle() {
         // Load the puzzle image
         image = ImageLoader.loadImage("src/main/resources/assets/JigsawPuzzleImages/puzzle.jpg");
-        if (image != null) {
+           if (image != null) {
             // Calculate the width and height of each piece
             pieceWidth = image.getWidth() / cols;
             pieceHeight = image.getHeight() / rows;
@@ -56,7 +61,7 @@ public class JigsawPuzzle extends JFrame {
 
             // Set up the JFrame
             setTitle("Jigsaw Puzzle");
-            setSize(image.getWidth() + 16, image.getHeight() + 39);
+            setSize(image.getWidth() * 2 + borderSize * 2 + 16, image.getHeight() + borderSize * 2 + 39);
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             setLayout(null);
 
@@ -72,12 +77,12 @@ public class JigsawPuzzle extends JFrame {
             puzzlePanel.setBounds(borderSize, borderSize, image.getWidth(), image.getHeight());
             add(puzzlePanel);
 
-            // Place pieces at random locations within the puzzle panel
+            // Place pieces at random locations within the new frame, but outside the puzzle area
             for (PuzzlePiece piece : pieces) {
-                int randomX = (int) (Math.random() * (puzzlePanel.getWidth() - pieceWidth));
-                int randomY = (int) (Math.random() * (puzzlePanel.getHeight() - pieceHeight));
+                int randomX = (int) (Math.random() * (getWidth() - puzzlePanel.getWidth() - pieceWidth - borderSize * 2) + puzzlePanel.getWidth() + borderSize);
+                int randomY = (int) (Math.random() * (getHeight() - pieceHeight - borderSize * 2) + borderSize);
                 piece.setBounds(randomX, randomY, pieceWidth, pieceHeight);
-                puzzlePanel.add(piece);
+                add(piece); // Add pieces to the JFrame, not the puzzlePanel
             }
 
             setVisible(true);
