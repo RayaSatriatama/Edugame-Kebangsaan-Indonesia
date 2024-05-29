@@ -6,10 +6,7 @@ package com.mycompany.edun;
 
 import java.awt.Font;
 import java.io.File;
-import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,7 +24,7 @@ public class login_menu extends javax.swing.JFrame {
             // Add Customize Font Button
            File fontButton = new File("src/main/resources/fonts/Nunito-Black.ttf");
            Font font_button = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(24f);
-           button_play.setFont(font_button);
+           button_Play.setFont(font_button);
            button_exit.setFont(font_button);
         } catch (Exception e) {
            e.printStackTrace();
@@ -45,10 +42,10 @@ public class login_menu extends javax.swing.JFrame {
     private void initComponents() {
 
         button_exit = new rojerusan.RSMaterialButtonRectangle();
-        button_play = new rojerusan.RSMaterialButtonRectangle();
+        icon_play = new rojerusan.RSPanelImage();
+        button_Play = new rojerusan.RSMaterialButtonRectangle();
         title = new javax.swing.JLabel();
         bg_pattern = new javax.swing.JLabel();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -63,25 +60,28 @@ public class login_menu extends javax.swing.JFrame {
         });
         getContentPane().add(button_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 640, 171, 60));
 
-        button_play.setBackground(new java.awt.Color(124, 58, 237));
-        button_play.setText("MULAI PERMAINAN");
-        button_play.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
-        button_play.addActionListener(new java.awt.event.ActionListener() {
+        icon_play.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Play.png"))); // NOI18N
+        getContentPane().add(icon_play, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 580, 30, 30));
+
+        button_Play.setBackground(new java.awt.Color(124, 58, 237));
+        button_Play.setText("MULAI PERMAINAN");
+        button_Play.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
+        button_Play.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        button_Play.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_playActionPerformed(evt);
+                button_PlayActionPerformed(evt);
             }
         });
-        getContentPane().add(button_play, new org.netbeans.lib.awtextra.AbsoluteConstraints(506, 555, 393, -1));
+        getContentPane().add(button_Play, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 560, 410, -1));
 
         title.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Title.png"))); // NOI18N
         title.setMaximumSize(new java.awt.Dimension(681, 325));
         title.setMinimumSize(new java.awt.Dimension(681, 325));
         title.setPreferredSize(new java.awt.Dimension(681, 325));
-        getContentPane().add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 187, 681, 325));
+        getContentPane().add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 187, 700, 325));
 
         bg_pattern.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BG.png"))); // NOI18N
         getContentPane().add(bg_pattern, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 1020));
 
         pack();
         setLocationRelativeTo(null);
@@ -96,13 +96,11 @@ public class login_menu extends javax.swing.JFrame {
 //        }
     }//GEN-LAST:event_button_exitActionPerformed
 
-    private void button_playActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_playActionPerformed
+    private void button_PlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_PlayActionPerformed
         // TODO add your handling code here:
         login_user user = new login_user();
-        jDesktopPane1.add(user);
         user.setVisible(true);
-        user.setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
-    }//GEN-LAST:event_button_playActionPerformed
+    }//GEN-LAST:event_button_PlayActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,9 +139,9 @@ public class login_menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bg_pattern;
+    private rojerusan.RSMaterialButtonRectangle button_Play;
     private rojerusan.RSMaterialButtonRectangle button_exit;
-    private rojerusan.RSMaterialButtonRectangle button_play;
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private rojerusan.RSPanelImage icon_play;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }
