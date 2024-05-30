@@ -5,6 +5,7 @@
 
 package com.mycompany.edun;
 
+import com.mycompany.edun.database.koneksi_db;
 import java.awt.Font;
 import java.io.File;
 import java.sql.Connection;

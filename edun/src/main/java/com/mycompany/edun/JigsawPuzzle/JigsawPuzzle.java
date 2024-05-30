@@ -36,14 +36,15 @@ public class JigsawPuzzle extends JPanel {
     private ArrayList<PuzzlePiece> pieces;
     PuzzlePiece[][] grid;
     JPanel puzzlePanel;
-    private int borderSize = 10;
+    private int borderSize = 20;
     private JButton resetButton;
     private boolean puzzleCompleted = false;
+    private int IMAGE_SIZE = 480;
 
     public JigsawPuzzle() {
         image = loadRandomImage("src/main/resources/assets/JigsawPuzzleImages/");
         if (image != null) {
-            image = resizeAndPadImage(image, 600, 600);
+            image = resizeAndPadImage(image, IMAGE_SIZE, IMAGE_SIZE);
             pieceWidth = image.getWidth() / cols;
             pieceHeight = image.getHeight() / rows;
             pieces = new ArrayList<>();

@@ -4,6 +4,10 @@
  */
 package com.mycompany.edun;
 
+import com.mycompany.edun.database.DeleteQuestion;
+import com.mycompany.edun.database.UpdateQuestion;
+import com.mycompany.edun.database.GetQuestion;
+import com.mycompany.edun.database.AddQuestion;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -149,7 +153,7 @@ public static int open=0;
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         // TODO add your handling code here:
         if(open==0) {
-            new addNewQuestion().setVisible(true);
+            new AddQuestion().setVisible(true);
             open=1;
         }
         else {
@@ -162,7 +166,7 @@ public static int open=0;
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
         // TODO add your handling code here:
         if(open==0) {
-            new updateQuestion().setVisible(true);
+            new UpdateQuestion().setVisible(true);
             open=1;
         }
         else {
@@ -175,7 +179,7 @@ public static int open=0;
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
         // TODO add your handling code here:
         if(open==0) {
-            new allQuestion().setVisible(true);
+            new GetQuestion().setVisible(true);
             open=1;
         }
         else {
@@ -188,7 +192,7 @@ public static int open=0;
     private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
         // TODO add your handling code here:
         if(open==0) {
-            new deleteQuestion().setVisible(true);
+            new DeleteQuestion().setVisible(true);
             open=1;
         }
         else {
