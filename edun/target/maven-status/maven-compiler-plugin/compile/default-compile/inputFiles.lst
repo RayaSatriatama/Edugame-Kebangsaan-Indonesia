@@ -1,14 +1,10 @@
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\database\AddQuestion.java
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\login_admin.java
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\login_menu.java
-C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\database\JigsawTable\GetJigsaw.java
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\JigsawPuzzle\ImageLoader.java
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\home_admin.java
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\choose_game.java
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\database\GetQuestion.java
-C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\database\JigsawTable\DeleteJigsaw.java
-C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\database\JigsawTable\AddJigsaw.java
-C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\database\JigsawTable\UpdateJigsaw.java
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\database\DeleteQuestion.java
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\JigsawPuzzle\JigsawPuzzle.java
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\JigsawPuzzle\PuzzlePiece.java
@@ -16,5 +12,6 @@ C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\m
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\database\koneksi_db.java
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\login_user.java
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\database\UpdateQuestion.java
+C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\database\JigsawControlPanel.java
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\Edun.java
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\splashscreen.java
