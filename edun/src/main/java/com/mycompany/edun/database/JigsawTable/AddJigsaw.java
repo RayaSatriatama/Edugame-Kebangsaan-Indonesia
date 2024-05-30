@@ -6,6 +6,7 @@ package com.mycompany.edun.database.JigsawTable;
 
 import com.mycompany.edun.database.*;
 import com.mycompany.edun.home_admin;
+import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.JInternalFrame;
@@ -15,8 +16,12 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JFrame;
 import java.sql.PreparedStatement;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JPanel;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 
 /**
  *
@@ -35,6 +40,9 @@ public class AddJigsaw extends javax.swing.JFrame {
     private void refreshForm() {
         // Menyegarkan JFrame
         selectedFile = null;
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jLabel6.setIcon(null);
         try {
             String perintah_SQL = "SELECT COUNT(id) FROM jigsaw_puzzle;";
             Connection penghubung = (Connection) koneksi_db.konfigurasi_koneksiDB();
@@ -53,8 +61,22 @@ public class AddJigsaw extends javax.swing.JFrame {
             jf.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(jf, e);
         }
-        jTextField1.setText("");
-        jTextField2.setText("");
+    }
+    
+    private boolean isImageFile(File file) {
+        String extension = FilenameUtils.getExtension(file.getName()).toLowerCase();
+        return extension.equals("jpg") || extension.equals("jpeg") || extension.equals("png") || extension.equals("gif");
+    }
+    
+    private void displayImagePreview(File file) {
+        try {
+            ImageIcon icon = new ImageIcon(ImageIO.read(file));
+            Image image = icon.getImage();
+            Image scaledImage = image.getScaledInstance(jLabel6.getWidth(), jLabel6.getHeight(), Image.SCALE_SMOOTH);
+            jLabel6.setIcon(new ImageIcon(scaledImage));
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error displaying image preview: " + e.getMessage());
+        }
     }
 
     /**
@@ -66,6 +88,7 @@ public class AddJigsaw extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -83,6 +106,10 @@ public class AddJigsaw extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setLocation(new java.awt.Point(150, 183));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setMaximumSize(new java.awt.Dimension(800, 800));
+        jLabel6.setMinimumSize(new java.awt.Dimension(800, 800));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 400, 400, 400));
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 40)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/add new question.png"))); // NOI18N
@@ -134,7 +161,7 @@ public class AddJigsaw extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, -1, -1));
 
         jButton2.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/clear question.png"))); // NOI18N
@@ -225,9 +252,16 @@ public class AddJigsaw extends javax.swing.JFrame {
         int result = fileChooser.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
             selectedFile = fileChooser.getSelectedFile();
-            JOptionPane.showMessageDialog(this, "File selected: " + selectedFile.getName());
-            jTextField1.setText(selectedFile.getName());
-            jTextField2.setText(selectedFile.getAbsolutePath());
+            if (isImageFile(selectedFile)) {
+                JOptionPane.showMessageDialog(this, "File selected: " + selectedFile.getName());
+                jTextField1.setText(selectedFile.getName());
+                jTextField2.setText(selectedFile.getAbsolutePath());
+                displayImagePreview(selectedFile);
+            } else {
+                jLabel6.setIcon(null);
+                selectedFile = null;
+                JOptionPane.showMessageDialog(this, "Please select a valid image file (jpg, jpeg, png, gif).");
+            }
         } else {
             selectedFile = null;
         }
@@ -291,6 +325,7 @@ public class AddJigsaw extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
