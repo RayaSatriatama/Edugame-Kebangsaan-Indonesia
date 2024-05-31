@@ -7,9 +7,6 @@ package com.mycompany.edun.database;
 import com.mycompany.edun.database.*;
 import com.mycompany.edun.home_admin;
 import java.awt.HeadlessException;
-import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -17,63 +14,38 @@ import java.sql.Statement;
 import javax.swing.JFrame;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
 
 /**
  *
  * @author ivanbesti
  */
-public class JigsawControlPanel extends javax.swing.JFrame {
-    private File selectedFile;
+public class CrosswordControlPanel extends javax.swing.JFrame {
     /**
      * Creates new form addNewQuestion
      */
-    public JigsawControlPanel() {
+    public CrosswordControlPanel() {
         initComponents();
         read();
         refreshForm();
     }
     
     private void refreshForm() {
-        // Menyegarkan JFrame
-        selectedFile = null;
         jTextField1.setText("");
         jTextField2.setText("");
-        jLabel6.setIcon(null);
         jLabel10.setText("");
     }
-    
-    private boolean isImageFile(File file) {
-        String extension = FilenameUtils.getExtension(file.getName()).toLowerCase();
-        return extension.equals("jpg") || extension.equals("jpeg") || extension.equals("png") || extension.equals("gif");
-    }
-    
-    private void displayImagePreview(File file) {
-        try {
-            ImageIcon icon = new ImageIcon(ImageIO.read(file));
-            Image image = icon.getImage();
-            Image scaledImage = image.getScaledInstance(jLabel6.getWidth(), jLabel6.getHeight(), Image.SCALE_SMOOTH);
-            jLabel6.setIcon(new ImageIcon(scaledImage));
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "Error displaying image preview: " + e.getMessage());
-        }
-    }
-    
+
     private void read(){
         DefaultTableModel jigsawData = new DefaultTableModel();
         jigsawData.addColumn("No");
         jigsawData.addColumn("ID");
-        jigsawData.addColumn("Name");
-        jigsawData.addColumn("Path");
+        jigsawData.addColumn("Question");
+        jigsawData.addColumn("Answer");
         jigsawData.addColumn("Upload Time");
         
         try {
-            String query = "SELECT * FROM jigsaw_puzzle";
+            String query = "SELECT * FROM crossword_puzzle";
 
             Connection connection = (Connection)koneksi_db.konfigurasi_koneksiDB();
             Statement statement = connection.createStatement();
@@ -108,10 +80,8 @@ public class JigsawControlPanel extends javax.swing.JFrame {
         jTable2 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -135,7 +105,7 @@ public class JigsawControlPanel extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "No", "ID", "Name", "Path", "Upload Time"
+                "No", "ID", "Question", "Answer", "Upload Time"
             }
         ) {
             Class[] types = new Class [] {
@@ -157,7 +127,7 @@ public class JigsawControlPanel extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 40)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/add new question.png"))); // NOI18N
-        jLabel1.setText("Jigsaw Puzzle");
+        jLabel1.setText("Crossword Puzzle");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 19, -1, -1));
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/close.png"))); // NOI18N
@@ -167,21 +137,6 @@ public class JigsawControlPanel extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 20, -1, -1));
-
-        jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/save.png"))); // NOI18N
-        jButton1.setText("Upload File");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, -1, -1));
 
         jButton5.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/clear question.png"))); // NOI18N
@@ -203,20 +158,16 @@ public class JigsawControlPanel extends javax.swing.JFrame {
         });
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 280, -1, -1));
 
-        jLabel6.setMaximumSize(new java.awt.Dimension(800, 800));
-        jLabel6.setMinimumSize(new java.awt.Dimension(800, 800));
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 390, 240, 240));
-
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         jLabel3.setText("Current ID:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jLabel4.setText("File:");
+        jLabel4.setText("Question:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jLabel5.setText("Path:");
+        jLabel5.setText("Answer:");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, -1, -1));
 
         jTextField1.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
@@ -247,7 +198,7 @@ public class JigsawControlPanel extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, -1, -1));
 
         jButton4.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/save.png"))); // NOI18N
@@ -282,30 +233,20 @@ public class JigsawControlPanel extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        String newFileName = jTextField1.getText();
-        if (selectedFile != null && !newFileName.isBlank()) {
-            File destinationFolder = new File("src/main/resources/assets/JigsawPuzzleImages/");
-            String path = destinationFolder.getPath() + File.separator + newFileName;
+        String question = jTextField1.getText();        
+        String answer = jTextField2.getText();
 
+        if (!question.isBlank() && !answer.isBlank()) {
             try {
                 Connection con = koneksi_db.konfigurasi_koneksiDB();
-                PreparedStatement ps = con.prepareStatement("INSERT INTO jigsaw_puzzle (name, path) VALUES (?, ?);");
-                ps.setString(1, newFileName);
-                ps.setString(2, path);
+                PreparedStatement ps = con.prepareStatement("INSERT INTO crossword_puzzle (question, answer) VALUES (?, ?);");
+                ps.setString(1, question);
+                ps.setString(2, answer);
                 ps.executeUpdate();
-
-                // Ensure the destination folder exists
-                if (!destinationFolder.exists()) {
-                    destinationFolder.mkdirs();
-                }
-
-                // Copy the selected file to the destination folder
-                FileUtils.copyFileToDirectory(selectedFile, destinationFolder);
-
                 JFrame jf = new JFrame();
                 jf.setAlwaysOnTop(true);
                 JOptionPane.showMessageDialog(jf, "Successfully Added!");
-            } catch (HeadlessException | IOException | SecurityException | SQLException e) {
+            } catch (HeadlessException | SecurityException | SQLException e) {
                 JFrame jf = new JFrame();
                 jf.setAlwaysOnTop(true);
                 JOptionPane.showMessageDialog(jf, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -313,10 +254,8 @@ public class JigsawControlPanel extends javax.swing.JFrame {
                 read();
                 refreshForm();
             }
-        } else if (newFileName.isBlank()) {
-            JOptionPane.showMessageDialog(this, "Fill the text field.", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(this, "No file selected to upload.", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Fill the text field.", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -324,44 +263,17 @@ public class JigsawControlPanel extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1MouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        JFileChooser fileChooser = new JFileChooser();
-        int result = fileChooser.showOpenDialog(this);
-        if (result == JFileChooser.APPROVE_OPTION) {
-            selectedFile = fileChooser.getSelectedFile();
-            if (isImageFile(selectedFile)) {
-                JOptionPane.showMessageDialog(this, "File selected: " + selectedFile.getName());
-                jTextField1.setText(selectedFile.getName());
-                jTextField2.setText(selectedFile.getAbsolutePath());
-                displayImagePreview(selectedFile);
-            } else {
-                jLabel6.setIcon(null);
-                selectedFile = null;
-                JOptionPane.showMessageDialog(this, "Please select a valid image file (jpg, jpeg, png, gif).");
-            }
-        } else {
-            selectedFile = null;
-        } 
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_jButton1MouseClicked
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         String id = jLabel10.getText();
         try {
             Connection con = (Connection)koneksi_db.konfigurasi_koneksiDB();
-            PreparedStatement ps = con.prepareStatement( "DELETE FROM jigsaw_puzzle WHERE id=?");
+            PreparedStatement ps = con.prepareStatement( "DELETE FROM crossword_puzzle WHERE id=?");
             ps.setString(1, id);
             ps.executeUpdate();
-            deleteFile();
             JFrame jf = new JFrame();
             jf.setAlwaysOnTop(true);
-            JOptionPane.showMessageDialog(jf, "Image Succesfully Deleted");
+            JOptionPane.showMessageDialog(jf, "Succesfully Deleted");
         }
         catch (HeadlessException | SecurityException | SQLException e) {
             JFrame jf = new JFrame();
@@ -373,63 +285,35 @@ public class JigsawControlPanel extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void deleteFile() {
-        String selectedFileName = jTextField1.getText();
-        if (selectedFileName != null) {
-            File fileToDelete = new File("src/main/resources/assets/JigsawPuzzleImages/", selectedFileName);
-
-            if (fileToDelete.exists()) {
-                fileToDelete.delete();
-            }
-
-            refreshForm();
-            JOptionPane.showMessageDialog(this, "File deleted successfully!");
-        } else {
-            JOptionPane.showMessageDialog(this, "No file selected to delete.");
-        }
-    }
-    
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         String id = jLabel10.getText();
-        String name = jTextField1.getText();
-        String path = jTextField2.getText();
-        if (!id.isEmpty() && !name.isEmpty() && !path.isEmpty() && selectedFile != null) {
-           try {
-               Connection con = koneksi_db.konfigurasi_koneksiDB();
-               PreparedStatement ps = con.prepareStatement("UPDATE jigsaw_puzzle SET name=?, path=? WHERE id=?;");
-               ps.setString(1, name);
-               ps.setString(2, path);
-               ps.setString(3, id);
-               ps.executeUpdate();
-
-               File destinationFile = new File(path);
-
-               File destinationFolder = destinationFile.getParentFile();
-               if (!destinationFolder.exists()) {
-                   destinationFolder.mkdirs();
-               }
-
-               if (destinationFile.exists()) {
-                   destinationFile.delete();
-               }
-               FileUtils.copyFile(selectedFile, destinationFile);
-
-               JFrame jf = new JFrame();
-               jf.setAlwaysOnTop(true);
-               JOptionPane.showMessageDialog(jf, "File Successfully Updated!");
-           } catch (HeadlessException | SecurityException | SQLException | IOException e) {
-               JFrame jf = new JFrame();
-               jf.setAlwaysOnTop(true);
-               JOptionPane.showMessageDialog(jf, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-           } finally {
-               read();
-           }
-       } else if (id.isEmpty()) {
-           JOptionPane.showMessageDialog(this, "Please choose from table before update.", "Warning", JOptionPane.WARNING_MESSAGE);
-       } else {
-           JOptionPane.showMessageDialog(this, "Fill the text field.", "Warning", JOptionPane.WARNING_MESSAGE);
-       }
+        String question = jTextField1.getText();
+        String answer = jTextField2.getText();
+        if (id.isBlank() && question.isBlank() && answer.isBlank()) {
+            try {
+                Connection con = (Connection)koneksi_db.konfigurasi_koneksiDB();
+                PreparedStatement ps = con.prepareStatement("UPDATE crossword_puzzle SET question=?,answer=? WHERE id=?;");
+                ps.setString(1, question);
+                ps.setString(2, answer);            
+                ps.setString(3, id);
+                ps.executeUpdate();
+                JFrame jf = new JFrame();
+                jf.setAlwaysOnTop(true);
+                JOptionPane.showMessageDialog(jf, "Question Succesfully Updated!");
+            }
+            catch (HeadlessException | SecurityException | SQLException e) {
+                JFrame jf = new JFrame();
+                jf.setAlwaysOnTop(true);
+                JOptionPane.showMessageDialog(jf, e);
+            } finally {
+                read();
+            }
+        } else if (id.isBlank()){
+            JOptionPane.showMessageDialog(this, "Please choose from table before update.", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Fill the text field.", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
@@ -439,14 +323,11 @@ public class JigsawControlPanel extends javax.swing.JFrame {
         String id = jTable2.getValueAt(row, 1).toString();
         jLabel10.setText(id);
         
-        String name = jTable2.getValueAt(row, 2).toString();
-        jTextField1.setText(name);
+        String question = jTable2.getValueAt(row, 2).toString();
+        jTextField1.setText(question);
         
-        String path = jTable2.getValueAt(row, 3).toString();
-        jTextField2.setText(path);
-        
-        ImageIcon icon = new ImageIcon(path);
-        jLabel6.setIcon(icon);
+        String answer = jTable2.getValueAt(row, 3).toString();
+        jTextField2.setText(answer);
     }//GEN-LAST:event_jTable2MouseClicked
 
     /**
@@ -466,14 +347,30 @@ public class JigsawControlPanel extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JigsawControlPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CrosswordControlPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JigsawControlPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CrosswordControlPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JigsawControlPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CrosswordControlPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JigsawControlPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CrosswordControlPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -495,13 +392,12 @@ public class JigsawControlPanel extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new JigsawControlPanel().setVisible(true);
+                new CrosswordControlPanel().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -513,7 +409,6 @@ public class JigsawControlPanel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
