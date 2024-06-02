@@ -178,6 +178,7 @@ public class login_admin extends javax.swing.JFrame {
     
     private void button_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_loginActionPerformed
         // TODO add your handling code here:
+        
         try {
         String inputUsername = input_username.getText();
         String inputPassword = new String(input_password.getPassword());

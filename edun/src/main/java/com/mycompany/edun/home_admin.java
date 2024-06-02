@@ -3,11 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.edun;
-
 import com.mycompany.edun.database.DeleteQuestion;
 import com.mycompany.edun.database.UpdateQuestion;
 import com.mycompany.edun.database.GetQuestion;
 import com.mycompany.edun.database.AddQuestion;
+import com.mycompany.edun.database.AddModule;
+import com.mycompany.edun.database.UpdateModule;
+import com.mycompany.edun.database.GetModule;
+import com.mycompany.edun.database.DeleteModule;
+import com.mycompany.edun.database.AllStudentResult;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -16,13 +20,13 @@ import javax.swing.JOptionPane;
  * @author ivanbesti
  */
 public class home_admin extends javax.swing.JFrame {
-public static int open=0;
-
+    public static int open=0;
     /**
      * Creates new form home_admin
      */
     public home_admin() {
         initComponents();
+       
     }
 
     /**
@@ -34,22 +38,72 @@ public static int open=0;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        background = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
+        jMenu7 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
+        setAlwaysOnTop(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Splashscreen.png"))); // NOI18N
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -90, -1, -1));
+        jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/add new question.png"))); // NOI18N
+        jButton1.setText("Tambah Modul");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, -1, -1));
+
+        jButton2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/update.png"))); // NOI18N
+        jButton2.setText("Update Modul");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 300, -1, -1));
+
+        jButton3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/all question.png"))); // NOI18N
+        jButton3.setText("Daftar Modul");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 470, 216, -1));
+
+        jButton4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/delete question.png"))); // NOI18N
+        jButton4.setText("Hapus Modul");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 470, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 40)); // NOI18N
+        jLabel2.setText("CRUD MODUL PEMBELAJARAN");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BG.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/add new question.png"))); // NOI18N
         jMenu1.setText("Tambah Pertanyaan");
@@ -91,13 +145,28 @@ public static int open=0;
         });
         jMenuBar1.add(jMenu4);
 
-        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/all student result.png"))); // NOI18N
-        jMenu5.setText("Hasil Skor Peserta");
+        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/student.png"))); // NOI18N
+        jMenu5.setText("Hasil Quiz Peserta");
         jMenu5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jMenu5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu5MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu5);
 
-        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/logout (1).png"))); // NOI18N
-        jMenu7.setText("Logout");
+        jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/logout.png"))); // NOI18N
+        jMenu6.setText("Logout");
+        jMenu6.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jMenu6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu6MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu6);
+
+        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/close.png"))); // NOI18N
+        jMenu7.setText("Keluar");
         jMenu7.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jMenu7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -106,27 +175,36 @@ public static int open=0;
         });
         jMenuBar1.add(jMenu7);
 
-        jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/close.png"))); // NOI18N
-        jMenu6.setText("Keluar");
-        jMenu6.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jMenu6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu6MouseClicked(evt);
-            }
-        });
-        jMenu6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu6ActionPerformed(evt);
-            }
-        });
-        jMenuBar1.add(jMenu6);
-
         setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenu7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7MouseClicked
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        // TODO add your handling code here:
+        AddQuestion AddQuestion = new AddQuestion();
+        AddQuestion.setVisible(true);
+    }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        // TODO add your handling code here:
+        UpdateQuestion UpdateQuestion = new UpdateQuestion();
+        UpdateQuestion.setVisible(true);
+    }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+        // TODO add your handling code here:
+        GetQuestion GetQuestion = new GetQuestion();
+        GetQuestion.setVisible(true);
+    }//GEN-LAST:event_jMenu3MouseClicked
+
+    private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
+        // TODO add your handling code here:
+       DeleteQuestion DeleteQuestion = new DeleteQuestion();
+       DeleteQuestion.setVisible(true);
+    }//GEN-LAST:event_jMenu4MouseClicked
+
+    private void jMenu6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu6MouseClicked
         // TODO add your handling code here:
         JFrame jf=new JFrame();
         jf.setAlwaysOnTop(true);
@@ -138,9 +216,9 @@ public static int open=0;
         else {
             setVisible(true);
         }
-    }//GEN-LAST:event_jMenu7MouseClicked
+    }//GEN-LAST:event_jMenu6MouseClicked
 
-    private void jMenu6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu6MouseClicked
+    private void jMenu7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7MouseClicked
         // TODO add your handling code here:
         JFrame jf=new JFrame();
         jf.setAlwaysOnTop(true);
@@ -148,63 +226,42 @@ public static int open=0;
         if (a==0) {
             System.exit(0);
         }
-    }//GEN-LAST:event_jMenu6MouseClicked
+    }//GEN-LAST:event_jMenu7MouseClicked
 
-    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(open==0) {
-            new AddQuestion().setVisible(true);
-            open=1;
-        }
-        else {
-            JFrame jf=new JFrame();
-            jf.setAlwaysOnTop(true);
-            JOptionPane.showConfirmDialog(jf, "One form is already open");
-        }
-    }//GEN-LAST:event_jMenu1MouseClicked
+            AddModule addModule = new AddModule();
+            addModule.setVisible(true);
+            addModule.setAlwaysOnTop(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if(open==0) {
-            new UpdateQuestion().setVisible(true);
-            open=1;
-        }
-        else {
-            JFrame jf=new JFrame();
-            jf.setAlwaysOnTop(true);
-            JOptionPane.showConfirmDialog(jf, "One form is already open");
-        }
-    }//GEN-LAST:event_jMenu2MouseClicked
+            UpdateModule updateModule = new UpdateModule();
+            updateModule.setVisible(true);
+            updateModule.setAlwaysOnTop(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        if(open==0) {
-            new GetQuestion().setVisible(true);
-            open=1;
-        }
-        else {
-            JFrame jf=new JFrame();
-            jf.setAlwaysOnTop(true);
-            JOptionPane.showConfirmDialog(jf, "One form is already open");
-        }
-    }//GEN-LAST:event_jMenu3MouseClicked
+            GetModule getModule = new GetModule();
+            getModule.setVisible(true);
+            getModule.setAlwaysOnTop(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        if(open==0) {
-            new DeleteQuestion().setVisible(true);
-            open=1;
-        }
-        else {
-            JFrame jf=new JFrame();
-            jf.setAlwaysOnTop(true);
-            JOptionPane.showConfirmDialog(jf, "One form is already open");
-        }
-    }//GEN-LAST:event_jMenu4MouseClicked
+            DeleteModule deleteModule = new DeleteModule();
+            deleteModule.setVisible(true);
+            deleteModule.setAlwaysOnTop(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jMenu6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu6ActionPerformed
+    private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenu6ActionPerformed
+            AllStudentResult Result = new AllStudentResult();
+            Result.setVisible(true);
+            Result.setAlwaysOnTop(true);
+    }//GEN-LAST:event_jMenu5MouseClicked
 
     /**
      * @param args the command line arguments
@@ -242,7 +299,12 @@ public static int open=0;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel background;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;

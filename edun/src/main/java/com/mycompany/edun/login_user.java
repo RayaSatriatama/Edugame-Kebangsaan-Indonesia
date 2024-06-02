@@ -6,6 +6,7 @@
 package com.mycompany.edun;
 
 import com.mycompany.edun.database.koneksi_db;
+import com.mycompany.edun.quiz.ModuleQuiz;
 import java.awt.Font;
 import java.io.File;
 import java.sql.Connection;
@@ -230,7 +231,7 @@ public class login_user extends javax.swing.JFrame {
         
         try{
             // 02. Query SQL
-            String addNewUser = "INSERT INTO users (username) VALUES ('"+username+"')";
+            String addNewUser = "INSERT INTO users (name) VALUES ('"+username+"')";
             
             // 03. Menghubungkan JAVA & SQL
             Connection penghubung = (Connection)koneksi_db.konfigurasi_koneksiDB();

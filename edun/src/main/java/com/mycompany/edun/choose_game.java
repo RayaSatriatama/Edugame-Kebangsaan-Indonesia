@@ -5,23 +5,28 @@
 package com.mycompany.edun;
 
 import com.mycompany.edun.database.koneksi_db;
+import com.mycompany.edun.quiz.ModuleQuiz;
 import java.awt.Font;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author nadiaag
  */
 public class choose_game extends javax.swing.JFrame {
+    public String username;
 
     /**
      * Creates new form choose_game
      */
-    public choose_game(String username) {
+    public choose_game(String username1) {
         initComponents();
+        username=username1;
+        JOptionPane.showMessageDialog(null, username1);
         try{
            // Add Customize Font Button
            File fontBlack = new File("src/main/resources/fonts/Nunito-Black.ttf");
@@ -38,7 +43,7 @@ public class choose_game extends javax.swing.JFrame {
            text_name.setFont(font_24);
            
            // Menampilkan username
-           showUsername(username);
+           showUsername(username1);
         // Set the frame visible
         setVisible(true);
         } catch (Exception e) {
@@ -139,6 +144,11 @@ public class choose_game extends javax.swing.JFrame {
         button_MC.setHideActionText(true);
         button_MC.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         button_MC.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        button_MC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_MCActionPerformed(evt);
+            }
+        });
         jPanel1.add(button_MC, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 480, 150, 220));
 
         txt_tts1.setFont(new java.awt.Font("Nunito", 1, 22)); // NOI18N
@@ -328,6 +338,12 @@ public class choose_game extends javax.swing.JFrame {
         a.setVisible(true);
     }//GEN-LAST:event_aboutActionPerformed
 
+    private void button_MCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_MCActionPerformed
+        // TODO add your handling code here:
+        ModuleQuiz modul = new ModuleQuiz(username);
+        modul.setVisible(true);
+    }//GEN-LAST:event_button_MCActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -353,6 +369,7 @@ public class choose_game extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(choose_game.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
