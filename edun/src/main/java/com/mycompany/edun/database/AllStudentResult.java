@@ -5,30 +5,28 @@
 package com.mycompany.edun.database;
 
 import com.mycompany.edun.home_admin;
-import javax.swing.JInternalFrame;
-import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JFrame;
-import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 
 /**
  *
  * @author ivanbesti
  */
-public class GetQuestion extends javax.swing.JFrame {
+public class AllStudentResult extends javax.swing.JFrame {
 
     /**
-     * Creates new form allQuestion
+     * Creates new form AllStudentResult
      */
-    public GetQuestion() {
+    public AllStudentResult() {
         initComponents();
         try {
             Connection con = (Connection)koneksi_db.konfigurasi_koneksiDB();
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM questions;");
+            ResultSet rs = st.executeQuery("SELECT * FROM users;");
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
         }
         catch (Exception e) {
@@ -48,20 +46,21 @@ public class GetQuestion extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAlwaysOnTop(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/all question.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 17, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/all student result.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 74, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 40)); // NOI18N
-        jLabel2.setText("All Question");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 32, -1, -1));
+        jLabel2.setText("Hasil Quiz");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 88, -1, -1));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/close.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -69,7 +68,18 @@ public class GetQuestion extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 20, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1094, 88, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        jLabel3.setText("Urutkan Berdasarkan Nilai");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 219, -1, -1));
+
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
+            }
+        });
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 223, 115, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -84,20 +94,41 @@ public class GetQuestion extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 150, 1214, 540));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 264, 802, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BG.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BG.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        //home_admin.open=0;
         setVisible(false);
         new home_admin().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+        // TODO add your handling code here:
+        int marks;
+        if(jTextField1.getText().equals("")) {
+            marks=0;
+        }
+        else {
+            marks=Integer.parseInt(jTextField1.getText());
+            try {
+            Connection con = (Connection)koneksi_db.konfigurasi_koneksiDB();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM users WHERE marks >= "+marks+";");
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+        }
+        catch (Exception e) {
+            JFrame jf=new JFrame();
+            jf.setAlwaysOnTop(true);
+            JOptionPane.showMessageDialog(jf, e);
+        }
+        }
+    }//GEN-LAST:event_jTextField1KeyReleased
 
     /**
      * @param args the command line arguments
@@ -116,21 +147,20 @@ public class GetQuestion extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GetQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AllStudentResult.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GetQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AllStudentResult.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GetQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AllStudentResult.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GetQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AllStudentResult.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GetQuestion().setVisible(true);
+                new AllStudentResult().setVisible(true);
             }
         });
     }
@@ -140,7 +170,9 @@ public class GetQuestion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

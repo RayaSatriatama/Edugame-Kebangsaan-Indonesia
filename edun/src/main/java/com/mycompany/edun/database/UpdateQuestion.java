@@ -4,13 +4,9 @@
  */
 package com.mycompany.edun.database;
 
-import com.mycompany.edun.database.koneksi_db;
 import com.mycompany.edun.home_admin;
-import com.mysql.cj.xdevapi.Result;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import javax.swing.JFrame;
@@ -298,17 +294,11 @@ public class UpdateQuestion extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UpdateQuestion().setVisible(true);
+                //new UpdateQuestion().setVisible(true);
             }
         });
     }

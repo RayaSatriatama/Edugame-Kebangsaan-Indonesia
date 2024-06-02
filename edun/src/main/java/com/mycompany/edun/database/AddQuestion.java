@@ -25,7 +25,7 @@ public class AddQuestion extends javax.swing.JFrame {
     public AddQuestion() {
         initComponents();
         try {
-            String perintah_SQL =  "SELECT COUNT(id_question) FROM questions;";
+            String perintah_SQL =  "SELECT COUNT(id) FROM questions;";
             Connection penghubung = (Connection)koneksi_db.konfigurasi_koneksiDB();
             Statement pernyataanSQL = penghubung.createStatement();
             ResultSet hasil_SQL = pernyataanSQL.executeQuery(perintah_SQL);
