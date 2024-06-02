@@ -5,6 +5,8 @@
 package com.mycompany.edun.database;
 
 import com.mycompany.edun.home_admin;
+import java.awt.Font;
+import java.io.File;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
@@ -25,6 +27,30 @@ public class AddQuestion extends javax.swing.JFrame {
     public AddQuestion() {
         initComponents();
         try {
+            File fontButton = new File("src/main/resources/fonts/Nunito-Black.ttf");
+            Font font = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(24f);
+//            jLabel1.setFont(font);
+            jLabel2.setFont(font);
+            jLabel3.setFont(font);
+            jLabel4.setFont(font);
+            jLabel5.setFont(font);
+            jLabel6.setFont(font);
+            jLabel7.setFont(font);
+            jLabel8.setFont(font);
+            jLabel9.setFont(font);
+            jLabel10.setFont(font);
+            jTextField1.setFont(font);
+           
+            Font font_20 = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(18f);
+            jTextField2.setFont(font_20);
+            jTextField3.setFont(font_20);
+            jTextField4.setFont(font_20);
+            jTextField5.setFont(font_20);
+            jTextField6.setFont(font_20);
+            button1.setFont(font_20);
+            button2.setFont(font_20);
+            button3.setFont(font_20);
+            
             String perintah_SQL =  "SELECT COUNT(id) FROM questions;";
             Connection penghubung = (Connection)koneksi_db.konfigurasi_koneksiDB();
             Statement pernyataanSQL = penghubung.createStatement();
@@ -40,6 +66,8 @@ public class AddQuestion extends javax.swing.JFrame {
         } 
         catch (Exception e)
         {
+            e.printStackTrace();
+            
             JFrame jf=new JFrame();
             jf.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(jf, e);
@@ -55,24 +83,39 @@ public class AddQuestion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        rSPanelImage3 = new rojerusan.RSPanelImage();
+        rSMaterialButtonRectangle1 = new rojerusan.RSMaterialButtonRectangle();
+        rSPanelImage2 = new rojerusan.RSPanelImage();
+        button3 = new rojerusan.RSMaterialButtonRectangle();
+        rSPanelImage1 = new rojerusan.RSPanelImage();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        bg_op1 = new rojerusan.RSMaterialButtonRectangle();
+        bg1 = new rojerusan.RSMaterialButtonRectangle();
+        bg_op2 = new rojerusan.RSMaterialButtonRectangle();
+        bg2 = new rojerusan.RSMaterialButtonRectangle();
+        bg_op3 = new rojerusan.RSMaterialButtonRectangle();
+        bg3 = new rojerusan.RSMaterialButtonRectangle();
+        bg_op4 = new rojerusan.RSMaterialButtonRectangle();
+        bg4 = new rojerusan.RSMaterialButtonRectangle();
+        bg_op5 = new rojerusan.RSMaterialButtonRectangle();
+        bg5 = new rojerusan.RSMaterialButtonRectangle();
+        jLabel11 = new javax.swing.JLabel();
+        button1 = new rojerusan.RSMaterialButtonRectangle();
+        jLabel12 = new javax.swing.JLabel();
+        button2 = new rojerusan.RSMaterialButtonRectangle();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -80,98 +123,188 @@ public class AddQuestion extends javax.swing.JFrame {
         setLocation(new java.awt.Point(150, 183));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 40)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/add new question.png"))); // NOI18N
-        jLabel1.setText("Tambah Pertanyaan");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 19, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jLabel3.setText("Question ID:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jLabel4.setText("Question:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, -1, -1));
-
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
         jLabel5.setText("Option 1:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
         jLabel6.setText("Option 2:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
         jLabel7.setText("Option 3:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 510, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(102, 102, 102));
         jLabel8.setText("Option 4:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 580, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(102, 102, 102));
         jLabel9.setText("Answer");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 470, -1, -1));
-
-        jTextField1.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 970, -1));
-
-        jLabel10.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jLabel10.setText("00");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 650, 100, 30));
 
         jTextField2.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, 970, -1));
+        jTextField2.setForeground(new java.awt.Color(51, 65, 85));
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, 650, 30));
 
         jTextField3.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 970, -1));
+        jTextField3.setForeground(new java.awt.Color(51, 65, 85));
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 440, 650, 30));
 
         jTextField4.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, 970, -1));
+        jTextField4.setForeground(new java.awt.Color(51, 65, 85));
+        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 510, 650, 30));
 
         jTextField5.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        jTextField5.setForeground(new java.awt.Color(51, 65, 85));
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 430, 970, -1));
+        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 580, 650, 30));
 
         jTextField6.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 470, 970, -1));
+        jTextField6.setForeground(new java.awt.Color(51, 65, 85));
+        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 650, 650, 30));
 
-        jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/save.png"))); // NOI18N
-        jButton1.setText("Save");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        rSPanelImage3.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/tambah pertanyaan.png"))); // NOI18N
+        getContentPane().add(rSPanelImage3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 430, 60));
+
+        rSMaterialButtonRectangle1.setBackground(new java.awt.Color(124, 58, 237));
+        getContentPane().add(rSMaterialButtonRectangle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, 450, 80));
+
+        rSPanelImage2.setForeground(new java.awt.Color(255, 255, 255));
+        rSPanelImage2.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/icon-x.png"))); // NOI18N
+        getContentPane().add(rSPanelImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 130, 40, 40));
+        rSPanelImage2.getAccessibleContext().setAccessibleName("");
+
+        button3.setBackground(new java.awt.Color(244, 63, 94));
+        button3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                button3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 550, -1, -1));
+        getContentPane().add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 120, 80, 60));
 
-        jButton2.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/clear question.png"))); // NOI18N
-        jButton2.setText("Clear");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        rSPanelImage1.setBackground(new java.awt.Color(255, 255, 255));
+        rSPanelImage1.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/BG-Choose.png"))); // NOI18N
+        rSPanelImage1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 65, 85));
+        jLabel3.setText("Question ID:");
+        rSPanelImage1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(51, 65, 85));
+        jLabel10.setText("00");
+        rSPanelImage1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 65, 85));
+        jLabel4.setText("Question:");
+        rSPanelImage1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
+
+        jTextField1.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(51, 65, 85));
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jTextField1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 550, -1, -1));
+        rSPanelImage1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 680, -1));
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/close.png"))); // NOI18N
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        getContentPane().add(rSPanelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, 760, 180));
+
+        bg_op1.setBackground(java.awt.Color.lightGray);
+        bg_op1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                bg_op1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 20, -1, -1));
+        getContentPane().add(bg_op1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 130, 50));
+
+        bg1.setBackground(new java.awt.Color(255, 255, 204));
+        getContentPane().add(bg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, 810, 70));
+
+        bg_op2.setBackground(java.awt.Color.lightGray);
+        getContentPane().add(bg_op2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, 130, 50));
+
+        bg2.setBackground(new java.awt.Color(255, 255, 204));
+        getContentPane().add(bg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 420, 810, 70));
+
+        bg_op3.setBackground(new java.awt.Color(255, 255, 204));
+        bg_op3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bg_op3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bg_op3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 640, 130, 50));
+
+        bg3.setBackground(java.awt.Color.lightGray);
+        getContentPane().add(bg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 630, 810, 70));
+
+        bg_op4.setBackground(java.awt.Color.lightGray);
+        bg_op4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bg_op4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bg_op4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 500, 130, 50));
+
+        bg4.setBackground(new java.awt.Color(255, 255, 204));
+        getContentPane().add(bg4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 490, 810, 70));
+
+        bg_op5.setBackground(java.awt.Color.lightGray);
+        getContentPane().add(bg_op5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 570, 130, 50));
+
+        bg5.setBackground(new java.awt.Color(255, 255, 204));
+        getContentPane().add(bg5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 560, 810, 70));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icon-save.png"))); // NOI18N
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 760, 20, 30));
+
+        button1.setBackground(new java.awt.Color(244, 63, 94));
+        button1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/save.png"))); // NOI18N
+        button1.setText("save");
+        button1.setAlignmentX(0.5F);
+        button1.setIconTextGap(5);
+        button1.setMaximumSize(new java.awt.Dimension(30, 31));
+        button1.setMinimumSize(new java.awt.Dimension(30, 31));
+        button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 740, 170, -1));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icon-gerbage.png"))); // NOI18N
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 760, -1, 30));
+
+        button2.setBackground(new java.awt.Color(244, 63, 94));
+        button2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/save.png"))); // NOI18N
+        button2.setText("CLEAR");
+        button2.setAlignmentX(0.5F);
+        button2.setIconTextGap(5);
+        button2.setMaximumSize(new java.awt.Dimension(30, 31));
+        button2.setMinimumSize(new java.awt.Dimension(30, 31));
+        button2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 740, 170, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BG.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -187,7 +320,11 @@ public class AddQuestion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void bg_op1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bg_op1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bg_op1ActionPerformed
+
+    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
         String id=jLabel10.getText();
         String name=jTextField1.getText();
@@ -218,9 +355,9 @@ public class AddQuestion extends javax.swing.JFrame {
             jf.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(jf, e);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_button1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
         // TODO add your handling code here:
         jTextField1.setText("");
         jTextField2.setText("");
@@ -228,14 +365,25 @@ public class AddQuestion extends javax.swing.JFrame {
         jTextField4.setText("");
         jTextField5.setText("");
         jTextField6.setText("");
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_button2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
         // TODO add your handling code here:
         home_admin.open=0;
         setVisible(false);
-        
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_button3ActionPerformed
+
+    private void bg_op3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bg_op3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bg_op3ActionPerformed
+
+    private void bg_op4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bg_op4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bg_op4ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -276,11 +424,22 @@ public class AddQuestion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
+    private rojerusan.RSMaterialButtonRectangle bg1;
+    private rojerusan.RSMaterialButtonRectangle bg2;
+    private rojerusan.RSMaterialButtonRectangle bg3;
+    private rojerusan.RSMaterialButtonRectangle bg4;
+    private rojerusan.RSMaterialButtonRectangle bg5;
+    private rojerusan.RSMaterialButtonRectangle bg_op1;
+    private rojerusan.RSMaterialButtonRectangle bg_op2;
+    private rojerusan.RSMaterialButtonRectangle bg_op3;
+    private rojerusan.RSMaterialButtonRectangle bg_op4;
+    private rojerusan.RSMaterialButtonRectangle bg_op5;
+    private rojerusan.RSMaterialButtonRectangle button1;
+    private rojerusan.RSMaterialButtonRectangle button2;
+    private rojerusan.RSMaterialButtonRectangle button3;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -295,5 +454,9 @@ public class AddQuestion extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private rojerusan.RSMaterialButtonRectangle rSMaterialButtonRectangle1;
+    private rojerusan.RSPanelImage rSPanelImage1;
+    private rojerusan.RSPanelImage rSPanelImage2;
+    private rojerusan.RSPanelImage rSPanelImage3;
     // End of variables declaration//GEN-END:variables
 }
