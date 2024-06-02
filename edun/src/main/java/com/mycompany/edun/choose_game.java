@@ -60,9 +60,15 @@ public class choose_game extends javax.swing.JFrame {
         button_Home = new rojerusan.RSMaterialButtonRectangle();
         icon_back = new rojerusan.RSPanelImage();
         button_Back = new rojerusan.RSMaterialButtonRectangle();
-        txt_puzzle1 = new javax.swing.JLabel();
+        txt_tts2 = new javax.swing.JLabel();
+        txt_tts3 = new javax.swing.JLabel();
+        tts1 = new javax.swing.JLabel();
+        button_MC = new rojerusan.RSMaterialButtonRectangle();
+        txt_tts1 = new javax.swing.JLabel();
+        txt_tts = new javax.swing.JLabel();
         tts = new javax.swing.JLabel();
         button_TTS = new rojerusan.RSMaterialButtonRectangle();
+        txt_puzzle2 = new javax.swing.JLabel();
         txt_puzzle = new javax.swing.JLabel();
         puzzle = new javax.swing.JLabel();
         button_Puzzle = new rojerusan.RSMaterialButtonRectangle();
@@ -114,29 +120,62 @@ public class choose_game extends javax.swing.JFrame {
         });
         jPanel1.add(button_Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 230, -1));
 
-        txt_puzzle1.setFont(new java.awt.Font("Nunito", 1, 22)); // NOI18N
-        txt_puzzle1.setForeground(new java.awt.Color(255, 255, 255));
-        txt_puzzle1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txt_puzzle1.setText("Teka Teki Silang");
-        jPanel1.add(txt_puzzle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 630, 200, -1));
+        txt_tts2.setFont(new java.awt.Font("Nunito", 1, 22)); // NOI18N
+        txt_tts2.setForeground(new java.awt.Color(255, 255, 255));
+        txt_tts2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_tts2.setText("Ganda");
+        jPanel1.add(txt_tts2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 650, 110, -1));
+
+        txt_tts3.setFont(new java.awt.Font("Nunito", 1, 22)); // NOI18N
+        txt_tts3.setForeground(new java.awt.Color(255, 255, 255));
+        txt_tts3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_tts3.setText("Pilihan");
+        jPanel1.add(txt_tts3, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 620, 110, -1));
+
+        tts1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Multiple-Choice.png"))); // NOI18N
+        jPanel1.add(tts1, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 510, 100, 100));
+
+        button_MC.setBackground(new java.awt.Color(190, 24, 93));
+        button_MC.setHideActionText(true);
+        button_MC.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        button_MC.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jPanel1.add(button_MC, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 480, 150, 220));
+
+        txt_tts1.setFont(new java.awt.Font("Nunito", 1, 22)); // NOI18N
+        txt_tts1.setForeground(new java.awt.Color(255, 255, 255));
+        txt_tts1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_tts1.setText("Silang");
+        jPanel1.add(txt_tts1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 650, 110, -1));
+
+        txt_tts.setFont(new java.awt.Font("Nunito", 1, 22)); // NOI18N
+        txt_tts.setForeground(new java.awt.Color(255, 255, 255));
+        txt_tts.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_tts.setText("Teka Teki");
+        jPanel1.add(txt_tts, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 620, 110, -1));
 
         tts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Crossword.png"))); // NOI18N
-        jPanel1.add(tts, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 510, 100, 100));
+        jPanel1.add(tts, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 510, 100, 100));
 
         button_TTS.setBackground(new java.awt.Color(132, 204, 22));
         button_TTS.setHideActionText(true);
         button_TTS.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         button_TTS.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel1.add(button_TTS, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 480, 220, 210));
+        jPanel1.add(button_TTS, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 480, 150, 220));
+
+        txt_puzzle2.setFont(new java.awt.Font("Nunito", 1, 24)); // NOI18N
+        txt_puzzle2.setForeground(new java.awt.Color(255, 255, 255));
+        txt_puzzle2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_puzzle2.setText("Puzzle");
+        jPanel1.add(txt_puzzle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 650, 100, -1));
 
         txt_puzzle.setFont(new java.awt.Font("Nunito", 1, 24)); // NOI18N
         txt_puzzle.setForeground(new java.awt.Color(255, 255, 255));
         txt_puzzle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txt_puzzle.setText("Susun Puzzle");
-        jPanel1.add(txt_puzzle, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 630, 160, -1));
+        txt_puzzle.setText("Susun");
+        jPanel1.add(txt_puzzle, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 620, 100, -1));
 
         puzzle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Puzzle.png"))); // NOI18N
-        jPanel1.add(puzzle, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 500, 110, 110));
+        jPanel1.add(puzzle, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 500, 110, 110));
 
         button_Puzzle.setBackground(new java.awt.Color(29, 78, 216));
         button_Puzzle.setHideActionText(true);
@@ -147,7 +186,7 @@ public class choose_game extends javax.swing.JFrame {
                 button_PuzzleActionPerformed(evt);
             }
         });
-        jPanel1.add(button_Puzzle, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 480, 220, 210));
+        jPanel1.add(button_Puzzle, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 480, 150, 220));
 
         question.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
         question.setForeground(new java.awt.Color(100, 116, 139));
@@ -181,6 +220,11 @@ public class choose_game extends javax.swing.JFrame {
         eduN.add(credits);
 
         about.setText("About");
+        about.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutActionPerformed(evt);
+            }
+        });
         eduN.add(about);
 
         quit.setText("Keluar eduN");
@@ -260,6 +304,8 @@ public class choose_game extends javax.swing.JFrame {
 
     private void creditsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditsActionPerformed
         // TODO add your handling code here:
+        Credits c = new Credits();
+        c.setVisible(true);
     }//GEN-LAST:event_creditsActionPerformed
 
     private void loginAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginAdminActionPerformed
@@ -275,6 +321,12 @@ public class choose_game extends javax.swing.JFrame {
     private void button_PuzzleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_PuzzleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_button_PuzzleActionPerformed
+
+    private void aboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutActionPerformed
+        // TODO add your handling code here:
+        About a = new About();
+        a.setVisible(true);
+    }//GEN-LAST:event_aboutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -319,6 +371,7 @@ public class choose_game extends javax.swing.JFrame {
     private javax.swing.JLabel book;
     private rojerusan.RSMaterialButtonRectangle button_Back;
     private rojerusan.RSMaterialButtonRectangle button_Home;
+    private rojerusan.RSMaterialButtonRectangle button_MC;
     private rojerusan.RSMaterialButtonRectangle button_Puzzle;
     private rojerusan.RSMaterialButtonRectangle button_TTS;
     private javax.swing.JMenuItem credits;
@@ -335,7 +388,12 @@ public class choose_game extends javax.swing.JFrame {
     private javax.swing.JLabel text_name;
     private javax.swing.JMenu tools;
     private javax.swing.JLabel tts;
+    private javax.swing.JLabel tts1;
     private javax.swing.JLabel txt_puzzle;
-    private javax.swing.JLabel txt_puzzle1;
+    private javax.swing.JLabel txt_puzzle2;
+    private javax.swing.JLabel txt_tts;
+    private javax.swing.JLabel txt_tts1;
+    private javax.swing.JLabel txt_tts2;
+    private javax.swing.JLabel txt_tts3;
     // End of variables declaration//GEN-END:variables
 }

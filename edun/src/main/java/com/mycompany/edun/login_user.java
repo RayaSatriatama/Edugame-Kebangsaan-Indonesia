@@ -164,6 +164,11 @@ public class login_user extends javax.swing.JFrame {
         eduN.add(credits);
 
         about.setText("About");
+        about.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutActionPerformed(evt);
+            }
+        });
         eduN.add(about);
 
         quit.setText("Keluar eduN");
@@ -247,6 +252,8 @@ public class login_user extends javax.swing.JFrame {
 
     private void creditsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditsActionPerformed
         // TODO add your handling code here:
+        Credits c = new Credits();
+        c.setVisible(true);
     }//GEN-LAST:event_creditsActionPerformed
 
     private void loginAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginAdminActionPerformed
@@ -258,6 +265,12 @@ public class login_user extends javax.swing.JFrame {
     private void logoutAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutAdminActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_logoutAdminActionPerformed
+
+    private void aboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutActionPerformed
+        // TODO add your handling code here:
+        About a = new About();
+        a.setVisible(true);
+    }//GEN-LAST:event_aboutActionPerformed
 
     /**
      * @param args the command line arguments
