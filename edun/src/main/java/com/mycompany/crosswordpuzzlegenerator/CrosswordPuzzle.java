@@ -16,6 +16,7 @@ public class CrosswordPuzzle {
     private static final int gridSize = 20;
     private char[][] grid;
     private static final char emptyCell = '_';
+    private List<Word> words = new ArrayList<>();
 
     public CrosswordPuzzle() {
         grid = new char[gridSize][gridSize];
@@ -29,6 +30,7 @@ public class CrosswordPuzzle {
     public boolean update(Word word) {
         if (canBePlaced(word)) {
             addWord(word);
+            words.add(word);
             return true;
         }
         return false;
@@ -179,6 +181,10 @@ public class CrosswordPuzzle {
             }
         }
         return intersections;
+    }
+
+    public List<Word> getWords() {
+        return words;
     }
 
     public char[][] getGrid() {
