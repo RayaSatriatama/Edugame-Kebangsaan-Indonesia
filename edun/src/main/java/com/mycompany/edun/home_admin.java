@@ -3,8 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.edun;
-import com.mycompany.edun.database.DeleteQuestion;
-import com.mycompany.edun.database.UpdateQuestion;
+
+import com.mycompany.edun.database.deleteQuestion;
+import com.mycompany.edun.database.updateQuestion;
 import com.mycompany.edun.database.GetQuestion;
 import com.mycompany.edun.database.AddQuestion;
 import com.mycompany.edun.database.AddModule;
@@ -26,7 +27,7 @@ public class home_admin extends javax.swing.JFrame {
      */
     public home_admin() {
         initComponents();
-       
+
     }
 
     /**
@@ -237,10 +238,16 @@ public class home_admin extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-            UpdateModule updateModule = new UpdateModule();
-            updateModule.setVisible(true);
-            updateModule.setAlwaysOnTop(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        if(open==0) {
+            new updateQuestion().setVisible(true);
+            open=1;
+        }
+        else {
+            JFrame jf=new JFrame();
+            jf.setAlwaysOnTop(true);
+            JOptionPane.showConfirmDialog(jf, "One form is already open");
+        }
+    }//GEN-LAST:event_jMenu2MouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -251,10 +258,16 @@ public class home_admin extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-            DeleteModule deleteModule = new DeleteModule();
-            deleteModule.setVisible(true);
-            deleteModule.setAlwaysOnTop(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+        if(open==0) {
+            new deleteQuestion().setVisible(true);
+            open=1;
+        }
+        else {
+            JFrame jf=new JFrame();
+            jf.setAlwaysOnTop(true);
+            JOptionPane.showConfirmDialog(jf, "One form is already open");
+        }
+    }//GEN-LAST:event_jMenu4MouseClicked
 
     private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
         // TODO add your handling code here:
@@ -270,7 +283,7 @@ public class home_admin extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
