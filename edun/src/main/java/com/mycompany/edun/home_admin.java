@@ -4,8 +4,8 @@
  */
 package com.mycompany.edun;
 
-import com.mycompany.edun.database.DeleteQuestion;
-import com.mycompany.edun.database.UpdateQuestion;
+import com.mycompany.edun.database.deleteQuestion;
+import com.mycompany.edun.database.updateQuestion;
 import com.mycompany.edun.database.GetQuestion;
 import com.mycompany.edun.database.AddQuestion;
 import javax.swing.JFrame;
@@ -166,7 +166,7 @@ public static int open=0;
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
         // TODO add your handling code here:
         if(open==0) {
-            new UpdateQuestion().setVisible(true);
+            new updateQuestion().setVisible(true);
             open=1;
         }
         else {
@@ -192,7 +192,7 @@ public static int open=0;
     private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
         // TODO add your handling code here:
         if(open==0) {
-            new DeleteQuestion().setVisible(true);
+            new deleteQuestion().setVisible(true);
             open=1;
         }
         else {

@@ -29,8 +29,6 @@ public class AddQuestion extends javax.swing.JFrame {
         try {
             File fontButton = new File("src/main/resources/fonts/Nunito-Black.ttf");
             Font font = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(24f);
-//            jLabel1.setFont(font);
-            jLabel2.setFont(font);
             jLabel3.setFont(font);
             jLabel4.setFont(font);
             jLabel5.setFont(font);
@@ -93,9 +91,9 @@ public class AddQuestion extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
-        rSPanelImage3 = new rojerusan.RSPanelImage();
+        rSPanelImage4 = new rojerusan.RSPanelImage();
         rSMaterialButtonRectangle1 = new rojerusan.RSMaterialButtonRectangle();
-        rSPanelImage2 = new rojerusan.RSPanelImage();
+        rSPanelImage3 = new rojerusan.RSPanelImage();
         button3 = new rojerusan.RSMaterialButtonRectangle();
         rSPanelImage1 = new rojerusan.RSPanelImage();
         jLabel3 = new javax.swing.JLabel();
@@ -112,9 +110,9 @@ public class AddQuestion extends javax.swing.JFrame {
         bg4 = new rojerusan.RSMaterialButtonRectangle();
         bg_op5 = new rojerusan.RSMaterialButtonRectangle();
         bg5 = new rojerusan.RSMaterialButtonRectangle();
-        jLabel11 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         button1 = new rojerusan.RSMaterialButtonRectangle();
-        jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         button2 = new rojerusan.RSMaterialButtonRectangle();
         jLabel2 = new javax.swing.JLabel();
 
@@ -178,16 +176,14 @@ public class AddQuestion extends javax.swing.JFrame {
         jTextField6.setForeground(new java.awt.Color(51, 65, 85));
         getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 650, 650, 30));
 
-        rSPanelImage3.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/tambah pertanyaan.png"))); // NOI18N
-        getContentPane().add(rSPanelImage3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 430, 60));
+        rSPanelImage4.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/tambah pertanyaan.png"))); // NOI18N
+        getContentPane().add(rSPanelImage4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 430, 60));
 
         rSMaterialButtonRectangle1.setBackground(new java.awt.Color(124, 58, 237));
         getContentPane().add(rSMaterialButtonRectangle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, 450, 80));
 
-        rSPanelImage2.setForeground(new java.awt.Color(255, 255, 255));
-        rSPanelImage2.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/icon-x.png"))); // NOI18N
-        getContentPane().add(rSPanelImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 130, 40, 40));
-        rSPanelImage2.getAccessibleContext().setAccessibleName("");
+        rSPanelImage3.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8-x-60.png"))); // NOI18N
+        getContentPane().add(rSPanelImage3, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 130, 40, 40));
 
         button3.setBackground(new java.awt.Color(244, 63, 94));
         button3.addActionListener(new java.awt.event.ActionListener() {
@@ -272,8 +268,8 @@ public class AddQuestion extends javax.swing.JFrame {
         bg5.setBackground(new java.awt.Color(255, 255, 204));
         getContentPane().add(bg5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 560, 810, 70));
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icon-save.png"))); // NOI18N
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 760, 20, 30));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8-save-20.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 760, -1, 30));
 
         button1.setBackground(new java.awt.Color(244, 63, 94));
         button1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/save.png"))); // NOI18N
@@ -289,8 +285,8 @@ public class AddQuestion extends javax.swing.JFrame {
         });
         getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 740, 170, -1));
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icon-gerbage.png"))); // NOI18N
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 760, -1, 30));
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8-garbage-20.png"))); // NOI18N
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 760, -1, 30));
 
         button2.setBackground(new java.awt.Color(244, 63, 94));
         button2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/save.png"))); // NOI18N
@@ -437,9 +433,9 @@ public class AddQuestion extends javax.swing.JFrame {
     private rojerusan.RSMaterialButtonRectangle button1;
     private rojerusan.RSMaterialButtonRectangle button2;
     private rojerusan.RSMaterialButtonRectangle button3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -456,7 +452,7 @@ public class AddQuestion extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField6;
     private rojerusan.RSMaterialButtonRectangle rSMaterialButtonRectangle1;
     private rojerusan.RSPanelImage rSPanelImage1;
-    private rojerusan.RSPanelImage rSPanelImage2;
     private rojerusan.RSPanelImage rSPanelImage3;
+    private rojerusan.RSPanelImage rSPanelImage4;
     // End of variables declaration//GEN-END:variables
 }

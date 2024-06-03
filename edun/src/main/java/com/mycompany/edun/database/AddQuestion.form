@@ -190,7 +190,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Container class="rojerusan.RSPanelImage" name="rSPanelImage3">
+    <Container class="rojerusan.RSPanelImage" name="rSPanelImage4">
       <Properties>
         <Property name="imagen" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/assets/tambah pertanyaan.png"/>
@@ -216,18 +216,12 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Container class="rojerusan.RSPanelImage" name="rSPanelImage2">
+    <Container class="rojerusan.RSPanelImage" name="rSPanelImage3">
       <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
         <Property name="imagen" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/assets/icon-x.png"/>
+          <Image iconType="3" name="/assets/icons8-x-60.png"/>
         </Property>
       </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
-      </AccessibilityProperties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="970" y="130" width="40" height="40"/>
@@ -467,15 +461,15 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel11">
+    <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/assets/icon-save.png"/>
+          <Image iconType="3" name="/assets/icons8-save-20.png"/>
         </Property>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="150" y="760" width="20" height="30"/>
+          <AbsoluteConstraints x="150" y="760" width="-1" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -506,10 +500,10 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel12">
+    <Component class="javax.swing.JLabel" name="jLabel11">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/assets/icon-gerbage.png"/>
+          <Image iconType="3" name="/assets/icons8-garbage-20.png"/>
         </Property>
       </Properties>
       <Constraints>
