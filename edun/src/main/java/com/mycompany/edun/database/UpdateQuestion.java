@@ -38,7 +38,7 @@ public class updateQuestion extends javax.swing.JFrame {
             jLabel9.setFont(font);
             jTextField1.setFont(font);
             jTextField2.setFont(font);
-           
+
             Font font_20 = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(18f);
             jTextField2.setFont(font_20);
             jTextField3.setFont(font_20);
@@ -376,7 +376,7 @@ public class updateQuestion extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
