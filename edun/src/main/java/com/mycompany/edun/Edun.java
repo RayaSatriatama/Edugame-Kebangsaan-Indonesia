@@ -11,8 +11,13 @@ package com.mycompany.edun;
 public class Edun {
 
     public static void main(String[] args) {
-//        Customize Font
+        
+          // Start at splashscreen
           splashscreen s = new splashscreen();
           s.setVisible(true);
+
+          // Start at home_admin
+//        home_admin hm = new home_admin();
+//        hm.setVisible(true);
     }
 }

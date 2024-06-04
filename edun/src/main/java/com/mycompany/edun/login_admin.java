@@ -39,12 +39,15 @@ public class login_admin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        rSPanelImage1 = new rojerusan.RSPanelImage();
         panel_login_admin = new javax.swing.JPanel();
         label_login_admin = new javax.swing.JLabel();
+        label_sub = new javax.swing.JLabel();
         label_username = new javax.swing.JLabel();
         input_username = new javax.swing.JTextField();
         label_password = new javax.swing.JLabel();
         input_password = new javax.swing.JPasswordField();
+        label_login = new javax.swing.JLabel();
         button_login = new rojerusan.RSMaterialButtonRectangle();
         button_back_game = new javax.swing.JButton();
         shw_password = new javax.swing.JCheckBox();
@@ -53,108 +56,92 @@ public class login_admin extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setName("frameAdmin"); // NOI18N
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panel_login_admin.setBackground(new java.awt.Color(241, 245, 249));
+        rSPanelImage1.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Image-Admin.jpg"))); // NOI18N
 
-        label_login_admin.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        label_login_admin.setText("Login Admin");
+        javax.swing.GroupLayout rSPanelImage1Layout = new javax.swing.GroupLayout(rSPanelImage1);
+        rSPanelImage1.setLayout(rSPanelImage1Layout);
+        rSPanelImage1Layout.setHorizontalGroup(
+            rSPanelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 780, Short.MAX_VALUE)
+        );
+        rSPanelImage1Layout.setVerticalGroup(
+            rSPanelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1030, Short.MAX_VALUE)
+        );
 
-        label_username.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        getContentPane().add(rSPanelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 1030));
+
+        panel_login_admin.setBackground(new java.awt.Color(255, 255, 255));
+        panel_login_admin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        label_login_admin.setFont(new java.awt.Font("SF Pro Text", 1, 48)); // NOI18N
+        label_login_admin.setForeground(new java.awt.Color(15, 23, 42));
+        label_login_admin.setText("Masuk Admin");
+        panel_login_admin.add(label_login_admin, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, -1, -1));
+
+        label_sub.setFont(new java.awt.Font("SF Pro Text", 0, 18)); // NOI18N
+        label_sub.setForeground(new java.awt.Color(100, 116, 139));
+        label_sub.setText("Silakan isi nama pengguna dan kata sandi.");
+        panel_login_admin.add(label_sub, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, -1, -1));
+
+        label_username.setFont(new java.awt.Font("SF Pro Text", 0, 18)); // NOI18N
         label_username.setText("Username");
+        panel_login_admin.add(label_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, -1, -1));
 
         input_username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 input_usernameActionPerformed(evt);
             }
         });
+        panel_login_admin.add(input_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 410, 40));
 
-        label_password.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        label_password.setFont(new java.awt.Font("SF Pro Text", 0, 18)); // NOI18N
         label_password.setText("Password");
+        panel_login_admin.add(label_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, -1, -1));
 
         input_password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 input_passwordActionPerformed(evt);
             }
         });
+        panel_login_admin.add(input_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 460, 410, 40));
 
-        button_login.setText("Log In");
+        label_login.setFont(new java.awt.Font("SF Pro Text", 1, 18)); // NOI18N
+        label_login.setForeground(new java.awt.Color(255, 255, 255));
+        label_login.setText("Masuk");
+        panel_login_admin.add(label_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 600, -1, 40));
+
+        button_login.setBackground(new java.awt.Color(67, 56, 202));
         button_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button_loginActionPerformed(evt);
             }
         });
+        panel_login_admin.add(button_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 590, 420, 60));
 
-        button_back_game.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        button_back_game.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Back-Arrow-Black.png"))); // NOI18N
-        button_back_game.setText("Ke Permainan");
+        button_back_game.setFont(new java.awt.Font("SF Pro Text", 1, 14)); // NOI18N
+        button_back_game.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Close.png"))); // NOI18N
+        button_back_game.setText("Tutup");
         button_back_game.setIconTextGap(12);
         button_back_game.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button_back_gameActionPerformed(evt);
             }
         });
+        panel_login_admin.add(button_back_game, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 30, -1, 40));
 
+        shw_password.setFont(new java.awt.Font("SF Pro Text", 0, 16)); // NOI18N
         shw_password.setText("Show Password");
         shw_password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 shw_passwordActionPerformed(evt);
             }
         });
+        panel_login_admin.add(shw_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 510, -1, -1));
 
-        javax.swing.GroupLayout panel_login_adminLayout = new javax.swing.GroupLayout(panel_login_admin);
-        panel_login_admin.setLayout(panel_login_adminLayout);
-        panel_login_adminLayout.setHorizontalGroup(
-            panel_login_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_login_adminLayout.createSequentialGroup()
-                .addGroup(panel_login_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_login_adminLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(button_back_game))
-                    .addGroup(panel_login_adminLayout.createSequentialGroup()
-                        .addGap(217, 217, 217)
-                        .addGroup(panel_login_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(shw_password)
-                            .addGroup(panel_login_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(label_password)
-                                .addComponent(label_username)
-                                .addComponent(label_login_admin)
-                                .addComponent(input_username)
-                                .addComponent(button_login, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
-                                .addComponent(input_password)))))
-                .addContainerGap(192, Short.MAX_VALUE))
-        );
-        panel_login_adminLayout.setVerticalGroup(
-            panel_login_adminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_login_adminLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(button_back_game, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
-                .addComponent(label_login_admin)
-                .addGap(18, 18, 18)
-                .addComponent(label_username)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(input_username, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(label_password)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(input_password, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(shw_password)
-                .addGap(14, 14, 14)
-                .addComponent(button_login, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(94, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_login_admin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_login_admin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        getContentPane().add(panel_login_admin, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 0, 660, 1024));
 
         pack();
         setLocationRelativeTo(null);
@@ -168,7 +155,6 @@ public class login_admin extends javax.swing.JFrame {
         // TODO add your handling code here:
         login_user user = new login_user();
         user.setVisible(true);
-        user.setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_button_back_gameActionPerformed
     
     public void bersih_form_login(){
@@ -264,10 +250,13 @@ public class login_admin extends javax.swing.JFrame {
     private rojerusan.RSMaterialButtonRectangle button_login;
     private javax.swing.JPasswordField input_password;
     private javax.swing.JTextField input_username;
+    private javax.swing.JLabel label_login;
     private javax.swing.JLabel label_login_admin;
     private javax.swing.JLabel label_password;
+    private javax.swing.JLabel label_sub;
     private javax.swing.JLabel label_username;
     private javax.swing.JPanel panel_login_admin;
+    private rojerusan.RSPanelImage rSPanelImage1;
     private javax.swing.JCheckBox shw_password;
     // End of variables declaration//GEN-END:variables
 }
