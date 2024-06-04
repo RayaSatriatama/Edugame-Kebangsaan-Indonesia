@@ -4,45 +4,142 @@
  */
 package com.mycompany.edun;
 
+import com.mycompany.edun.JigsawPuzzle.JigsawPuzzle;
 import java.awt.Font;
 import java.io.File;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.util.HashSet;
+import java.util.Set;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 /**
  *
  * @author nadiaag
  */
+
 public class PuzzleSequenceFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form choose_game
-     */
+    private float score;
+    private long startTime;
+    private int completedPuzzles = 0;
+    private Set<JigsawPuzzle> completedPuzzleSet = new HashSet<>();
+    private Timer timer;
+
     public PuzzleSequenceFrame(String username) {
         initComponents();
-        try{
-           // Add Customize Font Button
-           File fontBlack = new File("src/main/resources/fonts/Nunito-Black.ttf");
-           Font font_button = Font.createFont(Font.TRUETYPE_FONT, fontBlack).deriveFont(24f);
-           button_Back.setFont(font_button);
-           
-           // Add Customize Font 20 Bold
-           File fontButton = new File("src/main/resources/fonts/Nunito-Bold.ttf");
-           Font font_20 = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(20f);
+        try {
+            // Add Customize Font Button
+            File fontBlack = new File("src/main/resources/fonts/Nunito-Black.ttf");
+            Font font_button = Font.createFont(Font.TRUETYPE_FONT, fontBlack).deriveFont(24f);
+            button_Back.setFont(font_button);
 
-           
-           // Add Customize Font 26 Black
-           Font font_24 = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(26f);
+            // Add Customize Font 20 Bold
+            File fontButton = new File("src/main/resources/fonts/Nunito-Bold.ttf");
+            Font font_20 = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(20f);
 
-           
-        // Set the frame visible
-        setVisible(true);
+            // Add Customize Font 26 Black
+            Font font_24 = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(26f);
+
+            // Start Timer
+            startTimer();
+
+            // Set initial puzzle visibility
+            jigsawPuzzle1.setVisible(true);
+            jigsawPuzzle2.setVisible(false);
+            jigsawPuzzle3.setVisible(false);
+            jigsawPuzzle1.setCompletionCallback(this::puzzleCompleted);
+
+            setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    int getScore() {
+        return (int) this.score;
+    }
+
+    private void startTimer() {
+        startTime = System.currentTimeMillis();
+        timer = new Timer(1000, e -> updateTimer());
+        timer.start();
+    }
+
+    private void updateTimer() {
+        long elapsedTime = (System.currentTimeMillis() - startTime) / 1000;
+        long remainingTime = 300 - elapsedTime; // 5 minutes in seconds
+
+        if (remainingTime <= 0) {
+            timer.stop();
+            timeOut();
+        } else {
+            jLabelTimer.setText("Time: " + remainingTime + " seconds");
+        }
+    }
+
+    private void timeOut() {
+        JOptionPane.showMessageDialog(this, "Time is up!");
+        // Move to another frame
+        new TimeOutFrame().setVisible(true);
+        this.dispose();
+    }
+
+    private void puzzleCompleted() {
+        long elapsedTime = (System.currentTimeMillis() - startTime) / 1000;
+        completedPuzzles++;
+        completedPuzzleSet.add(getCurrentPuzzle());
+        
+        if (completedPuzzles < 3) {
+            switchPuzzle();
+        } else {
+            timer.stop();
+            calculateScore(elapsedTime);
+            JOptionPane.showMessageDialog(this, "Game Completed! Your score is: " + score);
+            new ScoreFrame(score).setVisible(true);
+            this.dispose();
+        }
+    }
+
+    private JigsawPuzzle getCurrentPuzzle() {
+        if (jigsawPuzzle1.isVisible()) return jigsawPuzzle1;
+        if (jigsawPuzzle2.isVisible()) return jigsawPuzzle2;
+        return jigsawPuzzle3;
+    }
+
+    private void switchPuzzle() {
+        if (jigsawPuzzle1.isVisible()) {
+            jigsawPuzzle1.setVisible(false);
+            jigsawPuzzle2.setVisible(true);
+            jigsawPuzzle2.setCompletionCallback(this::puzzleCompleted);
+        } else if (jigsawPuzzle2.isVisible()) {
+            jigsawPuzzle2.setVisible(false);
+            jigsawPuzzle3.setVisible(true);
+            jigsawPuzzle3.setCompletionCallback(this::puzzleCompleted);
+        }
+    }
+
+    private void calculateScore(long elapsedTime) {
+        long remainingTime = 300 - elapsedTime; // Total time in seconds minus elapsed time
+        if (completedPuzzles == 3) {
+            if (remainingTime >= 200) {
+                score = 100; // Max score if 200 or more seconds remaining
+            } else {
+                score = (remainingTime / 200.0f) * 100; // Calculate score proportionally
+            }
+        } else {
+            score = ((float) completedPuzzles / 3) * ((remainingTime / 200.0f) * 100); // Adjust score based on completed puzzles
+        }
+    }
+
+    private void finishEarly() {
+        long elapsedTime = (System.currentTimeMillis() - startTime) / 1000;
+        timer.stop();
+        calculateScore(elapsedTime);
+        JOptionPane.showMessageDialog(this, "Game Ended Early! Your score is: " + score);
+        new ScoreFrame(score).setVisible(true);
+        this.dispose();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -52,7 +149,11 @@ public class PuzzleSequenceFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelTimer = new javax.swing.JLabel();
+        jigsawPuzzle3 = new com.mycompany.edun.JigsawPuzzle.JigsawPuzzle();
+        jigsawPuzzle2 = new com.mycompany.edun.JigsawPuzzle.JigsawPuzzle();
         jigsawPuzzle1 = new com.mycompany.edun.JigsawPuzzle.JigsawPuzzle();
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         icon_home = new rojerusan.RSPanelImage();
         button_Home = new rojerusan.RSMaterialButtonRectangle();
@@ -71,18 +172,55 @@ public class PuzzleSequenceFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabelTimer.setText("jLabel1");
+        getContentPane().add(jLabelTimer, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 120, 30));
+
+        javax.swing.GroupLayout jigsawPuzzle3Layout = new javax.swing.GroupLayout(jigsawPuzzle3);
+        jigsawPuzzle3.setLayout(jigsawPuzzle3Layout);
+        jigsawPuzzle3Layout.setHorizontalGroup(
+            jigsawPuzzle3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1000, Short.MAX_VALUE)
+        );
+        jigsawPuzzle3Layout.setVerticalGroup(
+            jigsawPuzzle3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jigsawPuzzle3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
+
+        javax.swing.GroupLayout jigsawPuzzle2Layout = new javax.swing.GroupLayout(jigsawPuzzle2);
+        jigsawPuzzle2.setLayout(jigsawPuzzle2Layout);
+        jigsawPuzzle2Layout.setHorizontalGroup(
+            jigsawPuzzle2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1000, Short.MAX_VALUE)
+        );
+        jigsawPuzzle2Layout.setVerticalGroup(
+            jigsawPuzzle2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jigsawPuzzle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
+
         javax.swing.GroupLayout jigsawPuzzle1Layout = new javax.swing.GroupLayout(jigsawPuzzle1);
         jigsawPuzzle1.setLayout(jigsawPuzzle1Layout);
         jigsawPuzzle1Layout.setHorizontalGroup(
             jigsawPuzzle1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1290, Short.MAX_VALUE)
+            .addGap(0, 1000, Short.MAX_VALUE)
         );
         jigsawPuzzle1Layout.setVerticalGroup(
             jigsawPuzzle1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jigsawPuzzle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 1290, 640));
+        getContentPane().add(jigsawPuzzle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
+
+        jButton1.setText("Selesai");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 300, -1, -1));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -167,7 +305,7 @@ public class PuzzleSequenceFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    
+
     private void button_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_BackActionPerformed
         // TODO add your handling code here:
         login_user user = new login_user();
@@ -194,7 +332,11 @@ public class PuzzleSequenceFrame extends javax.swing.JFrame {
         menu.setVisible(true);
     }//GEN-LAST:event_button_HomeActionPerformed
 
-        
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        finishEarly();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -209,16 +351,24 @@ public class PuzzleSequenceFrame extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PuzzleSequenceFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PuzzleSequenceFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PuzzleSequenceFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PuzzleSequenceFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PuzzleSequenceFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PuzzleSequenceFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PuzzleSequenceFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PuzzleSequenceFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -241,9 +391,13 @@ public class PuzzleSequenceFrame extends javax.swing.JFrame {
     private javax.swing.JMenu eduN;
     private rojerusan.RSPanelImage icon_back;
     private rojerusan.RSPanelImage icon_home;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabelTimer;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private com.mycompany.edun.JigsawPuzzle.JigsawPuzzle jigsawPuzzle1;
+    private com.mycompany.edun.JigsawPuzzle.JigsawPuzzle jigsawPuzzle2;
+    private com.mycompany.edun.JigsawPuzzle.JigsawPuzzle jigsawPuzzle3;
     private javax.swing.JMenuItem loginAdmin;
     private javax.swing.JMenuItem logoutAdmin;
     private javax.swing.JMenuItem quit;

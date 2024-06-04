@@ -17,11 +17,11 @@ import java.util.Set;
 
 public class CrosswordPuzzleGenerator {
     private static final int attemptsToFitWords = 5000;
-    private static final int gridsToMake = 20;
+    private static final int gridsToMake = 12;
     private List<String> usedWords = new ArrayList<>();
     private List<CrosswordPuzzle> generatedGrids = new ArrayList<>();
     private Set<Character> goodStartingLetters = new HashSet<>();
-    private static final int gridSize = 20;
+    private static final int gridSize = 12;
 
     public CrosswordPuzzle createCrossWordPuzzle() {
         generateGrids();
@@ -39,7 +39,7 @@ public class CrosswordPuzzleGenerator {
 
                 if (grid.isLetter(row, column)) {
                     if (grid.update(word)) {
-                        pushUsedWords(word.getText());
+                        pushUsedWords(word.getText(), word.isVertical());
                         return true;
                     }
                 }
@@ -48,15 +48,22 @@ public class CrosswordPuzzleGenerator {
         return false;
     }
 
-    private String getAWordToTry() {
-        String word = getRandomWord(Words.words);
-        boolean goodWord = isGoodWord(word);
-
-        while (usedWords.contains(word) || !goodWord) {
-            word = getRandomWord(Words.words);
-            goodWord = isGoodWord(word);
+    private void pushUsedWords(String text, boolean isVertical) {
+        usedWords.add(text);
+        for (char c : text.toCharArray()) {
+            goodStartingLetters.add(c);
         }
-        return word;
+    }
+
+    private String getAWordToTry() {
+        Word word = getRandomWord(Words.getWords());
+        boolean goodWord = isGoodWord(word.getText());
+
+        while (usedWords.contains(word.getText()) || !goodWord) {
+            word = getRandomWord(Words.getWords());
+            goodWord = isGoodWord(word.getText());
+        }
+        return word.getText();
     }
 
     private CrosswordPuzzle getBestGrid(List<CrosswordPuzzle> grids) {
@@ -83,9 +90,9 @@ public class CrosswordPuzzleGenerator {
 
         for (int gridsMade = 0; gridsMade < gridsToMake; gridsMade++) {
             CrosswordPuzzle grid = new CrosswordPuzzle();
-            Word word = new Word(getRandomWordOfSize(getUnusedWords(), 9), 0, 0, false);
+            Word word = new Word(getRandomWordOfSize(getUnusedWords(), 9).getText(), 0, 0, false, "");
             grid.update(word);
-            pushUsedWords(word.getText());
+            pushUsedWords(word.getText(), word.isVertical());
 
             int continuousFails = 0;
             for (int attempts = 0; attempts < attemptsToFitWords; ++attempts) {
@@ -108,35 +115,28 @@ public class CrosswordPuzzleGenerator {
         }
     }
 
-    private void pushUsedWords(String text) {
-        usedWords.add(text);
-        for (char c : text.toCharArray()) {
-            goodStartingLetters.add(c);
-        }
-    }
-
-    private List<String> getUnusedWords() {
-        List<String> unusedWords = new ArrayList<>();
-        for (String word : Words.words) {
-            if (!usedWords.contains(word)) {
+    private List<Word> getUnusedWords() {
+        List<Word> unusedWords = new ArrayList<>();
+        for (Word word : Words.getWords()) {
+            if (!usedWords.contains(word.getText())) {
                 unusedWords.add(word);
             }
         }
         return unusedWords;
     }
 
-    private String getRandomWordOfSize(List<String> wordList, int wordSize) {
-        List<String> properLengthWords = new ArrayList<>();
-        for (String word : wordList) {
-            if (word.length() >= wordSize) {
+    private Word getRandomWordOfSize(List<Word> wordList, int wordSize) {
+        List<Word> properLengthWords = new ArrayList<>();
+        for (Word word : wordList) {
+            if (word.getText().length() >= wordSize) {
                 properLengthWords.add(word);
             }
         }
         return properLengthWords.get(new Random().nextInt(properLengthWords.size()));
     }
 
-    private String getRandomWord(List<String> wordList) {
-        List<String> words = getUnusedWords();
+    private Word getRandomWord(List<Word> wordList) {
+        List<Word> words = getUnusedWords();
         return words.get(new Random().nextInt(words.size()));
     }
 }

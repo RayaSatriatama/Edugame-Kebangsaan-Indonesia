@@ -40,6 +40,7 @@ public class JigsawPuzzle extends JPanel {
     private JButton resetButton;
     private boolean puzzleCompleted = false;
     private int IMAGE_SIZE = 480;
+    private Runnable completionCallback;
 
     public JigsawPuzzle() {
         image = loadRandomImage("src/main/resources/assets/JigsawPuzzleImages/");
@@ -167,6 +168,13 @@ public class JigsawPuzzle extends JPanel {
         if (correctlyPlacedCount == rows * cols) {
             JOptionPane.showMessageDialog(this, "Puzzle Completed! All pieces are correctly placed.");
             puzzleCompleted = true;
+            if (completionCallback != null) {
+                completionCallback.run();
+            }
         }
+    }
+
+    public void setCompletionCallback(Runnable completionCallback) {
+        this.completionCallback = completionCallback;
     }
 }

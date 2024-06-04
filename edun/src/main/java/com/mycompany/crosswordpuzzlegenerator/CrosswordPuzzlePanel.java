@@ -4,13 +4,16 @@
  */
 package com.mycompany.crosswordpuzzlegenerator;
 
+import java.awt.BorderLayout;
+import java.util.List;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
 /**
  *
  * @author rayas
  */
-
-import javax.swing.*;
-import java.awt.*;
 
 public class CrosswordPuzzlePanel extends JPanel {
     private GridPanel gridPanel;
@@ -37,7 +40,7 @@ public class CrosswordPuzzlePanel extends JPanel {
         statusLabel.setText("Status: Grid cleared.");
     }
 
-    public void checkWord(String word) {
+    public boolean checkWord(String word) {
         boolean correct = gridPanel.checkWord(word);
         if (correct) {
             statusLabel.setText("Status: Correct! Keep going.");
@@ -47,5 +50,10 @@ public class CrosswordPuzzlePanel extends JPanel {
         } else {
             statusLabel.setText("Status: Incorrect. Try again.");
         }
+        return correct;
+    }
+
+    public List<Word> getPlacedWords() {
+        return gridPanel.getPlacedWords();
     }
 }

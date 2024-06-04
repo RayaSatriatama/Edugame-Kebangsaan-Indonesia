@@ -4,8 +4,8 @@
  */
 package com.mycompany.edun;
 
-import com.mycompany.edun.database.deleteQuestion;
-import com.mycompany.edun.database.updateQuestion;
+import com.mycompany.edun.database.DeleteQuestion;
+import com.mycompany.edun.database.UpdateQuestion;
 import com.mycompany.edun.database.GetQuestion;
 import com.mycompany.edun.database.AddQuestion;
 import com.mycompany.edun.database.AddModule;
@@ -13,6 +13,8 @@ import com.mycompany.edun.database.UpdateModule;
 import com.mycompany.edun.database.GetModule;
 import com.mycompany.edun.database.DeleteModule;
 import com.mycompany.edun.database.AllStudentResult;
+import com.mycompany.edun.database.DeleteQuestion;
+import com.mycompany.edun.database.UpdateQuestion;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -236,10 +238,10 @@ public class home_admin extends javax.swing.JFrame {
             addModule.setAlwaysOnTop(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
         if(open==0) {
-            new updateQuestion().setVisible(true);
+            new UpdateQuestion().setVisible(true);
             open=1;
         }
         else {
@@ -247,7 +249,7 @@ public class home_admin extends javax.swing.JFrame {
             jf.setAlwaysOnTop(true);
             JOptionPane.showConfirmDialog(jf, "One form is already open");
         }
-    }//GEN-LAST:event_jMenu2MouseClicked
+    }                                   
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -256,10 +258,10 @@ public class home_admin extends javax.swing.JFrame {
             getModule.setAlwaysOnTop(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
         if(open==0) {
-            new deleteQuestion().setVisible(true);
+            new DeleteQuestion().setVisible(true);
             open=1;
         }
         else {
@@ -267,7 +269,7 @@ public class home_admin extends javax.swing.JFrame {
             jf.setAlwaysOnTop(true);
             JOptionPane.showConfirmDialog(jf, "One form is already open");
         }
-    }//GEN-LAST:event_jMenu4MouseClicked
+    }                                   
 
     private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
         // TODO add your handling code here:

@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+
 package com.mycompany.edun.database;
 
-import com.mycompany.edun.database.koneksi_db;
 import com.mycompany.edun.home_admin;
 import java.awt.Font;
 import java.io.File;
@@ -19,12 +19,12 @@ import javax.swing.JOptionPane;
  *
  * @author ivanbesti
  */
-public class deleteQuestion extends javax.swing.JFrame {
+public class DeleteQuestion extends javax.swing.JFrame {
 
     /**
      * Creates new form deleteQuestion
      */
-    public deleteQuestion() {
+    public DeleteQuestion() {
         initComponents();
         try {
             File fontButton = new File("src/main/resources/fonts/Nunito-Black.ttf");
@@ -327,7 +327,7 @@ public class deleteQuestion extends javax.swing.JFrame {
             jf.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(jf, "Question Succesfully Deleted");
             setVisible(false);
-            new deleteQuestion().setVisible(true);
+            new DeleteQuestion().setVisible(true);
         }
         catch (Exception e) {
             JFrame jf = new JFrame();
@@ -365,21 +365,22 @@ public class deleteQuestion extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(deleteQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(deleteQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(deleteQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(deleteQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-                new deleteQuestion().setVisible(true);
+                new DeleteQuestion().setVisible(true);
             }
         });
     }

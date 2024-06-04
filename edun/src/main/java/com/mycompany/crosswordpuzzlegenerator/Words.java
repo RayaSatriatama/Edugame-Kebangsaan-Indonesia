@@ -13,9 +13,13 @@ import com.mycompany.edun.database.CrosswordDataFetcher;
 import java.util.List;
 
 public class Words {
-    public static List<String> words;
+    private static List<Word> words;
 
     static {
         words = CrosswordDataFetcher.getWords();
+    }
+
+    public static List<Word> getWords() {
+        return words;
     }
 }

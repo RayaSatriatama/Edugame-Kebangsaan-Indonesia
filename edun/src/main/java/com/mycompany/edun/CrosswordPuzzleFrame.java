@@ -4,12 +4,17 @@
  */
 package com.mycompany.edun;
 
+import com.mycompany.crosswordpuzzlegenerator.CrosswordPuzzleGenerator;
 import com.mycompany.crosswordpuzzlegenerator.CrosswordPuzzlePanel;
+import com.mycompany.crosswordpuzzlegenerator.Word;
+import com.mycompany.crosswordpuzzlegenerator.Words;
 import java.awt.Font;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,12 +23,14 @@ import javax.swing.JOptionPane;
  */
 public class CrosswordPuzzleFrame extends javax.swing.JFrame {
 
+    private List<Word> placedWords;
+
     /**
      * Creates new form choose_game
      */
     public CrosswordPuzzleFrame(String username) {
         initComponents();
-        crosswordPuzzlePanel1.generateCrosswordPuzzle();
+        loadQuestions();
         try {
             // Add Customize Font Button
             File fontBlack = new File("src/main/resources/fonts/Nunito-Black.ttf");
@@ -44,6 +51,24 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
         }
     }
 
+    private void loadQuestions() {
+        List<Word> words = crosswordPuzzlePanel1.getPlacedWords(); // Ambil kata yang telah ditempatkan di grid
+
+        List<String> acrossQuestions = new ArrayList<>();
+        List<String> downQuestions = new ArrayList<>();
+
+        for (Word word : words) {
+            if (word.isVertical()) {
+                downQuestions.add(word.getQuestion());
+            } else {
+                acrossQuestions.add(word.getQuestion());
+            }
+        }
+
+        questionPanela1.setAcrossQuestions(acrossQuestions);
+        questionPanel2.setDownQuestions(downQuestions);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,7 +79,9 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        questionPanela1 = new com.mycompany.crosswordpuzzlegenerator.QuestionPanela();
         crosswordPuzzlePanel1 = new com.mycompany.crosswordpuzzlegenerator.CrosswordPuzzlePanel();
+        questionPanel2 = new com.mycompany.crosswordpuzzlegenerator.QuestionPanel();
         gridPanel1 = new com.mycompany.crosswordpuzzlegenerator.GridPanel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -78,11 +105,13 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(crosswordPuzzlePanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 100, 20));
+        jPanel1.add(questionPanela1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 290, 320));
+        jPanel1.add(crosswordPuzzlePanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, 450, 360));
+        jPanel1.add(questionPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 280, 300, 330));
         jPanel1.add(gridPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, -1, -1));
 
         jTextField1.setText("jTextField1");
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 790, 270, 50));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 730, 270, 50));
 
         jButton1.setText("Submit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +119,7 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 760, 140, 80));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 710, 140, 80));
 
         jButton2.setText("Restart");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -98,7 +127,7 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 760, 150, 80));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 710, 150, 80));
 
         jButton3.setText("Clear");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +135,7 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 670, 150, 80));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 620, 150, 80));
 
         icon_home.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Home.png"))); // NOI18N
         jPanel1.add(icon_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 110, 30, 30));
@@ -218,7 +247,7 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String word = jTextField1.getText().trim().toLowerCase();
+        String word = jTextField1.getText().trim().toUpperCase();
         if (!word.isEmpty()) {
             crosswordPuzzlePanel1.checkWord(word);
             jTextField1.setText("");
@@ -232,6 +261,7 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         crosswordPuzzlePanel1.generateCrosswordPuzzle();
+        loadQuestions();
         this.revalidate();
         this.repaint();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -301,6 +331,8 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JMenuItem loginAdmin;
     private javax.swing.JMenuItem logoutAdmin;
+    private com.mycompany.crosswordpuzzlegenerator.QuestionPanel questionPanel2;
+    private com.mycompany.crosswordpuzzlegenerator.QuestionPanela questionPanela1;
     private javax.swing.JMenuItem quit;
     private javax.swing.JMenu tools;
     // End of variables declaration//GEN-END:variables

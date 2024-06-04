@@ -9,14 +9,23 @@ package com.mycompany.crosswordpuzzlegenerator;
  * @author rayas
  */
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class GridPanel extends JPanel {
-    private static final int gridSize = 20;
-    private static final int cellSize = 30; // Configurable grid cell size
+    private static final int gridSize = 12;
+    private static final int cellSize = 30;
     private static JLabel[][] gridLabels = new JLabel[gridSize][gridSize];
     private static CrosswordPuzzle bestGrid;
     private static Set<String> correctWords = new HashSet<>();
@@ -24,7 +33,7 @@ public class GridPanel extends JPanel {
     public GridPanel() {
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
-        setBackground(new Color(0, 0, 0, 0)); // Make the background transparent
+        setBackground(new Color(0, 0, 0, 0));
 
         for (int row = 0; row < gridSize; row++) {
             for (int col = 0; col < gridSize; col++) {
@@ -36,7 +45,7 @@ public class GridPanel extends JPanel {
                 gridLabels[row][col] = label;
                 gbc.gridx = col;
                 gbc.gridy = row;
-                gbc.fill = GridBagConstraints.BOTH; // Fill both horizontally and vertically
+                gbc.fill = GridBagConstraints.BOTH;
                 gbc.weightx = 1.0;
                 gbc.weighty = 1.0;
                 add(label, gbc);
@@ -55,7 +64,7 @@ public class GridPanel extends JPanel {
                 for (int column = 0; column < gridSize; ++column) {
                     if (grid[row][column] != '_') {
                         gridLabels[row][column].setOpaque(true);
-                        gridLabels[row][column].setBackground(Color.WHITE); // Indicate cells to be filled
+                        gridLabels[row][column].setBackground(Color.WHITE);
                         gridLabels[row][column].setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     } else {
                         gridLabels[row][column].setOpaque(false);
@@ -65,6 +74,8 @@ public class GridPanel extends JPanel {
                     gridLabels[row][column].setText("");
                 }
             }
+            bestGrid.printGrid();
+            bestGrid.printPlacedWords();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "An error occurred while generating the puzzle.", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -84,8 +95,10 @@ public class GridPanel extends JPanel {
 
     public boolean checkWord(String inputWord) {
         boolean found = false;
-        for (Word word : bestGrid.getWords()) {
-            if (word.getText().equalsIgnoreCase(inputWord) && !correctWords.contains(inputWord)) {
+        bestGrid.printGrid();
+        bestGrid.printPlacedWords();
+        for (Word word : bestGrid.getPlacedWords()) {
+            if (word.getText().equals(inputWord) && !correctWords.contains(inputWord)) {
                 correctWords.add(inputWord);
                 revealWord(word);
                 found = true;
@@ -110,7 +123,14 @@ public class GridPanel extends JPanel {
     }
 
     public boolean isPuzzleCompleted() {
-        return correctWords.size() == bestGrid.getWords().size();
+        return correctWords.size() == bestGrid.getPlacedWords().size();
+    }
+
+    public List<Word> getPlacedWords() {
+        if (bestGrid == null) {
+            return new ArrayList<>();
+        }
+        return bestGrid.getPlacedWords();
     }
 }
 

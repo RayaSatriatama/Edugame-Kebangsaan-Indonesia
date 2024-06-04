@@ -19,12 +19,12 @@ import javax.swing.JOptionPane;
  *
  * @author ivanbesti
  */
-public class updateQuestion extends javax.swing.JFrame {
+public class UpdateQuestion extends javax.swing.JFrame {
 
     /**
      * Creates new form updateQuestion
      */
-    public updateQuestion() {
+    public UpdateQuestion() {
         initComponents();
         try {
             File fontButton = new File("src/main/resources/fonts/Nunito-Black.ttf");
@@ -348,7 +348,7 @@ public class updateQuestion extends javax.swing.JFrame {
                 jf.setAlwaysOnTop(true);
                 JOptionPane.showMessageDialog(jf, "Question Succesfully Updated!");
                 setVisible(false);
-                new updateQuestion().setVisible(true);
+                new UpdateQuestion().setVisible(true);
         }
         catch (Exception e) {
             JFrame jf = new JFrame();
@@ -386,13 +386,13 @@ public class updateQuestion extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(updateQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(updateQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(updateQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(updateQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdateQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -400,7 +400,7 @@ public class updateQuestion extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new updateQuestion().setVisible(true);
+                new UpdateQuestion().setVisible(true);
             }
         });
     }

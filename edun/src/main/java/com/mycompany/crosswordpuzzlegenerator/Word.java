@@ -14,12 +14,14 @@ public class Word {
     private int row;
     private int column;
     private boolean vertical;
+    private String question;
 
-    public Word(String text, int row, int column, boolean vertical) {
+    public Word(String text, int row, int column, boolean vertical, String question) {
         this.text = text;
         this.row = row;
         this.column = column;
         this.vertical = vertical;
+        this.question = question;
     }
 
     // Getters
@@ -39,6 +41,10 @@ public class Word {
         return vertical;
     }
 
+    public String getQuestion() {
+        return question;
+    }
+
     // Setters
     public void setText(String text) {
         this.text = text;
@@ -55,5 +61,8 @@ public class Word {
     public void setVertical(boolean vertical) {
         this.vertical = vertical;
     }
-}
 
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+}
