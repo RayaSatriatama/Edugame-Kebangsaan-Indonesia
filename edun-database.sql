@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 04, 2024 at 04:51 PM
+-- Generation Time: Jun 04, 2024 at 05:08 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -186,27 +186,28 @@ INSERT INTO `questions` (`id`, `name`, `opt1`, `opt2`, `opt3`, `opt4`, `answers`
 CREATE TABLE `users` (
   `id` int(155) NOT NULL,
   `name` varchar(155) DEFAULT NULL,
-  `marks` int(155) DEFAULT NULL
+  `marks` int(155) DEFAULT NULL,
+  `game_type` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `marks`) VALUES
-(1, 'jaja', 5),
-(2, 'haha', NULL),
-(3, 'hahah', NULL),
-(4, 'jajaja', 0),
-(5, 'jaja', 5),
-(6, 'rara', 5),
-(7, 'jajaja', 0),
-(8, 'jajaja', 0),
-(9, 'hahaha', 1),
-(10, 'jajajaj', 5),
-(11, 'jaja', NULL),
-(12, 'jajaj', 5),
-(13, 'Ivann', 2);
+INSERT INTO `users` (`id`, `name`, `marks`, `game_type`) VALUES
+(1, 'jaja', 5, 'tts'),
+(2, 'haha', NULL, NULL),
+(3, 'hahah', NULL, NULL),
+(4, 'jajaja', 0, 'tts'),
+(5, 'jaja', 5, 'gambar'),
+(6, 'rara', 5, 'gambar'),
+(7, 'jajaja', 0, 'quiz'),
+(8, 'jajaja', 0, 'quiz'),
+(9, 'hahaha', 1, 'tts'),
+(10, 'jajajaj', 5, 'gambar'),
+(11, 'jaja', NULL, NULL),
+(12, 'jajaj', 5, 'gambar'),
+(13, 'Ivann', 2, 'tts');
 
 --
 -- Indexes for dumped tables
