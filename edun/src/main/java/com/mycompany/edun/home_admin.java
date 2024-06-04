@@ -4,21 +4,9 @@
  */
 package com.mycompany.edun;
 
-<<<<<<< HEAD
-import com.mycompany.edun.database.DeleteQuestion;
-import com.mycompany.edun.database.UpdateQuestion;
-import com.mycompany.edun.database.GetQuestion;
-import com.mycompany.edun.database.AddQuestion;
-=======
->>>>>>> f7fbb72bc2406cacb7fabe27944b8fabca34ad23
 import com.mycompany.edun.database.AddModule;
 import com.mycompany.edun.database.AddQuestion;
 import com.mycompany.edun.database.DeleteModule;
-<<<<<<< HEAD
-import com.mycompany.edun.database.AllStudentResult;
-import com.mycompany.edun.database.DeleteQuestion;
-import com.mycompany.edun.database.UpdateQuestion;
-=======
 import com.mycompany.edun.database.DeleteQuestion;
 import com.mycompany.edun.database.GetModule;
 import com.mycompany.edun.database.GetQuestion;
@@ -31,7 +19,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
->>>>>>> f7fbb72bc2406cacb7fabe27944b8fabca34ad23
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
@@ -1262,24 +1249,10 @@ public class home_admin extends javax.swing.JFrame {
         
     }//GEN-LAST:event_list_resultActionPerformed
 
-<<<<<<< HEAD
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-            AddModule addModule = new AddModule();
-            addModule.setVisible(true);
-            addModule.setAlwaysOnTop(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
-        if(open==0) {
-            new UpdateQuestion().setVisible(true);
-=======
     private void delete_modulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_modulActionPerformed
         // TODO add your handling code here:
         if(open==0) {
             new DeleteModule().setVisible(true);
->>>>>>> f7fbb72bc2406cacb7fabe27944b8fabca34ad23
             open=1;
         }
         else {
@@ -1287,28 +1260,12 @@ public class home_admin extends javax.swing.JFrame {
             jf.setAlwaysOnTop(true);
             JOptionPane.showConfirmDialog(jf, "One form is already open");
         }
-<<<<<<< HEAD
-    }                                   
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-            GetModule getModule = new GetModule();
-            getModule.setVisible(true);
-            getModule.setAlwaysOnTop(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
-        if(open==0) {
-            new DeleteQuestion().setVisible(true);
-=======
     }//GEN-LAST:event_delete_modulActionPerformed
 
     private void edit_modulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_modulActionPerformed
         // TODO add your handling code here:
         if(open==0) {
             new UpdateModule().setVisible(true);
->>>>>>> f7fbb72bc2406cacb7fabe27944b8fabca34ad23
             open=1;
         }
         else {
@@ -1316,11 +1273,7 @@ public class home_admin extends javax.swing.JFrame {
             jf.setAlwaysOnTop(true);
             JOptionPane.showConfirmDialog(jf, "One form is already open");
         }
-<<<<<<< HEAD
-    }                                   
-=======
     }//GEN-LAST:event_edit_modulActionPerformed
->>>>>>> f7fbb72bc2406cacb7fabe27944b8fabca34ad23
 
     private void add_modulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_modulActionPerformed
         // TODO add your handling code here:

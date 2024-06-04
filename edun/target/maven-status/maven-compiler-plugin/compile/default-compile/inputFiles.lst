@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\database\AddQuestion.java
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\login_admin.java
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\crosswordpuzzlegenerator\GridPanel.java
@@ -19,11 +18,13 @@ C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\m
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\login_menu.java
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\JigsawPuzzle\ImageLoader.java
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\home_admin.java
+C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\leaderboard.java
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\choose_game.java
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\TimeOutFrame.java
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\quiz\SoalQuiz.java
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\crosswordpuzzlegenerator\CrosswordPuzzlePanel.java
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\CrosswordPuzzleFrame.java
+C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\sukses.java
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\database\AllStudentResult.java
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\database\DeleteQuestion.java
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\JigsawPuzzle\JigsawPuzzle.java
@@ -39,38 +40,3 @@ C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\m
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\Edun.java
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\edun\splashscreen.java
 C:\Users\rayas\OneDrive\Documents\GitHub\Edugame-Kebangsaan-Indonesia\edun\src\main\java\com\mycompany\crosswordpuzzlegenerator\QuestionPanela.java
-=======
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/edun/database/AddModule.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/edun/database/DeleteModule.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/crosswordpuzzlegenerator/Word.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/edun/database/GetQuestion.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/edun/quiz/ModuleQuiz.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/crosswordpuzzlegenerator/CrosswordPuzzle.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/edun/quiz/SuccesfullySubmited.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/edun/JigsawPuzzle/ImageLoader.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/edun/database/koneksi_db.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/edun/login_menu.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/edun/login_admin.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/crosswordpuzzlegenerator/CrosswordPuzzleGenerator.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/crosswordpuzzlegenerator/Main.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/edun/database/DeleteQuestion.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/edun/database/UpdateModule.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/edun/database/CrosswordControlPanel.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/edun/About.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/crosswordpuzzlegenerator/Words.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/edun/home_admin.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/edun/JigsawPuzzle/JigsawPuzzle.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/edun/database/GetModule.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/edun/Edun.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/edun/choose_game.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/edun/database/AddQuestion.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/edun/database/UpdateQuestion.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/edun/database/JigsawControlPanel.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/edun/JigsawPuzzle/PuzzlePiece.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/edun/splashscreen.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/edun/database/AllStudentResult.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/edun/PuzzleSequenceFrame.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/edun/quiz/SoalQuiz.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/edun/Credits.java
-/Users/nadiaag/NetBeansProjects/Edugame-Kebangsaan-Indonesia/edun/src/main/java/com/mycompany/edun/login_user.java
->>>>>>> f7fbb72bc2406cacb7fabe27944b8fabca34ad23

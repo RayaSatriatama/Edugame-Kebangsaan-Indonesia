@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 com\mycompany\edun\splashscreen$1.class
 com\mycompany\edun\database\UpdateModule.class
 com\mycompany\edun\database\UpdateQuestion$1.class
@@ -82,6 +81,7 @@ com\mycompany\edun\database\JigsawControlPanel$1.class
 com\mycompany\edun\choose_game$1.class
 com\mycompany\edun\PuzzleSequenceFrame.class
 com\mycompany\edun\About$1.class
+com\mycompany\edun\home_admin$14.class
 com\mycompany\edun\About.class
 com\mycompany\edun\CrosswordPuzzleFrame$9.class
 com\mycompany\edun\database\UpdateQuestion$3.class
@@ -107,6 +107,7 @@ com\mycompany\crosswordpuzzlegenerator\CrosswordPuzzlePanel.class
 com\mycompany\edun\splashscreen.class
 com\mycompany\edun\choose_game$2.class
 com\mycompany\edun\database\GetModule$2.class
+com\mycompany\edun\home_admin$13.class
 com\mycompany\edun\Credits$1.class
 com\mycompany\edun\home_admin$4.class
 com\mycompany\edun\database\AllStudentResult.class
@@ -188,22 +189,3 @@ com\mycompany\edun\database\DeleteModule$1.class
 com\mycompany\edun\database\GetModule.class
 com\mycompany\edun\login_user$4.class
 com\mycompany\edun\home_admin$6.class
-=======
-com/mycompany/edun/database/DeleteQuestion$4.class
-com/mycompany/edun/database/UpdateQuestion$5.class
-com/mycompany/edun/home_admin$13.class
-com/mycompany/edun/database/UpdateQuestion$6.class
-com/mycompany/edun/database/UpdateQuestion$4.class
-com/mycompany/edun/database/UpdateQuestion$1.class
-com/mycompany/edun/database/UpdateQuestion$2.class
-com/mycompany/edun/database/UpdateQuestion$3.class
-com/mycompany/edun/database/DeleteQuestion$1.class
-com/mycompany/edun/database/DeleteQuestion$7.class
-com/mycompany/edun/database/UpdateQuestion$8.class
-com/mycompany/edun/database/DeleteQuestion$6.class
-com/mycompany/edun/database/DeleteQuestion$5.class
-com/mycompany/edun/database/UpdateQuestion$7.class
-com/mycompany/edun/database/DeleteQuestion$3.class
-com/mycompany/edun/home_admin$14.class
-com/mycompany/edun/database/DeleteQuestion$2.class
->>>>>>> f7fbb72bc2406cacb7fabe27944b8fabca34ad23
