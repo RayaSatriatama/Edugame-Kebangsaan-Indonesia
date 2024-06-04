@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jun 02, 2024 at 10:35 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Host: 127.0.0.1
+-- Generation Time: Jun 04, 2024 at 04:51 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `eduN`
+-- Database: `edun`
 --
 
 -- --------------------------------------------------------
@@ -38,6 +38,98 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`username`, `password`) VALUES
 ('admin', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `crossword_puzzle`
+--
+
+CREATE TABLE `crossword_puzzle` (
+  `id` int(11) NOT NULL COMMENT 'Primary Key',
+  `question` varchar(255) NOT NULL,
+  `answer` varchar(255) NOT NULL,
+  `upload_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `crossword_puzzle`
+--
+
+INSERT INTO `crossword_puzzle` (`id`, `question`, `answer`, `upload_time`) VALUES
+(208, 'Ibu kota provinsi Bali?', 'DENPASAR', '2024-06-03 17:28:51'),
+(209, 'Laut di sebelah utara Indonesia?', 'LAUTCINASELATAN', '2024-06-03 17:28:51'),
+(210, 'Sungai di Pulau Kalimantan?', 'MAHAKAM', '2024-06-03 17:28:51'),
+(211, 'Gunung tertinggi di Jawa?', 'SEMERU', '2024-06-03 17:28:51'),
+(212, 'Raja terakhir Majapahit?', 'BRAWIJAYA', '2024-06-03 17:28:51'),
+(213, 'Hari pahlawan diperingati pada bulan?', 'NOVEMBER', '2024-06-03 17:28:51'),
+(214, 'Penulis novel Laskar Pelangi?', 'ANDREAHIRATA', '2024-06-03 17:28:51'),
+(215, 'Tari tradisional dari Bali?', 'KECAK', '2024-06-03 17:28:51'),
+(216, 'Presiden kedua Indonesia?', 'SOEHARTO', '2024-06-03 17:28:51'),
+(217, 'Perang terbesar di Aceh?', 'PERANGACEH', '2024-06-03 17:28:51'),
+(218, 'Pusat pemerintahan kerajaan Sriwijaya?', 'PALEMBANG', '2024-06-03 17:28:51'),
+(219, 'Mata uang Indonesia?', 'RUPIAH', '2024-06-03 17:28:51'),
+(220, 'Pakaian adat dari Jawa Barat?', 'KEBAYA', '2024-06-03 17:28:51'),
+(221, 'Tempat kelahiran Bung Karno?', 'BLITAR', '2024-06-03 17:28:51'),
+(222, 'Hewan khas Kalimantan?', 'ORANGUTAN', '2024-06-03 17:28:51'),
+(223, 'Nama candi di Jawa Tengah?', 'BOROBUDUR', '2024-06-03 17:28:51'),
+(224, 'Pelabuhan terbesar di Indonesia?', 'TANJUNGPRIOK', '2024-06-03 17:28:51'),
+(225, 'Presiden Indonesia saat ini?', 'JOKOWI', '2024-06-03 17:28:51'),
+(226, 'Nama kapal perang Indonesia?', 'KRI', '2024-06-03 17:28:51'),
+(227, 'Ibukota provinsi Papua?', 'JAYAPURA', '2024-06-03 17:28:51'),
+(228, 'Danau vulkanik di Sumatera?', 'TOBA', '2024-06-03 17:28:51'),
+(229, 'Gubernur pertama Jakarta?', 'SUPRAPTO', '2024-06-03 17:28:51'),
+(230, 'Pahlawan dari Makassar?', 'HASANUDDIN', '2024-06-03 17:28:51'),
+(231, 'Makanan khas Bandung?', 'SEBLAK', '2024-06-03 17:28:51'),
+(232, 'Festival budaya di Bali?', 'NYEPI', '2024-06-03 17:28:51'),
+(233, 'Kota terbesar kedua di Indonesia?', 'SURABAYA', '2024-06-03 17:28:51'),
+(234, 'Pulau di selatan Bali?', 'NUSAPENIDA', '2024-06-03 17:28:51'),
+(235, 'Kerajaan terbesar di Sumatera?', 'SRIWIJAYA', '2024-06-03 17:28:51'),
+(236, 'Presiden ketiga Indonesia?', 'HABIBIE', '2024-06-03 17:28:51'),
+(237, 'Ibukota provinsi Jawa Barat?', 'BANDUNG', '2024-06-03 17:28:51'),
+(238, 'Ibu kota provinsi Bali?', 'DENPASAR', '2024-06-03 17:28:51'),
+(239, 'Sungai di Pulau Kalimantan?', 'MAHAKAM', '2024-06-03 17:28:51'),
+(240, 'Gunung tertinggi di Jawa?', 'SEMERU', '2024-06-03 17:28:51'),
+(241, 'Raja terakhir Majapahit?', 'BRAWIJAYA', '2024-06-03 17:28:51'),
+(242, 'Hari pahlawan diperingati pada bulan?', 'NOVEMBER', '2024-06-03 17:28:51'),
+(243, 'Penyusun naskah Sumpah Pemuda?', 'YAMIN', '2024-06-03 17:28:51'),
+(244, 'Tari tradisional dari Bali?', 'KECAK', '2024-06-03 17:28:51'),
+(245, 'Presiden kedua Indonesia?', 'SOEHARTO', '2024-06-03 17:28:51'),
+(246, 'Perang terbesar di Aceh?', 'PERANGACEH', '2024-06-03 17:28:51'),
+(247, 'Pusat pemerintahan kerajaan Sriwijaya?', 'PALEMBANG', '2024-06-03 17:28:51'),
+(248, 'Mata uang Indonesia?', 'RUPIAH', '2024-06-03 17:28:51'),
+(249, 'Pakaian adat dari Jawa Barat?', 'KEBAYA', '2024-06-03 17:28:51'),
+(250, 'Tempat kelahiran Bung Karno?', 'BLITAR', '2024-06-03 17:28:51'),
+(251, 'Hewan khas Kalimantan?', 'ORANGUTAN', '2024-06-03 17:28:51'),
+(252, 'Nama candi di Jawa Tengah?', 'BOROBUDUR', '2024-06-03 17:28:51'),
+(253, 'Pelabuhan di Jawa Timur?', 'TANJUNGPERAK', '2024-06-03 17:28:51'),
+(254, 'Presiden Indonesia saat ini?', 'JOKOWI', '2024-06-03 17:28:51'),
+(255, 'Nama kapal perang Indonesia?', 'KRI', '2024-06-03 17:28:51'),
+(256, 'Ibukota provinsi Papua?', 'JAYAPURA', '2024-06-03 17:28:51'),
+(257, 'Danau vulkanik di Sumatera?', 'TOBA', '2024-06-03 17:28:51'),
+(258, 'Gubernur pertama Jakarta?', 'SUPRAPTO', '2024-06-03 17:28:51'),
+(259, 'Pahlawan dari Makassar?', 'HASANUDDIN', '2024-06-03 17:28:51'),
+(260, 'Makanan khas Bandung?', 'SEBLAK', '2024-06-03 17:28:51'),
+(261, 'Festival budaya di Bali?', 'NYEPI', '2024-06-03 17:28:51'),
+(262, 'Kota terbesar kedua di Indonesia?', 'SURABAYA', '2024-06-03 17:28:51'),
+(263, 'Pulau di selatan Bali?', 'NUSAPENIDA', '2024-06-03 17:28:51'),
+(264, 'Kerajaan terbesar di Sumatera?', 'SRIWIJAYA', '2024-06-03 17:28:51'),
+(265, 'Presiden ketiga Indonesia?', 'HABIBIE', '2024-06-03 17:28:51'),
+(266, 'Ibukota provinsi Jawa Barat?', 'BANDUNG', '2024-06-03 17:28:51'),
+(267, 'Laut di antara Sumatera dan Jawa?', 'SELATSUNDA', '2024-06-03 17:28:51');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jigsaw_puzzle`
+--
+
+CREATE TABLE `jigsaw_puzzle` (
+  `id` int(11) NOT NULL COMMENT 'Primary Key',
+  `name` varchar(255) NOT NULL,
+  `path` varchar(255) NOT NULL,
+  `upload_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -121,6 +213,18 @@ INSERT INTO `users` (`id`, `name`, `marks`) VALUES
 --
 
 --
+-- Indexes for table `crossword_puzzle`
+--
+ALTER TABLE `crossword_puzzle`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `jigsaw_puzzle`
+--
+ALTER TABLE `jigsaw_puzzle`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `modul`
 --
 ALTER TABLE `modul`
@@ -141,6 +245,18 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `crossword_puzzle`
+--
+ALTER TABLE `crossword_puzzle`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=268;
+
+--
+-- AUTO_INCREMENT for table `jigsaw_puzzle`
+--
+ALTER TABLE `jigsaw_puzzle`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `modul`
