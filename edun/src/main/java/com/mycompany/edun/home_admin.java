@@ -15,7 +15,10 @@ import com.mycompany.edun.database.UpdateQuestion;
 import com.mycompany.edun.database.koneksi_db;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
@@ -42,7 +45,7 @@ public class home_admin extends javax.swing.JFrame {
             Connection con = (Connection)koneksi_db.konfigurasi_koneksiDB();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM users;");
-            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+            jTable2.setModel(DbUtils.resultSetToTableModel(rs));
         }
         catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -89,10 +92,8 @@ public class home_admin extends javax.swing.JFrame {
         txt_addQuestion = new javax.swing.JLabel();
         image_addQuestion = new rojerusan.RSPanelImage();
         add_question = new rojerusan.RSMaterialButtonRectangle();
-        listQuestion = new javax.swing.JPanel();
-        txt_listQuestion = new javax.swing.JLabel();
-        image_list = new rojerusan.RSPanelImage();
-        list_question = new rojerusan.RSMaterialButtonRectangle();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
         content_modul = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         deleteModul = new javax.swing.JPanel();
@@ -107,19 +108,17 @@ public class home_admin extends javax.swing.JFrame {
         txt_addModul = new javax.swing.JLabel();
         image_addModul = new rojerusan.RSPanelImage();
         add_modul = new rojerusan.RSMaterialButtonRectangle();
-        listModul = new javax.swing.JPanel();
-        txt_listModul = new javax.swing.JLabel();
-        image_listModul = new rojerusan.RSPanelImage();
-        list_modul = new rojerusan.RSMaterialButtonRectangle();
+        scroll_modul = new javax.swing.JScrollPane();
+        list_modul = new javax.swing.JTable();
         content_result = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel10 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel14 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
         sidebar = new javax.swing.JPanel();
         logout = new javax.swing.JPanel();
         text_logout = new javax.swing.JLabel();
@@ -279,6 +278,7 @@ public class home_admin extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("SF Pro Text", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Lihat Hasil Kuis");
+        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         list_result.setBackground(new java.awt.Color(79, 70, 229));
         list_result.setFont(new java.awt.Font("SF Pro Text", 1, 14)); // NOI18N
@@ -338,7 +338,7 @@ public class home_admin extends javax.swing.JFrame {
         content_dashboardLayout.setVerticalGroup(
             content_dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(content_dashboardLayout.createSequentialGroup()
-                .addGap(70, 70, 70)
+                .addGap(60, 60, 60)
                 .addComponent(txt_general)
                 .addGap(21, 21, 21)
                 .addGroup(content_dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -352,7 +352,7 @@ public class home_admin extends javax.swing.JFrame {
                         .addGap(18, 18, 18)))
                 .addGap(35, 35, 35)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(263, Short.MAX_VALUE))
+                .addContainerGap(273, Short.MAX_VALUE))
         );
 
         content_question.setBackground(new java.awt.Color(255, 255, 255));
@@ -365,7 +365,7 @@ public class home_admin extends javax.swing.JFrame {
         deleteQuestion.setBackground(new java.awt.Color(255, 255, 255));
 
         txt_deleteQuestion.setBackground(new java.awt.Color(255, 255, 255));
-        txt_deleteQuestion.setFont(new java.awt.Font("SF Pro Text", 1, 24)); // NOI18N
+        txt_deleteQuestion.setFont(new java.awt.Font("SF Pro Text", 1, 16)); // NOI18N
         txt_deleteQuestion.setForeground(new java.awt.Color(255, 255, 255));
         txt_deleteQuestion.setText("<html> Hapus<br>Pertanyaan </html>");
 
@@ -375,11 +375,11 @@ public class home_admin extends javax.swing.JFrame {
         image_delete.setLayout(image_deleteLayout);
         image_deleteLayout.setHorizontalGroup(
             image_deleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 52, Short.MAX_VALUE)
         );
         image_deleteLayout.setVerticalGroup(
             image_deleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 57, Short.MAX_VALUE)
         );
 
         delete_question.setBackground(new java.awt.Color(239, 68, 68));
@@ -395,39 +395,38 @@ public class home_admin extends javax.swing.JFrame {
         deleteQuestionLayout.setHorizontalGroup(
             deleteQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(deleteQuestionLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addGap(31, 31, 31)
                 .addComponent(txt_deleteQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(image_delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                .addGap(34, 34, 34))
             .addGroup(deleteQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(deleteQuestionLayout.createSequentialGroup()
                     .addGap(1, 1, 1)
-                    .addComponent(delete_question, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(delete_question, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         deleteQuestionLayout.setVerticalGroup(
             deleteQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(deleteQuestionLayout.createSequentialGroup()
-                .addGroup(deleteQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(deleteQuestionLayout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(txt_deleteQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(deleteQuestionLayout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(image_delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txt_deleteQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
+            .addGroup(deleteQuestionLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(image_delete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
             .addGroup(deleteQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(deleteQuestionLayout.createSequentialGroup()
-                    .addGap(9, 9, 9)
-                    .addComponent(delete_question, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addContainerGap()
+                    .addComponent(delete_question, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
 
         editQuestion.setBackground(new java.awt.Color(255, 255, 255));
 
         txt_editQuestion.setBackground(new java.awt.Color(255, 255, 255));
-        txt_editQuestion.setFont(new java.awt.Font("SF Pro Text", 1, 24)); // NOI18N
+        txt_editQuestion.setFont(new java.awt.Font("SF Pro Text", 1, 16)); // NOI18N
         txt_editQuestion.setForeground(new java.awt.Color(255, 255, 255));
         txt_editQuestion.setText("<html> Perbarui<br>Pertanyaan </html>");
 
@@ -437,11 +436,11 @@ public class home_admin extends javax.swing.JFrame {
         image_edit.setLayout(image_editLayout);
         image_editLayout.setHorizontalGroup(
             image_editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 49, Short.MAX_VALUE)
         );
         image_editLayout.setVerticalGroup(
             image_editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 50, Short.MAX_VALUE)
         );
 
         edit_question.setBackground(new java.awt.Color(245, 158, 11));
@@ -456,40 +455,36 @@ public class home_admin extends javax.swing.JFrame {
         editQuestion.setLayout(editQuestionLayout);
         editQuestionLayout.setHorizontalGroup(
             editQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 425, Short.MAX_VALUE)
+            .addGroup(editQuestionLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(txt_editQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addComponent(image_edit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
             .addGroup(editQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(editQuestionLayout.createSequentialGroup()
-                    .addGroup(editQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, editQuestionLayout.createSequentialGroup()
-                            .addGap(36, 36, 36)
-                            .addComponent(txt_editQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, editQuestionLayout.createSequentialGroup()
-                            .addGap(256, 256, 256)
-                            .addComponent(image_edit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(edit_question, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(edit_question, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         editQuestionLayout.setVerticalGroup(
             editQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 198, Short.MAX_VALUE)
+            .addGroup(editQuestionLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(editQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(image_edit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_editQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(editQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(editQuestionLayout.createSequentialGroup()
-                    .addGap(12, 12, 12)
-                    .addGroup(editQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(editQuestionLayout.createSequentialGroup()
-                            .addGap(60, 60, 60)
-                            .addComponent(txt_editQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(edit_question, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(editQuestionLayout.createSequentialGroup()
-                            .addGap(40, 40, 40)
-                            .addComponent(image_edit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addContainerGap()
+                    .addComponent(edit_question, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(8, Short.MAX_VALUE)))
         );
 
         addQuestion.setBackground(new java.awt.Color(255, 255, 255));
 
         txt_addQuestion.setBackground(new java.awt.Color(255, 255, 255));
-        txt_addQuestion.setFont(new java.awt.Font("SF Pro Text", 1, 24)); // NOI18N
+        txt_addQuestion.setFont(new java.awt.Font("SF Pro Text", 1, 16)); // NOI18N
         txt_addQuestion.setForeground(new java.awt.Color(255, 255, 255));
         txt_addQuestion.setText("<html> Tambah<br>Pertanyaan </html>");
 
@@ -499,11 +494,11 @@ public class home_admin extends javax.swing.JFrame {
         image_addQuestion.setLayout(image_addQuestionLayout);
         image_addQuestionLayout.setHorizontalGroup(
             image_addQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 47, Short.MAX_VALUE)
         );
         image_addQuestionLayout.setVerticalGroup(
             image_addQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 51, Short.MAX_VALUE)
         );
 
         add_question.setBackground(new java.awt.Color(16, 185, 129));
@@ -518,98 +513,44 @@ public class home_admin extends javax.swing.JFrame {
         addQuestion.setLayout(addQuestionLayout);
         addQuestionLayout.setHorizontalGroup(
             addQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 422, Short.MAX_VALUE)
+            .addGroup(addQuestionLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(txt_addQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(image_addQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
             .addGroup(addQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(addQuestionLayout.createSequentialGroup()
-                    .addGroup(addQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(addQuestionLayout.createSequentialGroup()
-                            .addGap(266, 266, 266)
-                            .addComponent(image_addQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(addQuestionLayout.createSequentialGroup()
-                            .addGap(46, 46, 46)
-                            .addComponent(txt_addQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(add_question, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(add_question, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         addQuestionLayout.setVerticalGroup(
             addQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 193, Short.MAX_VALUE)
+            .addGroup(addQuestionLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(addQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(image_addQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_addQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(addQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(addQuestionLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(addQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(add_question, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(addQuestionLayout.createSequentialGroup()
-                            .addGap(40, 40, 40)
-                            .addComponent(image_addQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(addQuestionLayout.createSequentialGroup()
-                            .addGap(60, 60, 60)
-                            .addComponent(txt_addQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(7, Short.MAX_VALUE)))
+                    .addComponent(add_question, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        listQuestion.setBackground(new java.awt.Color(255, 255, 255));
-
-        txt_listQuestion.setBackground(new java.awt.Color(255, 255, 255));
-        txt_listQuestion.setFont(new java.awt.Font("SF Pro Text", 1, 24)); // NOI18N
-        txt_listQuestion.setForeground(new java.awt.Color(30, 27, 75));
-        txt_listQuestion.setText("<html> Daftar<br>Pertanyaan </html>");
-
-        image_list.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-List.png"))); // NOI18N
-
-        javax.swing.GroupLayout image_listLayout = new javax.swing.GroupLayout(image_list);
-        image_list.setLayout(image_listLayout);
-        image_listLayout.setHorizontalGroup(
-            image_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        image_listLayout.setVerticalGroup(
-            image_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        list_question.setBackground(new java.awt.Color(224, 231, 255));
-        list_question.setBorder(null);
-        list_question.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                list_questionActionPerformed(evt);
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        });
-
-        javax.swing.GroupLayout listQuestionLayout = new javax.swing.GroupLayout(listQuestion);
-        listQuestion.setLayout(listQuestionLayout);
-        listQuestionLayout.setHorizontalGroup(
-            listQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 428, Short.MAX_VALUE)
-            .addGroup(listQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(listQuestionLayout.createSequentialGroup()
-                    .addGroup(listQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(listQuestionLayout.createSequentialGroup()
-                            .addGap(256, 256, 256)
-                            .addComponent(image_list, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(listQuestionLayout.createSequentialGroup()
-                            .addGap(36, 36, 36)
-                            .addComponent(txt_listQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(list_question, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-        listQuestionLayout.setVerticalGroup(
-            listQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(listQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(listQuestionLayout.createSequentialGroup()
-                    .addGroup(listQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(listQuestionLayout.createSequentialGroup()
-                            .addGap(46, 46, 46)
-                            .addComponent(image_list, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(listQuestionLayout.createSequentialGroup()
-                            .addGap(66, 66, 66)
-                            .addComponent(txt_listQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(listQuestionLayout.createSequentialGroup()
-                            .addGap(6, 6, 6)
-                            .addComponent(list_question, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
+        ));
+        jScrollPane3.setViewportView(jTable3);
 
         javax.swing.GroupLayout content_questionLayout = new javax.swing.GroupLayout(content_question);
         content_question.setLayout(content_questionLayout);
@@ -619,17 +560,14 @@ public class home_admin extends javax.swing.JFrame {
                 .addGap(60, 60, 60)
                 .addGroup(content_questionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(content_questionLayout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(content_questionLayout.createSequentialGroup()
-                        .addGroup(content_questionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(listQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(editQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(36, 36, 36)
-                        .addGroup(content_questionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(addQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(deleteQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(44, Short.MAX_VALUE))))
+                        .addComponent(addQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(editQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(deleteQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel6)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(254, 254, 254))
         );
         content_questionLayout.setVerticalGroup(
             content_questionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -638,13 +576,12 @@ public class home_admin extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addGap(31, 31, 31)
                 .addGroup(content_questionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(addQuestion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(listQuestion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(content_questionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(deleteQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(editQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(441, Short.MAX_VALUE))
+                    .addComponent(deleteQuestion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(editQuestion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addQuestion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(237, Short.MAX_VALUE))
         );
 
         content_modul.setBackground(new java.awt.Color(255, 255, 255));
@@ -657,7 +594,7 @@ public class home_admin extends javax.swing.JFrame {
         deleteModul.setBackground(new java.awt.Color(255, 255, 255));
 
         txt_deleteModul.setBackground(new java.awt.Color(255, 255, 255));
-        txt_deleteModul.setFont(new java.awt.Font("SF Pro Text", 1, 24)); // NOI18N
+        txt_deleteModul.setFont(new java.awt.Font("SF Pro Text", 1, 16)); // NOI18N
         txt_deleteModul.setForeground(new java.awt.Color(255, 255, 255));
         txt_deleteModul.setText("<html> Hapus<br>Modul </html>");
 
@@ -667,11 +604,11 @@ public class home_admin extends javax.swing.JFrame {
         image_deleteModul.setLayout(image_deleteModulLayout);
         image_deleteModulLayout.setHorizontalGroup(
             image_deleteModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 58, Short.MAX_VALUE)
         );
         image_deleteModulLayout.setVerticalGroup(
             image_deleteModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 61, Short.MAX_VALUE)
         );
 
         delete_modul.setBackground(new java.awt.Color(239, 68, 68));
@@ -687,15 +624,15 @@ public class home_admin extends javax.swing.JFrame {
         deleteModulLayout.setHorizontalGroup(
             deleteModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(deleteModulLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addGap(25, 25, 25)
                 .addComponent(txt_deleteModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
+                .addGap(79, 79, 79)
                 .addComponent(image_deleteModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                .addContainerGap(34, Short.MAX_VALUE))
             .addGroup(deleteModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(deleteModulLayout.createSequentialGroup()
                     .addGap(1, 1, 1)
-                    .addComponent(delete_modul, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(delete_modul, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         deleteModulLayout.setVerticalGroup(
@@ -703,23 +640,23 @@ public class home_admin extends javax.swing.JFrame {
             .addGroup(deleteModulLayout.createSequentialGroup()
                 .addGroup(deleteModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(deleteModulLayout.createSequentialGroup()
-                        .addGap(68, 68, 68)
+                        .addGap(41, 41, 41)
                         .addComponent(txt_deleteModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(deleteModulLayout.createSequentialGroup()
-                        .addGap(49, 49, 49)
+                        .addGap(33, 33, 33)
                         .addComponent(image_deleteModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
             .addGroup(deleteModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(deleteModulLayout.createSequentialGroup()
                     .addGap(9, 9, 9)
-                    .addComponent(delete_modul, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(delete_modul, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         editModul.setBackground(new java.awt.Color(255, 255, 255));
 
         txt_editModul.setBackground(new java.awt.Color(255, 255, 255));
-        txt_editModul.setFont(new java.awt.Font("SF Pro Text", 1, 24)); // NOI18N
+        txt_editModul.setFont(new java.awt.Font("SF Pro Text", 1, 16)); // NOI18N
         txt_editModul.setForeground(new java.awt.Color(255, 255, 255));
         txt_editModul.setText("<html> Perbarui<br>Modul </html>");
 
@@ -729,11 +666,11 @@ public class home_admin extends javax.swing.JFrame {
         image_editModul.setLayout(image_editModulLayout);
         image_editModulLayout.setHorizontalGroup(
             image_editModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 57, Short.MAX_VALUE)
         );
         image_editModulLayout.setVerticalGroup(
             image_editModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 57, Short.MAX_VALUE)
         );
 
         edit_modul.setBackground(new java.awt.Color(245, 158, 11));
@@ -748,40 +685,38 @@ public class home_admin extends javax.swing.JFrame {
         editModul.setLayout(editModulLayout);
         editModulLayout.setHorizontalGroup(
             editModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 425, Short.MAX_VALUE)
+            .addGroup(editModulLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(txt_editModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
+                .addComponent(image_editModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(39, Short.MAX_VALUE))
             .addGroup(editModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(editModulLayout.createSequentialGroup()
-                    .addGroup(editModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, editModulLayout.createSequentialGroup()
-                            .addGap(36, 36, 36)
-                            .addComponent(txt_editModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, editModulLayout.createSequentialGroup()
-                            .addGap(256, 256, 256)
-                            .addComponent(image_editModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(edit_modul, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(edit_modul, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         editModulLayout.setVerticalGroup(
             editModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 198, Short.MAX_VALUE)
+            .addGroup(editModulLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(editModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(editModulLayout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(txt_editModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(image_editModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(38, Short.MAX_VALUE))
             .addGroup(editModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(editModulLayout.createSequentialGroup()
-                    .addGap(12, 12, 12)
-                    .addGroup(editModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(editModulLayout.createSequentialGroup()
-                            .addGap(60, 60, 60)
-                            .addComponent(txt_editModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(edit_modul, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(editModulLayout.createSequentialGroup()
-                            .addGap(40, 40, 40)
-                            .addComponent(image_editModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap()
+                    .addComponent(edit_modul, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         addModul.setBackground(new java.awt.Color(255, 255, 255));
 
         txt_addModul.setBackground(new java.awt.Color(255, 255, 255));
-        txt_addModul.setFont(new java.awt.Font("SF Pro Text", 1, 24)); // NOI18N
+        txt_addModul.setFont(new java.awt.Font("SF Pro Text", 1, 16)); // NOI18N
         txt_addModul.setForeground(new java.awt.Color(255, 255, 255));
         txt_addModul.setText("<html> Tambah<br>Modul </html>");
 
@@ -791,11 +726,11 @@ public class home_admin extends javax.swing.JFrame {
         image_addModul.setLayout(image_addModulLayout);
         image_addModulLayout.setHorizontalGroup(
             image_addModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 50, Short.MAX_VALUE)
         );
         image_addModulLayout.setVerticalGroup(
             image_addModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 50, Short.MAX_VALUE)
         );
 
         add_modul.setBackground(new java.awt.Color(16, 185, 129));
@@ -810,138 +745,33 @@ public class home_admin extends javax.swing.JFrame {
         addModul.setLayout(addModulLayout);
         addModulLayout.setHorizontalGroup(
             addModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 422, Short.MAX_VALUE)
+            .addGroup(addModulLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(txt_addModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65)
+                .addComponent(image_addModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(45, Short.MAX_VALUE))
             .addGroup(addModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(addModulLayout.createSequentialGroup()
-                    .addGroup(addModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(addModulLayout.createSequentialGroup()
-                            .addGap(266, 266, 266)
-                            .addComponent(image_addModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(addModulLayout.createSequentialGroup()
-                            .addGap(46, 46, 46)
-                            .addComponent(txt_addModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(add_modul, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(add_modul, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         addModulLayout.setVerticalGroup(
             addModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 193, Short.MAX_VALUE)
+            .addGroup(addModulLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(addModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(image_addModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_addModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(33, Short.MAX_VALUE))
             .addGroup(addModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(addModulLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(addModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(add_modul, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(addModulLayout.createSequentialGroup()
-                            .addGap(40, 40, 40)
-                            .addComponent(image_addModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(addModulLayout.createSequentialGroup()
-                            .addGap(60, 60, 60)
-                            .addComponent(txt_addModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(7, Short.MAX_VALUE)))
-        );
-
-        listModul.setBackground(new java.awt.Color(255, 255, 255));
-
-        txt_listModul.setBackground(new java.awt.Color(255, 255, 255));
-        txt_listModul.setFont(new java.awt.Font("SF Pro Text", 1, 24)); // NOI18N
-        txt_listModul.setForeground(new java.awt.Color(30, 27, 75));
-        txt_listModul.setText("<html> Daftar<br>Modul </html>");
-
-        image_listModul.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-List.png"))); // NOI18N
-
-        javax.swing.GroupLayout image_listModulLayout = new javax.swing.GroupLayout(image_listModul);
-        image_listModul.setLayout(image_listModulLayout);
-        image_listModulLayout.setHorizontalGroup(
-            image_listModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        image_listModulLayout.setVerticalGroup(
-            image_listModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        list_modul.setBackground(new java.awt.Color(224, 231, 255));
-        list_modul.setBorder(null);
-        list_modul.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                list_modulActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout listModulLayout = new javax.swing.GroupLayout(listModul);
-        listModul.setLayout(listModulLayout);
-        listModulLayout.setHorizontalGroup(
-            listModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 428, Short.MAX_VALUE)
-            .addGroup(listModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(listModulLayout.createSequentialGroup()
-                    .addGroup(listModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(listModulLayout.createSequentialGroup()
-                            .addGap(256, 256, 256)
-                            .addComponent(image_listModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(listModulLayout.createSequentialGroup()
-                            .addGap(36, 36, 36)
-                            .addComponent(txt_listModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(list_modul, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-        listModulLayout.setVerticalGroup(
-            listModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(listModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(listModulLayout.createSequentialGroup()
-                    .addGroup(listModulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(listModulLayout.createSequentialGroup()
-                            .addGap(46, 46, 46)
-                            .addComponent(image_listModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(listModulLayout.createSequentialGroup()
-                            .addGap(66, 66, 66)
-                            .addComponent(txt_listModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(listModulLayout.createSequentialGroup()
-                            .addGap(6, 6, 6)
-                            .addComponent(list_modul, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(add_modul, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        javax.swing.GroupLayout content_modulLayout = new javax.swing.GroupLayout(content_modul);
-        content_modul.setLayout(content_modulLayout);
-        content_modulLayout.setHorizontalGroup(
-            content_modulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(content_modulLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addGroup(content_modulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(content_modulLayout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(content_modulLayout.createSequentialGroup()
-                        .addGroup(content_modulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(listModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(editModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(36, 36, 36)
-                        .addGroup(content_modulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(addModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(deleteModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(44, Short.MAX_VALUE))))
-        );
-        content_modulLayout.setVerticalGroup(
-            content_modulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(content_modulLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(jLabel11)
-                .addGap(31, 31, 31)
-                .addGroup(content_modulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(addModul, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(listModul, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(content_modulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(deleteModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(editModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(441, Short.MAX_VALUE))
-        );
-
-        content_result.setBackground(new java.awt.Color(255, 255, 255));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        list_modul.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -952,65 +782,110 @@ public class home_admin extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        scroll_modul.setViewportView(list_modul);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel2.setFont(new java.awt.Font("SF Pro Text", 0, 13)); // NOI18N
+        javax.swing.GroupLayout content_modulLayout = new javax.swing.GroupLayout(content_modul);
+        content_modul.setLayout(content_modulLayout);
+        content_modulLayout.setHorizontalGroup(
+            content_modulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(content_modulLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(content_modulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scroll_modul, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(content_modulLayout.createSequentialGroup()
+                        .addGroup(content_modulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(addModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11))
+                        .addGap(18, 18, 18)
+                        .addComponent(editModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(deleteModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(254, Short.MAX_VALUE))
+        );
+        content_modulLayout.setVerticalGroup(
+            content_modulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(content_modulLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jLabel11)
+                .addGap(31, 31, 31)
+                .addGroup(content_modulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(deleteModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editModul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addComponent(scroll_modul, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(238, Short.MAX_VALUE))
+        );
 
-        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel9.setFont(new java.awt.Font("SF Pro Text", 0, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(17, 24, 39));
-        jLabel9.setText("Cari");
+        content_result.setBackground(new java.awt.Color(255, 255, 255));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100", "<86 Sampai <99", "<76 Sampai <85", ">75" }));
+        jLabel12.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel12.setFont(new java.awt.Font("SF Pro Text", 1, 24)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(17, 24, 39));
+        jLabel12.setText("Hasil Kuis");
 
-        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel10.setFont(new java.awt.Font("SF Pro Text", 0, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(17, 24, 39));
-        jLabel10.setText("Filter Nilai");
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel3.setFont(new java.awt.Font("SF Pro Text", 0, 13)); // NOI18N
 
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel13.setFont(new java.awt.Font("SF Pro Text", 0, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(17, 24, 39));
+        jLabel13.setText("Cari");
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100", "<86 Sampai <99", "<76 Sampai <85", ">75" }));
+
+        jLabel14.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel14.setFont(new java.awt.Font("SF Pro Text", 0, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(17, 24, 39));
+        jLabel14.setText("Filter Nilai");
+
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField1KeyPressed(evt);
+                jTextField2KeyPressed(evt);
             }
         });
 
-        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel8.setFont(new java.awt.Font("SF Pro Text", 1, 24)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(17, 24, 39));
-        jLabel8.setText("Hasil Kuis");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel8)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 450, Short.MAX_VALUE)
-                .addComponent(jLabel9)
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel13)
                 .addGap(14, 14, 14)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
-                .addComponent(jLabel10)
+                .addComponent(jLabel14)
                 .addGap(15, 15, 15)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(11, Short.MAX_VALUE))
         );
+
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable4.setRowHeight(32);
+        jTable4.setRowMargin(4);
+        jScrollPane4.setViewportView(jTable4);
 
         javax.swing.GroupLayout content_resultLayout = new javax.swing.GroupLayout(content_result);
         content_result.setLayout(content_resultLayout);
@@ -1018,18 +893,22 @@ public class home_admin extends javax.swing.JFrame {
             content_resultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(content_resultLayout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addGroup(content_resultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(content_resultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 940, Short.MAX_VALUE)
+                    .addComponent(jLabel12)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 9, Short.MAX_VALUE))
         );
         content_resultLayout.setVerticalGroup(
             content_resultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(content_resultLayout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(441, Short.MAX_VALUE))
+                .addComponent(jLabel12)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(371, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout containerLayout = new javax.swing.GroupLayout(container);
@@ -1039,14 +918,15 @@ public class home_admin extends javax.swing.JFrame {
             .addGroup(containerLayout.createSequentialGroup()
                 .addGroup(containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(content_dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(content_question, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(content_result, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(content_question, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
             .addGroup(containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(containerLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(content_modul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(396, Short.MAX_VALUE)))
+                    .addGroup(containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(content_modul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(content_result, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(112, Short.MAX_VALUE)))
         );
         containerLayout.setVerticalGroup(
             containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1054,13 +934,14 @@ public class home_admin extends javax.swing.JFrame {
                 .addComponent(content_dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(content_question, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2009, 2009, 2009)
-                .addComponent(content_result, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3000, 3000, 3000))
             .addGroup(containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(containerLayout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(content_modul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(3523, Short.MAX_VALUE)))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(content_result, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(2988, Short.MAX_VALUE)))
         );
 
         getContentPane().add(container, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 1130, 960));
@@ -1266,6 +1147,16 @@ public class home_admin extends javax.swing.JFrame {
         content_question.setVisible(true);
         content_modul.setVisible(false);
         content_result.setVisible(false);
+        
+        try{
+            Connection con = (Connection)koneksi_db.konfigurasi_koneksiDB();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM questions;");
+            jTable3.setModel(DbUtils.resultSetToTableModel(rs));
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        
     }//GEN-LAST:event_questionMouseClicked
 
     private void modulMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modulMouseClicked
@@ -1274,6 +1165,17 @@ public class home_admin extends javax.swing.JFrame {
         content_question.setVisible(false);
         content_modul.setVisible(true);
         content_result.setVisible(false);
+        
+        // Tampilan table di halaman modul
+        try {
+            Connection con = (Connection)koneksi_db.konfigurasi_koneksiDB();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM modul;");
+            list_modul.setModel(DbUtils.resultSetToTableModel(rs));
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_modulMouseClicked
 
     private void hasilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hasilMouseClicked
@@ -1282,35 +1184,17 @@ public class home_admin extends javax.swing.JFrame {
         content_question.setVisible(false);
         content_modul.setVisible(false);
         content_result.setVisible(true);
-    }//GEN-LAST:event_hasilMouseClicked
-
-    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-        // TODO add your handling code here:
-        int marks;
-        if(jTextField1.getText().equals("")) {
-            marks=0;
-        }
-        else {
-            marks=Integer.parseInt(jTextField1.getText());
-            try {
-            Connection con = (Connection)koneksi_db.konfigurasi_koneksiDB();
+        
+        try {
+            Connection con;
+            con = (Connection)koneksi_db.konfigurasi_koneksiDB();
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM users WHERE marks >= "+marks+";");
-            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+            ResultSet rs = st.executeQuery("SELECT * FROM users;");
+            jTable4.setModel(DbUtils.resultSetToTableModel(rs));
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
         }
-        catch (Exception e) {
-            JFrame jf=new JFrame();
-            jf.setAlwaysOnTop(true);
-            JOptionPane.showMessageDialog(jf, e);
-        }
-        }
-    }//GEN-LAST:event_jTextField1KeyPressed
-
-    private void list_questionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list_questionActionPerformed
-        // TODO add your handling code here:
-        GetQuestion GetQuestion = new GetQuestion();
-        GetQuestion.setVisible(true);
-    }//GEN-LAST:event_list_questionActionPerformed
+    }//GEN-LAST:event_hasilMouseClicked
 
     private void add_questionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_questionActionPerformed
         // TODO add your handling code here:
@@ -1351,6 +1235,18 @@ public class home_admin extends javax.swing.JFrame {
         content_modul.setVisible(false);
         content_result.setVisible(true);
         
+        
+        try {
+            Connection con;
+            con = (Connection)koneksi_db.konfigurasi_koneksiDB();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM users;");
+            jTable4.setModel(DbUtils.resultSetToTableModel(rs));
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        
+        
     }//GEN-LAST:event_list_resultActionPerformed
 
     private void delete_modulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_modulActionPerformed
@@ -1386,12 +1282,28 @@ public class home_admin extends javax.swing.JFrame {
         addModule.setAlwaysOnTop(true);
     }//GEN-LAST:event_add_modulActionPerformed
 
-    private void list_modulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list_modulActionPerformed
+    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
         // TODO add your handling code here:
-        GetModule getModule = new GetModule();
-        getModule.setVisible(true);
-        getModule.setAlwaysOnTop(true);
-    }//GEN-LAST:event_list_modulActionPerformed
+        int marks;
+        if(jTextField2.getText().equals("")) {
+            marks=0;
+        }
+        else {
+            marks=Integer.parseInt(jTextField2.getText());
+            try {
+            Connection con = (Connection)koneksi_db.konfigurasi_koneksiDB();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM users WHERE marks >= "+marks+";");
+            jTable4.setModel(DbUtils.resultSetToTableModel(rs));
+            
+        }
+        catch (Exception e) {
+            JFrame jf=new JFrame();
+            jf.setAlwaysOnTop(true);
+            JOptionPane.showMessageDialog(jf, e);
+        }
+        }
+    }//GEN-LAST:event_jTextField2KeyPressed
 
     /**
      * @param args the command line arguments
@@ -1456,34 +1368,31 @@ public class home_admin extends javax.swing.JFrame {
     private rojerusan.RSPanelImage image_deleteModul;
     private rojerusan.RSPanelImage image_edit;
     private rojerusan.RSPanelImage image_editModul;
-    private rojerusan.RSPanelImage image_list;
-    private rojerusan.RSPanelImage image_listModul;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JPanel listModul;
-    private javax.swing.JPanel listQuestion;
-    private rojerusan.RSMaterialButtonRectangle list_modul;
-    private rojerusan.RSMaterialButtonRectangle list_question;
+    private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable4;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTable list_modul;
     private rojerusan.RSMaterialButtonRectangle list_result;
     private javax.swing.JPanel logout;
     private javax.swing.JPanel modul;
@@ -1492,6 +1401,7 @@ public class home_admin extends javax.swing.JFrame {
     private rojerusan.RSPanelImage rSPanelImage1;
     private rojerusan.RSPanelImage rSPanelImage2;
     private rojerusan.RSPanelImage rSPanelImage3;
+    private javax.swing.JScrollPane scroll_modul;
     private javax.swing.JPanel sidebar;
     private javax.swing.JLabel text_dashboard;
     private javax.swing.JLabel text_logout;
@@ -1505,8 +1415,6 @@ public class home_admin extends javax.swing.JFrame {
     private javax.swing.JLabel txt_editModul;
     private javax.swing.JLabel txt_editQuestion;
     private javax.swing.JLabel txt_general;
-    private javax.swing.JLabel txt_listModul;
-    private javax.swing.JLabel txt_listQuestion;
     private javax.swing.JLabel txt_question;
     private javax.swing.JPanel user;
     // End of variables declaration//GEN-END:variables
