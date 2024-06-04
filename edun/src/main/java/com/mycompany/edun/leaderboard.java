@@ -112,7 +112,7 @@ public class leaderboard extends javax.swing.JFrame {
                 button_tryActionPerformed(evt);
             }
         });
-        getContentPane().add(button_try, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 370, 249, -1));
+        getContentPane().add(button_try, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 790, 249, -1));
 
         icon_back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Back-Arrow.png"))); // NOI18N
         getContentPane().add(icon_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 812, -1, -1));
