@@ -14,11 +14,41 @@ import java.sql.PreparedStatement;
  */
 public class sukses extends javax.swing.JFrame {
 
+    String newName;
+    int newMarks;
+    String newGameType;
+
     /**
      * Creates new form sukses
      */
     public sukses() {
         initComponents();
+    }
+
+    public sukses(String inputName, int inputMarks, String inputGameType) {
+        initComponents();
+        newName = inputName;
+        newMarks = inputMarks;
+        newGameType = inputGameType.toUpperCase();
+        if (newMarks <= 20) {
+            icon_star1.setVisible(false);
+            icon_star2.setVisible(false);
+            icon_star3.setVisible(false);
+        } else if (newMarks <= 50) {
+            icon_star1.setVisible(true);
+            icon_star2.setVisible(false);
+            icon_star3.setVisible(false);
+        } else if (newMarks <= 80) {
+            icon_star1.setVisible(true);
+            icon_star2.setVisible(true);
+            icon_star3.setVisible(false);
+        } else {
+            icon_star1.setVisible(true);
+            icon_star2.setVisible(true);
+            icon_star3.setVisible(true);
+        }
+        skor_pengguna.setText(newName);
+        text_PTS.setText(newMarks + " PTS");
     }
 
     /**
@@ -141,17 +171,21 @@ public class sukses extends javax.swing.JFrame {
         // TODO add your handling code here:
         login_menu menu = new login_menu();
         menu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_button_homeActionPerformed
 
     private void button_tryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_tryActionPerformed
         // TODO add your handling code here:
-        
+        choose_game chooseMenu = new choose_game(newName);
+        chooseMenu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_button_tryActionPerformed
 
     private void rSMaterialButtonRectangle1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRectangle1ActionPerformed
         // TODO add your handling code here:
-        leaderboard board = new leaderboard();
+        leaderboard board = new leaderboard(newName, newMarks, newGameType);
         board.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_rSMaterialButtonRectangle1ActionPerformed
 
     /**

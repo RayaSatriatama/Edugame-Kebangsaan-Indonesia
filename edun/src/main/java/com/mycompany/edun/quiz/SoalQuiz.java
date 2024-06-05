@@ -86,7 +86,7 @@ public class SoalQuiz extends javax.swing.JFrame {
         try {
             Connection con = (Connection)koneksi_db.konfigurasi_koneksiDB();
 
-            String query = "UPDATE users SET marks = ? WHERE name = ?";
+            String query = "INSERT INTO score (marks, name, game_type) VALUES (?, ?, 'quiz');";
             PreparedStatement pst = con.prepareStatement(query);
             pst.setInt(1, marks);
             pst.setString(2, username);
@@ -94,9 +94,9 @@ public class SoalQuiz extends javax.swing.JFrame {
             int rowsAffected = pst.executeUpdate();
 
             if (rowsAffected > 0) {
-                String marks1 = String.valueOf(marks);
+//                String marks1 = String.valueOf(marks);
                 setVisible(false);
-                new SuccesfullySubmited(marks1).setVisible(true);
+                new SuccesfullySubmited(username, marks).setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Error: Username not found.");
             }

@@ -3,12 +3,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.edun.quiz;
+
+import com.mycompany.edun.leaderboard;
 import com.mycompany.edun.login_user;
+import com.mycompany.edun.sukses;
+
 /**
  *
  * @author ivanbesti
  */
 public class SuccesfullySubmited extends javax.swing.JFrame {
+
+    String newName;
+    int newMarks;
 
     /**
      * Creates new form SuccesfullySubmited
@@ -16,10 +23,13 @@ public class SuccesfullySubmited extends javax.swing.JFrame {
     public SuccesfullySubmited() {
         initComponents();
     }
-    
-    public SuccesfullySubmited(String marks) {
+
+    public SuccesfullySubmited(String name, int marks) {
         initComponents();
-        String marks1="Nilai yang didapat: "+marks;
+        this.newMarks = marks;
+        this.newName = name;
+
+        String marks1 = "Nilai yang didapat: " + marks;
         jLabel1.setText(marks1);
     }
 
@@ -66,7 +76,8 @@ public class SuccesfullySubmited extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        new login_user().setVisible(true);
+        sukses s = new sukses(this.newName, this.newMarks, "QUIZ");
+        s.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 04, 2024 at 05:08 PM
+-- Generation Time: Jun 05, 2024 at 11:58 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -180,34 +180,66 @@ INSERT INTO `questions` (`id`, `name`, `opt1`, `opt2`, `opt3`, `opt4`, `answers`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `score`
+--
+
+CREATE TABLE `score` (
+  `id` int(11) NOT NULL COMMENT 'Primary Key',
+  `create_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'Create Time',
+  `name` varchar(255) DEFAULT NULL,
+  `marks` int(11) DEFAULT NULL,
+  `game_type` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `score`
+--
+
+INSERT INTO `score` (`id`, `create_time`, `name`, `marks`, `game_type`) VALUES
+(24, '2024-06-05 09:56:52', 'Alice', 85, 'TTS'),
+(25, '2024-06-05 09:56:52', 'Charlie', 77, 'TTS'),
+(26, '2024-06-05 09:56:52', 'Bob', 90, 'TTS'),
+(27, '2024-06-05 09:56:52', 'Charlie', 75, 'QUIZ'),
+(28, '2024-06-05 09:56:52', 'David', 80, 'QUIZ'),
+(29, '2024-06-05 09:56:52', 'Eve', 95, 'QUIZ'),
+(30, '2024-06-05 09:56:52', 'Frank', 70, 'QUIZ'),
+(31, '2024-06-05 09:56:52', 'Eve', 95, 'GAMBAR'),
+(32, '2024-06-05 09:56:52', 'Frank', 70, 'GAMBAR'),
+(33, '2024-06-05 09:56:52', 'Charlie', 75, 'GAMBAR'),
+(34, '2024-06-05 09:56:52', 'Grace', 88, 'GAMBAR'),
+(35, '2024-06-05 09:56:52', 'Hank', 78, 'TTS');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
   `id` int(155) NOT NULL,
-  `name` varchar(155) DEFAULT NULL,
-  `marks` int(155) DEFAULT NULL,
-  `game_type` varchar(255) DEFAULT NULL
+  `name` varchar(155) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `marks`, `game_type`) VALUES
-(1, 'jaja', 5, 'tts'),
-(2, 'haha', NULL, NULL),
-(3, 'hahah', NULL, NULL),
-(4, 'jajaja', 0, 'tts'),
-(5, 'jaja', 5, 'gambar'),
-(6, 'rara', 5, 'gambar'),
-(7, 'jajaja', 0, 'quiz'),
-(8, 'jajaja', 0, 'quiz'),
-(9, 'hahaha', 1, 'tts'),
-(10, 'jajajaj', 5, 'gambar'),
-(11, 'jaja', NULL, NULL),
-(12, 'jajaj', 5, 'gambar'),
-(13, 'Ivann', 2, 'tts');
+INSERT INTO `users` (`id`, `name`) VALUES
+(1, 'jaja'),
+(2, 'haha'),
+(3, 'hahah'),
+(4, 'jajaja'),
+(5, 'jaja'),
+(6, 'rara'),
+(7, 'jajaja'),
+(8, 'jajaja'),
+(9, 'hahaha'),
+(10, 'jajajaj'),
+(11, 'jaja'),
+(12, 'jajaj'),
+(13, 'Ivann'),
+(14, 'r'),
+(15, 'raya');
 
 --
 -- Indexes for dumped tables
@@ -235,6 +267,12 @@ ALTER TABLE `modul`
 -- Indexes for table `questions`
 --
 ALTER TABLE `questions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `score`
+--
+ALTER TABLE `score`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -266,10 +304,16 @@ ALTER TABLE `modul`
   MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `score`
+--
+ALTER TABLE `score`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=36;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(155) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(155) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
