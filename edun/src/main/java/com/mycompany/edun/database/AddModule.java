@@ -56,97 +56,186 @@ public static int open=0;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        background = new javax.swing.JPanel();
+        header = new javax.swing.JPanel();
+        title = new javax.swing.JLabel();
+        close = new rojerusan.RSPanelImage();
+        line_header = new javax.swing.JSeparator();
+        cta = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        txt_save = new javax.swing.JLabel();
+        save = new rojerusan.RSMaterialButtonRectangle();
+        jPanel2 = new javax.swing.JPanel();
+        txt_save1 = new javax.swing.JLabel();
+        clear = new rojerusan.RSMaterialButtonRectangle();
+        line_cta = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jLabel3 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jLabel1.setText("Tema ");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, -1, -1));
+        background.setBackground(new java.awt.Color(255, 255, 255));
+        background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jLabel2.setText("Isi Modul:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, -1, -1));
+        header.setBackground(new java.awt.Color(255, 255, 255));
+
+        title.setFont(new java.awt.Font("SF Pro Text", 1, 18)); // NOI18N
+        title.setForeground(new java.awt.Color(15, 23, 42));
+        title.setText("Tambah Modul");
+
+        close.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Close.png"))); // NOI18N
+        close.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                closeMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
+        header.setLayout(headerLayout);
+        headerLayout.setHorizontalGroup(
+            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(title)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 438, Short.MAX_VALUE)
+                .addComponent(close, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43))
+        );
+        headerLayout.setVerticalGroup(
+            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(close, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(title))
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+
+        background.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 70));
+
+        line_header.setForeground(new java.awt.Color(226, 232, 240));
+        background.add(line_header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 670, 10));
+
+        cta.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txt_save.setFont(new java.awt.Font("SF Pro Text", 1, 18)); // NOI18N
+        txt_save.setForeground(new java.awt.Color(255, 255, 255));
+        txt_save.setText("Simpan");
+        jPanel1.add(txt_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 80, -1));
+
+        save.setBackground(new java.awt.Color(67, 56, 202));
+        save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveActionPerformed(evt);
+            }
+        });
+        jPanel1.add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, 5, -1, -1));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txt_save1.setFont(new java.awt.Font("SF Pro Text", 1, 18)); // NOI18N
+        txt_save1.setForeground(new java.awt.Color(51, 65, 85));
+        txt_save1.setText("Bersihkan");
+        jPanel2.add(txt_save1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
+
+        clear.setBackground(new java.awt.Color(241, 245, 249));
+        clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearActionPerformed(evt);
+            }
+        });
+        jPanel2.add(clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 5, -1, -1));
+
+        javax.swing.GroupLayout ctaLayout = new javax.swing.GroupLayout(cta);
+        cta.setLayout(ctaLayout);
+        ctaLayout.setHorizontalGroup(
+            ctaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ctaLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(467, 467, 467))
+        );
+        ctaLayout.setVerticalGroup(
+            ctaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ctaLayout.createSequentialGroup()
+                .addGroup(ctaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        background.add(cta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 590, 670, 100));
+
+        line_cta.setForeground(new java.awt.Color(226, 232, 240));
+        background.add(line_cta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 580, 670, -1));
+
+        jLabel1.setFont(new java.awt.Font("SF Pro Text", 1, 16)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(15, 23, 42));
+        jLabel1.setText("<html>\nPilih Tema \n<span style=\"color: #F73B3B;\">*</span>\n</html>");
+        background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("SF Pro Text", 1, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(15, 23, 42));
+        jLabel2.setText("<html>\nIsi Modul \n<span style=\"color: #F73B3B;\">*</span>\n</html>");
+        background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(359, 286, 959, 330));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/add new question.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 39, -1, -1));
+        background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 600, 290));
 
         jComboBox1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Tema", "Pancasila", "HAM", "Hukum" }));
+        jComboBox1.setMinimumSize(new java.awt.Dimension(107, 32));
+        jComboBox1.setPreferredSize(new java.awt.Dimension(107, 32));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, -1, -1));
+        background.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 600, 40));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/close.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1291, 39, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 40)); // NOI18N
-        jLabel4.setText("Tambah Modul");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 51, -1, -1));
-
-        jButton2.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/save.png"))); // NOI18N
-        jButton2.setText("Save");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 640, -1, -1));
-
-        jButton3.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/clear question.png"))); // NOI18N
-        jButton3.setText("Clear");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 640, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("SF Pro Text", 1, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(15, 23, 42));
         jLabel6.setText("Modul ID:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, -1, -1));
+        background.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("SF Pro Text", 1, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(67, 56, 202));
         jLabel7.setText("00");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, -1, -1));
+        background.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, -1, -1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BG.png"))); // NOI18N
-        jLabel5.setText("jLabel5");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 690));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
+        // TODO add your handling code here:
+        home_admin.open=0;
+        setVisible(false);
+    }//GEN-LAST:event_closeMouseClicked
+
+    private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         // TODO add your handling code here:
         String id=jLabel7.getText();
         String tema=(String)jComboBox1.getSelectedItem();
@@ -169,23 +258,12 @@ public static int open=0;
             jf.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(jf, e);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_saveActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
         // TODO add your handling code here:
         jTextArea1.setText("");
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        setVisible(false);
-        new home_admin().setVisible(true);
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_clearActionPerformed
 
     /**
      * @param args the command line arguments
@@ -4318,18 +4396,25 @@ public static int open=0;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JPanel background;
+    private rojerusan.RSMaterialButtonRectangle clear;
+    private rojerusan.RSPanelImage close;
+    private javax.swing.JPanel cta;
+    private javax.swing.JPanel header;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JSeparator line_cta;
+    private javax.swing.JSeparator line_header;
+    private rojerusan.RSMaterialButtonRectangle save;
+    private javax.swing.JLabel title;
+    private javax.swing.JLabel txt_save;
+    private javax.swing.JLabel txt_save1;
     // End of variables declaration//GEN-END:variables
 }

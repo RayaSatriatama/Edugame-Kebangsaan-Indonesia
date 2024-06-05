@@ -5,9 +5,6 @@
 package com.mycompany.edun.database;
 
 import com.mycompany.edun.home_admin;
-import java.awt.Font;
-import java.io.File;
-import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -27,27 +24,6 @@ public class AddQuestion extends javax.swing.JFrame {
     public AddQuestion() {
         initComponents();
         try {
-            File fontButton = new File("src/main/resources/fonts/Nunito-Black.ttf");
-            Font font = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(24f);
-            jLabel3.setFont(font);
-            jLabel4.setFont(font);
-            jLabel5.setFont(font);
-            jLabel6.setFont(font);
-            jLabel7.setFont(font);
-            jLabel8.setFont(font);
-            jLabel9.setFont(font);
-            jLabel10.setFont(font);
-            jTextField1.setFont(font);
-           
-            Font font_20 = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(18f);
-            jTextField2.setFont(font_20);
-            jTextField3.setFont(font_20);
-            jTextField4.setFont(font_20);
-            jTextField5.setFont(font_20);
-            jTextField6.setFont(font_20);
-            button1.setFont(font_20);
-            button2.setFont(font_20);
-            button3.setFont(font_20);
             
             String perintah_SQL =  "SELECT COUNT(id) FROM questions;";
             Connection penghubung = (Connection)koneksi_db.konfigurasi_koneksiDB();
@@ -57,9 +33,9 @@ public class AddQuestion extends javax.swing.JFrame {
                 int id=hasil_SQL.getInt(1);
                 id=id+1;
                 String str=String.valueOf(id);
-                jLabel10.setText(str);
+                txt_id.setText(str);
             } else {
-                jLabel10.setText("1");
+                txt_id.setText("1");
             }
         } 
         catch (Exception e)
@@ -81,254 +57,253 @@ public class AddQuestion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        rSPanelImage4 = new rojerusan.RSPanelImage();
-        rSMaterialButtonRectangle1 = new rojerusan.RSMaterialButtonRectangle();
-        rSPanelImage3 = new rojerusan.RSPanelImage();
-        button3 = new rojerusan.RSMaterialButtonRectangle();
-        rSPanelImage1 = new rojerusan.RSPanelImage();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        bg_op1 = new rojerusan.RSMaterialButtonRectangle();
-        bg1 = new rojerusan.RSMaterialButtonRectangle();
-        bg_op2 = new rojerusan.RSMaterialButtonRectangle();
-        bg2 = new rojerusan.RSMaterialButtonRectangle();
-        bg_op3 = new rojerusan.RSMaterialButtonRectangle();
-        bg3 = new rojerusan.RSMaterialButtonRectangle();
-        bg_op4 = new rojerusan.RSMaterialButtonRectangle();
-        bg4 = new rojerusan.RSMaterialButtonRectangle();
-        bg_op5 = new rojerusan.RSMaterialButtonRectangle();
-        bg5 = new rojerusan.RSMaterialButtonRectangle();
-        jLabel1 = new javax.swing.JLabel();
-        button1 = new rojerusan.RSMaterialButtonRectangle();
-        jLabel11 = new javax.swing.JLabel();
-        button2 = new rojerusan.RSMaterialButtonRectangle();
-        jLabel2 = new javax.swing.JLabel();
+        background = new javax.swing.JPanel();
+        header = new javax.swing.JPanel();
+        title = new javax.swing.JLabel();
+        close = new rojerusan.RSPanelImage();
+        line_header = new javax.swing.JSeparator();
+        cta = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        txt_save = new javax.swing.JLabel();
+        save = new rojerusan.RSMaterialButtonRectangle();
+        jPanel2 = new javax.swing.JPanel();
+        txt_save1 = new javax.swing.JLabel();
+        clear = new rojerusan.RSMaterialButtonRectangle();
+        line_cta = new javax.swing.JSeparator();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txt_id = new javax.swing.JLabel();
+        question = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        first_opt = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        scnd_opt = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        third_opt = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        fourth_opt = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        correct_answer = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
         setLocation(new java.awt.Point(150, 183));
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel5.setText("Option 1:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, -1, -1));
+        background.setBackground(new java.awt.Color(255, 255, 255));
+        background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel6.setText("Option 2:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, -1, -1));
+        header.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel7.setText("Option 3:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 510, -1, -1));
+        title.setFont(new java.awt.Font("SF Pro Text", 1, 18)); // NOI18N
+        title.setForeground(new java.awt.Color(15, 23, 42));
+        title.setText("Tambah Pertanyaan");
 
-        jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel8.setText("Option 4:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 580, -1, -1));
-
-        jLabel9.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel9.setText("Answer");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 650, 100, 30));
-
-        jTextField2.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(51, 65, 85));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+        close.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Close.png"))); // NOI18N
+        close.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                closeMouseClicked(evt);
             }
         });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, 650, 30));
 
-        jTextField3.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(51, 65, 85));
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 440, 650, 30));
+        javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
+        header.setLayout(headerLayout);
+        headerLayout.setHorizontalGroup(
+            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(title)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 389, Short.MAX_VALUE)
+                .addComponent(close, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43))
+        );
+        headerLayout.setVerticalGroup(
+            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(close, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(title))
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
 
-        jTextField4.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(51, 65, 85));
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 510, 650, 30));
+        background.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 70));
 
-        jTextField5.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(51, 65, 85));
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        line_header.setForeground(new java.awt.Color(226, 232, 240));
+        background.add(line_header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 670, 10));
+
+        cta.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txt_save.setFont(new java.awt.Font("SF Pro Text", 1, 18)); // NOI18N
+        txt_save.setForeground(new java.awt.Color(255, 255, 255));
+        txt_save.setText("Simpan");
+        jPanel1.add(txt_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 80, -1));
+
+        save.setBackground(new java.awt.Color(67, 56, 202));
+        save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                saveActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 580, 650, 30));
+        jPanel1.add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, 5, -1, -1));
 
-        jTextField6.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(51, 65, 85));
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 650, 650, 30));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        rSPanelImage4.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/tambah pertanyaan.png"))); // NOI18N
-        getContentPane().add(rSPanelImage4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 430, 60));
+        txt_save1.setFont(new java.awt.Font("SF Pro Text", 1, 18)); // NOI18N
+        txt_save1.setForeground(new java.awt.Color(51, 65, 85));
+        txt_save1.setText("Bersihkan");
+        jPanel2.add(txt_save1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
 
-        rSMaterialButtonRectangle1.setBackground(new java.awt.Color(124, 58, 237));
-        getContentPane().add(rSMaterialButtonRectangle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, 450, 80));
-
-        rSPanelImage3.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8-x-60.png"))); // NOI18N
-        getContentPane().add(rSPanelImage3, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 130, 40, 40));
-
-        button3.setBackground(new java.awt.Color(244, 63, 94));
-        button3.addActionListener(new java.awt.event.ActionListener() {
+        clear.setBackground(new java.awt.Color(241, 245, 249));
+        clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button3ActionPerformed(evt);
+                clearActionPerformed(evt);
             }
         });
-        getContentPane().add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 120, 80, 60));
+        jPanel2.add(clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 5, -1, -1));
 
-        rSPanelImage1.setBackground(new java.awt.Color(255, 255, 255));
-        rSPanelImage1.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/BG-Choose.png"))); // NOI18N
-        rSPanelImage1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        javax.swing.GroupLayout ctaLayout = new javax.swing.GroupLayout(cta);
+        cta.setLayout(ctaLayout);
+        ctaLayout.setHorizontalGroup(
+            ctaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ctaLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(467, 467, 467))
+        );
+        ctaLayout.setVerticalGroup(
+            ctaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ctaLayout.createSequentialGroup()
+                .addGroup(ctaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 25, Short.MAX_VALUE))
+        );
 
-        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 65, 85));
-        jLabel3.setText("Question ID:");
-        rSPanelImage1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, -1, -1));
+        background.add(cta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 730, 670, 100));
 
-        jLabel10.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(51, 65, 85));
-        jLabel10.setText("00");
-        rSPanelImage1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, -1, -1));
+        line_cta.setForeground(new java.awt.Color(226, 232, 240));
+        background.add(line_cta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 720, 670, -1));
 
-        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(51, 65, 85));
-        jLabel4.setText("Question:");
-        rSPanelImage1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
+        jLabel12.setFont(new java.awt.Font("SF Pro Text", 1, 16)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(15, 23, 42));
+        jLabel12.setText("<html> Jawaban  <span style=\"color: #F73B3BA;\">*</span> </html>");
+        background.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, -1, -1));
 
-        jTextField1.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(51, 65, 85));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jLabel13.setFont(new java.awt.Font("SF Pro Text", 1, 16)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(15, 23, 42));
+        jLabel13.setText("Pertanyaan ID:");
+        background.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+
+        txt_id.setFont(new java.awt.Font("SF Pro Text", 1, 16)); // NOI18N
+        txt_id.setForeground(new java.awt.Color(67, 56, 202));
+        txt_id.setText("00");
+        background.add(txt_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, -1, -1));
+
+        question.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        question.setForeground(new java.awt.Color(51, 65, 85));
+        question.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                questionActionPerformed(evt);
             }
         });
-        rSPanelImage1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 680, -1));
+        background.add(question, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 600, 40));
 
-        getContentPane().add(rSPanelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, 760, 180));
+        jLabel15.setFont(new java.awt.Font("SF Pro Text", 1, 16)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(15, 23, 42));
+        jLabel15.setText("<html> Pertanyaan  <span style=\"color: #F73B3B;\">*</span> </html>");
+        background.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
-        bg_op1.setBackground(java.awt.Color.lightGray);
-        bg_op1.addActionListener(new java.awt.event.ActionListener() {
+        first_opt.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        first_opt.setForeground(new java.awt.Color(51, 65, 85));
+        first_opt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bg_op1ActionPerformed(evt);
+                first_optActionPerformed(evt);
             }
         });
-        getContentPane().add(bg_op1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 130, 50));
+        background.add(first_opt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 600, 40));
 
-        bg1.setBackground(new java.awt.Color(255, 255, 204));
-        getContentPane().add(bg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, 810, 70));
+        jLabel16.setFont(new java.awt.Font("SF Pro Text", 1, 16)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(15, 23, 42));
+        jLabel16.setText("<html> Opsi Pertama  <span style=\"color: #F73B3B;\">*</span> </html>");
+        background.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
-        bg_op2.setBackground(java.awt.Color.lightGray);
-        getContentPane().add(bg_op2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, 130, 50));
+        scnd_opt.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        scnd_opt.setForeground(new java.awt.Color(51, 65, 85));
+        background.add(scnd_opt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 600, 40));
 
-        bg2.setBackground(new java.awt.Color(255, 255, 204));
-        getContentPane().add(bg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 420, 810, 70));
+        jLabel17.setFont(new java.awt.Font("SF Pro Text", 1, 16)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(15, 23, 42));
+        jLabel17.setText("<html> Opsi Kedua  <span style=\"color: #F73B3B;\">*</span> </html>");
+        background.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
 
-        bg_op3.setBackground(new java.awt.Color(255, 255, 204));
-        bg_op3.addActionListener(new java.awt.event.ActionListener() {
+        third_opt.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        third_opt.setForeground(new java.awt.Color(51, 65, 85));
+        background.add(third_opt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 600, 40));
+
+        jLabel18.setFont(new java.awt.Font("SF Pro Text", 1, 16)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(15, 23, 42));
+        jLabel18.setText("<html> Opsi Ketiga  <span style=\"color: #F73B3B;\">*</span> </html>");
+        background.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, -1, -1));
+
+        fourth_opt.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        fourth_opt.setForeground(new java.awt.Color(51, 65, 85));
+        fourth_opt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bg_op3ActionPerformed(evt);
+                fourth_optActionPerformed(evt);
             }
         });
-        getContentPane().add(bg_op3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 640, 130, 50));
+        background.add(fourth_opt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, 600, 40));
 
-        bg3.setBackground(java.awt.Color.lightGray);
-        getContentPane().add(bg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 630, 810, 70));
+        jLabel19.setFont(new java.awt.Font("SF Pro Text", 1, 16)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(15, 23, 42));
+        jLabel19.setText("<html> Opsi Keempat  <span style=\"color: #F73B3B;\">*</span> </html>");
+        background.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, -1, -1));
 
-        bg_op4.setBackground(java.awt.Color.lightGray);
-        bg_op4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bg_op4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(bg_op4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 500, 130, 50));
+        correct_answer.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
+        correct_answer.setForeground(new java.awt.Color(51, 65, 85));
+        background.add(correct_answer, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 620, 600, 40));
 
-        bg4.setBackground(new java.awt.Color(255, 255, 204));
-        getContentPane().add(bg4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 490, 810, 70));
-
-        bg_op5.setBackground(java.awt.Color.lightGray);
-        getContentPane().add(bg_op5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 570, 130, 50));
-
-        bg5.setBackground(new java.awt.Color(255, 255, 204));
-        getContentPane().add(bg5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 560, 810, 70));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8-save-20.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 760, -1, 30));
-
-        button1.setBackground(new java.awt.Color(244, 63, 94));
-        button1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/save.png"))); // NOI18N
-        button1.setText("save");
-        button1.setAlignmentX(0.5F);
-        button1.setIconTextGap(5);
-        button1.setMaximumSize(new java.awt.Dimension(30, 31));
-        button1.setMinimumSize(new java.awt.Dimension(30, 31));
-        button1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 740, 170, -1));
-
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8-garbage-20.png"))); // NOI18N
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 760, -1, 30));
-
-        button2.setBackground(new java.awt.Color(244, 63, 94));
-        button2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/save.png"))); // NOI18N
-        button2.setText("CLEAR");
-        button2.setAlignmentX(0.5F);
-        button2.setIconTextGap(5);
-        button2.setMaximumSize(new java.awt.Dimension(30, 31));
-        button2.setMinimumSize(new java.awt.Dimension(30, 31));
-        button2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 740, 170, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BG.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 830));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void questionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_questionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_questionActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void fourth_optActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fourth_optActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_fourth_optActionPerformed
 
-    private void bg_op1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bg_op1ActionPerformed
+    private void first_optActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_first_optActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bg_op1ActionPerformed
+    }//GEN-LAST:event_first_optActionPerformed
 
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+    private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
-        String id=jLabel10.getText();
-        String name=jTextField1.getText();
-        String opt1=jTextField2.getText();
-        String opt2=jTextField3.getText();
-        String opt3=jTextField4.getText();
-        String opt4=jTextField5.getText();
-        String answer=jTextField6.getText();
+        home_admin.open=0;
+        setVisible(false);
+    }//GEN-LAST:event_closeMouseClicked
+
+    private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
+        // TODO add your handling code here:
+        String id=txt_id.getText();
+        String name=question.getText();
+        String opt1=first_opt.getText();
+        String opt2=scnd_opt.getText();
+        String opt3=third_opt.getText();
+        String opt4=fourth_opt.getText();
+        String answer=correct_answer.getText();
         try {
             Connection con = (Connection)koneksi_db.konfigurasi_koneksiDB();
             PreparedStatement ps = con.prepareStatement( "INSERT INTO questions VALUES (?,?,?,?,?,?,?);");
@@ -351,35 +326,17 @@ public class AddQuestion extends javax.swing.JFrame {
             jf.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(jf, e);
         }
-    }//GEN-LAST:event_button1ActionPerformed
+    }//GEN-LAST:event_saveActionPerformed
 
-    private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
+    private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
         // TODO add your handling code here:
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jTextField4.setText("");
-        jTextField5.setText("");
-        jTextField6.setText("");
-    }//GEN-LAST:event_button2ActionPerformed
-
-    private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
-        // TODO add your handling code here:
-        home_admin.open=0;
-        setVisible(false);
-    }//GEN-LAST:event_button3ActionPerformed
-
-    private void bg_op3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bg_op3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bg_op3ActionPerformed
-
-    private void bg_op4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bg_op4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bg_op4ActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+        question.setText("");
+        first_opt.setText("");
+        scnd_opt.setText("");
+        third_opt.setText("");
+        fourth_opt.setText("");
+        correct_answer.setText("");
+    }//GEN-LAST:event_clearActionPerformed
 
     /**
      * @param args the command line arguments
@@ -420,39 +377,32 @@ public class AddQuestion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private rojerusan.RSMaterialButtonRectangle bg1;
-    private rojerusan.RSMaterialButtonRectangle bg2;
-    private rojerusan.RSMaterialButtonRectangle bg3;
-    private rojerusan.RSMaterialButtonRectangle bg4;
-    private rojerusan.RSMaterialButtonRectangle bg5;
-    private rojerusan.RSMaterialButtonRectangle bg_op1;
-    private rojerusan.RSMaterialButtonRectangle bg_op2;
-    private rojerusan.RSMaterialButtonRectangle bg_op3;
-    private rojerusan.RSMaterialButtonRectangle bg_op4;
-    private rojerusan.RSMaterialButtonRectangle bg_op5;
-    private rojerusan.RSMaterialButtonRectangle button1;
-    private rojerusan.RSMaterialButtonRectangle button2;
-    private rojerusan.RSMaterialButtonRectangle button3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private rojerusan.RSMaterialButtonRectangle rSMaterialButtonRectangle1;
-    private rojerusan.RSPanelImage rSPanelImage1;
-    private rojerusan.RSPanelImage rSPanelImage3;
-    private rojerusan.RSPanelImage rSPanelImage4;
+    private javax.swing.JPanel background;
+    private rojerusan.RSMaterialButtonRectangle clear;
+    private rojerusan.RSPanelImage close;
+    private javax.swing.JTextField correct_answer;
+    private javax.swing.JPanel cta;
+    private javax.swing.JTextField first_opt;
+    private javax.swing.JTextField fourth_opt;
+    private javax.swing.JPanel header;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator line_cta;
+    private javax.swing.JSeparator line_header;
+    private javax.swing.JTextField question;
+    private rojerusan.RSMaterialButtonRectangle save;
+    private javax.swing.JTextField scnd_opt;
+    private javax.swing.JTextField third_opt;
+    private javax.swing.JLabel title;
+    private javax.swing.JLabel txt_id;
+    private javax.swing.JLabel txt_save;
+    private javax.swing.JLabel txt_save1;
     // End of variables declaration//GEN-END:variables
 }
