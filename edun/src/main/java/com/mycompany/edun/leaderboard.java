@@ -32,6 +32,27 @@ public class leaderboard extends javax.swing.JFrame {
      */
     public leaderboard() {
         initComponents();
+         try {
+            File fontBlack = new File("src/main/resources/fonts/Nunito-Black.ttf");
+            Font font = Font.createFont(Font.TRUETYPE_FONT, fontBlack).deriveFont(24f);
+            button_back.setFont(font);
+            button_try.setFont(font);
+            username1.setFont(font);
+            username2.setFont(font);
+            username3.setFont(font);
+            username4.setFont(font);
+            username5.setFont(font);
+            score1.setFont(font);
+            score2.setFont(font);
+            score3.setFont(font);
+            score4.setFont(font);
+            score5.setFont(font);
+            
+            jLabel1.setFont(font);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public leaderboard(String inputName, int inputMarks, String inputGameType) {
@@ -41,18 +62,6 @@ public class leaderboard extends javax.swing.JFrame {
         newMarks = inputMarks;
         newGameType = inputGameType.toUpperCase();
         newRank = -1;
-        try {
-            File fontBlack = new File("src/main/resources/fonts/Nunito-Black.ttf");
-            Font font_button = Font.createFont(Font.TRUETYPE_FONT, fontBlack).deriveFont(24f);
-            username1.setFont(font_button);
-            username2.setFont(font_button);
-            username3.setFont(font_button);
-            username4.setFont(font_button);
-            username5.setFont(font_button);
-
-        } catch (Exception e) {
-        }
-
         try {
             String query = "INSERT INTO score (name, marks, game_type) VALUES (?, ?, ?)";
 
@@ -185,7 +194,8 @@ public class leaderboard extends javax.swing.JFrame {
         username4 = new javax.swing.JLabel();
         score4 = new javax.swing.JLabel();
         bg4 = new javax.swing.JLabel();
-        icon_peringkat1k = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        icon_peringkat = new javax.swing.JLabel();
         username5 = new javax.swing.JLabel();
         score5 = new javax.swing.JLabel();
         bg5 = new javax.swing.JLabel();
@@ -301,8 +311,11 @@ public class leaderboard extends javax.swing.JFrame {
         bg4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/bg_Rectangle1.png"))); // NOI18N
         getContentPane().add(bg4, new org.netbeans.lib.awtextra.AbsoluteConstraints(458, 555, -1, -1));
 
-        icon_peringkat1k.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/peringkat1k.png"))); // NOI18N
-        getContentPane().add(icon_peringkat1k, new org.netbeans.lib.awtextra.AbsoluteConstraints(459, 656, -1, -1));
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 690, -1, -1));
+
+        icon_peringkat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/peringkat.png"))); // NOI18N
+        getContentPane().add(icon_peringkat, new org.netbeans.lib.awtextra.AbsoluteConstraints(459, 656, -1, -1));
 
         username5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         username5.setText("[USERNAME]");
@@ -390,13 +403,14 @@ public class leaderboard extends javax.swing.JFrame {
     private rojerusan.RSMaterialButtonRectangle button_home;
     private rojerusan.RSMaterialButtonRectangle button_try;
     private javax.swing.JLabel icon_back;
+    private javax.swing.JLabel icon_peringkat;
     private javax.swing.JLabel icon_peringkat1;
-    private javax.swing.JLabel icon_peringkat1k;
     private javax.swing.JLabel icon_peringkat2;
     private javax.swing.JLabel icon_peringkat3;
     private javax.swing.JLabel icon_peringkat4;
     private javax.swing.JLabel icon_restart;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private rojerusan.RSPanelImage rSPanelImage1;
     private javax.swing.JLabel score1;
     private javax.swing.JLabel score2;
