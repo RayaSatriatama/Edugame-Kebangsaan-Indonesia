@@ -6,11 +6,11 @@
 package com.mycompany.edun;
 
 import com.mycompany.edun.database.koneksi_db;
-import com.mycompany.edun.quiz.ModuleQuiz;
 import java.awt.Font;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -231,20 +231,26 @@ public class login_user extends javax.swing.JFrame {
         
         try{
             // 02. Query SQL
-            String addNewUser = "INSERT INTO users (name) VALUES ('"+username+"')";
+            String addNewUser = "INSERT INTO users (name) VALUES (?)";
             
             // 03. Menghubungkan JAVA & SQL
             Connection penghubung = (Connection)koneksi_db.konfigurasi_koneksiDB();
             
             // 04. Statement SQL dengan akses database langsung (memodifikasi data)
             PreparedStatement newUser = penghubung.prepareStatement(addNewUser);
+            newUser.setString(1, username);
             
             // 05. Eksekusi perintah SQL
-            newUser.execute();
+            int rowsInserted = newUser.executeUpdate();
             
-            // 06. Validasi SQL
-            choose_game game = new choose_game(username);
-            game.setVisible(true);
+            if (rowsInserted > 0) {
+            // 06. Validasi SQL dan lanjut ke halaman berikutnya
+                choose_game game = new choose_game(username);
+                game.setVisible(true);
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Gagal");
+            }
             
         } catch (Exception e){
             // 07. Salah system

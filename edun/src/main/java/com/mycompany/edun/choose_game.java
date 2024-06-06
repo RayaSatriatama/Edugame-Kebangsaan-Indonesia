@@ -9,6 +9,7 @@ import com.mycompany.edun.quiz.ModuleQuiz;
 import java.awt.Font;
 import java.io.File;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
@@ -26,7 +27,6 @@ public class choose_game extends javax.swing.JFrame {
     public choose_game(String username1) {
         initComponents();
         username=username1;
-        JOptionPane.showMessageDialog(null, username1);
         try{
            // Add Customize Font Button
            File fontBlack = new File("src/main/resources/fonts/Nunito-Black.ttf");
@@ -276,16 +276,17 @@ public class choose_game extends javax.swing.JFrame {
         // Membuat objek
         try{
             // 02. Query SQL
-            String name = "SELECT CONCAT('Halo, ', username, '!') AS concatUsername FROM users WHERE username = '" + username + "'";
+            String namaPengguna = "SELECT CONCAT('Halo, ', name, '!') AS concatUsername FROM users WHERE name = ?";
             
             // 03. Menghubungkan JAVA & SQL
             Connection penghubung = (Connection)koneksi_db.konfigurasi_koneksiDB();
             
             // 04. Statement SQL dengan akses database langsung
-            Statement showUsername = penghubung.createStatement();
+            PreparedStatement showUsername = penghubung.prepareStatement(namaPengguna);
+            showUsername.setString(1, username);
             
             // 05. Eksekusi perintah SQL
-            ResultSet hasilSQL = showUsername.executeQuery(name);
+            ResultSet hasilSQL = showUsername.executeQuery();
             
             // 06. Tampilkan data
             if(hasilSQL.next()){
@@ -297,6 +298,7 @@ public class choose_game extends javax.swing.JFrame {
         } catch (Exception e){
             // 07. Salah system
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error in showUsername: " + e.getMessage());
         }
     }
     
@@ -330,6 +332,8 @@ public class choose_game extends javax.swing.JFrame {
 
     private void button_PuzzleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_PuzzleActionPerformed
         // TODO add your handling code here:
+        PuzzleSequenceFrame puzzle = new PuzzleSequenceFrame(username);
+        puzzle.setVisible(true);
     }//GEN-LAST:event_button_PuzzleActionPerformed
 
     private void aboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutActionPerformed
@@ -375,7 +379,7 @@ public class choose_game extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                String username = "username";
+                String username = "name";
                 new choose_game(username).setVisible(true);
             }
         });
