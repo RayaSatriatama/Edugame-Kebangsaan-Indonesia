@@ -18,7 +18,7 @@ public class CrosswordPuzzleGenerator {
 
     private static final int attemptsToFitWords = 5000;
     private static final int gridsToMake = 12;
-    private List<String> usedWords = new ArrayList<>();
+    private List<Word> usedWords = new ArrayList<>();
     private List<CrosswordPuzzle> generatedGrids = new ArrayList<>();
     private Set<Character> goodStartingLetters = new HashSet<>();
     private static final int gridSize = 12;
@@ -28,15 +28,17 @@ public class CrosswordPuzzleGenerator {
         return getBestGrid(generatedGrids);
     }
 
-    //check
-    private boolean attemptToPlaceWordOnGrid(CrosswordPuzzle grid, List<String> usedWordsInThisGrid) {
-        String text = getAWordToTry();
+    private boolean attemptToPlaceWordOnGrid(CrosswordPuzzle grid, List<Word> usedWordsInThisGrid) {
+        Word word = getAWordToTry();
         for (int row = 0; row < gridSize; ++row) {
             for (int column = 0; column < gridSize; ++column) {
-                Word word = new Word(text, row, column, new Random().nextBoolean(), "");
-                if (grid.isLetter(row, column) && grid.update(word)) {
-                    pushUsedWords(word.getText(), word.isVertical());
-                    usedWordsInThisGrid.add(text);
+                word.setRow(row);
+                word.setColumn(column);
+                word.setVertical(new Random().nextBoolean());
+
+                if (!usedWordsInThisGrid.contains(word) && grid.update(word)) {
+                    pushUsedWords(word);
+                    usedWordsInThisGrid.add(word);
                     return true;
                 }
             }
@@ -44,25 +46,24 @@ public class CrosswordPuzzleGenerator {
         return false;
     }
 
-    private void pushUsedWords(String text, boolean isVertical) {
-        usedWords.add(text);
-        for (char c : text.toCharArray()) {
+    private void pushUsedWords(Word word) {
+        usedWords.add(word);
+        for (char c : word.getText().toCharArray()) {
             goodStartingLetters.add(c);
         }
     }
 
-    private String getAWordToTry() {
+    private Word getAWordToTry() {
         Word word = getRandomWord(Words.getWords());
         boolean goodWord = isGoodWord(word.getText());
 
-        while (usedWords.contains(word.getText()) || !goodWord) {
+        while (usedWords.contains(word) || !goodWord) {
             word = getRandomWord(Words.getWords());
             goodWord = isGoodWord(word.getText());
         }
-        return word.getText();
+        return word;
     }
 
-    // check
     private CrosswordPuzzle getBestGrid(List<CrosswordPuzzle> grids) {
         System.out.println("Checking for best grid out of " + grids.size() + " grids");
         CrosswordPuzzle bestGrid = grids.get(0);
@@ -85,22 +86,21 @@ public class CrosswordPuzzleGenerator {
         return false;
     }
 
-    // check
     private void generateGrids() {
         generatedGrids = new ArrayList<>();
-        System.out.println("Generating grids...");
 
         for (int gridsMade = 0; gridsMade < gridsToMake; gridsMade++) {
             System.out.println("Creating grid #" + (gridsMade + 1));
             CrosswordPuzzle grid = new CrosswordPuzzle();
-            List<String> usedWordsInThisGrid = new ArrayList<>();
-
-            Word word = new Word(getRandomWordOfSize(getUnusedWords(), 9).getText(), 0, 0, false, "");
-            if (!usedWordsInThisGrid.contains(word.getText())) {
+            List<Word> usedWordsInThisGrid = new ArrayList<>();
+            Word firstWord = getRandomWordOfSize(getUnusedWords(), 9);
+            Word word = new Word(firstWord.getText(), 0, 0, false, firstWord.getQuestion());
+            if (!usedWordsInThisGrid.contains(word)) {
                 if (grid.update(word)) {
-                    pushUsedWords(word.getText(), word.isVertical());
-                    usedWordsInThisGrid.add(word.getText());
+                    pushUsedWords(word);
+                    usedWordsInThisGrid.add(word);
                     System.out.println("Placed initial word: " + word.getText());
+                    System.out.println("Placed initial word: " + word.getQuestion());
                 }
             }
 
@@ -134,7 +134,7 @@ public class CrosswordPuzzleGenerator {
     private List<Word> getUnusedWords() {
         List<Word> unusedWords = new ArrayList<>();
         for (Word word : Words.getWords()) {
-            if (!usedWords.contains(word.getText())) {
+            if (!usedWords.contains(word)) {
                 unusedWords.add(word);
             }
         }

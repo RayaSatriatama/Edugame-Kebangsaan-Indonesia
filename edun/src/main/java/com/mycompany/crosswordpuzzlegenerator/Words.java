@@ -4,15 +4,15 @@
  */
 package com.mycompany.crosswordpuzzlegenerator;
 
+import com.mycompany.edun.database.CrosswordDataFetcher;
+import java.util.List;
+
 /**
  *
  * @author rayas
  */
-
-import com.mycompany.edun.database.CrosswordDataFetcher;
-import java.util.List;
-
 public class Words {
+
     private static List<Word> words;
 
     static {

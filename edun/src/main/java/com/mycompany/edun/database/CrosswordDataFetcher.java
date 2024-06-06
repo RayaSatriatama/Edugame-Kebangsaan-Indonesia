@@ -45,11 +45,9 @@ public class CrosswordDataFetcher {
             while (resultSet.next()) {
                 String question = resultSet.getString("question");
                 String answer = resultSet.getString("answer");
-                // Placeholder values for row, column
                 int row = 0;
                 int column = 0;
                 boolean vertical = determineOrientation(answer);
-
                 words.add(new Word(answer, row, column, vertical, question));
             }
         } catch (SQLException e) {

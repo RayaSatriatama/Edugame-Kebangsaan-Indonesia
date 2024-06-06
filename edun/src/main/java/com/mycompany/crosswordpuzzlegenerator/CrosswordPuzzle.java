@@ -189,12 +189,10 @@ public class CrosswordPuzzle {
         for (int row = 0; row < gridSize; row++) {
             for (int column = 0; column < gridSize; column++) {
                 if (isLetter(row, column)) {
-                    // Cek intersection vertikal
                     if (isValidPosition(row - 1, column) && isLetter(row - 1, column)
                             && isValidPosition(row + 1, column) && isLetter(row + 1, column)) {
                         intersections++;
                     }
-                    // Cek intersection horizontal
                     if (isValidPosition(row, column - 1) && isLetter(row, column - 1)
                             && isValidPosition(row, column + 1) && isLetter(row, column + 1)) {
                         intersections++;

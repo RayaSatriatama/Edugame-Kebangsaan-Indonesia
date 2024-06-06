@@ -30,6 +30,7 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
      */
     public CrosswordPuzzleFrame(String username) {
         initComponents();
+        crosswordPuzzlePanel1.generateCrosswordPuzzle();
         loadQuestions();
         try {
             // Add Customize Font Button
@@ -79,14 +80,14 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        questionPanela1 = new com.mycompany.crosswordpuzzlegenerator.QuestionPanela();
         crosswordPuzzlePanel1 = new com.mycompany.crosswordpuzzlegenerator.CrosswordPuzzlePanel();
-        questionPanel2 = new com.mycompany.crosswordpuzzlegenerator.QuestionPanel();
+        questionPanela1 = new com.mycompany.crosswordpuzzlegenerator.AcrossQuestionPanel();
+        questionPanel2 = new com.mycompany.crosswordpuzzlegenerator.DownQuestionPanel();
         gridPanel1 = new com.mycompany.crosswordpuzzlegenerator.GridPanel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         icon_home = new rojerusan.RSPanelImage();
         button_Home = new rojerusan.RSMaterialButtonRectangle();
         icon_back = new rojerusan.RSPanelImage();
@@ -105,12 +106,10 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(crosswordPuzzlePanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, -1, 20));
         jPanel1.add(questionPanela1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 290, 320));
-        jPanel1.add(crosswordPuzzlePanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, 450, 360));
         jPanel1.add(questionPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 280, 300, 330));
-        jPanel1.add(gridPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, -1, -1));
-
-        jTextField1.setText("jTextField1");
+        jPanel1.add(gridPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, 500, 500));
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 730, 270, 50));
 
         jButton1.setText("Submit");
@@ -129,13 +128,13 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 710, 150, 80));
 
-        jButton3.setText("Clear");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButton4.setText("Selesai");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 620, 150, 80));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 700, 140, 90));
 
         icon_home.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Home.png"))); // NOI18N
         jPanel1.add(icon_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 110, 30, 30));
@@ -223,6 +222,7 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         login_user user = new login_user();
         user.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_button_BackActionPerformed
 
     private void creditsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditsActionPerformed
@@ -233,6 +233,8 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         login_admin admin = new login_admin();
         admin.setVisible(true);
+        this.dispose();
+
     }//GEN-LAST:event_loginAdminActionPerformed
 
     private void logoutAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutAdminActionPerformed
@@ -243,6 +245,7 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         login_menu menu = new login_menu();
         menu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_button_HomeActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -266,12 +269,9 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
         this.repaint();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        crosswordPuzzlePanel1.clearGrid();
-        this.revalidate();
-        this.repaint();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -325,14 +325,14 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
     private rojerusan.RSPanelImage icon_home;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JMenuItem loginAdmin;
     private javax.swing.JMenuItem logoutAdmin;
-    private com.mycompany.crosswordpuzzlegenerator.QuestionPanel questionPanel2;
-    private com.mycompany.crosswordpuzzlegenerator.QuestionPanela questionPanela1;
+    private com.mycompany.crosswordpuzzlegenerator.DownQuestionPanel questionPanel2;
+    private com.mycompany.crosswordpuzzlegenerator.AcrossQuestionPanel questionPanela1;
     private javax.swing.JMenuItem quit;
     private javax.swing.JMenu tools;
     // End of variables declaration//GEN-END:variables

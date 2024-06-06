@@ -5,6 +5,7 @@
 package com.mycompany.crosswordpuzzlegenerator;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -23,32 +24,34 @@ public class CrosswordPuzzlePanel extends JPanel {
         setLayout(new BorderLayout());
 
         gridPanel = new GridPanel();
-        statusLabel = new JLabel("Status: ");
-        statusLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        statusLabel = new JLabel("");
+        statusLabel.setHorizontalAlignment(SwingConstants.LEFT);
 
         add(gridPanel, BorderLayout.CENTER);
         add(statusLabel, BorderLayout.NORTH);
+        setBackground(new Color(0, 0, 0, 0));
+        statusLabel.setBackground(new Color(0, 0, 0, 0));
     }
 
     public void generateCrosswordPuzzle() {
         gridPanel.generateCrosswordPuzzle();
-        statusLabel.setText("Status: Puzzle generated. Start guessing!");
+        statusLabel.setText("Mulai Mengisi!");
     }
 
     public void clearGrid() {
         gridPanel.clearGrid();
-        statusLabel.setText("Status: Grid cleared.");
+        statusLabel.setText("Grid cleared.");
     }
 
     public boolean checkWord(String word) {
         boolean correct = gridPanel.checkWord(word);
         if (correct) {
-            statusLabel.setText("Status: Correct! Keep going.");
+            statusLabel.setText("Jawaban Kamu benar, Lanjutkan !");
             if (gridPanel.isPuzzleCompleted()) {
-                statusLabel.setText("Status: Congratulations! You completed the puzzle.");
+                statusLabel.setText("Selamat! Kamu Berhasil Menyelesaikan TTS!");
             }
         } else {
-            statusLabel.setText("Status: Incorrect. Try again.");
+            statusLabel.setText("Salah Coba Lagi");
         }
         return correct;
     }

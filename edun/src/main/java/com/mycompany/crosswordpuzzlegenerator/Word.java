@@ -8,8 +8,8 @@ package com.mycompany.crosswordpuzzlegenerator;
  *
  * @author rayas
  */
-
 public class Word {
+
     private String text;
     private int row;
     private int column;
@@ -24,7 +24,6 @@ public class Word {
         this.question = question;
     }
 
-    // Getters
     public String getText() {
         return text;
     }
@@ -45,7 +44,6 @@ public class Word {
         return question;
     }
 
-    // Setters
     public void setText(String text) {
         this.text = text;
     }
