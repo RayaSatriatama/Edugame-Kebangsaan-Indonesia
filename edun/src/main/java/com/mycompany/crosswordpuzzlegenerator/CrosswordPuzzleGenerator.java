@@ -36,7 +36,7 @@ public class CrosswordPuzzleGenerator {
                 word.setColumn(column);
                 word.setVertical(new Random().nextBoolean());
 
-                if (!usedWordsInThisGrid.contains(word) && grid.update(word)) {
+                if (grid.isLetter(row, column) && grid.update(word)) {
                     pushUsedWords(word);
                     usedWordsInThisGrid.add(word);
                     return true;
