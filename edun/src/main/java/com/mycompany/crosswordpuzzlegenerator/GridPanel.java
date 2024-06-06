@@ -8,7 +8,6 @@ package com.mycompany.crosswordpuzzlegenerator;
  *
  * @author rayas
  */
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -24,6 +23,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 public class GridPanel extends JPanel {
+
     private static final int gridSize = 12;
     private static final int cellSize = 30;
     private static JLabel[][] gridLabels = new JLabel[gridSize][gridSize];
@@ -60,6 +60,7 @@ public class GridPanel extends JPanel {
             correctWords.clear();
 
             char[][] grid = bestGrid.getGrid();
+            int[][] numberGrid = bestGrid.getNumberGrid();
             for (int row = 0; row < gridSize; ++row) {
                 for (int column = 0; column < gridSize; ++column) {
                     if (grid[row][column] != '_') {
@@ -71,7 +72,11 @@ public class GridPanel extends JPanel {
                         gridLabels[row][column].setBackground(null);
                         gridLabels[row][column].setBorder(null);
                     }
-                    gridLabels[row][column].setText("");
+                    if (numberGrid[row][column] != 0) {
+                        gridLabels[row][column].setText("<html><font size='2'>" + numberGrid[row][column] + "</font></html>");
+                    } else {
+                        gridLabels[row][column].setText("");
+                    }
                 }
             }
             bestGrid.printGrid();
@@ -132,5 +137,13 @@ public class GridPanel extends JPanel {
         }
         return bestGrid.getPlacedWords();
     }
-}
 
+    public CrosswordPuzzle getBestGrid() {
+        return bestGrid;
+    }
+
+    public int getCorrectAnswers() {
+        return correctWords.size();
+    }
+
+}

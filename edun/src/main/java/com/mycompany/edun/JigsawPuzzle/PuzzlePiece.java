@@ -16,7 +16,6 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
 public class PuzzlePiece extends JButton {
-    private BufferedImage image;
     private int originalX;
     private int originalY;
     private int pieceWidth;
@@ -27,7 +26,6 @@ public class PuzzlePiece extends JButton {
     private JigsawPuzzle puzzle;
 
     public PuzzlePiece(BufferedImage image, int originalX, int originalY, int pieceWidth, int pieceHeight, JigsawPuzzle puzzle) {
-        this.image = image;
         this.originalX = originalX;
         this.originalY = originalY;
         this.pieceWidth = pieceWidth;

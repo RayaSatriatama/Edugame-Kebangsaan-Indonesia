@@ -14,8 +14,8 @@ import javax.swing.SwingConstants;
  *
  * @author rayas
  */
-
 public class CrosswordPuzzlePanel extends JPanel {
+
     private GridPanel gridPanel;
     private JLabel statusLabel;
 
@@ -56,4 +56,17 @@ public class CrosswordPuzzlePanel extends JPanel {
     public List<Word> getPlacedWords() {
         return gridPanel.getPlacedWords();
     }
+
+    public List<String> getAcrossQuestions() {
+        return gridPanel.getBestGrid().getAcrossQuestions();
+    }
+
+    public List<String> getDownQuestions() {
+        return gridPanel.getBestGrid().getDownQuestions();
+    }
+
+    public int getCorrectAnswers() {
+        return gridPanel.getCorrectAnswers();
+    }
+
 }

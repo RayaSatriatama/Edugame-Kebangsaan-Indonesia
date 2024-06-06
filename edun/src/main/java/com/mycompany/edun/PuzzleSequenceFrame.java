@@ -14,18 +14,24 @@ import javax.swing.Timer;
 
 /**
  *
- * @author nadiaag
+ * @author rayas
  */
-
 public class PuzzleSequenceFrame extends javax.swing.JFrame {
 
-    private float score;
+    String newName;
+    int newMarks = 0;
+    String newGameType = "GAMBAR";
     private long startTime;
     private int completedPuzzles = 0;
     private Set<JigsawPuzzle> completedPuzzleSet = new HashSet<>();
     private Timer timer;
 
-    public PuzzleSequenceFrame(String username) {
+    public PuzzleSequenceFrame() {
+        initComponents();
+    }
+
+    public PuzzleSequenceFrame(String inputName) {
+        this.newName = inputName;
         initComponents();
         try {
             // Add Customize Font Button
@@ -55,10 +61,6 @@ public class PuzzleSequenceFrame extends javax.swing.JFrame {
         }
     }
 
-    int getScore() {
-        return (int) this.score;
-    }
-
     private void startTimer() {
         startTime = System.currentTimeMillis();
         timer = new Timer(1000, e -> updateTimer());
@@ -78,8 +80,7 @@ public class PuzzleSequenceFrame extends javax.swing.JFrame {
     }
 
     private void timeOut() {
-        JOptionPane.showMessageDialog(this, "Time is up!");
-        // Move to another frame
+        JOptionPane.showMessageDialog(this, "Waktu Habis!");
         new TimeOutFrame().setVisible(true);
         this.dispose();
     }
@@ -88,21 +89,25 @@ public class PuzzleSequenceFrame extends javax.swing.JFrame {
         long elapsedTime = (System.currentTimeMillis() - startTime) / 1000;
         completedPuzzles++;
         completedPuzzleSet.add(getCurrentPuzzle());
-        
+
         if (completedPuzzles < 3) {
             switchPuzzle();
         } else {
             timer.stop();
             calculateScore(elapsedTime);
-            JOptionPane.showMessageDialog(this, "Game Completed! Your score is: " + score);
-            new ScoreFrame(score).setVisible(true);
+            sukses s = new sukses(this.newName, this.newMarks, this.newGameType);
+            s.setVisible(true);
             this.dispose();
         }
     }
 
     private JigsawPuzzle getCurrentPuzzle() {
-        if (jigsawPuzzle1.isVisible()) return jigsawPuzzle1;
-        if (jigsawPuzzle2.isVisible()) return jigsawPuzzle2;
+        if (jigsawPuzzle1.isVisible()) {
+            return jigsawPuzzle1;
+        }
+        if (jigsawPuzzle2.isVisible()) {
+            return jigsawPuzzle2;
+        }
         return jigsawPuzzle3;
     }
 
@@ -119,15 +124,15 @@ public class PuzzleSequenceFrame extends javax.swing.JFrame {
     }
 
     private void calculateScore(long elapsedTime) {
-        long remainingTime = 300 - elapsedTime; // Total time in seconds minus elapsed time
+        long remainingTime = 300 - elapsedTime;
         if (completedPuzzles == 3) {
             if (remainingTime >= 200) {
-                score = 100; // Max score if 200 or more seconds remaining
+                newMarks = 100;
             } else {
-                score = (remainingTime / 200.0f) * 100; // Calculate score proportionally
+                newMarks = (int) ((remainingTime / 200.0f) * 100);
             }
         } else {
-            score = ((float) completedPuzzles / 3) * ((remainingTime / 200.0f) * 100); // Adjust score based on completed puzzles
+            newMarks = (int) (((float) completedPuzzles / 3) * ((remainingTime / 200.0f) * 100));
         }
     }
 
@@ -135,11 +140,11 @@ public class PuzzleSequenceFrame extends javax.swing.JFrame {
         long elapsedTime = (System.currentTimeMillis() - startTime) / 1000;
         timer.stop();
         calculateScore(elapsedTime);
-        JOptionPane.showMessageDialog(this, "Game Ended Early! Your score is: " + score);
-        new ScoreFrame(score).setVisible(true);
+        sukses s = new sukses(this.newName, this.newMarks, this.newGameType);
+        s.setVisible(true);
         this.dispose();
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -376,8 +381,7 @@ public class PuzzleSequenceFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                String username = "username";
-                new PuzzleSequenceFrame(username).setVisible(true);
+                new PuzzleSequenceFrame().setVisible(true);
             }
         });
     }

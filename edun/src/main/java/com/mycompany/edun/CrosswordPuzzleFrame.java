@@ -4,70 +4,117 @@
  */
 package com.mycompany.edun;
 
-import com.mycompany.crosswordpuzzlegenerator.CrosswordPuzzleGenerator;
-import com.mycompany.crosswordpuzzlegenerator.CrosswordPuzzlePanel;
-import com.mycompany.crosswordpuzzlegenerator.Word;
-import com.mycompany.crosswordpuzzlegenerator.Words;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 /**
  *
- * @author nadiaag
+ * @author rayas
  */
 public class CrosswordPuzzleFrame extends javax.swing.JFrame {
 
-    private List<Word> placedWords;
+    String newName;
+    int newMarks = 0;
+    String newGameType = "TTS";
+    private int correctAnswers = 0;
+    private int totalQuestions = 0;
+    private Timer timer;
+    private int timeLeft = 300; // 5 minutes in seconds
+    private boolean gameEnded = false;
 
     /**
      * Creates new form choose_game
      */
-    public CrosswordPuzzleFrame(String username) {
+    public CrosswordPuzzleFrame() {
+        initComponents();
+    }
+
+    public CrosswordPuzzleFrame(String inputName) {
+        this.newName = inputName;
         initComponents();
         crosswordPuzzlePanel1.generateCrosswordPuzzle();
         loadQuestions();
+        initializeGame();
         try {
-            // Add Customize Font Button
             File fontBlack = new File("src/main/resources/fonts/Nunito-Black.ttf");
             Font font_button = Font.createFont(Font.TRUETYPE_FONT, fontBlack).deriveFont(24f);
             button_Back.setFont(font_button);
 
-            // Add Customize Font 20 Bold
             File fontButton = new File("src/main/resources/fonts/Nunito-Bold.ttf");
             Font font_20 = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(20f);
 
-            // Add Customize Font 26 Black
             Font font_24 = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(26f);
 
-            // Set the frame visible
             setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        timer = new Timer(1000, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    updateTimerLabel();
+                } else {
+                    endGame();
+                }
+            }
+        });
+        timer.start();
+    }
+
+    private void initializeGame() {
+        correctAnswers = 0;
+        totalQuestions = crosswordPuzzlePanel1.getPlacedWords().size();
+        updateTimerLabel();
+    }
+
+    private void updateTimerLabel() {
+        int minutes = timeLeft / 60;
+        int seconds = timeLeft % 60;
+        statusLabel.setText("Time left: " + minutes + ":" + (seconds < 10 ? "0" : "") + seconds);
+    }
+
+    private void endGame() {
+        timer.stop();
+        gameEnded = true;
+        int newScore = calculateScore();
+        sukses s = new sukses(this.newName, this.newMarks, this.newGameType);
+        s.setVisible(true);
+        this.dispose();
+    }
+
+    private int calculateScore() {
+        return (int) ((correctAnswers / (double) totalQuestions) * 1000);
     }
 
     private void loadQuestions() {
-        List<Word> words = crosswordPuzzlePanel1.getPlacedWords(); // Ambil kata yang telah ditempatkan di grid
-
-        List<String> acrossQuestions = new ArrayList<>();
-        List<String> downQuestions = new ArrayList<>();
-
-        for (Word word : words) {
-            if (word.isVertical()) {
-                downQuestions.add(word.getQuestion());
-            } else {
-                acrossQuestions.add(word.getQuestion());
-            }
-        }
+        List<String> acrossQuestions = crosswordPuzzlePanel1.getAcrossQuestions();
+        List<String> downQuestions = crosswordPuzzlePanel1.getDownQuestions();
 
         questionPanela1.setAcrossQuestions(acrossQuestions);
         questionPanel2.setDownQuestions(downQuestions);
+    }
+
+    public boolean checkWord(String word) {
+        if (gameEnded) {
+            return false;
+        }
+
+        boolean correct = crosswordPuzzlePanel1.checkWord(word);
+        if (correct) {
+            correctAnswers++;
+            statusLabel.setText("Status: Correct! Keep going.");
+            if (gridPanel1.isPuzzleCompleted()) {
+                endGame();
+            }
+        }
+        return correct;
     }
 
     /**
@@ -80,6 +127,7 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        statusLabel = new javax.swing.JLabel();
         crosswordPuzzlePanel1 = new com.mycompany.crosswordpuzzlegenerator.CrosswordPuzzlePanel();
         questionPanela1 = new com.mycompany.crosswordpuzzlegenerator.AcrossQuestionPanel();
         questionPanel2 = new com.mycompany.crosswordpuzzlegenerator.DownQuestionPanel();
@@ -106,6 +154,9 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        statusLabel.setText(" ");
+        jPanel1.add(statusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(918, 200, 100, 20));
         jPanel1.add(crosswordPuzzlePanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, -1, 20));
         jPanel1.add(questionPanela1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 290, 320));
         jPanel1.add(questionPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 280, 300, 330));
@@ -271,6 +322,7 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        endGame();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
@@ -306,8 +358,7 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                String username = "username";
-                new CrosswordPuzzleFrame(username).setVisible(true);
+                new CrosswordPuzzleFrame().setVisible(true);
             }
         });
     }
@@ -334,6 +385,7 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
     private com.mycompany.crosswordpuzzlegenerator.DownQuestionPanel questionPanel2;
     private com.mycompany.crosswordpuzzlegenerator.AcrossQuestionPanel questionPanela1;
     private javax.swing.JMenuItem quit;
+    private javax.swing.JLabel statusLabel;
     private javax.swing.JMenu tools;
     // End of variables declaration//GEN-END:variables
 }

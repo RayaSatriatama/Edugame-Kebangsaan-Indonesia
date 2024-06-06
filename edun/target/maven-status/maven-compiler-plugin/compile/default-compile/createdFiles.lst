@@ -173,6 +173,7 @@ com\mycompany\edun\quiz\ModuleQuiz.class
 com\mycompany\edun\database\AddModule$3.class
 com\mycompany\edun\database\JigsawControlPanel$8.class
 com\mycompany\edun\database\UpdateModule$4.class
+com\mycompany\edun\CrosswordPuzzleFrame$10.class
 com\mycompany\edun\database\AddQuestion$1.class
 com\mycompany\edun\leaderboard$2.class
 com\mycompany\edun\login_user$5.class
