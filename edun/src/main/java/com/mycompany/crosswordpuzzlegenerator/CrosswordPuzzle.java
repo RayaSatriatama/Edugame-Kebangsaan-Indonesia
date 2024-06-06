@@ -183,19 +183,20 @@ public class CrosswordPuzzle {
         return isValidPosition(row, column) && isLetter(row, column);
     }
 
+    //check
     public int getIntersections() {
         int intersections = 0;
         for (int row = 0; row < gridSize; row++) {
             for (int column = 0; column < gridSize; column++) {
                 if (isLetter(row, column)) {
-                    if (isValidPosition(row - 1, column)
-                            && isValidPosition(row + 1, column)
-                            && isValidPosition(row, column - 1)
-                            && isValidPosition(row, column + 1)
-                            && isLetter(row - 1, column)
-                            && isLetter(row + 1, column)
-                            && isLetter(row, column - 1)
-                            && isLetter(row, column + 1)) {
+                    // Cek intersection vertikal
+                    if (isValidPosition(row - 1, column) && isLetter(row - 1, column)
+                            && isValidPosition(row + 1, column) && isLetter(row + 1, column)) {
+                        intersections++;
+                    }
+                    // Cek intersection horizontal
+                    if (isValidPosition(row, column - 1) && isLetter(row, column - 1)
+                            && isValidPosition(row, column + 1) && isLetter(row, column + 1)) {
                         intersections++;
                     }
                 }
