@@ -93,7 +93,7 @@ public class PuzzleSequenceFrame extends javax.swing.JFrame {
         } else {
             timer.stop();
             calculateScore(elapsedTime);
-            sukses s = new sukses(this.newName, this.newMarks, this.newGameType);
+            SucceedGameFrame s = new SucceedGameFrame(this.newName, this.newMarks, this.newGameType);
             s.setVisible(true);
             this.dispose();
         }
@@ -138,7 +138,7 @@ public class PuzzleSequenceFrame extends javax.swing.JFrame {
         long elapsedTime = (System.currentTimeMillis() - startTime) / 1000;
         timer.stop();
         calculateScore(elapsedTime);
-        sukses s = new sukses(this.newName, this.newMarks, this.newGameType);
+        SucceedGameFrame s = new SucceedGameFrame(this.newName, this.newMarks, this.newGameType);
         s.setVisible(true);
         this.dispose();
     }
@@ -260,14 +260,14 @@ public class PuzzleSequenceFrame extends javax.swing.JFrame {
 
     private void button_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_BackActionPerformed
         // TODO add your handling code here:
-        login_user user = new login_user();
+        LoginUser user = new LoginUser();
         user.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_button_BackActionPerformed
 
     private void button_HomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_HomeActionPerformed
         // TODO add your handling code here:
-        login_menu menu = new login_menu();
+        LoginMenu menu = new LoginMenu();
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_button_HomeActionPerformed

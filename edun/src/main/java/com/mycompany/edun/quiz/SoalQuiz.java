@@ -4,7 +4,7 @@
  */
 package com.mycompany.edun.quiz;
 
-import com.mycompany.edun.database.koneksi_db;
+import com.mycompany.edun.database.DBConnection;
 import java.awt.Font;
 import java.io.File;
 import java.sql.Connection;
@@ -66,7 +66,7 @@ public class SoalQuiz extends javax.swing.JFrame {
     }
     public void question() {
             try {
-           Connection con = (Connection)koneksi_db.konfigurasi_koneksiDB();
+           Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
            Statement st = con.createStatement();
            ResultSet rs1 = st.executeQuery("SELECT * FROM questions WHERE id = " + questionID + ";");
            while (rs1.next()) {
@@ -86,7 +86,7 @@ public class SoalQuiz extends javax.swing.JFrame {
         String username = jLabel5.getText();
         answerCheck();
         try {
-            Connection con = (Connection)koneksi_db.konfigurasi_koneksiDB();
+            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
 
             String query = "INSERT INTO score (marks, name, game_type) VALUES (?, ?, 'quiz');";
             PreparedStatement pst = con.prepareStatement(query);
@@ -140,7 +140,7 @@ public class SoalQuiz extends javax.swing.JFrame {
         initComponents();
         //First Question and username
         try {
-            Connection con = (Connection)koneksi_db.konfigurasi_koneksiDB();
+            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
             String queryUser = "SELECT * FROM users WHERE name = ?";
             PreparedStatement pstUser = con.prepareStatement(queryUser);
             pstUser.setString(1, username);

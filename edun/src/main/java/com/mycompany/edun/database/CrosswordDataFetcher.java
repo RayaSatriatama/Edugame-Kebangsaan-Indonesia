@@ -9,9 +9,9 @@ package com.mycompany.edun.database;
  * @author rayas
  */
 
-import com.mycompany.edun.database.koneksi_db;
-import com.mycompany.crosswordpuzzlegenerator.CrosswordPuzzle;
-import com.mycompany.crosswordpuzzlegenerator.Word;
+import com.mycompany.edun.database.DBConnection;
+import com.mycompany.edun.crosswordpuzzle.CrosswordPuzzle;
+import com.mycompany.edun.crosswordpuzzle.Word;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -37,7 +37,7 @@ public class CrosswordDataFetcher {
     private static void fetchCrosswordData() throws SQLException {
         String query = "SELECT question, answer FROM crossword_puzzle";
 
-        Connection connection = koneksi_db.konfigurasi_koneksiDB();
+        Connection connection = DBConnection.konfigurasi_koneksiDB();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
 

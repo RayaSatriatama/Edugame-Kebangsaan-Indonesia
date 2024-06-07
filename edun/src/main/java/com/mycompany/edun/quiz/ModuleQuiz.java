@@ -4,7 +4,7 @@
  */
 package com.mycompany.edun.quiz;
 
-import com.mycompany.edun.database.koneksi_db;
+import com.mycompany.edun.database.DBConnection;
 import java.awt.Font;
 import java.io.File;
 import java.sql.Connection;
@@ -44,7 +44,7 @@ public String username;
         username=username1;
         JOptionPane.showMessageDialog(null, username1);
         try {
-            Connection con = (Connection)koneksi_db.konfigurasi_koneksiDB();
+            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("SELECT materi FROM modul;");
 

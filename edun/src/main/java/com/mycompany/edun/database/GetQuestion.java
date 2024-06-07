@@ -4,7 +4,7 @@
  */
 package com.mycompany.edun.database;
 
-import com.mycompany.edun.home_admin;
+import com.mycompany.edun.HomeAdmin;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
@@ -26,7 +26,7 @@ public class GetQuestion extends javax.swing.JFrame {
     public GetQuestion() {
         initComponents();
         try {
-            Connection con = (Connection)koneksi_db.konfigurasi_koneksiDB();
+            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM questions;");
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
@@ -96,7 +96,7 @@ public class GetQuestion extends javax.swing.JFrame {
         // TODO add your handling code here:
         //home_admin.open=0;
         setVisible(false);
-        new home_admin().setVisible(true);
+        new HomeAdmin().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

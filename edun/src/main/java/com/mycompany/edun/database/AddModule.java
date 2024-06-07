@@ -4,7 +4,7 @@
  */
 package com.mycompany.edun.database;
 
-import com.mycompany.edun.home_admin;
+import com.mycompany.edun.HomeAdmin;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,7 +27,7 @@ public static int open=0;
         initComponents();
         try {
             String perintah_SQL =  "SELECT COUNT(id) FROM modul;";
-            Connection penghubung = (Connection)koneksi_db.konfigurasi_koneksiDB();
+            Connection penghubung = (Connection)DBConnection.konfigurasi_koneksiDB();
             Statement pernyataanSQL = penghubung.createStatement();
             ResultSet hasil_SQL = pernyataanSQL.executeQuery(perintah_SQL);
             if (hasil_SQL.next()) {
@@ -231,7 +231,7 @@ public static int open=0;
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
-        home_admin.open=0;
+        HomeAdmin.open=0;
         setVisible(false);
     }//GEN-LAST:event_closeMouseClicked
 
@@ -241,7 +241,7 @@ public static int open=0;
         String tema=(String)jComboBox1.getSelectedItem();
         String materi=jTextArea1.getText();
         try {
-            Connection con = (Connection)koneksi_db.konfigurasi_koneksiDB();
+            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
             PreparedStatement ps = con.prepareStatement( "INSERT INTO modul VALUES (?,?,?);");
             ps.setString(1, id);
             ps.setString(2, tema);

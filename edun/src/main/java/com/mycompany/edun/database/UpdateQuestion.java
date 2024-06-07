@@ -4,7 +4,7 @@
  */
 package com.mycompany.edun.database;
 
-import com.mycompany.edun.home_admin;
+import com.mycompany.edun.HomeAdmin;
 import com.mysql.cj.xdevapi.Result;
 import java.awt.Font;
 import java.io.File;
@@ -278,7 +278,7 @@ public class UpdateQuestion extends javax.swing.JFrame {
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
-        home_admin.open=0;
+        HomeAdmin.open=0;
         setVisible(false);
     }//GEN-LAST:event_closeMouseClicked
 
@@ -292,7 +292,7 @@ public class UpdateQuestion extends javax.swing.JFrame {
         String opt4=fourth_opt.getText();
         String answers=correct_answer.getText();
         try {
-            Connection con = (Connection)koneksi_db.konfigurasi_koneksiDB();
+            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
             PreparedStatement ps = con.prepareStatement("UPDATE questions SET name=?,opt1=?,opt2=?,opt3=?,opt4=?,answers=? WHERE id=?;");
             ps.setString(1, name);
             ps.setString(2, opt1);
@@ -335,7 +335,7 @@ public class UpdateQuestion extends javax.swing.JFrame {
         // TODO add your handling code here:
         String id=jTextField1.getText();
         try {
-            Connection con = (Connection)koneksi_db.konfigurasi_koneksiDB();
+            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM questions WHERE id = '"+id+"'");
             if (rs.next()) {

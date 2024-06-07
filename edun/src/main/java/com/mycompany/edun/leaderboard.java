@@ -4,7 +4,7 @@
  */
 package com.mycompany.edun;
 
-import com.mycompany.edun.database.koneksi_db;
+import com.mycompany.edun.database.DBConnection;
 import java.awt.Font;
 import java.io.File;
 import java.sql.Connection;
@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  *
  * @author Lusi Alifatul Laila
  */
-public class leaderboard extends javax.swing.JFrame {
+public class Leaderboard extends javax.swing.JFrame {
 
     int newId;
     String newName;
@@ -30,9 +30,9 @@ public class leaderboard extends javax.swing.JFrame {
     /**
      * Creates new form leaderboard
      */
-    public leaderboard() {
+    public Leaderboard() {
         initComponents();
-         try {
+        try {
             File fontBlack = new File("src/main/resources/fonts/Nunito-Black.ttf");
             Font font = Font.createFont(Font.TRUETYPE_FONT, fontBlack).deriveFont(24f);
             button_back.setFont(font);
@@ -47,7 +47,7 @@ public class leaderboard extends javax.swing.JFrame {
             score3.setFont(font);
             score4.setFont(font);
             score5.setFont(font);
-            
+
             jLabel1.setFont(font);
 
         } catch (Exception e) {
@@ -55,7 +55,7 @@ public class leaderboard extends javax.swing.JFrame {
         }
     }
 
-    public leaderboard(String inputName, int inputMarks, String inputGameType) {
+    public Leaderboard(String inputName, int inputMarks, String inputGameType) {
         initComponents();
         newId = -1;
         newName = inputName;
@@ -65,7 +65,7 @@ public class leaderboard extends javax.swing.JFrame {
         try {
             String query = "INSERT INTO score (name, marks, game_type) VALUES (?, ?, ?)";
 
-            Connection connection = (Connection) koneksi_db.konfigurasi_koneksiDB();
+            Connection connection = (Connection) DBConnection.konfigurasi_koneksiDB();
 
             try (PreparedStatement pst = connection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
                 pst.setString(1, newName);
@@ -339,21 +339,19 @@ public class leaderboard extends javax.swing.JFrame {
 
     private void button_homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_homeActionPerformed
         // TODO add your handling code here:
-        login_menu menu = new login_menu();
+        LoginMenu menu = new LoginMenu();
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_button_homeActionPerformed
 
     private void button_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_backActionPerformed
         // TODO add your handling code here:
-        login_user user = new login_user();
-        user.setVisible(true);
-        this.dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_button_backActionPerformed
 
     private void button_tryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_tryActionPerformed
         // TODO add your handling code here:
-        new choose_game(newName).setVisible(true);
+        new ChooseGame(newName).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_button_tryActionPerformed
 
@@ -374,20 +372,21 @@ public class leaderboard extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(leaderboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Leaderboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(leaderboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Leaderboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(leaderboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Leaderboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(leaderboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Leaderboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new leaderboard().setVisible(true);
+                new Leaderboard().setVisible(true);
             }
         });
     }

@@ -4,7 +4,7 @@
  */
 package com.mycompany.edun.database;
 
-import com.mycompany.edun.home_admin;
+import com.mycompany.edun.HomeAdmin;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -26,7 +26,7 @@ public class AddQuestion extends javax.swing.JFrame {
         try {
             
             String perintah_SQL =  "SELECT COUNT(id) FROM questions;";
-            Connection penghubung = (Connection)koneksi_db.konfigurasi_koneksiDB();
+            Connection penghubung = (Connection)DBConnection.konfigurasi_koneksiDB();
             Statement pernyataanSQL = penghubung.createStatement();
             ResultSet hasil_SQL = pernyataanSQL.executeQuery(perintah_SQL);
             if (hasil_SQL.next()) {
@@ -291,7 +291,7 @@ public class AddQuestion extends javax.swing.JFrame {
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
-        home_admin.open=0;
+        HomeAdmin.open=0;
         setVisible(false);
     }//GEN-LAST:event_closeMouseClicked
 
@@ -305,7 +305,7 @@ public class AddQuestion extends javax.swing.JFrame {
         String opt4=fourth_opt.getText();
         String answer=correct_answer.getText();
         try {
-            Connection con = (Connection)koneksi_db.konfigurasi_koneksiDB();
+            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
             PreparedStatement ps = con.prepareStatement( "INSERT INTO questions VALUES (?,?,?,?,?,?,?);");
             ps.setString(1, id);
             ps.setString(2, name);

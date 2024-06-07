@@ -4,7 +4,7 @@
  */
 package com.mycompany.edun.database;
 
-import com.mycompany.edun.home_admin;
+import com.mycompany.edun.HomeAdmin;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -24,7 +24,7 @@ public class AllStudentResult extends javax.swing.JFrame {
     public AllStudentResult() {
         initComponents();
         try {
-            Connection con = (Connection)koneksi_db.konfigurasi_koneksiDB();
+            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM users;");
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
@@ -105,7 +105,7 @@ public class AllStudentResult extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        new home_admin().setVisible(true);
+        new HomeAdmin().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
@@ -117,7 +117,7 @@ public class AllStudentResult extends javax.swing.JFrame {
         else {
             marks=Integer.parseInt(jTextField1.getText());
             try {
-            Connection con = (Connection)koneksi_db.konfigurasi_koneksiDB();
+            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM users WHERE marks >= "+marks+";");
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));

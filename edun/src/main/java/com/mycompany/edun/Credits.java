@@ -98,14 +98,14 @@ public class Credits extends javax.swing.JFrame {
 
     private void button_closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_closeActionPerformed
         // TODO add your handling code here:
-        login_user user = new login_user();
+        LoginUser user = new LoginUser();
         user.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_button_closeActionPerformed
 
     private void button_HomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_HomeActionPerformed
         // TODO add your handling code here:
-        login_menu menu = new login_menu();
+        LoginMenu menu = new LoginMenu();
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_button_HomeActionPerformed

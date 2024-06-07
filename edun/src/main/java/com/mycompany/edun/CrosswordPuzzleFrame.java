@@ -84,7 +84,7 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
         timer.stop();
         gameEnded = true;
         int newScore = calculateScore();
-        sukses s = new sukses(this.newName, this.newMarks, this.newGameType);
+        SucceedGameFrame s = new SucceedGameFrame(this.newName, this.newMarks, this.newGameType);
         s.setVisible(true);
         this.dispose();
     }
@@ -128,10 +128,10 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         statusLabel = new javax.swing.JLabel();
-        crosswordPuzzlePanel1 = new com.mycompany.crosswordpuzzlegenerator.CrosswordPuzzlePanel();
-        questionPanela1 = new com.mycompany.crosswordpuzzlegenerator.AcrossQuestionPanel();
-        questionPanel2 = new com.mycompany.crosswordpuzzlegenerator.DownQuestionPanel();
-        gridPanel1 = new com.mycompany.crosswordpuzzlegenerator.GridPanel();
+        crosswordPuzzlePanel1 = new com.mycompany.edun.crosswordpuzzle.CrosswordPuzzlePanel();
+        questionPanela1 = new com.mycompany.edun.crosswordpuzzle.AcrossQuestionPanel();
+        questionPanel2 = new com.mycompany.edun.crosswordpuzzle.DownQuestionPanel();
+        gridPanel1 = new com.mycompany.edun.crosswordpuzzle.GridPanel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -220,14 +220,14 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
 
     private void button_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_BackActionPerformed
         // TODO add your handling code here:
-        login_user user = new login_user();
+        LoginUser user = new LoginUser();
         user.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_button_BackActionPerformed
 
     private void button_HomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_HomeActionPerformed
         // TODO add your handling code here:
-        login_menu menu = new login_menu();
+        LoginMenu menu = new LoginMenu();
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_button_HomeActionPerformed
@@ -300,8 +300,8 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
     private javax.swing.JLabel bg_pattern;
     private rojerusan.RSMaterialButtonRectangle button_Back;
     private rojerusan.RSMaterialButtonRectangle button_Home;
-    private com.mycompany.crosswordpuzzlegenerator.CrosswordPuzzlePanel crosswordPuzzlePanel1;
-    private com.mycompany.crosswordpuzzlegenerator.GridPanel gridPanel1;
+    private com.mycompany.edun.crosswordpuzzle.CrosswordPuzzlePanel crosswordPuzzlePanel1;
+    private com.mycompany.edun.crosswordpuzzle.GridPanel gridPanel1;
     private rojerusan.RSPanelImage icon_back;
     private rojerusan.RSPanelImage icon_home;
     private javax.swing.JButton jButton1;
@@ -309,8 +309,8 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
-    private com.mycompany.crosswordpuzzlegenerator.DownQuestionPanel questionPanel2;
-    private com.mycompany.crosswordpuzzlegenerator.AcrossQuestionPanel questionPanela1;
+    private com.mycompany.edun.crosswordpuzzle.DownQuestionPanel questionPanel2;
+    private com.mycompany.edun.crosswordpuzzle.AcrossQuestionPanel questionPanela1;
     private javax.swing.JLabel statusLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,7 +5,7 @@
 package com.mycompany.edun.database;
 
 import com.mycompany.edun.database.*;
-import com.mycompany.edun.home_admin;
+import com.mycompany.edun.HomeAdmin;
 import java.awt.HeadlessException;
 import java.awt.Image;
 import java.io.File;
@@ -75,7 +75,7 @@ public class JigsawControlPanel extends javax.swing.JFrame {
         try {
             String query = "SELECT * FROM jigsaw_puzzle";
 
-            Connection connection = (Connection)koneksi_db.konfigurasi_koneksiDB();
+            Connection connection = (Connection)DBConnection.konfigurasi_koneksiDB();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
 
@@ -276,7 +276,7 @@ public class JigsawControlPanel extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        home_admin.open = 0;
+        HomeAdmin.open = 0;
         setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -288,7 +288,7 @@ public class JigsawControlPanel extends javax.swing.JFrame {
             String path = destinationFolder.getPath() + File.separator + newFileName;
 
             try {
-                Connection con = koneksi_db.konfigurasi_koneksiDB();
+                Connection con = DBConnection.konfigurasi_koneksiDB();
                 PreparedStatement ps = con.prepareStatement("INSERT INTO jigsaw_puzzle (name, path) VALUES (?, ?);");
                 ps.setString(1, newFileName);
                 ps.setString(2, path);
@@ -354,7 +354,7 @@ public class JigsawControlPanel extends javax.swing.JFrame {
         // TODO add your handling code here:
         String id = jLabel10.getText();
         try {
-            Connection con = (Connection)koneksi_db.konfigurasi_koneksiDB();
+            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
             PreparedStatement ps = con.prepareStatement( "DELETE FROM jigsaw_puzzle WHERE id=?");
             ps.setString(1, id);
             ps.executeUpdate();
@@ -396,7 +396,7 @@ public class JigsawControlPanel extends javax.swing.JFrame {
         String path = jTextField2.getText();
         if (!id.isEmpty() && !name.isEmpty() && !path.isEmpty() && selectedFile != null) {
            try {
-               Connection con = koneksi_db.konfigurasi_koneksiDB();
+               Connection con = DBConnection.konfigurasi_koneksiDB();
                PreparedStatement ps = con.prepareStatement("UPDATE jigsaw_puzzle SET name=?, path=? WHERE id=?;");
                ps.setString(1, name);
                ps.setString(2, path);

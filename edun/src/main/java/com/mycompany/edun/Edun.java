@@ -13,7 +13,7 @@ public class Edun {
     public static void main(String[] args) {
         
           // Start at splashscreen
-          splashscreen s = new splashscreen();
+          SplashScreen s = new SplashScreen();
           s.setVisible(true);
 
           // Start at home_admin

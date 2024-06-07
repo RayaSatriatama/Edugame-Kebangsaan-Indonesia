@@ -4,7 +4,7 @@
  */
 package com.mycompany.edun.database;
 
-import com.mycompany.edun.home_admin;
+import com.mycompany.edun.HomeAdmin;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -218,7 +218,7 @@ public class UpdateModule extends javax.swing.JFrame {
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
-        home_admin.open=0;
+        HomeAdmin.open=0;
         setVisible(false);
     }//GEN-LAST:event_closeMouseClicked
 
@@ -228,7 +228,7 @@ public class UpdateModule extends javax.swing.JFrame {
         String tema=(String)jComboBox1.getSelectedItem();
         String materi=jTextArea1.getText();
         try {
-            Connection con = (Connection)koneksi_db.konfigurasi_koneksiDB();
+            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
             PreparedStatement ps = con.prepareStatement("UPDATE modul SET tema=?,materi=? WHERE id=?;");
             ps.setString(1, tema);
             ps.setString(2, materi);
@@ -259,7 +259,7 @@ public class UpdateModule extends javax.swing.JFrame {
         // TODO add your handling code here:
         String id=jTextField1.getText();
         try {
-            Connection con = (Connection)koneksi_db.konfigurasi_koneksiDB();
+            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM modul WHERE id = '"+id+"'");
             if (rs.next()) {

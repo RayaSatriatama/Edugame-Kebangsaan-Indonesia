@@ -4,7 +4,7 @@
  */
 package com.mycompany.edun.database;
 
-import com.mycompany.edun.home_admin;
+import com.mycompany.edun.HomeAdmin;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -23,7 +23,7 @@ public class GetModule extends javax.swing.JFrame {
     public GetModule() {
         initComponents();
         try {
-            Connection con = (Connection)koneksi_db.konfigurasi_koneksiDB();
+            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM modul;");
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
@@ -91,7 +91,7 @@ public class GetModule extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        new home_admin().setVisible(true);
+        new HomeAdmin().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

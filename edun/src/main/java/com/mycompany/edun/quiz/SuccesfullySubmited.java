@@ -4,9 +4,9 @@
  */
 package com.mycompany.edun.quiz;
 
-import com.mycompany.edun.leaderboard;
-import com.mycompany.edun.login_user;
-import com.mycompany.edun.sukses;
+import com.mycompany.edun.Leaderboard;
+import com.mycompany.edun.LoginUser;
+import com.mycompany.edun.SucceedGameFrame;
 
 /**
  *
@@ -76,7 +76,7 @@ public class SuccesfullySubmited extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        sukses s = new sukses(this.newName, this.newMarks, "QUIZ");
+        SucceedGameFrame s = new SucceedGameFrame(this.newName, this.newMarks, "QUIZ");
         s.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 

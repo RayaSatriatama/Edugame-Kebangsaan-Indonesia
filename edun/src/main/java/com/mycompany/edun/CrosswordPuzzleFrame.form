@@ -46,28 +46,28 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="com.mycompany.crosswordpuzzlegenerator.CrosswordPuzzlePanel" name="crosswordPuzzlePanel1">
+        <Component class="com.mycompany.edun.crosswordpuzzle.CrosswordPuzzlePanel" name="crosswordPuzzlePanel1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="70" y="230" width="-1" height="20"/>
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="com.mycompany.crosswordpuzzlegenerator.AcrossQuestionPanel" name="questionPanela1">
+        <Component class="com.mycompany.edun.crosswordpuzzle.AcrossQuestionPanel" name="questionPanela1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="70" y="280" width="290" height="320"/>
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="com.mycompany.crosswordpuzzlegenerator.DownQuestionPanel" name="questionPanel2">
+        <Component class="com.mycompany.edun.crosswordpuzzle.DownQuestionPanel" name="questionPanel2">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="1060" y="280" width="300" height="330"/>
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="com.mycompany.crosswordpuzzlegenerator.GridPanel" name="gridPanel1">
+        <Component class="com.mycompany.edun.crosswordpuzzle.GridPanel" name="gridPanel1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="440" y="190" width="500" height="500"/>

@@ -5,7 +5,7 @@
 
 package com.mycompany.edun.database;
 
-import com.mycompany.edun.home_admin;
+import com.mycompany.edun.HomeAdmin;
 import java.awt.Font;
 import java.io.File;
 import java.sql.Connection;
@@ -277,7 +277,7 @@ public class DeleteQuestion extends javax.swing.JFrame {
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
-        home_admin.open=0;
+        HomeAdmin.open=0;
         setVisible(false);
     }//GEN-LAST:event_closeMouseClicked
 
@@ -289,7 +289,7 @@ public class DeleteQuestion extends javax.swing.JFrame {
         // TODO add your handling code here:
         String id=jTextField1.getText();
         try {
-            Connection con = (Connection)koneksi_db.konfigurasi_koneksiDB();
+            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM questions WHERE id = '"+id+"'");
             if (rs.next()) {
@@ -330,7 +330,7 @@ public class DeleteQuestion extends javax.swing.JFrame {
         // TODO add your handling code here:
         String id=jTextField1.getText();
         try {
-            Connection con = (Connection)koneksi_db.konfigurasi_koneksiDB();
+            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
             PreparedStatement ps = con.prepareStatement( "DELETE FROM questions WHERE id=?");
             ps.setString(1, id);
             ps.executeUpdate();
