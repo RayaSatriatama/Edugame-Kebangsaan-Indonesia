@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.edun;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
@@ -12,9 +13,11 @@ import javax.swing.Timer;
  * @author Lusi Alifatul Laila
  */
 public class splashscreen extends javax.swing.JFrame {
-Timer timer;
-ActionListener action;
-splashscreen sp;
+
+    Timer timer;
+    ActionListener action;
+    splashscreen sp;
+
     /**
      * Creates new form splashscreen
      */
@@ -88,11 +91,11 @@ splashscreen sp;
 
     private void aksi() {
         action = new ActionListener() {
-            
+
             public void actionPerformed(ActionEvent e) {
                 loadingbar.setValue(loadingbar.getValue() + 3);
                 loadingbar.setStringPainted(true);
-                if (loadingbar.getPercentComplete()==1.0) {
+                if (loadingbar.getPercentComplete() == 1.0) {
                     timer.stop();
                     dispose();
                     login_menu m = new login_menu();
@@ -101,11 +104,10 @@ splashscreen sp;
             }
         };
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
     private javax.swing.JProgressBar loadingbar;
     // End of variables declaration//GEN-END:variables
 
-    
 }

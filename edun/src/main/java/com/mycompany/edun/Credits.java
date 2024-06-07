@@ -18,13 +18,10 @@ public class Credits extends javax.swing.JFrame {
      */
     public Credits() {
         initComponents();
-        try{
-           // Add Customize Font 20 Black
-           File fontButton = new File("src/main/resources/fonts/Nunito-Black.ttf");
-           Font font_20 = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(20f);
-           txt_credits.setFont(font_20);
-           
-           
+        try {
+            File fontButton = new File("src/main/resources/fonts/Nunito-Black.ttf");
+            Font font_20 = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(20f);
+            txt_credits.setFont(font_20);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -103,12 +100,14 @@ public class Credits extends javax.swing.JFrame {
         // TODO add your handling code here:
         login_user user = new login_user();
         user.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_button_closeActionPerformed
 
     private void button_HomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_HomeActionPerformed
         // TODO add your handling code here:
         login_menu menu = new login_menu();
         menu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_button_HomeActionPerformed
 
     /**

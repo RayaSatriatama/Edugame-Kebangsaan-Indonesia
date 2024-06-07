@@ -141,14 +141,6 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
         icon_back = new rojerusan.RSPanelImage();
         button_Back = new rojerusan.RSMaterialButtonRectangle();
         bg_pattern = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        eduN = new javax.swing.JMenu();
-        credits = new javax.swing.JMenuItem();
-        about = new javax.swing.JMenuItem();
-        quit = new javax.swing.JMenuItem();
-        tools = new javax.swing.JMenu();
-        loginAdmin = new javax.swing.JMenuItem();
-        logoutAdmin = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -221,49 +213,6 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        eduN.setText("eduN");
-
-        credits.setText("Credits");
-        credits.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                creditsActionPerformed(evt);
-            }
-        });
-        eduN.add(credits);
-
-        about.setText("About");
-        eduN.add(about);
-
-        quit.setText("Keluar eduN");
-        eduN.add(quit);
-
-        jMenuBar1.add(eduN);
-
-        tools.setText("Alat");
-        tools.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        loginAdmin.setText("Masuk Admin");
-        loginAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginAdminActionPerformed(evt);
-            }
-        });
-        tools.add(loginAdmin);
-
-        logoutAdmin.setText("Keluar Admin");
-        logoutAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        logoutAdmin.setEnabled(false);
-        logoutAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutAdminActionPerformed(evt);
-            }
-        });
-        tools.add(logoutAdmin);
-
-        jMenuBar1.add(tools);
-
-        setJMenuBar(jMenuBar1);
-
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -275,22 +224,6 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
         user.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_button_BackActionPerformed
-
-    private void creditsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_creditsActionPerformed
-
-    private void loginAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginAdminActionPerformed
-        // TODO add your handling code here:
-        login_admin admin = new login_admin();
-        admin.setVisible(true);
-        this.dispose();
-
-    }//GEN-LAST:event_loginAdminActionPerformed
-
-    private void logoutAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutAdminActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_logoutAdminActionPerformed
 
     private void button_HomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_HomeActionPerformed
         // TODO add your handling code here:
@@ -364,28 +297,20 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem about;
     private javax.swing.JLabel bg_pattern;
     private rojerusan.RSMaterialButtonRectangle button_Back;
     private rojerusan.RSMaterialButtonRectangle button_Home;
-    private javax.swing.JMenuItem credits;
     private com.mycompany.crosswordpuzzlegenerator.CrosswordPuzzlePanel crosswordPuzzlePanel1;
-    private javax.swing.JMenu eduN;
     private com.mycompany.crosswordpuzzlegenerator.GridPanel gridPanel1;
     private rojerusan.RSPanelImage icon_back;
     private rojerusan.RSPanelImage icon_home;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JMenuItem loginAdmin;
-    private javax.swing.JMenuItem logoutAdmin;
     private com.mycompany.crosswordpuzzlegenerator.DownQuestionPanel questionPanel2;
     private com.mycompany.crosswordpuzzlegenerator.AcrossQuestionPanel questionPanela1;
-    private javax.swing.JMenuItem quit;
     private javax.swing.JLabel statusLabel;
-    private javax.swing.JMenu tools;
     // End of variables declaration//GEN-END:variables
 }

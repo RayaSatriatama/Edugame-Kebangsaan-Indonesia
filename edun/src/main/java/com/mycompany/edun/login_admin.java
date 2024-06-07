@@ -155,42 +155,44 @@ public class login_admin extends javax.swing.JFrame {
         // TODO add your handling code here:
         login_user user = new login_user();
         user.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_button_back_gameActionPerformed
-    
-    public void bersih_form_login(){
+
+    public void bersih_form_login() {
         input_username.setText("");
         input_password.setText("");
     }
-    
+
     private void button_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_loginActionPerformed
         // TODO add your handling code here:
-        
+
         try {
-        String inputUsername = input_username.getText();
-        String inputPassword = new String(input_password.getPassword());
-        String perintah_SQL =  "SELECT * FROM admin WHERE username = '"+inputUsername+"' AND password = '"+inputPassword+"';";
-        
-        Connection penghubung = (Connection)koneksi_db.konfigurasi_koneksiDB();
-        
-        Statement pernyataanSQL = penghubung.createStatement();
-        
-        ResultSet hasil_SQL = pernyataanSQL.executeQuery(perintah_SQL);
-       
+            String inputUsername = input_username.getText();
+            String inputPassword = new String(input_password.getPassword());
+            String perintah_SQL = "SELECT * FROM admin WHERE username = '" + inputUsername + "' AND password = '" + inputPassword + "';";
+
+            Connection penghubung = (Connection) koneksi_db.konfigurasi_koneksiDB();
+
+            Statement pernyataanSQL = penghubung.createStatement();
+
+            ResultSet hasil_SQL = pernyataanSQL.executeQuery(perintah_SQL);
+
             if (hasil_SQL.next()) {
-             
-              JOptionPane.showMessageDialog(null, "Login Berhasil!");
-              home_admin home_admin = new home_admin();
-              home_admin.setVisible(true);
-              this.setVisible(false);
+
+                JOptionPane.showMessageDialog(null, "Login Berhasil!");
+                home_admin home_admin = new home_admin();
+                home_admin.setVisible(true);
+                this.setVisible(false);
+                this.dispose();
             } else {
-            
-              JOptionPane.showMessageDialog(null, "Username/Password Invalid!");
-              bersih_form_login();
+
+                JOptionPane.showMessageDialog(null, "Username/Password Invalid!");
+                bersih_form_login();
             }
-        
+
         } catch (Exception e) {
-        
-        JOptionPane.showMessageDialog(null, "Gagal, Login! \n"+e.getMessage());
+
+            JOptionPane.showMessageDialog(null, "Gagal, Login! \n" + e.getMessage());
         }
     }//GEN-LAST:event_button_loginActionPerformed
 
@@ -198,14 +200,12 @@ public class login_admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_input_passwordActionPerformed
 
-    
-    
+
     private void shw_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shw_passwordActionPerformed
         // TODO add your handling code here:
-        if(shw_password.isSelected()) {
-            input_password.setEchoChar((char)0);
-        }
-        else {
+        if (shw_password.isSelected()) {
+            input_password.setEchoChar((char) 0);
+        } else {
             input_password.setEchoChar('*');
         }
     }//GEN-LAST:event_shw_passwordActionPerformed

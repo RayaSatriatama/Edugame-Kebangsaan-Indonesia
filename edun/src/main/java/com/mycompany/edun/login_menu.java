@@ -100,6 +100,7 @@ public class login_menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         login_user user = new login_user();
         user.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_button_PlayActionPerformed
 
     /**

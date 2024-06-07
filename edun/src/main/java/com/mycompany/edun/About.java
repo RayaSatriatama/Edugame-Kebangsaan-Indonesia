@@ -106,12 +106,14 @@ public class About extends javax.swing.JFrame {
         // TODO add your handling code here:
         login_menu menu = new login_menu();
         menu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_button_HomeActionPerformed
 
     private void button_closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_closeActionPerformed
         // TODO add your handling code here:
         login_user user = new login_user();
         user.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_button_closeActionPerformed
 
     /**

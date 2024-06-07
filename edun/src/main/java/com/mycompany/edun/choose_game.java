@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
  * @author nadiaag
  */
 public class choose_game extends javax.swing.JFrame {
+
     public String username;
 
     /**
@@ -26,26 +27,26 @@ public class choose_game extends javax.swing.JFrame {
      */
     public choose_game(String username1) {
         initComponents();
-        username=username1;
-        try{
-           // Add Customize Font Button
-           File fontBlack = new File("src/main/resources/fonts/Nunito-Black.ttf");
-           Font font_button = Font.createFont(Font.TRUETYPE_FONT, fontBlack).deriveFont(24f);
-           button_Back.setFont(font_button);
-           
-           // Add Customize Font 20 Bold
-           File fontButton = new File("src/main/resources/fonts/Nunito-Bold.ttf");
-           Font font_20 = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(20f);
-           question.setFont(font_20);
-           
-           // Add Customize Font 26 Black
-           Font font_24 = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(26f);
-           text_name.setFont(font_24);
-           
-           // Menampilkan username
-           showUsername(username1);
-        // Set the frame visible
-        setVisible(true);
+        username = username1;
+        try {
+            // Add Customize Font Button
+            File fontBlack = new File("src/main/resources/fonts/Nunito-Black.ttf");
+            Font font_button = Font.createFont(Font.TRUETYPE_FONT, fontBlack).deriveFont(24f);
+            button_Back.setFont(font_button);
+
+            // Add Customize Font 20 Bold
+            File fontButton = new File("src/main/resources/fonts/Nunito-Bold.ttf");
+            Font font_20 = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(20f);
+            question.setFont(font_20);
+
+            // Add Customize Font 26 Black
+            Font font_24 = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(26f);
+            text_name.setFont(font_24);
+
+            // Menampilkan username
+            showUsername(username1);
+            // Set the frame visible
+            setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -82,14 +83,6 @@ public class choose_game extends javax.swing.JFrame {
         book = new javax.swing.JLabel();
         bg_choose = new javax.swing.JLabel();
         bg_pattern = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        eduN = new javax.swing.JMenu();
-        credits = new javax.swing.JMenuItem();
-        about = new javax.swing.JMenuItem();
-        quit = new javax.swing.JMenuItem();
-        tools = new javax.swing.JMenu();
-        loginAdmin = new javax.swing.JMenuItem();
-        logoutAdmin = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -219,133 +212,67 @@ public class choose_game extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        eduN.setText("eduN");
-
-        credits.setText("Credits");
-        credits.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                creditsActionPerformed(evt);
-            }
-        });
-        eduN.add(credits);
-
-        about.setText("About");
-        about.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aboutActionPerformed(evt);
-            }
-        });
-        eduN.add(about);
-
-        quit.setText("Keluar eduN");
-        eduN.add(quit);
-
-        jMenuBar1.add(eduN);
-
-        tools.setText("Alat");
-        tools.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        loginAdmin.setText("Masuk Admin");
-        loginAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginAdminActionPerformed(evt);
-            }
-        });
-        tools.add(loginAdmin);
-
-        logoutAdmin.setText("Keluar Admin");
-        logoutAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        logoutAdmin.setEnabled(false);
-        logoutAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutAdminActionPerformed(evt);
-            }
-        });
-        tools.add(logoutAdmin);
-
-        jMenuBar1.add(tools);
-
-        setJMenuBar(jMenuBar1);
-
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     // Menampilkan tulisan Nama Pengguna
-    private void showUsername(String username){
+    private void showUsername(String username) {
         // Membuat objek
-        try{
+        try {
             // 02. Query SQL
             String namaPengguna = "SELECT CONCAT('Halo, ', name, '!') AS concatUsername FROM users WHERE name = ?";
-            
+
             // 03. Menghubungkan JAVA & SQL
-            Connection penghubung = (Connection)koneksi_db.konfigurasi_koneksiDB();
-            
+            Connection penghubung = (Connection) koneksi_db.konfigurasi_koneksiDB();
+
             // 04. Statement SQL dengan akses database langsung
             PreparedStatement showUsername = penghubung.prepareStatement(namaPengguna);
             showUsername.setString(1, username);
-            
+
             // 05. Eksekusi perintah SQL
             ResultSet hasilSQL = showUsername.executeQuery();
-            
+
             // 06. Tampilkan data
-            if(hasilSQL.next()){
+            if (hasilSQL.next()) {
                 String nameDB = hasilSQL.getString("concatUsername");
                 text_name.setText(nameDB);
             } else {
                 text_name.setText("User not found");
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             // 07. Salah system
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error in showUsername: " + e.getMessage());
         }
     }
-    
+
     private void button_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_BackActionPerformed
         // TODO add your handling code here:
         login_user user = new login_user();
         user.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_button_BackActionPerformed
 
     private void button_HomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_HomeActionPerformed
         // TODO add your handling code here:
         login_menu menu = new login_menu();
         menu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_button_HomeActionPerformed
-
-    private void creditsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditsActionPerformed
-        // TODO add your handling code here:
-        Credits c = new Credits();
-        c.setVisible(true);
-    }//GEN-LAST:event_creditsActionPerformed
-
-    private void loginAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginAdminActionPerformed
-        // TODO add your handling code here:
-        login_admin admin = new login_admin();
-        admin.setVisible(true);
-    }//GEN-LAST:event_loginAdminActionPerformed
-
-    private void logoutAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutAdminActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_logoutAdminActionPerformed
 
     private void button_PuzzleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_PuzzleActionPerformed
         // TODO add your handling code here:
         PuzzleSequenceFrame puzzle = new PuzzleSequenceFrame(username);
         puzzle.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_button_PuzzleActionPerformed
-
-    private void aboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutActionPerformed
-        // TODO add your handling code here:
-        About a = new About();
-        a.setVisible(true);
-    }//GEN-LAST:event_aboutActionPerformed
 
     private void button_MCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_MCActionPerformed
         // TODO add your handling code here:
         ModuleQuiz modul = new ModuleQuiz(username);
         modul.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_button_MCActionPerformed
 
     /**
@@ -386,7 +313,6 @@ public class choose_game extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem about;
     private javax.swing.JLabel bg_choose;
     private javax.swing.JLabel bg_pattern;
     private javax.swing.JLabel book;
@@ -395,19 +321,12 @@ public class choose_game extends javax.swing.JFrame {
     private rojerusan.RSMaterialButtonRectangle button_MC;
     private rojerusan.RSMaterialButtonRectangle button_Puzzle;
     private rojerusan.RSMaterialButtonRectangle button_TTS;
-    private javax.swing.JMenuItem credits;
-    private javax.swing.JMenu eduN;
     private rojerusan.RSPanelImage icon_back;
     private rojerusan.RSPanelImage icon_home;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JMenuItem loginAdmin;
-    private javax.swing.JMenuItem logoutAdmin;
     private javax.swing.JLabel puzzle;
     private javax.swing.JLabel question;
-    private javax.swing.JMenuItem quit;
     private javax.swing.JLabel text_name;
-    private javax.swing.JMenu tools;
     private javax.swing.JLabel tts;
     private javax.swing.JLabel tts1;
     private javax.swing.JLabel txt_puzzle;
