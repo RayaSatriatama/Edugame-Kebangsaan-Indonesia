@@ -11,7 +11,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -53,6 +52,19 @@ public class Leaderboard extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public Leaderboard(String inputName, int inputMarks, String inputGameType, int inputId) throws SQLException {
+        initComponents();
+        newId = inputId;
+        newName = inputName;
+        newMarks = inputMarks;
+        newGameType = inputGameType.toUpperCase();
+        newRank = -1;
+        Connection connection = (Connection) DBConnection.konfigurasi_koneksiDB();
+        newRank = getRank(connection, newId, newGameType);
+        System.out.println("Rank of " + newName + ": " + newRank);
+        updateLeaderboard(connection, 4, newGameType);
     }
 
     public Leaderboard(String inputName, int inputMarks, String inputGameType) {
@@ -153,9 +165,9 @@ public class Leaderboard extends javax.swing.JFrame {
                     }
                     index++;
                 }
-//                String newRankString = String.valueOf(newRank);
+                String newRankString = String.valueOf(newRank);
                 String newMarksString = String.valueOf(newMarks);
-//                icon_peringkat1k.setText(newRankString);
+                jLabel2.setText(newRankString);
                 username5.setText(newName);
                 score5.setText(newMarksString);
             }
@@ -189,12 +201,12 @@ public class Leaderboard extends javax.swing.JFrame {
         icon_peringkat3 = new javax.swing.JLabel();
         username3 = new javax.swing.JLabel();
         score3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         bg3 = new javax.swing.JLabel();
         icon_peringkat4 = new javax.swing.JLabel();
         username4 = new javax.swing.JLabel();
         score4 = new javax.swing.JLabel();
         bg4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         icon_peringkat = new javax.swing.JLabel();
         username5 = new javax.swing.JLabel();
         score5 = new javax.swing.JLabel();
@@ -294,6 +306,12 @@ public class Leaderboard extends javax.swing.JFrame {
         score3.setText("[SCORE]");
         getContentPane().add(score3, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 479, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("0");
+        jLabel2.setToolTipText("");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 670, 70, -1));
+
         bg3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/bg_Rectangle1.png"))); // NOI18N
         getContentPane().add(bg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(459, 454, -1, -1));
 
@@ -310,9 +328,6 @@ public class Leaderboard extends javax.swing.JFrame {
 
         bg4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/bg_Rectangle1.png"))); // NOI18N
         getContentPane().add(bg4, new org.netbeans.lib.awtextra.AbsoluteConstraints(458, 555, -1, -1));
-
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 690, -1, -1));
 
         icon_peringkat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/peringkat.png"))); // NOI18N
         getContentPane().add(icon_peringkat, new org.netbeans.lib.awtextra.AbsoluteConstraints(459, 656, -1, -1));
@@ -346,7 +361,9 @@ public class Leaderboard extends javax.swing.JFrame {
 
     private void button_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_backActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
+        SucceedGameFrame s = new SucceedGameFrame(newName, newMarks, newGameType, newId);
+        s.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_button_backActionPerformed
 
     private void button_tryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_tryActionPerformed

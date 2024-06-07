@@ -7,6 +7,9 @@ package com.mycompany.edun;
 import com.mycompany.edun.database.DBConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -14,15 +17,45 @@ import java.sql.PreparedStatement;
  */
 public class SucceedGameFrame extends javax.swing.JFrame {
 
+    int newId;
     String newName;
     int newMarks;
     String newGameType;
+    boolean isLoop = false;
 
     /**
      * Creates new form sukses
      */
     public SucceedGameFrame() {
         initComponents();
+    }
+
+    public SucceedGameFrame(String inputName, int inputMarks, String inputGameType, int inputId) {
+        initComponents();
+        newId = inputId;
+        newName = inputName;
+        newMarks = inputMarks;
+        newGameType = inputGameType.toUpperCase();
+        if (newMarks <= 20) {
+            icon_star1.setVisible(false);
+            icon_star2.setVisible(false);
+            icon_star3.setVisible(false);
+        } else if (newMarks <= 50) {
+            icon_star1.setVisible(true);
+            icon_star2.setVisible(false);
+            icon_star3.setVisible(false);
+        } else if (newMarks <= 80) {
+            icon_star1.setVisible(true);
+            icon_star2.setVisible(true);
+            icon_star3.setVisible(false);
+        } else {
+            icon_star1.setVisible(true);
+            icon_star2.setVisible(true);
+            icon_star3.setVisible(true);
+        }
+        skor_pengguna.setText(newName);
+        text_PTS.setText(newMarks + " PTS");
+        isLoop = true;
     }
 
     public SucceedGameFrame(String inputName, int inputMarks, String inputGameType) {
@@ -183,10 +216,20 @@ public class SucceedGameFrame extends javax.swing.JFrame {
 
     private void rSMaterialButtonRectangle1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRectangle1ActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
-        Leaderboard board = new Leaderboard(newName, newMarks, newGameType);
-        board.setVisible(true);
-        this.setVisible(true);
+        if (!isLoop) {
+            Leaderboard board = new Leaderboard(newName, newMarks, newGameType);
+            board.setVisible(true);
+            this.dispose();
+        } else {
+            Leaderboard board = null;
+            try {
+                board = new Leaderboard(newName, newMarks, newGameType, newId);
+            } catch (SQLException ex) {
+                Logger.getLogger(SucceedGameFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            board.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_rSMaterialButtonRectangle1ActionPerformed
 
     /**

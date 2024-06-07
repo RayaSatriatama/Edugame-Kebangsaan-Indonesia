@@ -12,7 +12,7 @@ public class ex {
         public static void main(String[] args) {
         
           // Start at splashscreen
-          SucceedGameFrame s = new SucceedGameFrame("raya", 100, "TTS");
+          SucceedGameFrame s = new SucceedGameFrame("array", 10, "TTS");
           s.setVisible(true);
 
           // Start at home_admin
