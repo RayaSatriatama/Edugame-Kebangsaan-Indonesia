@@ -29,7 +29,9 @@ import org.apache.commons.io.FilenameUtils;
  * @author ivanbesti
  */
 public class JigsawControlPanel extends javax.swing.JFrame {
+
     private File selectedFile;
+
     /**
      * Creates new form addNewQuestion
      */
@@ -38,21 +40,36 @@ public class JigsawControlPanel extends javax.swing.JFrame {
         read();
         refreshForm();
     }
-    
+
     private void refreshForm() {
         // Menyegarkan JFrame
         selectedFile = null;
         jTextField1.setText("");
         jTextField2.setText("");
         jLabel6.setIcon(null);
-        jLabel10.setText("");
+        try {
+            String perintah_SQL = "SELECT COUNT(id) FROM jigsaw_puzzle;";
+            Connection penghubung = (Connection) DBConnection.konfigurasi_koneksiDB();
+            Statement pernyataanSQL = penghubung.createStatement();
+            ResultSet hasil_SQL = pernyataanSQL.executeQuery(perintah_SQL);
+            if (hasil_SQL.next()) {
+                int id = hasil_SQL.getInt(1);
+                id = id + 1;
+                String str = String.valueOf(id);
+                jLabel10.setText(str);
+            } else {
+                jLabel10.setText("1");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-    
+
     private boolean isImageFile(File file) {
         String extension = FilenameUtils.getExtension(file.getName()).toLowerCase();
         return extension.equals("jpg") || extension.equals("jpeg") || extension.equals("png") || extension.equals("gif");
     }
-    
+
     private void displayImagePreview(File file) {
         try {
             ImageIcon icon = new ImageIcon(ImageIO.read(file));
@@ -63,19 +80,19 @@ public class JigsawControlPanel extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error displaying image preview: " + e.getMessage());
         }
     }
-    
-    private void read(){
+
+    private void read() {
         DefaultTableModel jigsawData = new DefaultTableModel();
         jigsawData.addColumn("No");
         jigsawData.addColumn("ID");
         jigsawData.addColumn("Name");
         jigsawData.addColumn("Path");
         jigsawData.addColumn("Upload Time");
-        
+
         try {
             String query = "SELECT * FROM jigsaw_puzzle";
 
-            Connection connection = (Connection)DBConnection.konfigurasi_koneksiDB();
+            Connection connection = (Connection) DBConnection.konfigurasi_koneksiDB();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
 
@@ -283,15 +300,17 @@ public class JigsawControlPanel extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         String newFileName = jTextField1.getText();
+        String newId = jLabel10.getText();
         if (selectedFile != null && !newFileName.isBlank()) {
             File destinationFolder = new File("src/main/resources/assets/JigsawPuzzleImages/");
             String path = destinationFolder.getPath() + File.separator + newFileName;
 
             try {
                 Connection con = DBConnection.konfigurasi_koneksiDB();
-                PreparedStatement ps = con.prepareStatement("INSERT INTO jigsaw_puzzle (name, path) VALUES (?, ?);");
-                ps.setString(1, newFileName);
-                ps.setString(2, path);
+                PreparedStatement ps = con.prepareStatement("INSERT INTO jigsaw_puzzle (id, name, path) VALUES (?, ?, ?);");
+                ps.setString(1, newId);
+                ps.setString(2, newFileName);
+                ps.setString(3, path);
                 ps.executeUpdate();
 
                 // Ensure the destination folder exists
@@ -342,7 +361,7 @@ public class JigsawControlPanel extends javax.swing.JFrame {
             }
         } else {
             selectedFile = null;
-        } 
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
@@ -354,16 +373,15 @@ public class JigsawControlPanel extends javax.swing.JFrame {
         // TODO add your handling code here:
         String id = jLabel10.getText();
         try {
-            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
-            PreparedStatement ps = con.prepareStatement( "DELETE FROM jigsaw_puzzle WHERE id=?");
+            Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
+            PreparedStatement ps = con.prepareStatement("DELETE FROM jigsaw_puzzle WHERE id=?");
             ps.setString(1, id);
             ps.executeUpdate();
             deleteFile();
             JFrame jf = new JFrame();
             jf.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(jf, "Image Succesfully Deleted");
-        }
-        catch (HeadlessException | SecurityException | SQLException e) {
+        } catch (HeadlessException | SecurityException | SQLException e) {
             JFrame jf = new JFrame();
             jf.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(jf, e);
@@ -388,63 +406,63 @@ public class JigsawControlPanel extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No file selected to delete.");
         }
     }
-    
+
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         String id = jLabel10.getText();
         String name = jTextField1.getText();
         String path = jTextField2.getText();
         if (!id.isEmpty() && !name.isEmpty() && !path.isEmpty() && selectedFile != null) {
-           try {
-               Connection con = DBConnection.konfigurasi_koneksiDB();
-               PreparedStatement ps = con.prepareStatement("UPDATE jigsaw_puzzle SET name=?, path=? WHERE id=?;");
-               ps.setString(1, name);
-               ps.setString(2, path);
-               ps.setString(3, id);
-               ps.executeUpdate();
+            try {
+                Connection con = DBConnection.konfigurasi_koneksiDB();
+                PreparedStatement ps = con.prepareStatement("UPDATE jigsaw_puzzle SET name=?, path=? WHERE id=?;");
+                ps.setString(1, name);
+                ps.setString(2, path);
+                ps.setString(3, id);
+                ps.executeUpdate();
 
-               File destinationFile = new File(path);
+                File destinationFile = new File(path);
 
-               File destinationFolder = destinationFile.getParentFile();
-               if (!destinationFolder.exists()) {
-                   destinationFolder.mkdirs();
-               }
+                File destinationFolder = destinationFile.getParentFile();
+                if (!destinationFolder.exists()) {
+                    destinationFolder.mkdirs();
+                }
 
-               if (destinationFile.exists()) {
-                   destinationFile.delete();
-               }
-               FileUtils.copyFile(selectedFile, destinationFile);
+                if (destinationFile.exists()) {
+                    destinationFile.delete();
+                }
+                FileUtils.copyFile(selectedFile, destinationFile);
 
-               JFrame jf = new JFrame();
-               jf.setAlwaysOnTop(true);
-               JOptionPane.showMessageDialog(jf, "File Successfully Updated!");
-           } catch (HeadlessException | SecurityException | SQLException | IOException e) {
-               JFrame jf = new JFrame();
-               jf.setAlwaysOnTop(true);
-               JOptionPane.showMessageDialog(jf, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-           } finally {
-               read();
-           }
-       } else if (id.isEmpty()) {
-           JOptionPane.showMessageDialog(this, "Please choose from table before update.", "Warning", JOptionPane.WARNING_MESSAGE);
-       } else {
-           JOptionPane.showMessageDialog(this, "Fill the text field.", "Warning", JOptionPane.WARNING_MESSAGE);
-       }
+                JFrame jf = new JFrame();
+                jf.setAlwaysOnTop(true);
+                JOptionPane.showMessageDialog(jf, "File Successfully Updated!");
+            } catch (HeadlessException | SecurityException | SQLException | IOException e) {
+                JFrame jf = new JFrame();
+                jf.setAlwaysOnTop(true);
+                JOptionPane.showMessageDialog(jf, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            } finally {
+                read();
+            }
+        } else if (id.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please choose from table before update.", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Fill the text field.", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         // TODO add your handling code here:
         int row = jTable2.rowAtPoint(evt.getPoint());
-        
+
         String id = jTable2.getValueAt(row, 1).toString();
         jLabel10.setText(id);
-        
+
         String name = jTable2.getValueAt(row, 2).toString();
         jTextField1.setText(name);
-        
+
         String path = jTable2.getValueAt(row, 3).toString();
         jTextField2.setText(path);
-        
+
         ImageIcon icon = new ImageIcon(path);
         jLabel6.setIcon(icon);
     }//GEN-LAST:event_jTable2MouseClicked

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2024 at 11:58 AM
+-- Generation Time: Jun 08, 2024 at 06:10 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -131,6 +131,13 @@ CREATE TABLE `jigsaw_puzzle` (
   `upload_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `jigsaw_puzzle`
+--
+
+INSERT INTO `jigsaw_puzzle` (`id`, `name`, `path`, `upload_time`) VALUES
+(15, 'iiuidthedmhxa8yhcdxb.jpg', 'src\\main\\resources\\assets\\JigsawPuzzleImages\\iiuidthedmhxa8yhcdxb.jpg', '2024-06-08 15:28:34');
+
 -- --------------------------------------------------------
 
 --
@@ -140,7 +147,7 @@ CREATE TABLE `jigsaw_puzzle` (
 CREATE TABLE `modul` (
   `id` int(15) NOT NULL,
   `tema` varchar(155) DEFAULT NULL,
-  `materi` varchar(9999) DEFAULT NULL
+  `materi` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -148,7 +155,9 @@ CREATE TABLE `modul` (
 --
 
 INSERT INTO `modul` (`id`, `tema`, `materi`) VALUES
-(1, 'Pancasila', 'Pendahuluan\r\nPancasila adalah dasar negara Republik Indonesia dan merupakan ideologi yang mempersatukan bangsa Indonesia. Ditetapkan pada tanggal 1 Juni 1945, Pancasila terdiri dari lima sila yang menjadi pedoman dalam kehidupan berbangsa dan bernegara.\r\nTujuan Pembelajaran\r\n1.	Memahami sejarah lahirnya Pancasila.\r\n2.	Menjelaskan makna dan nilai-nilai yang terkandung dalam setiap sila Pancasila.\r\n3.	Menerapkan nilai-nilai Pancasila dalam kehidupan sehari-hari.\r\nSejarah Lahirnya Pancasila\r\nPada tanggal 1 Juni 1945, Ir. Soekarno memperkenalkan konsep Pancasila dalam pidatonya di depan sidang BPUPKI. Pancasila kemudian disempurnakan dan ditetapkan sebagai dasar negara pada tanggal 18 Agustus 1945 oleh PPKI.\r\nLima Sila Pancasila\r\n1.	Ketuhanan Yang Maha Esa\r\no	Mengandung nilai religius dan penghormatan terhadap kepercayaan agama masing-masing.\r\no	Contoh penerapan: Menghormati perbedaan agama dan beribadah sesuai keyakinan.\r\n2.	Kemanusiaan yang Adil dan Beradab\r\no	Menekankan pentingnya perlakuan yang adil dan beradab terhadap sesama manusia.\r\no	Contoh penerapan: Membantu sesama tanpa memandang suku, agama, ras, atau golongan.\r\n3.	Persatuan Indonesia\r\no	Mengutamakan persatuan dan kesatuan bangsa di atas kepentingan pribadi atau golongan.\r\no	Contoh penerapan: Menjaga kerukunan dan keutuhan bangsa, serta menghindari konflik sosial.\r\n4.	Kerakyatan yang Dipimpin oleh Hikmat Kebijaksanaan dalam Permusyawaratan/Perwakilan\r\no	Menjunjung tinggi demokrasi yang berdasarkan musyawarah untuk mencapai mufakat.\r\no	Contoh penerapan: Mengambil keputusan bersama melalui musyawarah dan menghormati hasilnya.\r\n5.	Keadilan Sosial bagi Seluruh Rakyat Indonesia\r\no	Mewujudkan keadilan sosial dalam berbagai aspek kehidupan.\r\no	Contoh penerapan: Berpartisipasi dalam kegiatan sosial dan memperjuangkan kesejahteraan bersama.\r\nPenerapan Nilai-Nilai Pancasila dalam Kehidupan Sehari-Hari\r\n•	Di Lingkungan Keluarga: Menghormati orang tua, menjaga hubungan harmonis antar anggota keluarga, dan membantu pekerjaan rumah tangga.\r\n•	Di Lingkungan Sekolah: Bersikap sopan kepada guru dan teman, aktif dalam kegiatan sekolah, dan mematuhi peraturan sekolah.\r\n•	Di Lingkungan Masyarakat: Ikut serta dalam kegiatan gotong royong, menghormati tetangga, dan menjaga kebersihan lingkungan.\r\n•	Di Lingkungan Bangsa dan Negara: Menjaga persatuan dan kesatuan, mematuhi hukum dan peraturan yang berlaku, serta berpartisipasi dalam pembangunan negara.\r\nPenutup\r\nPancasila bukan hanya sekadar dasar negara, tetapi juga panduan moral dan etika bagi seluruh rakyat Indonesia. Dengan memahami dan menerapkan nilai-nilai Pancasila, kita dapat mewujudkan masyarakat yang adil, makmur, dan beradab.\r\n\r\n');
+(1, 'Pancasila', 'Pancasila adalah dasar ideologi negara Indonesia yang terdiri dari lima prinsip fundamental yang menjadi panduan dalam kehidupan berbangsa dan bernegara. Diperkenalkan oleh Presiden Soekarno pada 1 Juni 1945, Pancasila berfungsi sebagai landasan filosofi yang mengarahkan kebijakan dan sikap negara dalam berbagai aspek kehidupan. \r\n\r\nPrinsip pertama adalah Ketuhanan Yang Maha Esa, yang menegaskan bahwa negara Indonesia mengakui dan menghormati kepercayaan kepada Tuhan Yang Maha Esa, dengan menjamin kebebasan beragama dan kepercayaan bagi seluruh rakyat Indonesia. Prinsip kedua, Kemanusiaan yang Adil dan Beradab, mencerminkan komitmen terhadap kemanusiaan yang beradab, menghormati hak asasi manusia, dan menjunjung tinggi nilai-nilai kemanusiaan serta keadilan sosial.\r\n\r\nPrinsip ketiga, Persatuan Indonesia, menekankan pentingnya menjaga persatuan dan kesatuan bangsa Indonesia yang terdiri dari berbagai suku, agama, ras, dan golongan, serta mempromosikan rasa kebangsaan dan cinta tanah air. Prinsip keempat, Kerakyatan yang Dipimpin oleh Hikmat Kebijaksanaan dalam Permusyawaratan/Perwakilan, mendukung sistem demokrasi yang berlandaskan pada musyawarah dan perwakilan, di mana keputusan diambil melalui proses deliberatif yang mencerminkan aspirasi seluruh rakyat.\r\n\r\nTerakhir, prinsip Keadilan Sosial bagi Seluruh Rakyat Indonesia, menekankan pentingnya keadilan sosial dan pemerataan kesejahteraan bagi seluruh rakyat Indonesia, serta mengatasi kesenjangan sosial dan ekonomi. Pancasila menjadi fondasi bagi negara Indonesia dalam menjaga keberagaman, memperkuat persatuan, dan memajukan kesejahteraan bersama.'),
+(2, 'HAM', 'Hak Asasi Manusia (HAM) di Indonesia adalah prinsip-prinsip fundamental yang diakui dan dilindungi oleh negara untuk menjamin kebebasan dan hak setiap individu. Setelah kemerdekaan Indonesia pada tahun 1945, komitmen terhadap HAM mulai terlihat dalam UUD 1945 yang mencakup berbagai pasal yang melindungi hak-hak dasar warga negara, seperti hak atas hidup, kebebasan beragama, kebebasan berkumpul, dan hak atas pendidikan.\r\n\r\nPada era Reformasi setelah 1998, perlindungan HAM di Indonesia semakin diperkuat dengan berbagai perubahan konstitusi dan undang-undang yang lebih tegas. Salah satu langkah signifikan adalah pembentukan Komisi Nasional Hak Asasi Manusia (Komnas HAM) pada tahun 1993, yang berfungsi sebagai lembaga independen untuk memantau, menyelidiki, dan mengadvokasi pelanggaran HAM.\r\n\r\nIndonesia juga meratifikasi berbagai instrumen internasional HAM, seperti Konvensi Internasional tentang Hak Sipil dan Politik, serta Konvensi Internasional tentang Hak Ekonomi, Sosial, dan Budaya. Pemerintah berusaha untuk menyesuaikan hukum nasional dengan standar internasional ini, meskipun pelaksanaannya masih menghadapi berbagai tantangan.\r\n\r\nIsu-isu kontemporer HAM di Indonesia mencakup berbagai aspek, mulai dari kebebasan berpendapat dan berekspresi, hak-hak perempuan dan anak, hingga perlindungan terhadap minoritas dan kelompok rentan lainnya. Meskipun ada kemajuan, masalah pelanggaran HAM masih sering terjadi, terutama terkait dengan kebebasan pers, hak-hak masyarakat adat, dan penanganan kasus-kasus pelanggaran HAM masa lalu yang belum terselesaikan.\r\n\r\nPemerintah dan masyarakat sipil terus berupaya untuk meningkatkan pemahaman dan penegakan HAM melalui pendidikan, advokasi, dan reformasi hukum. Upaya ini bertujuan untuk memastikan bahwa setiap individu di Indonesia dapat menikmati hak-hak mereka secara penuh, tanpa diskriminasi dan dengan perlindungan yang memadai dari negara.'),
+(3, 'Politik', 'Politik di Indonesia adalah sistem yang kompleks dan dinamis yang telah mengalami banyak perubahan sejak kemerdekaan pada tahun 1945. Setelah kemerdekaan, Indonesia memasuki masa Orde Lama di bawah Presiden Soekarno yang mempromosikan ideologi \"Nasakom\" (Nasionalisme, Agama, dan Komunisme). Periode ini berakhir dengan peristiwa G30S/PKI pada tahun 1965 dan jatuhnya Soekarno, yang kemudian digantikan oleh Soeharto.\r\n\r\nMasa Orde Baru (1966-1998) di bawah Presiden Soeharto ditandai dengan stabilitas politik dan pertumbuhan ekonomi yang signifikan, tetapi juga dengan otoritarianisme, pelanggaran hak asasi manusia, dan korupsi yang merajalela. Soeharto akhirnya lengser pada tahun 1998 setelah krisis ekonomi Asia dan tekanan dari gerakan reformasi.\r\n\r\nEra Reformasi yang dimulai pada tahun 1998 membawa perubahan besar menuju demokrasi. Kebebasan pers, pemilu multipartai, dan desentralisasi kekuasaan menjadi ciri utama era ini. Indonesia menyelenggarakan pemilu yang bebas dan adil secara berkala, dengan partai-partai politik seperti PDI-P, Golkar, dan Partai Demokrat menjadi pemain utama.\r\n\r\nSistem pemerintahan Indonesia adalah republik presidensial, di mana presiden dipilih langsung oleh rakyat dan berfungsi sebagai kepala negara dan kepala pemerintahan. Setelah reformasi, Indonesia juga menerapkan otonomi daerah yang memberikan kewenangan lebih besar kepada pemerintah daerah dalam pengelolaan administrasi dan keuangan.\r\n\r\nLembaga-lembaga negara terdiri dari eksekutif (presiden dan kabinet), legislatif (Dewan Perwakilan Rakyat dan Dewan Perwakilan Daerah yang membentuk Majelis Permusyawaratan Rakyat), dan yudikatif (Mahkamah Agung, Mahkamah Konstitusi, dan Komisi Yudisial).\r\n\r\nSaat ini, Indonesia masih menghadapi berbagai tantangan dalam politik, termasuk korupsi yang masih menjadi masalah besar meskipun ada upaya pemberantasan oleh KPK. Demokrasi dan kebebasan berpendapat terus berkembang, meskipun ada tantangan terhadap kebebasan pers dan hak-hak sipil. Politik berbasis identitas agama dan etnis masih mempengaruhi dinamika politik, sementara pemerintah berupaya meningkatkan pertumbuhan ekonomi dan mengurangi kesenjangan sosial. Politik Indonesia mencerminkan keragaman budaya, etnis, dan agama yang sangat kaya, dengan dinamika yang terus berkembang.');
 
 -- --------------------------------------------------------
 
@@ -225,21 +234,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`) VALUES
-(1, 'jaja'),
-(2, 'haha'),
-(3, 'hahah'),
-(4, 'jajaja'),
-(5, 'jaja'),
-(6, 'rara'),
-(7, 'jajaja'),
-(8, 'jajaja'),
-(9, 'hahaha'),
-(10, 'jajajaj'),
-(11, 'jaja'),
-(12, 'jajaj'),
-(13, 'Ivann'),
-(14, 'r'),
-(15, 'raya');
+(1, 'jaja');
 
 --
 -- Indexes for dumped tables
@@ -286,34 +281,22 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `crossword_puzzle`
---
-ALTER TABLE `crossword_puzzle`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=268;
-
---
--- AUTO_INCREMENT for table `jigsaw_puzzle`
---
-ALTER TABLE `jigsaw_puzzle`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=15;
-
---
 -- AUTO_INCREMENT for table `modul`
 --
 ALTER TABLE `modul`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `score`
 --
 ALTER TABLE `score`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(155) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(155) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

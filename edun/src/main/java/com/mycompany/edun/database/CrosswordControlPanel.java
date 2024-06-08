@@ -21,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
  * @author ivanbesti
  */
 public class CrosswordControlPanel extends javax.swing.JFrame {
+
     /**
      * Creates new form addNewQuestion
      */
@@ -29,25 +30,40 @@ public class CrosswordControlPanel extends javax.swing.JFrame {
         read();
         refreshForm();
     }
-    
+
     private void refreshForm() {
         jTextField1.setText("");
         jTextField2.setText("");
-        jLabel10.setText("");
+        try {
+            String perintah_SQL = "SELECT COUNT(id) FROM crossword_puzzle;";
+            Connection penghubung = (Connection) DBConnection.konfigurasi_koneksiDB();
+            Statement pernyataanSQL = penghubung.createStatement();
+            ResultSet hasil_SQL = pernyataanSQL.executeQuery(perintah_SQL);
+            if (hasil_SQL.next()) {
+                int id = hasil_SQL.getInt(1);
+                id = id + 1;
+                String str = String.valueOf(id);
+                jLabel10.setText(str);
+            } else {
+                jLabel10.setText("1");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    private void read(){
+    private void read() {
         DefaultTableModel jigsawData = new DefaultTableModel();
         jigsawData.addColumn("No");
         jigsawData.addColumn("ID");
         jigsawData.addColumn("Question");
         jigsawData.addColumn("Answer");
         jigsawData.addColumn("Upload Time");
-        
+
         try {
             String query = "SELECT * FROM crossword_puzzle";
 
-            Connection connection = (Connection)DBConnection.konfigurasi_koneksiDB();
+            Connection connection = (Connection) DBConnection.konfigurasi_koneksiDB();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
 
@@ -233,15 +249,17 @@ public class CrosswordControlPanel extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        String question = jTextField1.getText();        
+        String question = jTextField1.getText();
         String answer = jTextField2.getText();
+        String id = jLabel10.getText();
 
         if (!question.isBlank() && !answer.isBlank()) {
             try {
                 Connection con = DBConnection.konfigurasi_koneksiDB();
-                PreparedStatement ps = con.prepareStatement("INSERT INTO crossword_puzzle (question, answer) VALUES (?, ?);");
-                ps.setString(1, question);
-                ps.setString(2, answer);
+                PreparedStatement ps = con.prepareStatement("INSERT INTO crossword_puzzle (id, question, answer) VALUES (?, ?, ?);");
+                ps.setString(1, id);
+                ps.setString(2, question);
+                ps.setString(3, answer);
                 ps.executeUpdate();
                 JFrame jf = new JFrame();
                 jf.setAlwaysOnTop(true);
@@ -267,15 +285,14 @@ public class CrosswordControlPanel extends javax.swing.JFrame {
         // TODO add your handling code here:
         String id = jLabel10.getText();
         try {
-            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
-            PreparedStatement ps = con.prepareStatement( "DELETE FROM crossword_puzzle WHERE id=?");
+            Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
+            PreparedStatement ps = con.prepareStatement("DELETE FROM crossword_puzzle WHERE id=?");
             ps.setString(1, id);
             ps.executeUpdate();
             JFrame jf = new JFrame();
             jf.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(jf, "Succesfully Deleted");
-        }
-        catch (HeadlessException | SecurityException | SQLException e) {
+        } catch (HeadlessException | SecurityException | SQLException e) {
             JFrame jf = new JFrame();
             jf.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(jf, e);
@@ -292,24 +309,23 @@ public class CrosswordControlPanel extends javax.swing.JFrame {
         String answer = jTextField2.getText();
         if (!id.isBlank() && !question.isBlank() && !answer.isBlank()) {
             try {
-                Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
+                Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
                 PreparedStatement ps = con.prepareStatement("UPDATE crossword_puzzle SET question=?,answer=? WHERE id=?;");
                 ps.setString(1, question);
-                ps.setString(2, answer);            
+                ps.setString(2, answer);
                 ps.setString(3, id);
                 ps.executeUpdate();
                 JFrame jf = new JFrame();
                 jf.setAlwaysOnTop(true);
                 JOptionPane.showMessageDialog(jf, "Question Succesfully Updated!");
-            }
-            catch (HeadlessException | SecurityException | SQLException e) {
+            } catch (HeadlessException | SecurityException | SQLException e) {
                 JFrame jf = new JFrame();
                 jf.setAlwaysOnTop(true);
                 JOptionPane.showMessageDialog(jf, e);
             } finally {
                 read();
             }
-        } else if (id.isBlank()){
+        } else if (id.isBlank()) {
             JOptionPane.showMessageDialog(this, "Please choose from table before update.", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this, "Fill the text field.", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -319,13 +335,13 @@ public class CrosswordControlPanel extends javax.swing.JFrame {
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         // TODO add your handling code here:
         int row = jTable2.rowAtPoint(evt.getPoint());
-        
+
         String id = jTable2.getValueAt(row, 1).toString();
         jLabel10.setText(id);
-        
+
         String question = jTable2.getValueAt(row, 2).toString();
         jTextField1.setText(question);
-        
+
         String answer = jTable2.getValueAt(row, 3).toString();
         jTextField2.setText(answer);
     }//GEN-LAST:event_jTable2MouseClicked
