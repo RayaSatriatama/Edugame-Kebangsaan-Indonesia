@@ -290,7 +290,7 @@ public class CrosswordControlPanel extends javax.swing.JFrame {
         String id = jLabel10.getText();
         String question = jTextField1.getText();
         String answer = jTextField2.getText();
-        if (id.isBlank() && question.isBlank() && answer.isBlank()) {
+        if (!id.isBlank() && !question.isBlank() && !answer.isBlank()) {
             try {
                 Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
                 PreparedStatement ps = con.prepareStatement("UPDATE crossword_puzzle SET question=?,answer=? WHERE id=?;");

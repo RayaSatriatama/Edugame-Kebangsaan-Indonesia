@@ -90,7 +90,7 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
     }
 
     private int calculateScore() {
-        return (int) ((correctAnswers / (double) totalQuestions) * 1000);
+        return (int) ((correctAnswers / (double) totalQuestions) * 100);
     }
 
     private void loadQuestions() {

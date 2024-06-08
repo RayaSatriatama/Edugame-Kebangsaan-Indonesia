@@ -78,7 +78,7 @@ public class CrosswordDataFetcher {
         if (canPlaceVertically) {
             return true;
         } else {
-            tempGrid.update(horizontalWord); // Assuming false if above fails
+            tempGrid.update(horizontalWord);
             return false;
         }
     }
