@@ -263,7 +263,7 @@ public class ChooseGame extends javax.swing.JFrame {
 
     private void button_PuzzleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_PuzzleActionPerformed
         // TODO add your handling code here:
-        PuzzleSequenceFrame puzzle = new PuzzleSequenceFrame(username);
+        ImagePuzzleFrame puzzle = new ImagePuzzleFrame(username);
         puzzle.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_button_PuzzleActionPerformed

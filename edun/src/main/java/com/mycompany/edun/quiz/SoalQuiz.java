@@ -4,6 +4,7 @@
  */
 package com.mycompany.edun.quiz;
 
+import com.mycompany.edun.SucceedGameFrame;
 import com.mycompany.edun.database.DBConnection;
 import java.awt.Font;
 import java.io.File;
@@ -97,8 +98,9 @@ public class SoalQuiz extends javax.swing.JFrame {
 
             if (rowsAffected > 0) {
 //                String marks1 = String.valueOf(marks);
-                setVisible(false);
-                new SuccesfullySubmited(username, marks).setVisible(true);
+                this.dispose();
+                SucceedGameFrame s = new SucceedGameFrame(username, marks, "QUIZ");
+                s.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Error: Username not found.");
             }

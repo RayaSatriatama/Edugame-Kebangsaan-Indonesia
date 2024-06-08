@@ -5,7 +5,6 @@ com\mycompany\edun\database\JigsawControlPanel$3.class
 com\mycompany\edun\HomeAdmin$12.class
 com\mycompany\edun\Leaderboard$1.class
 com\mycompany\edun\SucceedGameFrame.class
-com\mycompany\edun\PuzzleSequenceFrame$2.class
 com\mycompany\edun\crosswordpuzzle\Word.class
 com\mycompany\edun\JigsawPuzzle\JigsawPuzzle.class
 com\mycompany\edun\CrosswordPuzzleFrame$4.class
@@ -15,7 +14,6 @@ com\mycompany\edun\LoginUser$6.class
 com\mycompany\edun\database\DeleteModule$6.class
 com\mycompany\edun\database\UpdateModule$6.class
 com\mycompany\edun\database\JigsawControlPanel$9.class
-com\mycompany\edun\quiz\SuccesfullySubmited$1.class
 com\mycompany\edun\CrosswordPuzzleFrame$5.class
 com\mycompany\edun\database\AllStudentResult$1.class
 com\mycompany\edun\database\UpdateQuestion$6.class
@@ -33,7 +31,6 @@ com\mycompany\edun\database\UpdateQuestion$7.class
 com\mycompany\edun\crosswordpuzzle\CrosswordPuzzleGenerator.class
 com\mycompany\edun\HomeAdmin$4.class
 com\mycompany\edun\HomeAdmin$13.class
-com\mycompany\edun\quiz\SuccesfullySubmited$2.class
 com\mycompany\edun\database\DeleteModule$5.class
 com\mycompany\edun\database\UpdateModule$1.class
 com\mycompany\edun\SucceedGameFrame$1.class
@@ -61,15 +58,15 @@ com\mycompany\edun\database\JigsawControlPanel$2.class
 com\mycompany\edun\database\UpdateQuestion$5.class
 com\mycompany\edun\quiz\SoalQuiz$5.class
 com\mycompany\edun\database\AddQuestion$5.class
-com\mycompany\edun\PuzzleSequenceFrame$3.class
 com\mycompany\edun\database\AddQuestion.class
 com\mycompany\edun\HomeAdmin$11.class
 com\mycompany\edun\LoginMenu.class
 com\mycompany\edun\database\UpdateQuestion.class
 com\mycompany\edun\database\UpdateQuestion$2.class
 com\mycompany\edun\JigsawPuzzle\PuzzlePiece.class
+com\mycompany\edun\ImagePuzzleFrame$2.class
 com\mycompany\edun\database\JigsawControlPanel$1.class
-com\mycompany\edun\PuzzleSequenceFrame.class
+com\mycompany\edun\ImagePuzzleFrame$1.class
 com\mycompany\edun\About$1.class
 com\mycompany\edun\LoginUser$7.class
 com\mycompany\edun\About.class
@@ -78,12 +75,13 @@ com\mycompany\edun\LoginMenu$2.class
 com\mycompany\edun\HomeAdmin$10.class
 com\mycompany\edun\database\UpdateQuestion$3.class
 com\mycompany\edun\database\DeleteModule.class
-com\mycompany\edun\PuzzleSequenceFrame$1.class
+com\mycompany\edun\ImagePuzzleFrame.class
 com\mycompany\edun\LoginMenu$1.class
 com\mycompany\edun\ChooseGame$5.class
 com\mycompany\edun\database\UpdateQuestion$4.class
 com\mycompany\edun\HomeAdmin$1.class
 com\mycompany\edun\About$2.class
+com\mycompany\edun\CrosswordPuzzleFrame$8.class
 com\mycompany\edun\database\DeleteQuestion$9.class
 com\mycompany\edun\database\AddQuestion$6.class
 com\mycompany\edun\quiz\SoalQuiz$7.class
@@ -94,6 +92,7 @@ com\mycompany\edun\SucceedGameFrame$4.class
 com\mycompany\edun\database\JigsawControlPanel$6.class
 com\mycompany\edun\CrosswordPuzzleFrame$7.class
 com\mycompany\edun\HomeAdmin$7.class
+com\mycompany\edun\ImagePuzzleFrame$3.class
 com\mycompany\edun\LoginAdmin.class
 com\mycompany\edun\CrosswordPuzzleFrame.class
 com\mycompany\edun\quiz\SoalQuiz$6.class
@@ -109,6 +108,7 @@ com\mycompany\edun\database\UpdateQuestion$9.class
 com\mycompany\edun\database\AllStudentResult.class
 com\mycompany\edun\database\AllStudentResult$3.class
 com\mycompany\edun\crosswordpuzzle\GridPanel.class
+com\mycompany\edun\NewClass.class
 com\mycompany\edun\database\CrosswordControlPanel$1.class
 com\mycompany\edun\database\DeleteQuestion.class
 com\mycompany\edun\database\JigsawControlPanel.class
@@ -121,6 +121,7 @@ com\mycompany\edun\ChooseGame$2.class
 com\mycompany\edun\HomeAdmin$14.class
 com\mycompany\edun\database\DeleteQuestion$7.class
 com\mycompany\edun\LoginUser$3.class
+com\mycompany\edun\ImagePuzzleFrame$4.class
 com\mycompany\edun\Leaderboard$3.class
 com\mycompany\edun\crosswordpuzzle\CrosswordPuzzlePanel.class
 com\mycompany\edun\database\GetModule$1.class
@@ -129,7 +130,6 @@ com\mycompany\edun\database\JigsawControlPanel$5.class
 com\mycompany\edun\database\JigsawControlPanel$11.class
 com\mycompany\edun\crosswordpuzzle\CrosswordPuzzle.class
 com\mycompany\edun\database\AddModule.class
-com\mycompany\edun\PuzzleSequenceFrame$4.class
 com\mycompany\edun\database\AllStudentResult$2.class
 com\mycompany\edun\database\GetQuestion.class
 com\mycompany\edun\database\CrosswordControlPanel$6.class
@@ -180,7 +180,6 @@ com\mycompany\edun\database\AddModule$4.class
 com\mycompany\edun\database\UpdateModule$5.class
 com\mycompany\edun\quiz\SoalQuiz$1.class
 com\mycompany\edun\database\JigsawControlPanel$7.class
-com\mycompany\edun\quiz\SuccesfullySubmited.class
 com\mycompany\edun\database\CrosswordControlPanel$9.class
 com\mycompany\edun\Credits$2.class
 com\mycompany\edun\database\DeleteQuestion$3.class

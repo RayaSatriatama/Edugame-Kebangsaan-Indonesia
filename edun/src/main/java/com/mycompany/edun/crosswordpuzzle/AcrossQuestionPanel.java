@@ -23,7 +23,7 @@ public class AcrossQuestionPanel extends JPanel {
         acrossQuestions.setEditable(false);
 
         JPanel acrossPanel = new JPanel(new BorderLayout());
-        acrossPanel.add(new JLabel("Pertanyaan Mendatar"), BorderLayout.CENTER);
+        acrossPanel.add(new JLabel("Pertanyaan Mendatar"), BorderLayout.NORTH);
         acrossPanel.add(new JScrollPane(acrossQuestions), BorderLayout.CENTER);
         add(acrossPanel, BorderLayout.CENTER);
         setBackground(new Color(0, 0, 0, 0));

@@ -77,7 +77,7 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
     private void updateTimerLabel() {
         int minutes = timeLeft / 60;
         int seconds = timeLeft % 60;
-        statusLabel.setText("Time left: " + minutes + ":" + (seconds < 10 ? "0" : "") + seconds);
+        statusLabel.setText("Waktu: " + minutes + ":" + (seconds < 10 ? "0" : "") + seconds);
     }
 
     private void endGame() {
@@ -153,6 +153,12 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
         jPanel1.add(questionPanela1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 290, 320));
         jPanel1.add(questionPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 280, 300, 330));
         jPanel1.add(gridPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, 500, 500));
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 730, 270, 50));
 
         jButton1.setText("Submit");
@@ -257,6 +263,19 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         endGame();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+                String word = jTextField1.getText().trim().toUpperCase();
+        if (!word.isEmpty()) {
+            crosswordPuzzlePanel1.checkWord(word);
+            jTextField1.setText("");
+        } else {
+            JOptionPane.showMessageDialog(this, "Please enter a word.", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        this.revalidate();
+        this.repaint();
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments

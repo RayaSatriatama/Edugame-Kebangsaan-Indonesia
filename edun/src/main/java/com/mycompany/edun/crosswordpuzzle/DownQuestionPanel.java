@@ -22,7 +22,7 @@ public class DownQuestionPanel extends JPanel {
         downQuestions.setEditable(false);
 
         JPanel downPanel = new JPanel(new BorderLayout());
-        downPanel.add(new JLabel("Pertanyaan Menurun"), BorderLayout.CENTER);
+        downPanel.add(new JLabel("Pertanyaan Menurun"), BorderLayout.NORTH);
         downPanel.add(new JScrollPane(downQuestions), BorderLayout.CENTER);
         add(downPanel, BorderLayout.CENTER);
         setBackground(new Color(0, 0, 0, 0));
