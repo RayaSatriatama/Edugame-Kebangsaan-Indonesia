@@ -36,6 +36,8 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
 
     public CrosswordPuzzleFrame(String inputName) {
         this.newName = inputName;
+        //cek parsing data
+        //JOptionPane.showMessageDialog(null, inputName); 
         initComponents();
         crosswordPuzzlePanel1.generateCrosswordPuzzle();
         loadQuestions();

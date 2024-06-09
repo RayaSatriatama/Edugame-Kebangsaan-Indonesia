@@ -33,6 +33,8 @@ public class ImagePuzzleFrame extends javax.swing.JFrame {
 
     public ImagePuzzleFrame(String inputName) {
         this.newName = inputName;
+        //cek parsing data
+        //JOptionPane.showMessageDialog(null, inputName); 
         initComponents();
         try {
             // Add Customize Font Button

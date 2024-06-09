@@ -6,6 +6,8 @@ package com.mycompany.edun;
 
 import com.mycompany.edun.database.DBConnection;
 import com.mycompany.edun.quiz.ModuleQuiz;
+import com.mycompany.edun.JigsawPuzzle.ModulePuzzle;
+import com.mycompany.edun.crosswordpuzzle.ModuleCw;
 import java.awt.Font;
 import java.io.File;
 import java.sql.Connection;
@@ -163,6 +165,11 @@ public class ChooseGame extends javax.swing.JFrame {
         button_TTS.setHideActionText(true);
         button_TTS.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         button_TTS.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        button_TTS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_TTSActionPerformed(evt);
+            }
+        });
         jPanel1.add(button_TTS, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 480, 150, 220));
 
         txt_puzzle2.setFont(new java.awt.Font("Nunito", 1, 24)); // NOI18N
@@ -263,17 +270,24 @@ public class ChooseGame extends javax.swing.JFrame {
 
     private void button_PuzzleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_PuzzleActionPerformed
         // TODO add your handling code here:
-        ImagePuzzleFrame puzzle = new ImagePuzzleFrame(username);
+        ModulePuzzle puzzle = new ModulePuzzle(username);
         puzzle.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_button_PuzzleActionPerformed
 
     private void button_MCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_MCActionPerformed
         // TODO add your handling code here:
-        ModuleQuiz modul = new ModuleQuiz(username);
-        modul.setVisible(true);
+        ModuleQuiz quiz = new ModuleQuiz(username);
+        quiz.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_button_MCActionPerformed
+
+    private void button_TTSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_TTSActionPerformed
+        // TODO add your handling code here:
+        ModuleCw tts = new ModuleCw(username);
+        tts.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_button_TTSActionPerformed
 
     /**
      * @param args the command line arguments
