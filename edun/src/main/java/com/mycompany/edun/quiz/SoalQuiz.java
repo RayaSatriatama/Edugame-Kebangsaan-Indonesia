@@ -102,7 +102,7 @@ public class SoalQuiz extends javax.swing.JFrame {
             if (rowsAffected > 0) {
 //                String marks1 = String.valueOf(marks);
                 this.dispose();
-                SucceedGameFrame s = new SucceedGameFrame(username, marks, "QUIZ");
+                SucceedGameFrame s = new SucceedGameFrame(username, marks*10*2, "QUIZ");
                 s.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Error: Username not found.");
@@ -122,6 +122,7 @@ public class SoalQuiz extends javax.swing.JFrame {
 
     public SoalQuiz(String username) {
         initComponents();
+        //JOptionPane.showMessageDialog(null, username); 
         //First Question and username
         try {
             File fontButton = new File("src/main/resources/fonts/Nunito-Black.ttf");

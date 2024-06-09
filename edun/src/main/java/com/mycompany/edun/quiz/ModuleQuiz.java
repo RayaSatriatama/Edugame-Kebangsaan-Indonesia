@@ -42,11 +42,11 @@ public String username;
     public ModuleQuiz(String username1) {
         initComponents();
         username=username1;
-        JOptionPane.showMessageDialog(null, username1);
+        //JOptionPane.showMessageDialog(null, username1);
         try {
             Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT materi FROM modul;");
+            ResultSet rs = st.executeQuery("SELECT materi FROM modul WHERE id = 2;");
 
             // Untuk menampung data dari ResultSet
             StringBuilder materiText = new StringBuilder();
@@ -97,18 +97,18 @@ public String username;
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         book.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Illust - Book.png"))); // NOI18N
-        getContentPane().add(book, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, 210, 220));
+        getContentPane().add(book, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, -1, -1));
 
         rSPanelImage3.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Book1.png"))); // NOI18N
         rSPanelImage3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(rSPanelImage3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, 140, 150));
+        getContentPane().add(rSPanelImage3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, 180, 180));
 
         rSPanelImage2.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Book1.png"))); // NOI18N
         rSPanelImage2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(rSPanelImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 80, 140, 150));
+        getContentPane().add(rSPanelImage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 80, 180, 180));
 
         icon_play.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Play.png"))); // NOI18N
-        getContentPane().add(icon_play, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 110, -1, -1));
+        getContentPane().add(icon_play, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 110, -1, -1));
 
         button_play.setBackground(new java.awt.Color(124, 58, 237));
         button_play.setText("MAINKAN");
@@ -117,20 +117,19 @@ public String username;
                 button_playActionPerformed(evt);
             }
         });
-        getContentPane().add(button_play, new org.netbeans.lib.awtextra.AbsoluteConstraints(1109, 90, 240, -1));
+        getContentPane().add(button_play, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 90, 219, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("MODUL PEMBELAJARAN PANCASILA");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 280, -1, -1));
+        jLabel1.setText("MODUL PEMBELAJARAN HAM");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 290, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel3.setText("Halo,");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 240, -1, -1));
+        jLabel3.setText("Hi!");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 260, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel4.setText("jLabel4");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 260, -1, -1));
 
         jTextArea1.setEditable(false);
         jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
@@ -138,7 +137,6 @@ public String username;
         jTextArea1.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
-        jTextArea1.setBorder(null);
         jTextArea1.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 jTextArea1ComponentShown(evt);
@@ -146,10 +144,10 @@ public String username;
         });
         jScrollPane1.setViewportView(jTextArea1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 790, 450));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, 790, 520));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BG-Pop Up-quiz.png"))); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 900, 700));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, -1, 700));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BG.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, -1, -1));
