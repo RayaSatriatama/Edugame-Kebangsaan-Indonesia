@@ -24,7 +24,6 @@ import javax.swing.JOptionPane;
  */
 public class SoalQuiz extends javax.swing.JFrame {
 
-
     public String username;
     public String questionID = "1";
     public String answer;
@@ -143,42 +142,38 @@ public class SoalQuiz extends javax.swing.JFrame {
             jRadioButton3.setFont(font_24);
             jRadioButton4.setFont(font_24);
 
+            try {
+                Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
+                String queryUser = "SELECT * FROM users WHERE name = ?";
+                PreparedStatement pstUser = con.prepareStatement(queryUser);
+                pstUser.setString(1, username);
+                ResultSet rs = pstUser.executeQuery();
+                while (rs.next()) {
+                    jLabel5.setText(rs.getString(2));
+                }
+                // Misalkan questionID sudah didefinisikan sebelumnya
+                int questionID = 1; // atau ambil dari parameter atau sumber lain
+
+                // Query untuk mendapatkan pertanyaan
+                String queryQuestion = "SELECT * FROM questions WHERE id = ?";
+                PreparedStatement pstQuestion = con.prepareStatement(queryQuestion);
+                pstQuestion.setInt(1, questionID);
+                ResultSet rs1 = pstQuestion.executeQuery();
+                while (rs1.next()) {
+                    jLabel2.setText(rs1.getString(1));
+                    jLabel8.setText(rs1.getString(2));
+                    jRadioButton1.setText(rs1.getString(3));
+                    jRadioButton2.setText(rs1.getString(4));
+                    jRadioButton3.setText(rs1.getString(5));
+                    jRadioButton4.setText(rs1.getString(6));
+                    answer = rs1.getString(7);
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-
-    public SoalQuiz(String username) {
-        initComponents();
-        //First Question and username
-        try {
-            Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
-            String queryUser = "SELECT * FROM users WHERE name = ?";
-            PreparedStatement pstUser = con.prepareStatement(queryUser);
-            pstUser.setString(1, username);
-            ResultSet rs = pstUser.executeQuery();
-            while (rs.next()) {
-                jLabel5.setText(rs.getString(2));
-            }
-            // Misalkan questionID sudah didefinisikan sebelumnya
-            int questionID = 1; // atau ambil dari parameter atau sumber lain
-
-            // Query untuk mendapatkan pertanyaan
-            String queryQuestion = "SELECT * FROM questions WHERE id = ?";
-            PreparedStatement pstQuestion = con.prepareStatement(queryQuestion);
-            pstQuestion.setInt(1, questionID);
-            ResultSet rs1 = pstQuestion.executeQuery();
-            while (rs1.next()) {
-                jLabel2.setText(rs1.getString(1));
-                jLabel8.setText(rs1.getString(2));
-                jRadioButton1.setText(rs1.getString(3));
-                jRadioButton2.setText(rs1.getString(4));
-                jRadioButton3.setText(rs1.getString(5));
-                jRadioButton4.setText(rs1.getString(6));
-                answer = rs1.getString(7);
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
         }
     }
 
