@@ -250,6 +250,7 @@ public class LoginUser extends javax.swing.JFrame {
                 // 06. Validasi SQL dan lanjut ke halaman berikutnya
                 ChooseGame game = new ChooseGame(username);
                 game.setVisible(true);
+                this.dispose();
 
             } else {
                 JOptionPane.showMessageDialog(null, "Gagal");

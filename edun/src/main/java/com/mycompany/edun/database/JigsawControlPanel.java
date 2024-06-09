@@ -408,30 +408,62 @@ public class JigsawControlPanel extends javax.swing.JFrame {
     }
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:                                     
         String id = jLabel10.getText();
         String name = jTextField1.getText();
-        String path = jTextField2.getText();
-        if (!id.isEmpty() && !name.isEmpty() && !path.isEmpty() && selectedFile != null) {
+        String newPath = "src/main/resources/assets/JigsawPuzzleImages/" + name;
+
+        if (!id.isEmpty()) {
             try {
                 Connection con = DBConnection.konfigurasi_koneksiDB();
-                PreparedStatement ps = con.prepareStatement("UPDATE jigsaw_puzzle SET name=?, path=? WHERE id=?;");
-                ps.setString(1, name);
-                ps.setString(2, path);
-                ps.setString(3, id);
+                StringBuilder sql = new StringBuilder("UPDATE jigsaw_puzzle SET ");
+                boolean needsComma = false;
+
+                if (!name.isEmpty()) {
+                    sql.append("name=?");
+                    needsComma = true;
+                }
+                if (needsComma) {
+                    sql.append(", ");
+                }
+                sql.append("path=? WHERE id=?;");
+
+                PreparedStatement ps = con.prepareStatement(sql.toString());
+
+                int paramIndex = 1;
+                if (!name.isEmpty()) {
+                    ps.setString(paramIndex++, name);
+                }
+                ps.setString(paramIndex++, newPath);
+                ps.setString(paramIndex, id);
                 ps.executeUpdate();
 
-                File destinationFile = new File(path);
+                // Get the old path before updating
+                String oldPath = jTextField2.getText();
+                File oldFile = new File(oldPath);
+                File newFile = new File(newPath);
 
-                File destinationFolder = destinationFile.getParentFile();
+                // Ensure the destination folder exists
+                File destinationFolder = newFile.getParentFile();
                 if (!destinationFolder.exists()) {
                     destinationFolder.mkdirs();
                 }
 
-                if (destinationFile.exists()) {
-                    destinationFile.delete();
+                // If a new file is selected, copy it to the new path
+                if (selectedFile != null) {
+                    if (newFile.exists()) {
+                        newFile.delete();
+                    }
+                    FileUtils.copyFile(selectedFile, newFile);
+                } else {
+                    // If no new file is selected, rename the old file to the new name
+                    if (oldFile.exists() && !oldFile.equals(newFile)) {
+                        if (newFile.exists()) {
+                            newFile.delete();
+                        }
+                        oldFile.renameTo(newFile);
+                    }
                 }
-                FileUtils.copyFile(selectedFile, destinationFile);
 
                 JFrame jf = new JFrame();
                 jf.setAlwaysOnTop(true);
@@ -443,10 +475,8 @@ public class JigsawControlPanel extends javax.swing.JFrame {
             } finally {
                 read();
             }
-        } else if (id.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please choose from table before update.", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(this, "Fill the text field.", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please choose from table before update.", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -481,16 +511,24 @@ public class JigsawControlPanel extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JigsawControlPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JigsawControlPanel.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JigsawControlPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JigsawControlPanel.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JigsawControlPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JigsawControlPanel.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JigsawControlPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JigsawControlPanel.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>

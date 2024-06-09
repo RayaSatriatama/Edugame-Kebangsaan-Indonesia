@@ -19,6 +19,8 @@ import com.mycompany.edun.database.UpdateCrossword;
 import com.mycompany.edun.database.UpdateJigsaw;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -34,15 +36,14 @@ import net.proteanit.sql.DbUtils;
  */
 public class HomeAdmin extends javax.swing.JFrame {
 
-    public static int open=0;
+    public static int open = 0;
 
     /**
      * Creates new form homeAdmin
      */
-    
     public HomeAdmin() {
         initComponents();
-        
+
         try {
             content_dashboard.setVisible(true);
             content_question.setVisible(false);
@@ -50,38 +51,37 @@ public class HomeAdmin extends javax.swing.JFrame {
             content_result.setVisible(false);
             content_puzzle.setVisible(false);
             content_tts.setVisible(false);
-        
-            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
+
+            Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM users;");
             jTable2.setModel(DbUtils.resultSetToTableModel(rs));
-            
+
             // Customize Table
-            jTable2.getTableHeader().setFont(new Font("SF Pro Text", Font.BOLD,12));
+            jTable2.getTableHeader().setFont(new Font("SF Pro Text", Font.BOLD, 12));
             jTable2.getTableHeader().setOpaque(false);
             jTable2.getTableHeader().setBackground(new Color(91, 33, 182));
             jTable2.getTableHeader().setForeground(new Color(255, 255, 255));
             jTable2.getTableHeader().setReorderingAllowed(false);
             jTable2.setRowHeight(32);
-            
-        }
-        catch (Exception e) {
+
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    
-    private void read_puzzle(){
+
+    private void read_puzzle() {
         DefaultTableModel jigsawData = new DefaultTableModel();
         jigsawData.addColumn("No");
         jigsawData.addColumn("ID");
         jigsawData.addColumn("Name");
         jigsawData.addColumn("Path");
         jigsawData.addColumn("Upload Time");
-        
+
         try {
             String query = "SELECT * FROM jigsaw_puzzle";
 
-            Connection connection = (Connection)DBConnection.konfigurasi_koneksiDB();
+            Connection connection = (Connection) DBConnection.konfigurasi_koneksiDB();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
 
@@ -100,8 +100,6 @@ public class HomeAdmin extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -349,13 +347,13 @@ public class HomeAdmin extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Nama"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -1803,16 +1801,16 @@ public class HomeAdmin extends javax.swing.JFrame {
         content_result.setVisible(false);
         content_puzzle.setVisible(false);
         content_tts.setVisible(false);
-        
-        try{
-            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
+
+        try {
+            Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM questions;");
             jTable3.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
-        
+
     }//GEN-LAST:event_questionMouseClicked
 
     private void modulMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modulMouseClicked
@@ -1823,15 +1821,14 @@ public class HomeAdmin extends javax.swing.JFrame {
         content_result.setVisible(false);
         content_puzzle.setVisible(false);
         content_tts.setVisible(false);
-        
+
         // Tampilan table di halaman modul
         try {
-            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
+            Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM modul;");
             list_modul.setModel(DbUtils.resultSetToTableModel(rs));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_modulMouseClicked
@@ -1844,10 +1841,10 @@ public class HomeAdmin extends javax.swing.JFrame {
         content_result.setVisible(true);
         content_puzzle.setVisible(false);
         content_tts.setVisible(false);
-        
+
         try {
             Connection con;
-            con = (Connection)DBConnection.konfigurasi_koneksiDB();
+            con = (Connection) DBConnection.konfigurasi_koneksiDB();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM users;");
             jTable4.setModel(DbUtils.resultSetToTableModel(rs));
@@ -1876,14 +1873,13 @@ public class HomeAdmin extends javax.swing.JFrame {
 
     private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
         // TODO add your handling code here:
-        JFrame jf=new JFrame();
+        JFrame jf = new JFrame();
         jf.setAlwaysOnTop(true);
         int a = JOptionPane.showConfirmDialog(jf, "Apakah Anda Yakin untuk Logout?", "Select", JOptionPane.YES_NO_OPTION);
-        if (a==0) {
+        if (a == 0) {
             setVisible(false);
             new LoginUser().setVisible(true);
-        }
-        else {
+        } else {
             setVisible(true);
         }
     }//GEN-LAST:event_logoutMouseClicked
@@ -1896,28 +1892,27 @@ public class HomeAdmin extends javax.swing.JFrame {
         content_result.setVisible(true);
         content_puzzle.setVisible(false);
         content_tts.setVisible(false);
-        
+
         try {
             Connection con;
-            con = (Connection)DBConnection.konfigurasi_koneksiDB();
+            con = (Connection) DBConnection.konfigurasi_koneksiDB();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM users;");
             jTable4.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
-        
-        
+
+
     }//GEN-LAST:event_list_resultActionPerformed
 
     private void delete_modulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_modulActionPerformed
         // TODO add your handling code here:
-        if(open==0) {
+        if (open == 0) {
             new DeleteModule().setVisible(true);
-            open=1;
-        }
-        else {
-            JFrame jf=new JFrame();
+            open = 1;
+        } else {
+            JFrame jf = new JFrame();
             jf.setAlwaysOnTop(true);
             JOptionPane.showConfirmDialog(jf, "One form is already open");
         }
@@ -1925,12 +1920,11 @@ public class HomeAdmin extends javax.swing.JFrame {
 
     private void edit_modulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_modulActionPerformed
         // TODO add your handling code here:
-        if(open==0) {
+        if (open == 0) {
             new UpdateModule().setVisible(true);
-            open=1;
-        }
-        else {
-            JFrame jf=new JFrame();
+            open = 1;
+        } else {
+            JFrame jf = new JFrame();
             jf.setAlwaysOnTop(true);
             JOptionPane.showConfirmDialog(jf, "One form is already open");
         }
@@ -1941,28 +1935,40 @@ public class HomeAdmin extends javax.swing.JFrame {
         AddModule addModule = new AddModule();
         addModule.setVisible(true);
         addModule.setAlwaysOnTop(true);
+        addModule.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                System.out.println("AddModule window closed.");
+                try {
+                    Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
+                    Statement st = con.createStatement();
+                    ResultSet rs = st.executeQuery("SELECT * FROM modul;");
+                    list_modul.setModel(DbUtils.resultSetToTableModel(rs));
+                } catch (SQLException error) {
+                    JOptionPane.showMessageDialog(null, error);
+                }
+            }
+        });
     }//GEN-LAST:event_add_modulActionPerformed
 
     private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
         // TODO add your handling code here:
         int marks;
-        if(jTextField2.getText().equals("")) {
-            marks=0;
-        }
-        else {
-            marks=Integer.parseInt(jTextField2.getText());
+        if (jTextField2.getText().equals("")) {
+            marks = 0;
+        } else {
+            marks = Integer.parseInt(jTextField2.getText());
             try {
-            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM users WHERE marks >= "+marks+";");
-            jTable4.setModel(DbUtils.resultSetToTableModel(rs));
-            
-        }
-        catch (Exception e) {
-            JFrame jf=new JFrame();
-            jf.setAlwaysOnTop(true);
-            JOptionPane.showMessageDialog(jf, e);
-        }
+                Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
+                Statement st = con.createStatement();
+                ResultSet rs = st.executeQuery("SELECT * FROM users WHERE marks >= " + marks + ";");
+                jTable4.setModel(DbUtils.resultSetToTableModel(rs));
+
+            } catch (Exception e) {
+                JFrame jf = new JFrame();
+                jf.setAlwaysOnTop(true);
+                JOptionPane.showMessageDialog(jf, e);
+            }
         }
     }//GEN-LAST:event_jTextField2KeyPressed
 
@@ -1974,18 +1980,18 @@ public class HomeAdmin extends javax.swing.JFrame {
         content_result.setVisible(false);
         content_puzzle.setVisible(true);
         content_tts.setVisible(false);
-        
+
         DefaultTableModel jigsawData = new DefaultTableModel();
         jigsawData.addColumn("No");
         jigsawData.addColumn("ID");
         jigsawData.addColumn("Name");
         jigsawData.addColumn("Path");
         jigsawData.addColumn("Upload Time");
-        
+
         try {
             String query = "SELECT * FROM jigsaw_puzzle";
 
-            Connection connection = (Connection)DBConnection.konfigurasi_koneksiDB();
+            Connection connection = (Connection) DBConnection.konfigurasi_koneksiDB();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
 
@@ -2013,18 +2019,18 @@ public class HomeAdmin extends javax.swing.JFrame {
         content_result.setVisible(false);
         content_puzzle.setVisible(false);
         content_tts.setVisible(true);
-        
+
         DefaultTableModel jigsawData = new DefaultTableModel();
         jigsawData.addColumn("No");
         jigsawData.addColumn("ID");
         jigsawData.addColumn("Question");
         jigsawData.addColumn("Answer");
         jigsawData.addColumn("Upload Time");
-        
+
         try {
             String query = "SELECT * FROM crossword_puzzle";
 
-            Connection connection = (Connection)DBConnection.konfigurasi_koneksiDB();
+            Connection connection = (Connection) DBConnection.konfigurasi_koneksiDB();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
 

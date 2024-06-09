@@ -23,11 +23,12 @@ import javax.swing.JOptionPane;
  * @author ivanbesti
  */
 public class SoalQuiz extends javax.swing.JFrame {
+
     public String username;
-    public String questionID="1";
+    public String questionID = "1";
     public String answer;
-    public int marks=0;
-    
+    public int marks = 0;
+
     public void answerCheck() {
         String studentAnswer = "";
         if (jRadioButton1.isSelected()) {
@@ -50,7 +51,7 @@ public class SoalQuiz extends javax.swing.JFrame {
         int questionID1 = Integer.parseInt(questionID);
         questionID1 = questionID1 + 1;
         questionID = String.valueOf(questionID1);
-        
+
         // Clear jRadioButton
         jRadioButton1.setSelected(false);
         jRadioButton2.setSelected(false);
@@ -65,29 +66,31 @@ public class SoalQuiz extends javax.swing.JFrame {
         // Load next question
         question();
     }
+
     public void question() {
-            try {
-           Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
-           Statement st = con.createStatement();
-           ResultSet rs1 = st.executeQuery("SELECT * FROM questions WHERE id = " + questionID + ";");
-           while (rs1.next()) {
-               jLabel2.setText(rs1.getString(1));
-               jLabel8.setText(rs1.getString(2));
-               jRadioButton1.setText(rs1.getString(3));
-               jRadioButton2.setText(rs1.getString(4));
-               jRadioButton3.setText(rs1.getString(5));
-               jRadioButton4.setText(rs1.getString(6));
-               answer = rs1.getString(7);
-           }
-       } catch (Exception e) {
-           JOptionPane.showMessageDialog(null, e);
+        try {
+            Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
+            Statement st = con.createStatement();
+            ResultSet rs1 = st.executeQuery("SELECT * FROM questions WHERE id = " + questionID + ";");
+            while (rs1.next()) {
+                jLabel2.setText(rs1.getString(1));
+                jLabel8.setText(rs1.getString(2));
+                jRadioButton1.setText(rs1.getString(3));
+                jRadioButton2.setText(rs1.getString(4));
+                jRadioButton3.setText(rs1.getString(5));
+                jRadioButton4.setText(rs1.getString(6));
+                answer = rs1.getString(7);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
-    }
+
     public void submit() {
         String username = jLabel5.getText();
         answerCheck();
         try {
-            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
+            Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
 
             String query = "INSERT INTO score (marks, name, game_type) VALUES (?, ?, 'quiz');";
             PreparedStatement pst = con.prepareStatement(query);
@@ -116,64 +119,62 @@ public class SoalQuiz extends javax.swing.JFrame {
     public SoalQuiz() throws SQLException {
         initComponents();
         try {
-           File fontButton = new File("src/main/resources/fonts/Nunito-Black.ttf");
-           Font font = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(24f);
-           jLabel1.setFont(font);
-           jLabel2.setFont(font);
-           jLabel4.setFont(font);
-           jLabel5.setFont(font);
-           jLabel6.setFont(font);
-           jLabel7.setFont(font);
-           jLabel8.setFont(font);
-           button_next.setFont(font);
-           button_submit.setFont(font);
-           
-           Font font_24 = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(20f);
-           jRadioButton1.setFont(font_24);
-           jRadioButton2.setFont(font_24);
-           jRadioButton3.setFont(font_24);
-           jRadioButton4.setFont(font_24);
-           
-           
+            File fontButton = new File("src/main/resources/fonts/Nunito-Black.ttf");
+            Font font = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(24f);
+            jLabel1.setFont(font);
+            jLabel2.setFont(font);
+            jLabel4.setFont(font);
+            jLabel5.setFont(font);
+            jLabel6.setFont(font);
+            jLabel7.setFont(font);
+            jLabel8.setFont(font);
+            button_next.setFont(font);
+            button_submit.setFont(font);
+
+            Font font_24 = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(20f);
+            jRadioButton1.setFont(font_24);
+            jRadioButton2.setFont(font_24);
+            jRadioButton3.setFont(font_24);
+            jRadioButton4.setFont(font_24);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
     public SoalQuiz(String username) {
         initComponents();
         //First Question and username
         try {
-            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
+            Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
             String queryUser = "SELECT * FROM users WHERE name = ?";
             PreparedStatement pstUser = con.prepareStatement(queryUser);
             pstUser.setString(1, username);
             ResultSet rs = pstUser.executeQuery();
             while (rs.next()) {
-            jLabel5.setText(rs.getString(2));
-        }
+                jLabel5.setText(rs.getString(2));
+            }
             // Misalkan questionID sudah didefinisikan sebelumnya
-        int questionID = 1; // atau ambil dari parameter atau sumber lain
+            int questionID = 1; // atau ambil dari parameter atau sumber lain
 
-        // Query untuk mendapatkan pertanyaan
-        String queryQuestion = "SELECT * FROM questions WHERE id = ?";
-        PreparedStatement pstQuestion = con.prepareStatement(queryQuestion);
-        pstQuestion.setInt(1, questionID);
-        ResultSet rs1 = pstQuestion.executeQuery();
-        while (rs1.next()) {
-            jLabel2.setText(rs1.getString(1));
-            jLabel8.setText(rs1.getString(2));
-            jRadioButton1.setText(rs1.getString(3));
-            jRadioButton2.setText(rs1.getString(4));
-            jRadioButton3.setText(rs1.getString(5));
-            jRadioButton4.setText(rs1.getString(6));
-            answer = rs1.getString(7);
+            // Query untuk mendapatkan pertanyaan
+            String queryQuestion = "SELECT * FROM questions WHERE id = ?";
+            PreparedStatement pstQuestion = con.prepareStatement(queryQuestion);
+            pstQuestion.setInt(1, questionID);
+            ResultSet rs1 = pstQuestion.executeQuery();
+            while (rs1.next()) {
+                jLabel2.setText(rs1.getString(1));
+                jLabel8.setText(rs1.getString(2));
+                jRadioButton1.setText(rs1.getString(3));
+                jRadioButton2.setText(rs1.getString(4));
+                jRadioButton3.setText(rs1.getString(5));
+                jRadioButton4.setText(rs1.getString(6));
+                answer = rs1.getString(7);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
         }
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, e);
     }
-    }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -257,15 +258,13 @@ public class SoalQuiz extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(153, 102, 0));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("Halo,");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 200, 100, -1));
+        jLabel4.setText("Hi!");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 200, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(153, 102, 0));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel5.setText("Ivan");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 200, 140, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(715, 200, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(153, 102, 0));
@@ -279,21 +278,20 @@ public class SoalQuiz extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 3, 25)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(102, 51, 0));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel8.setText("Pertanyaan");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 290, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8-save-20.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 810, -1, 30));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 870, -1, 30));
 
         button_submit.setBackground(new java.awt.Color(244, 63, 94));
-        button_submit.setText("KIRIM JAWABAN");
+        button_submit.setText("SUBMIT");
         button_submit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button_submitActionPerformed(evt);
             }
         });
-        getContentPane().add(button_submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 790, 470, -1));
+        getContentPane().add(button_submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 850, 272, -1));
 
         button_next.setBackground(new java.awt.Color(0, 153, 102));
         button_next.setText("SELANJUTNYA");
@@ -302,9 +300,8 @@ public class SoalQuiz extends javax.swing.JFrame {
                 button_nextActionPerformed(evt);
             }
         });
-        getContentPane().add(button_next, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 790, 440, -1));
+        getContentPane().add(button_next, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 850, 272, -1));
 
-        jLabel9.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BG4.png"))); // NOI18N
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -331,7 +328,7 @@ public class SoalQuiz extends javax.swing.JFrame {
 
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
         // TODO add your handling code here:
-         if (jRadioButton3.isSelected()) {
+        if (jRadioButton3.isSelected()) {
             jRadioButton1.setSelected(false);
             jRadioButton2.setSelected(false);
             jRadioButton4.setSelected(false);
