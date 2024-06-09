@@ -4,23 +4,28 @@
  */
 package com.mycompany.edun;
 
+import com.mycompany.edun.database.AddCrossword;
 import com.mycompany.edun.database.AddModule;
+import com.mycompany.edun.database.AddJigsaw;
 import com.mycompany.edun.database.AddQuestion;
 import com.mycompany.edun.database.DeleteModule;
 import com.mycompany.edun.database.DeleteQuestion;
-import com.mycompany.edun.database.GetModule;
-import com.mycompany.edun.database.GetQuestion;
 import com.mycompany.edun.database.UpdateModule;
 import com.mycompany.edun.database.UpdateQuestion;
 import com.mycompany.edun.database.DBConnection;
+import com.mycompany.edun.database.DeleteCrossword;
+import com.mycompany.edun.database.DeleteJigsaw;
+import com.mycompany.edun.database.UpdateCrossword;
+import com.mycompany.edun.database.UpdateJigsaw;
+import java.awt.Color;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -34,23 +39,69 @@ public class HomeAdmin extends javax.swing.JFrame {
     /**
      * Creates new form homeAdmin
      */
+    
     public HomeAdmin() {
         initComponents();
+        
         try {
             content_dashboard.setVisible(true);
             content_question.setVisible(false);
             content_modul.setVisible(false);
             content_result.setVisible(false);
+            content_puzzle.setVisible(false);
+            content_tts.setVisible(false);
         
             Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM users;");
             jTable2.setModel(DbUtils.resultSetToTableModel(rs));
+            
+            // Customize Table
+            jTable2.getTableHeader().setFont(new Font("SF Pro Text", Font.BOLD,12));
+            jTable2.getTableHeader().setOpaque(false);
+            jTable2.getTableHeader().setBackground(new Color(91, 33, 182));
+            jTable2.getTableHeader().setForeground(new Color(255, 255, 255));
+            jTable2.getTableHeader().setReorderingAllowed(false);
+            jTable2.setRowHeight(32);
+            
         }
         catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }
+    
+    private void read_puzzle(){
+        DefaultTableModel jigsawData = new DefaultTableModel();
+        jigsawData.addColumn("No");
+        jigsawData.addColumn("ID");
+        jigsawData.addColumn("Name");
+        jigsawData.addColumn("Path");
+        jigsawData.addColumn("Upload Time");
+        
+        try {
+            String query = "SELECT * FROM jigsaw_puzzle";
+
+            Connection connection = (Connection)DBConnection.konfigurasi_koneksiDB();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+
+            int i = 1;
+            while (resultSet.next()) {
+                jigsawData.addRow(new Object[]{
+                    i++,
+                    resultSet.getString(1) != null ? resultSet.getString(1) : "",
+                    resultSet.getString(2) != null ? resultSet.getString(2) : "",
+                    resultSet.getString(3) != null ? resultSet.getString(3) : "",
+                    resultSet.getString(4) != null ? resultSet.getString(4) : ""
+                });
+                list_puzzle.setModel(jigsawData);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -119,9 +170,43 @@ public class HomeAdmin extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
+        content_puzzle = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        deletePuzzle = new javax.swing.JPanel();
+        txt_deletePuzzle = new javax.swing.JLabel();
+        image_deletePuzzle = new rojerusan.RSPanelImage();
+        delete_puzzle = new rojerusan.RSMaterialButtonRectangle();
+        editPuzzle = new javax.swing.JPanel();
+        txt_editPuzzle = new javax.swing.JLabel();
+        image_editPuzzle = new rojerusan.RSPanelImage();
+        edit_puzzle = new rojerusan.RSMaterialButtonRectangle();
+        addPuzzle = new javax.swing.JPanel();
+        txt_addPuzzle = new javax.swing.JLabel();
+        image_addPuzzle = new rojerusan.RSPanelImage();
+        add_puzzle = new rojerusan.RSMaterialButtonRectangle();
+        scroll_puzzle = new javax.swing.JScrollPane();
+        list_puzzle = new javax.swing.JTable();
+        content_tts = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        deleteTTS = new javax.swing.JPanel();
+        txt_deleteTTS = new javax.swing.JLabel();
+        image_deleteTTS = new rojerusan.RSPanelImage();
+        delete_tts = new rojerusan.RSMaterialButtonRectangle();
+        editTTS = new javax.swing.JPanel();
+        txt_editTTS = new javax.swing.JLabel();
+        image_editTTS = new rojerusan.RSPanelImage();
+        edit_tts = new rojerusan.RSMaterialButtonRectangle();
+        addTTS = new javax.swing.JPanel();
+        txt_addTTS = new javax.swing.JLabel();
+        image_addTTS = new rojerusan.RSPanelImage();
+        add_tts = new rojerusan.RSMaterialButtonRectangle();
+        scroll_tts = new javax.swing.JScrollPane();
+        list_tts = new javax.swing.JTable();
         sidebar = new javax.swing.JPanel();
         logout = new javax.swing.JPanel();
         text_logout = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
@@ -134,6 +219,10 @@ public class HomeAdmin extends javax.swing.JFrame {
         text_modul = new javax.swing.JLabel();
         hasil = new javax.swing.JPanel();
         text_result = new javax.swing.JLabel();
+        puzzle = new javax.swing.JPanel();
+        text_result1 = new javax.swing.JLabel();
+        tts = new javax.swing.JPanel();
+        text_result2 = new javax.swing.JLabel();
         rSPanelImage1 = new rojerusan.RSPanelImage();
         navigation = new javax.swing.JLabel();
 
@@ -268,9 +357,22 @@ public class HomeAdmin extends javax.swing.JFrame {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
-        jTable2.setRowHeight(32);
-        jTable2.setRowMargin(4);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTable2.setFocusable(false);
+        jTable2.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        jTable2.setSelectionBackground(new java.awt.Color(241, 245, 249));
+        jTable2.setSelectionForeground(new java.awt.Color(15, 23, 42));
+        jTable2.setShowGrid(true);
+        jTable2.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(jTable2);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -911,6 +1013,480 @@ public class HomeAdmin extends javax.swing.JFrame {
                 .addContainerGap(371, Short.MAX_VALUE))
         );
 
+        content_puzzle.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel21.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel21.setFont(new java.awt.Font("SF Pro Text", 1, 24)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(17, 24, 39));
+        jLabel21.setText("Puzzle");
+
+        deletePuzzle.setBackground(new java.awt.Color(255, 255, 255));
+
+        txt_deletePuzzle.setBackground(new java.awt.Color(255, 255, 255));
+        txt_deletePuzzle.setFont(new java.awt.Font("SF Pro Text", 1, 16)); // NOI18N
+        txt_deletePuzzle.setForeground(new java.awt.Color(255, 255, 255));
+        txt_deletePuzzle.setText("<html> Hapus<br>Puzzle</html>");
+
+        image_deletePuzzle.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Trash.png"))); // NOI18N
+
+        javax.swing.GroupLayout image_deletePuzzleLayout = new javax.swing.GroupLayout(image_deletePuzzle);
+        image_deletePuzzle.setLayout(image_deletePuzzleLayout);
+        image_deletePuzzleLayout.setHorizontalGroup(
+            image_deletePuzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 58, Short.MAX_VALUE)
+        );
+        image_deletePuzzleLayout.setVerticalGroup(
+            image_deletePuzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 61, Short.MAX_VALUE)
+        );
+
+        delete_puzzle.setBackground(new java.awt.Color(239, 68, 68));
+        delete_puzzle.setBorder(null);
+        delete_puzzle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delete_puzzleActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout deletePuzzleLayout = new javax.swing.GroupLayout(deletePuzzle);
+        deletePuzzle.setLayout(deletePuzzleLayout);
+        deletePuzzleLayout.setHorizontalGroup(
+            deletePuzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(deletePuzzleLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(txt_deletePuzzle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79)
+                .addComponent(image_deletePuzzle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
+            .addGroup(deletePuzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(deletePuzzleLayout.createSequentialGroup()
+                    .addGap(1, 1, 1)
+                    .addComponent(delete_puzzle, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        deletePuzzleLayout.setVerticalGroup(
+            deletePuzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(deletePuzzleLayout.createSequentialGroup()
+                .addGroup(deletePuzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(deletePuzzleLayout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(txt_deletePuzzle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(deletePuzzleLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(image_deletePuzzle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(31, Short.MAX_VALUE))
+            .addGroup(deletePuzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(deletePuzzleLayout.createSequentialGroup()
+                    .addGap(9, 9, 9)
+                    .addComponent(delete_puzzle, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
+        editPuzzle.setBackground(new java.awt.Color(255, 255, 255));
+
+        txt_editPuzzle.setBackground(new java.awt.Color(255, 255, 255));
+        txt_editPuzzle.setFont(new java.awt.Font("SF Pro Text", 1, 16)); // NOI18N
+        txt_editPuzzle.setForeground(new java.awt.Color(255, 255, 255));
+        txt_editPuzzle.setText("<html> Perbarui<br>Puzzle</html>");
+
+        image_editPuzzle.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Edit.png"))); // NOI18N
+
+        javax.swing.GroupLayout image_editPuzzleLayout = new javax.swing.GroupLayout(image_editPuzzle);
+        image_editPuzzle.setLayout(image_editPuzzleLayout);
+        image_editPuzzleLayout.setHorizontalGroup(
+            image_editPuzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 57, Short.MAX_VALUE)
+        );
+        image_editPuzzleLayout.setVerticalGroup(
+            image_editPuzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 57, Short.MAX_VALUE)
+        );
+
+        edit_puzzle.setBackground(new java.awt.Color(245, 158, 11));
+        edit_puzzle.setBorder(null);
+        edit_puzzle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edit_puzzleActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout editPuzzleLayout = new javax.swing.GroupLayout(editPuzzle);
+        editPuzzle.setLayout(editPuzzleLayout);
+        editPuzzleLayout.setHorizontalGroup(
+            editPuzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(editPuzzleLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(txt_editPuzzle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
+                .addComponent(image_editPuzzle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
+            .addGroup(editPuzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(editPuzzleLayout.createSequentialGroup()
+                    .addComponent(edit_puzzle, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        editPuzzleLayout.setVerticalGroup(
+            editPuzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(editPuzzleLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(editPuzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(editPuzzleLayout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(txt_editPuzzle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(image_editPuzzle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(38, Short.MAX_VALUE))
+            .addGroup(editPuzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(editPuzzleLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(edit_puzzle, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
+        addPuzzle.setBackground(new java.awt.Color(255, 255, 255));
+
+        txt_addPuzzle.setBackground(new java.awt.Color(255, 255, 255));
+        txt_addPuzzle.setFont(new java.awt.Font("SF Pro Text", 1, 16)); // NOI18N
+        txt_addPuzzle.setForeground(new java.awt.Color(255, 255, 255));
+        txt_addPuzzle.setText("<html> Tambah<br>Puzzle </html>");
+
+        image_addPuzzle.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Add.png"))); // NOI18N
+
+        javax.swing.GroupLayout image_addPuzzleLayout = new javax.swing.GroupLayout(image_addPuzzle);
+        image_addPuzzle.setLayout(image_addPuzzleLayout);
+        image_addPuzzleLayout.setHorizontalGroup(
+            image_addPuzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+        image_addPuzzleLayout.setVerticalGroup(
+            image_addPuzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        add_puzzle.setBackground(new java.awt.Color(16, 185, 129));
+        add_puzzle.setBorder(null);
+        add_puzzle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_puzzleActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout addPuzzleLayout = new javax.swing.GroupLayout(addPuzzle);
+        addPuzzle.setLayout(addPuzzleLayout);
+        addPuzzleLayout.setHorizontalGroup(
+            addPuzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addPuzzleLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(txt_addPuzzle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65)
+                .addComponent(image_addPuzzle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(48, Short.MAX_VALUE))
+            .addGroup(addPuzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(addPuzzleLayout.createSequentialGroup()
+                    .addComponent(add_puzzle, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        addPuzzleLayout.setVerticalGroup(
+            addPuzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addPuzzleLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(addPuzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(image_addPuzzle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_addPuzzle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(33, Short.MAX_VALUE))
+            .addGroup(addPuzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(addPuzzleLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(add_puzzle, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
+        list_puzzle.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        scroll_puzzle.setViewportView(list_puzzle);
+
+        javax.swing.GroupLayout content_puzzleLayout = new javax.swing.GroupLayout(content_puzzle);
+        content_puzzle.setLayout(content_puzzleLayout);
+        content_puzzleLayout.setHorizontalGroup(
+            content_puzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(content_puzzleLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(content_puzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scroll_puzzle, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(content_puzzleLayout.createSequentialGroup()
+                        .addGroup(content_puzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(addPuzzle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel21))
+                        .addGap(18, 18, 18)
+                        .addComponent(editPuzzle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(deletePuzzle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        content_puzzleLayout.setVerticalGroup(
+            content_puzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(content_puzzleLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jLabel21)
+                .addGap(31, 31, 31)
+                .addGroup(content_puzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(deletePuzzle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addPuzzle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editPuzzle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addComponent(scroll_puzzle, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(278, Short.MAX_VALUE))
+        );
+
+        content_tts.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel22.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel22.setFont(new java.awt.Font("SF Pro Text", 1, 24)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(17, 24, 39));
+        jLabel22.setText("Teka-Teki Silang");
+
+        deleteTTS.setBackground(new java.awt.Color(255, 255, 255));
+
+        txt_deleteTTS.setBackground(new java.awt.Color(255, 255, 255));
+        txt_deleteTTS.setFont(new java.awt.Font("SF Pro Text", 1, 16)); // NOI18N
+        txt_deleteTTS.setForeground(new java.awt.Color(255, 255, 255));
+        txt_deleteTTS.setText("<html> Hapus<br>TTS</html>");
+
+        image_deleteTTS.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Trash.png"))); // NOI18N
+
+        javax.swing.GroupLayout image_deleteTTSLayout = new javax.swing.GroupLayout(image_deleteTTS);
+        image_deleteTTS.setLayout(image_deleteTTSLayout);
+        image_deleteTTSLayout.setHorizontalGroup(
+            image_deleteTTSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 58, Short.MAX_VALUE)
+        );
+        image_deleteTTSLayout.setVerticalGroup(
+            image_deleteTTSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 61, Short.MAX_VALUE)
+        );
+
+        delete_tts.setBackground(new java.awt.Color(239, 68, 68));
+        delete_tts.setBorder(null);
+        delete_tts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delete_ttsActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout deleteTTSLayout = new javax.swing.GroupLayout(deleteTTS);
+        deleteTTS.setLayout(deleteTTSLayout);
+        deleteTTSLayout.setHorizontalGroup(
+            deleteTTSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(deleteTTSLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(txt_deleteTTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79)
+                .addComponent(image_deleteTTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
+            .addGroup(deleteTTSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(deleteTTSLayout.createSequentialGroup()
+                    .addGap(1, 1, 1)
+                    .addComponent(delete_tts, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        deleteTTSLayout.setVerticalGroup(
+            deleteTTSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(deleteTTSLayout.createSequentialGroup()
+                .addGroup(deleteTTSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(deleteTTSLayout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(txt_deleteTTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(deleteTTSLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(image_deleteTTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(31, Short.MAX_VALUE))
+            .addGroup(deleteTTSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(deleteTTSLayout.createSequentialGroup()
+                    .addGap(9, 9, 9)
+                    .addComponent(delete_tts, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
+        editTTS.setBackground(new java.awt.Color(255, 255, 255));
+
+        txt_editTTS.setBackground(new java.awt.Color(255, 255, 255));
+        txt_editTTS.setFont(new java.awt.Font("SF Pro Text", 1, 16)); // NOI18N
+        txt_editTTS.setForeground(new java.awt.Color(255, 255, 255));
+        txt_editTTS.setText("<html> Perbarui<br>TTS</html>");
+
+        image_editTTS.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Edit.png"))); // NOI18N
+
+        javax.swing.GroupLayout image_editTTSLayout = new javax.swing.GroupLayout(image_editTTS);
+        image_editTTS.setLayout(image_editTTSLayout);
+        image_editTTSLayout.setHorizontalGroup(
+            image_editTTSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 57, Short.MAX_VALUE)
+        );
+        image_editTTSLayout.setVerticalGroup(
+            image_editTTSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 57, Short.MAX_VALUE)
+        );
+
+        edit_tts.setBackground(new java.awt.Color(245, 158, 11));
+        edit_tts.setBorder(null);
+        edit_tts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edit_ttsActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout editTTSLayout = new javax.swing.GroupLayout(editTTS);
+        editTTS.setLayout(editTTSLayout);
+        editTTSLayout.setHorizontalGroup(
+            editTTSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(editTTSLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(txt_editTTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
+                .addComponent(image_editTTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
+            .addGroup(editTTSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(editTTSLayout.createSequentialGroup()
+                    .addComponent(edit_tts, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        editTTSLayout.setVerticalGroup(
+            editTTSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(editTTSLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(editTTSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(editTTSLayout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(txt_editTTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(image_editTTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(38, Short.MAX_VALUE))
+            .addGroup(editTTSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(editTTSLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(edit_tts, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
+        addTTS.setBackground(new java.awt.Color(255, 255, 255));
+
+        txt_addTTS.setBackground(new java.awt.Color(255, 255, 255));
+        txt_addTTS.setFont(new java.awt.Font("SF Pro Text", 1, 16)); // NOI18N
+        txt_addTTS.setForeground(new java.awt.Color(255, 255, 255));
+        txt_addTTS.setText("<html> Tambah<br>TTS </html>");
+
+        image_addTTS.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Add.png"))); // NOI18N
+
+        javax.swing.GroupLayout image_addTTSLayout = new javax.swing.GroupLayout(image_addTTS);
+        image_addTTS.setLayout(image_addTTSLayout);
+        image_addTTSLayout.setHorizontalGroup(
+            image_addTTSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+        image_addTTSLayout.setVerticalGroup(
+            image_addTTSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        add_tts.setBackground(new java.awt.Color(16, 185, 129));
+        add_tts.setBorder(null);
+        add_tts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_ttsActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout addTTSLayout = new javax.swing.GroupLayout(addTTS);
+        addTTS.setLayout(addTTSLayout);
+        addTTSLayout.setHorizontalGroup(
+            addTTSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addTTSLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(txt_addTTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65)
+                .addComponent(image_addTTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(48, Short.MAX_VALUE))
+            .addGroup(addTTSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(addTTSLayout.createSequentialGroup()
+                    .addComponent(add_tts, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        addTTSLayout.setVerticalGroup(
+            addTTSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addTTSLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(addTTSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(image_addTTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_addTTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(33, Short.MAX_VALUE))
+            .addGroup(addTTSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(addTTSLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(add_tts, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
+        list_tts.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        scroll_tts.setViewportView(list_tts);
+
+        javax.swing.GroupLayout content_ttsLayout = new javax.swing.GroupLayout(content_tts);
+        content_tts.setLayout(content_ttsLayout);
+        content_ttsLayout.setHorizontalGroup(
+            content_ttsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(content_ttsLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(content_ttsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scroll_tts, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(content_ttsLayout.createSequentialGroup()
+                        .addGroup(content_ttsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(addTTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel22))
+                        .addGap(18, 18, 18)
+                        .addComponent(editTTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(deleteTTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        content_ttsLayout.setVerticalGroup(
+            content_ttsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(content_ttsLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jLabel22)
+                .addGap(31, 31, 31)
+                .addGroup(content_ttsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(deleteTTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addTTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editTTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addComponent(scroll_tts, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(278, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout containerLayout = new javax.swing.GroupLayout(container);
         container.setLayout(containerLayout);
         containerLayout.setHorizontalGroup(
@@ -925,7 +1501,9 @@ public class HomeAdmin extends javax.swing.JFrame {
                     .addContainerGap()
                     .addGroup(containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(content_modul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(content_result, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(content_result, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(content_puzzle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(content_tts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(112, Short.MAX_VALUE)))
         );
         containerLayout.setVerticalGroup(
@@ -941,7 +1519,11 @@ public class HomeAdmin extends javax.swing.JFrame {
                     .addComponent(content_modul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(content_result, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(2988, Short.MAX_VALUE)))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(content_puzzle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(content_tts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(1036, Short.MAX_VALUE)))
         );
 
         getContentPane().add(container, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 1130, 960));
@@ -981,17 +1563,23 @@ public class HomeAdmin extends javax.swing.JFrame {
 
         sidebar.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 750, 310, 50));
 
+        jSeparator6.setBackground(new java.awt.Color(255, 255, 255));
+        sidebar.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 640, 310, 10));
+
+        jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
+        sidebar.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 310, 10));
+
         jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
-        sidebar.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 310, 10));
+        sidebar.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 310, 10));
 
         jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
-        sidebar.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 310, 10));
+        sidebar.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 310, 10));
 
         jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
-        sidebar.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 310, 10));
+        sidebar.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 310, 10));
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
-        sidebar.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 310, 10));
+        sidebar.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 310, 10));
 
         dashboard.setBackground(new java.awt.Color(67, 56, 202));
         dashboard.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1023,7 +1611,7 @@ public class HomeAdmin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        sidebar.add(dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 310, 50));
+        sidebar.add(dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 310, 50));
 
         question.setBackground(new java.awt.Color(67, 56, 202));
         question.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1055,7 +1643,7 @@ public class HomeAdmin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        sidebar.add(question, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 310, 50));
+        sidebar.add(question, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 310, 50));
 
         modul.setBackground(new java.awt.Color(67, 56, 202));
         modul.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1087,7 +1675,7 @@ public class HomeAdmin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        sidebar.add(modul, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 310, 50));
+        sidebar.add(modul, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 310, 50));
 
         hasil.setBackground(new java.awt.Color(67, 56, 202));
         hasil.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1119,10 +1707,74 @@ public class HomeAdmin extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        sidebar.add(hasil, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 310, 50));
+        sidebar.add(hasil, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 310, 50));
+
+        puzzle.setBackground(new java.awt.Color(67, 56, 202));
+        puzzle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                puzzleMouseClicked(evt);
+            }
+        });
+
+        text_result1.setFont(new java.awt.Font("SF Pro Text", 0, 16)); // NOI18N
+        text_result1.setForeground(new java.awt.Color(255, 255, 255));
+        text_result1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Puzzle.png"))); // NOI18N
+        text_result1.setText("Puzzle");
+        text_result1.setIconTextGap(12);
+
+        javax.swing.GroupLayout puzzleLayout = new javax.swing.GroupLayout(puzzle);
+        puzzle.setLayout(puzzleLayout);
+        puzzleLayout.setHorizontalGroup(
+            puzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(puzzleLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(text_result1)
+                .addContainerGap(189, Short.MAX_VALUE))
+        );
+        puzzleLayout.setVerticalGroup(
+            puzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(puzzleLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(text_result1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+
+        sidebar.add(puzzle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, 310, 50));
+
+        tts.setBackground(new java.awt.Color(67, 56, 202));
+        tts.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ttsMouseClicked(evt);
+            }
+        });
+
+        text_result2.setFont(new java.awt.Font("SF Pro Text", 0, 16)); // NOI18N
+        text_result2.setForeground(new java.awt.Color(255, 255, 255));
+        text_result2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-TTS.png"))); // NOI18N
+        text_result2.setText("Teka-Teki Silang");
+        text_result2.setIconTextGap(12);
+
+        javax.swing.GroupLayout ttsLayout = new javax.swing.GroupLayout(tts);
+        tts.setLayout(ttsLayout);
+        ttsLayout.setHorizontalGroup(
+            ttsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ttsLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(text_result2)
+                .addContainerGap(111, Short.MAX_VALUE))
+        );
+        ttsLayout.setVerticalGroup(
+            ttsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ttsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(text_result2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+
+        sidebar.add(tts, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 580, 310, 50));
 
         rSPanelImage1.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/logo eduN.png"))); // NOI18N
-        sidebar.add(rSPanelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -30, 320, 300));
+        sidebar.add(rSPanelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 320, 300));
 
         getContentPane().add(sidebar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 1030));
 
@@ -1139,6 +1791,8 @@ public class HomeAdmin extends javax.swing.JFrame {
         content_question.setVisible(false);
         content_modul.setVisible(false);
         content_result.setVisible(false);
+        content_puzzle.setVisible(false);
+        content_tts.setVisible(false);
     }//GEN-LAST:event_dashboardMouseClicked
 
     private void questionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_questionMouseClicked
@@ -1147,6 +1801,8 @@ public class HomeAdmin extends javax.swing.JFrame {
         content_question.setVisible(true);
         content_modul.setVisible(false);
         content_result.setVisible(false);
+        content_puzzle.setVisible(false);
+        content_tts.setVisible(false);
         
         try{
             Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
@@ -1165,6 +1821,8 @@ public class HomeAdmin extends javax.swing.JFrame {
         content_question.setVisible(false);
         content_modul.setVisible(true);
         content_result.setVisible(false);
+        content_puzzle.setVisible(false);
+        content_tts.setVisible(false);
         
         // Tampilan table di halaman modul
         try {
@@ -1184,6 +1842,8 @@ public class HomeAdmin extends javax.swing.JFrame {
         content_question.setVisible(false);
         content_modul.setVisible(false);
         content_result.setVisible(true);
+        content_puzzle.setVisible(false);
+        content_tts.setVisible(false);
         
         try {
             Connection con;
@@ -1234,7 +1894,8 @@ public class HomeAdmin extends javax.swing.JFrame {
         content_question.setVisible(false);
         content_modul.setVisible(false);
         content_result.setVisible(true);
-        
+        content_puzzle.setVisible(false);
+        content_tts.setVisible(false);
         
         try {
             Connection con;
@@ -1305,6 +1966,114 @@ public class HomeAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTextField2KeyPressed
 
+    private void puzzleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_puzzleMouseClicked
+        // TODO add your handling code here:
+        content_dashboard.setVisible(false);
+        content_question.setVisible(false);
+        content_modul.setVisible(false);
+        content_result.setVisible(false);
+        content_puzzle.setVisible(true);
+        content_tts.setVisible(false);
+        
+        DefaultTableModel jigsawData = new DefaultTableModel();
+        jigsawData.addColumn("No");
+        jigsawData.addColumn("ID");
+        jigsawData.addColumn("Name");
+        jigsawData.addColumn("Path");
+        jigsawData.addColumn("Upload Time");
+        
+        try {
+            String query = "SELECT * FROM jigsaw_puzzle";
+
+            Connection connection = (Connection)DBConnection.konfigurasi_koneksiDB();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+
+            int i = 1;
+            while (resultSet.next()) {
+                jigsawData.addRow(new Object[]{
+                    i++,
+                    resultSet.getString(1) != null ? resultSet.getString(1) : "",
+                    resultSet.getString(2) != null ? resultSet.getString(2) : "",
+                    resultSet.getString(3) != null ? resultSet.getString(3) : "",
+                    resultSet.getString(4) != null ? resultSet.getString(4) : ""
+                });
+                list_puzzle.setModel(jigsawData);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_puzzleMouseClicked
+
+    private void ttsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ttsMouseClicked
+        // TODO add your handling code here:
+        content_dashboard.setVisible(false);
+        content_question.setVisible(false);
+        content_modul.setVisible(false);
+        content_result.setVisible(false);
+        content_puzzle.setVisible(false);
+        content_tts.setVisible(true);
+        
+        DefaultTableModel jigsawData = new DefaultTableModel();
+        jigsawData.addColumn("No");
+        jigsawData.addColumn("ID");
+        jigsawData.addColumn("Question");
+        jigsawData.addColumn("Answer");
+        jigsawData.addColumn("Upload Time");
+        
+        try {
+            String query = "SELECT * FROM crossword_puzzle";
+
+            Connection connection = (Connection)DBConnection.konfigurasi_koneksiDB();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+
+            int i = 1;
+            while (resultSet.next()) {
+                jigsawData.addRow(new Object[]{
+                    i++,
+                    resultSet.getString(1) != null ? resultSet.getString(1) : "",
+                    resultSet.getString(2) != null ? resultSet.getString(2) : "",
+                    resultSet.getString(3) != null ? resultSet.getString(3) : "",
+                    resultSet.getString(4) != null ? resultSet.getString(4) : ""
+                });
+                list_tts.setModel(jigsawData);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_ttsMouseClicked
+
+    private void delete_puzzleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_puzzleActionPerformed
+        // TODO add your handling code here:
+        new DeleteJigsaw().setVisible(true);
+    }//GEN-LAST:event_delete_puzzleActionPerformed
+
+    private void edit_puzzleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_puzzleActionPerformed
+        // TODO add your handling code here:
+        new UpdateJigsaw().setVisible(true);
+    }//GEN-LAST:event_edit_puzzleActionPerformed
+
+    private void add_puzzleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_puzzleActionPerformed
+        // TODO add your handling code here:
+        new AddJigsaw().setVisible(true);
+    }//GEN-LAST:event_add_puzzleActionPerformed
+
+    private void delete_ttsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_ttsActionPerformed
+        // TODO add your handling code here:
+        new DeleteCrossword().setVisible(true);
+    }//GEN-LAST:event_delete_ttsActionPerformed
+
+    private void edit_ttsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_ttsActionPerformed
+        // TODO add your handling code here:
+        new UpdateCrossword().setVisible(true);
+    }//GEN-LAST:event_edit_ttsActionPerformed
+
+    private void add_ttsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_ttsActionPerformed
+        // TODO add your handling code here:
+        new AddCrossword().setVisible(true);
+    }//GEN-LAST:event_add_ttsActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1346,30 +2115,50 @@ public class HomeAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel active_user;
     private javax.swing.JPanel addModul;
+    private javax.swing.JPanel addPuzzle;
     private javax.swing.JPanel addQuestion;
+    private javax.swing.JPanel addTTS;
     private rojerusan.RSMaterialButtonRectangle add_modul;
+    private rojerusan.RSMaterialButtonRectangle add_puzzle;
     private rojerusan.RSMaterialButtonRectangle add_question;
+    private rojerusan.RSMaterialButtonRectangle add_tts;
     private javax.swing.JPanel container;
     private javax.swing.JPanel content_dashboard;
     private javax.swing.JPanel content_modul;
+    private javax.swing.JPanel content_puzzle;
     private javax.swing.JPanel content_question;
     private javax.swing.JPanel content_result;
+    private javax.swing.JPanel content_tts;
     private javax.swing.JPanel dashboard;
     private javax.swing.JPanel deleteModul;
+    private javax.swing.JPanel deletePuzzle;
     private javax.swing.JPanel deleteQuestion;
+    private javax.swing.JPanel deleteTTS;
     private rojerusan.RSMaterialButtonRectangle delete_modul;
+    private rojerusan.RSMaterialButtonRectangle delete_puzzle;
     private rojerusan.RSMaterialButtonRectangle delete_question;
+    private rojerusan.RSMaterialButtonRectangle delete_tts;
     private javax.swing.JPanel editModul;
+    private javax.swing.JPanel editPuzzle;
     private javax.swing.JPanel editQuestion;
+    private javax.swing.JPanel editTTS;
     private rojerusan.RSMaterialButtonRectangle edit_modul;
+    private rojerusan.RSMaterialButtonRectangle edit_puzzle;
     private rojerusan.RSMaterialButtonRectangle edit_question;
+    private rojerusan.RSMaterialButtonRectangle edit_tts;
     private javax.swing.JPanel hasil;
     private rojerusan.RSPanelImage image_addModul;
+    private rojerusan.RSPanelImage image_addPuzzle;
     private rojerusan.RSPanelImage image_addQuestion;
+    private rojerusan.RSPanelImage image_addTTS;
     private rojerusan.RSPanelImage image_delete;
     private rojerusan.RSPanelImage image_deleteModul;
+    private rojerusan.RSPanelImage image_deletePuzzle;
+    private rojerusan.RSPanelImage image_deleteTTS;
     private rojerusan.RSPanelImage image_edit;
     private rojerusan.RSPanelImage image_editModul;
+    private rojerusan.RSPanelImage image_editPuzzle;
+    private rojerusan.RSPanelImage image_editTTS;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
@@ -1377,6 +2166,8 @@ public class HomeAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1390,32 +2181,48 @@ public class HomeAdmin extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTable list_modul;
+    private javax.swing.JTable list_puzzle;
     private rojerusan.RSMaterialButtonRectangle list_result;
+    private javax.swing.JTable list_tts;
     private javax.swing.JPanel logout;
     private javax.swing.JPanel modul;
     private javax.swing.JLabel navigation;
+    private javax.swing.JPanel puzzle;
     private javax.swing.JPanel question;
     private rojerusan.RSPanelImage rSPanelImage1;
     private rojerusan.RSPanelImage rSPanelImage2;
     private rojerusan.RSPanelImage rSPanelImage3;
     private javax.swing.JScrollPane scroll_modul;
+    private javax.swing.JScrollPane scroll_puzzle;
+    private javax.swing.JScrollPane scroll_tts;
     private javax.swing.JPanel sidebar;
     private javax.swing.JLabel text_dashboard;
     private javax.swing.JLabel text_logout;
     private javax.swing.JLabel text_modul;
     private javax.swing.JLabel text_question;
     private javax.swing.JLabel text_result;
+    private javax.swing.JLabel text_result1;
+    private javax.swing.JLabel text_result2;
+    private javax.swing.JPanel tts;
     private javax.swing.JLabel txt_addModul;
+    private javax.swing.JLabel txt_addPuzzle;
     private javax.swing.JLabel txt_addQuestion;
+    private javax.swing.JLabel txt_addTTS;
     private javax.swing.JLabel txt_deleteModul;
+    private javax.swing.JLabel txt_deletePuzzle;
     private javax.swing.JLabel txt_deleteQuestion;
+    private javax.swing.JLabel txt_deleteTTS;
     private javax.swing.JLabel txt_editModul;
+    private javax.swing.JLabel txt_editPuzzle;
     private javax.swing.JLabel txt_editQuestion;
+    private javax.swing.JLabel txt_editTTS;
     private javax.swing.JLabel txt_general;
     private javax.swing.JLabel txt_question;
     private javax.swing.JPanel user;

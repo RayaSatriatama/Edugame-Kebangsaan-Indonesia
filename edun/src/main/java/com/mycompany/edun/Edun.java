@@ -17,7 +17,7 @@ public class Edun {
           s.setVisible(true);
 
           // Start at home_admin
-//        home_admin hm = new home_admin();
+//        HomeAdmin hm = new HomeAdmin();
 //        hm.setVisible(true);
     }
 }
