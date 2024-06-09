@@ -24,6 +24,7 @@ import javax.swing.JOptionPane;
  */
 public class SoalQuiz extends javax.swing.JFrame {
 
+
     public String username;
     public String questionID = "1";
     public String answer;
@@ -118,6 +119,11 @@ public class SoalQuiz extends javax.swing.JFrame {
      */
     public SoalQuiz() throws SQLException {
         initComponents();
+    }
+
+    public SoalQuiz(String username) {
+        initComponents();
+        //First Question and username
         try {
             File fontButton = new File("src/main/resources/fonts/Nunito-Black.ttf");
             Font font = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(24f);
@@ -282,7 +288,7 @@ public class SoalQuiz extends javax.swing.JFrame {
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 290, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8-save-20.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 870, -1, 30));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 810, -1, 30));
 
         button_submit.setBackground(new java.awt.Color(244, 63, 94));
         button_submit.setText("SUBMIT");
@@ -291,7 +297,7 @@ public class SoalQuiz extends javax.swing.JFrame {
                 button_submitActionPerformed(evt);
             }
         });
-        getContentPane().add(button_submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 850, 272, -1));
+        getContentPane().add(button_submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 790, 490, -1));
 
         button_next.setBackground(new java.awt.Color(0, 153, 102));
         button_next.setText("SELANJUTNYA");
@@ -300,7 +306,7 @@ public class SoalQuiz extends javax.swing.JFrame {
                 button_nextActionPerformed(evt);
             }
         });
-        getContentPane().add(button_next, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 850, 272, -1));
+        getContentPane().add(button_next, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 790, 400, -1));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BG4.png"))); // NOI18N
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -366,7 +372,7 @@ public class SoalQuiz extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
