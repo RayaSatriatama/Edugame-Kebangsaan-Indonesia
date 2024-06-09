@@ -5,6 +5,8 @@
 package com.mycompany.edun;
 
 import com.mycompany.edun.database.DBConnection;
+import java.awt.Font;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -28,6 +30,14 @@ public class SucceedGameFrame extends javax.swing.JFrame {
      */
     public SucceedGameFrame() {
         initComponents();
+        try {
+            File fontBlack = new File("src/main/resources/fonts/Nunito-Black.ttf");
+            Font font = Font.createFont(Font.TRUETYPE_FONT, fontBlack).deriveFont(24f);
+            button_try.setFont(font);
+            button_next.setFont(font);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public SucceedGameFrame(String inputName, int inputMarks, String inputGameType, int inputId) {
@@ -105,7 +115,7 @@ public class SucceedGameFrame extends javax.swing.JFrame {
         text_PTS = new javax.swing.JLabel();
         icon_restart = new javax.swing.JLabel();
         button_try = new rojerusan.RSMaterialButtonRectangle();
-        rSMaterialButtonRectangle1 = new rojerusan.RSMaterialButtonRectangle();
+        button_next = new rojerusan.RSMaterialButtonRectangle();
         mask_group = new javax.swing.JLabel();
         background_front = new javax.swing.JLabel();
         background_back = new javax.swing.JLabel();
@@ -169,6 +179,7 @@ public class SucceedGameFrame extends javax.swing.JFrame {
 
         button_try.setBackground(new java.awt.Color(255, 204, 51));
         button_try.setText("MAIN LAGI");
+        button_try.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
         button_try.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button_tryActionPerformed(evt);
@@ -176,14 +187,15 @@ public class SucceedGameFrame extends javax.swing.JFrame {
         });
         getContentPane().add(button_try, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 800, 249, -1));
 
-        rSMaterialButtonRectangle1.setBackground(new java.awt.Color(0, 153, 102));
-        rSMaterialButtonRectangle1.setText("SELANJUTNYA");
-        rSMaterialButtonRectangle1.addActionListener(new java.awt.event.ActionListener() {
+        button_next.setBackground(new java.awt.Color(0, 153, 102));
+        button_next.setText("SELANJUTNYA");
+        button_next.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        button_next.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rSMaterialButtonRectangle1ActionPerformed(evt);
+                button_nextActionPerformed(evt);
             }
         });
-        getContentPane().add(rSMaterialButtonRectangle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 800, 272, -1));
+        getContentPane().add(button_next, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 800, 272, -1));
 
         mask_group.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Mask group.png"))); // NOI18N
         getContentPane().add(mask_group, new org.netbeans.lib.awtextra.AbsoluteConstraints(467, 345, -1, -1));
@@ -214,7 +226,7 @@ public class SucceedGameFrame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_button_tryActionPerformed
 
-    private void rSMaterialButtonRectangle1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRectangle1ActionPerformed
+    private void button_nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_nextActionPerformed
         // TODO add your handling code here:
         if (!isLoop) {
             Leaderboard board = new Leaderboard(newName, newMarks, newGameType);
@@ -230,7 +242,7 @@ public class SucceedGameFrame extends javax.swing.JFrame {
             board.setVisible(true);
             this.dispose();
         }
-    }//GEN-LAST:event_rSMaterialButtonRectangle1ActionPerformed
+    }//GEN-LAST:event_button_nextActionPerformed
 
     /**
      * @param args the command line arguments
@@ -274,6 +286,7 @@ public class SucceedGameFrame extends javax.swing.JFrame {
     private javax.swing.JLabel background_back;
     private javax.swing.JLabel background_front;
     private rojerusan.RSMaterialButtonRectangle button_home;
+    private rojerusan.RSMaterialButtonRectangle button_next;
     private rojerusan.RSMaterialButtonRectangle button_try;
     private javax.swing.JLabel icon_piala;
     private javax.swing.JLabel icon_restart;
@@ -282,7 +295,6 @@ public class SucceedGameFrame extends javax.swing.JFrame {
     private javax.swing.JLabel icon_star3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel mask_group;
-    private rojerusan.RSMaterialButtonRectangle rSMaterialButtonRectangle1;
     private rojerusan.RSPanelImage rSPanelImage1;
     private javax.swing.JLabel skor_pengguna;
     private javax.swing.JLabel text_PTS;

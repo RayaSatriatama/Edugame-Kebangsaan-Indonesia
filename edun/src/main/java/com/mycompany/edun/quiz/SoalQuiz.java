@@ -276,7 +276,7 @@ public class SoalQuiz extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 3, 25)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(102, 51, 0));
         jLabel8.setText("Pertanyaan");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 280, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 290, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons8-save-20.png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 870, -1, 30));
