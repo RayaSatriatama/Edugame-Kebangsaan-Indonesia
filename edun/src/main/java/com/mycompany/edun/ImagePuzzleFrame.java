@@ -39,13 +39,12 @@ public class ImagePuzzleFrame extends javax.swing.JFrame {
             File fontBlack = new File("src/main/resources/fonts/Nunito-Black.ttf");
             Font font_button = Font.createFont(Font.TRUETYPE_FONT, fontBlack).deriveFont(24f);
             button_Back.setFont(font_button);
+            button_selesai.setFont(font_button);
 
-            // Add Customize Font 20 Bold
-            File fontButton = new File("src/main/resources/fonts/Nunito-Bold.ttf");
-            Font font_20 = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(20f);
+            Font font_20 = Font.createFont(Font.TRUETYPE_FONT, fontBlack).deriveFont(20f);
+            text_timer.setFont(font_20);
+            jLabelTimer.setFont(font_20);
 
-            // Add Customize Font 26 Black
-            Font font_24 = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(26f);
 
             // Start Timer
             startTimer();
@@ -159,23 +158,22 @@ public class ImagePuzzleFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelTimer = new javax.swing.JLabel();
         jigsawPuzzle3 = new com.mycompany.edun.JigsawPuzzle.JigsawPuzzle();
         jigsawPuzzle2 = new com.mycompany.edun.JigsawPuzzle.JigsawPuzzle();
         jigsawPuzzle1 = new com.mycompany.edun.JigsawPuzzle.JigsawPuzzle();
-        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         icon_home = new rojerusan.RSPanelImage();
         button_Home = new rojerusan.RSMaterialButtonRectangle();
         icon_back = new rojerusan.RSPanelImage();
         button_Back = new rojerusan.RSMaterialButtonRectangle();
+        button_selesai = new rojerusan.RSMaterialButtonRectangle();
+        bg_timer = new rojerusan.RSPanelImage();
+        text_timer = new javax.swing.JLabel();
+        jLabelTimer = new javax.swing.JLabel();
         bg_pattern = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabelTimer.setText("jLabel1");
-        getContentPane().add(jLabelTimer, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 120, 30));
 
         javax.swing.GroupLayout jigsawPuzzle3Layout = new javax.swing.GroupLayout(jigsawPuzzle3);
         jigsawPuzzle3.setLayout(jigsawPuzzle3Layout);
@@ -188,7 +186,7 @@ public class ImagePuzzleFrame extends javax.swing.JFrame {
             .addGap(0, 500, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jigsawPuzzle3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
+        getContentPane().add(jigsawPuzzle3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, -1, -1));
 
         javax.swing.GroupLayout jigsawPuzzle2Layout = new javax.swing.GroupLayout(jigsawPuzzle2);
         jigsawPuzzle2.setLayout(jigsawPuzzle2Layout);
@@ -201,7 +199,7 @@ public class ImagePuzzleFrame extends javax.swing.JFrame {
             .addGap(0, 500, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jigsawPuzzle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
+        getContentPane().add(jigsawPuzzle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, -1, -1));
 
         javax.swing.GroupLayout jigsawPuzzle1Layout = new javax.swing.GroupLayout(jigsawPuzzle1);
         jigsawPuzzle1.setLayout(jigsawPuzzle1Layout);
@@ -214,20 +212,12 @@ public class ImagePuzzleFrame extends javax.swing.JFrame {
             .addGap(0, 500, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jigsawPuzzle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
-
-        jButton1.setText("Selesai");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 300, -1, -1));
+        getContentPane().add(jigsawPuzzle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, -1, -1));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         icon_home.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Home.png"))); // NOI18N
-        jPanel1.add(icon_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 110, 30, 30));
+        jPanel1.add(icon_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(1165, 110, 30, 30));
 
         button_Home.setBackground(new java.awt.Color(2, 132, 199));
         button_Home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Home.png"))); // NOI18N
@@ -236,15 +226,16 @@ public class ImagePuzzleFrame extends javax.swing.JFrame {
                 button_HomeActionPerformed(evt);
             }
         });
-        jPanel1.add(button_Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 90, 90, -1));
+        jPanel1.add(button_Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(1135, 90, 90, -1));
 
         icon_back.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Back-Arrow.png"))); // NOI18N
-        jPanel1.add(icon_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 30, 30));
+        jPanel1.add(icon_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 30, 30));
 
         button_Back.setBackground(new java.awt.Color(244, 63, 94));
         button_Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Back-Arrow.png"))); // NOI18N
         button_Back.setText("KEMBALI");
         button_Back.setAlignmentX(0.5F);
+        button_Back.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
         button_Back.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         button_Back.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         button_Back.setIconTextGap(50);
@@ -253,7 +244,29 @@ public class ImagePuzzleFrame extends javax.swing.JFrame {
                 button_BackActionPerformed(evt);
             }
         });
-        jPanel1.add(button_Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 230, -1));
+        jPanel1.add(button_Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 90, 230, -1));
+
+        button_selesai.setBackground(new java.awt.Color(124, 58, 237));
+        button_selesai.setText("SELESAI");
+        button_selesai.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        button_selesai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_selesaiActionPerformed(evt);
+            }
+        });
+        jPanel1.add(button_selesai, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 730, 150, -1));
+
+        bg_timer.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/bg_tts.png"))); // NOI18N
+        bg_timer.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        text_timer.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        text_timer.setText("TIMER");
+        bg_timer.add(text_timer, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 6, -1, -1));
+
+        jLabelTimer.setText("jLabel1");
+        bg_timer.add(jLabelTimer, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 23, 120, 30));
+
+        jPanel1.add(bg_timer, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 735, 130, 60));
 
         bg_pattern.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BG.png"))); // NOI18N
         jPanel1.add(bg_pattern, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1440, 1060));
@@ -279,10 +292,10 @@ public class ImagePuzzleFrame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_button_HomeActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void button_selesaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_selesaiActionPerformed
         // TODO add your handling code here:
         finishEarly();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_button_selesaiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -332,15 +345,17 @@ public class ImagePuzzleFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bg_pattern;
+    private rojerusan.RSPanelImage bg_timer;
     private rojerusan.RSMaterialButtonRectangle button_Back;
     private rojerusan.RSMaterialButtonRectangle button_Home;
+    private rojerusan.RSMaterialButtonRectangle button_selesai;
     private rojerusan.RSPanelImage icon_back;
     private rojerusan.RSPanelImage icon_home;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabelTimer;
     private javax.swing.JPanel jPanel1;
     private com.mycompany.edun.JigsawPuzzle.JigsawPuzzle jigsawPuzzle1;
     private com.mycompany.edun.JigsawPuzzle.JigsawPuzzle jigsawPuzzle2;
     private com.mycompany.edun.JigsawPuzzle.JigsawPuzzle jigsawPuzzle3;
+    private javax.swing.JLabel text_timer;
     // End of variables declaration//GEN-END:variables
 }
