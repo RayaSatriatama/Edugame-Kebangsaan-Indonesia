@@ -1952,6 +1952,7 @@ public class HomeAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (open == 0) {
             DeleteModule deleteModule = new DeleteModule();
+            deleteModule.setVisible(true);
             deleteModule.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosed(WindowEvent e) {
@@ -2123,32 +2124,123 @@ public class HomeAdmin extends javax.swing.JFrame {
 
     private void delete_puzzleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_puzzleActionPerformed
         // TODO add your handling code here:
-        new DeleteJigsaw().setVisible(true);
+        DeleteJigsaw deleteJigsaw = new DeleteJigsaw();
+        deleteJigsaw.setVisible(true);
+        deleteJigsaw.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                System.out.println("DeleteJigsaw window closed.");
+                try {
+                    Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
+                    Statement st = con.createStatement();
+                    ResultSet rs = st.executeQuery("SELECT * FROM jigsaw_puzzle;");
+                    jTable3.setModel(DbUtils.resultSetToTableModel(rs));
+                } catch (SQLException error) {
+                    JOptionPane.showMessageDialog(null, error);
+                }
+            }
+        });
     }//GEN-LAST:event_delete_puzzleActionPerformed
 
     private void edit_puzzleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_puzzleActionPerformed
         // TODO add your handling code here:
-        new UpdateJigsaw().setVisible(true);
+        UpdateJigsaw updateJigsaw = new UpdateJigsaw();
+        updateJigsaw.setVisible(true);
+        updateJigsaw.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                System.out.println("updateJigsaw window closed.");
+                try {
+                    Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
+                    Statement st = con.createStatement();
+                    ResultSet rs = st.executeQuery("SELECT * FROM jigsaw_puzzle;");
+                    jTable3.setModel(DbUtils.resultSetToTableModel(rs));
+                } catch (SQLException error) {
+                    JOptionPane.showMessageDialog(null, error);
+                }
+            }
+        });
     }//GEN-LAST:event_edit_puzzleActionPerformed
 
     private void add_puzzleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_puzzleActionPerformed
         // TODO add your handling code here:
-        new AddJigsaw().setVisible(true);
+        AddJigsaw addJigsaw = new AddJigsaw();
+        addJigsaw.setVisible(true);
+        addJigsaw.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                System.out.println("AddJigsaw window closed.");
+                try {
+                    Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
+                    Statement st = con.createStatement();
+                    ResultSet rs = st.executeQuery("SELECT * FROM jigsaw_puzzle;");
+                    jTable3.setModel(DbUtils.resultSetToTableModel(rs));
+                } catch (SQLException error) {
+                    JOptionPane.showMessageDialog(null, error);
+                }
+            }
+        });
     }//GEN-LAST:event_add_puzzleActionPerformed
 
     private void delete_ttsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_ttsActionPerformed
         // TODO add your handling code here:
-        new DeleteCrossword().setVisible(true);
+        DeleteCrossword deleteCrossword = new DeleteCrossword();
+        deleteCrossword.setVisible(true);
+        deleteCrossword.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                System.out.println("deleteCrossword window closed.");
+                try {
+                    Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
+                    Statement st = con.createStatement();
+                    ResultSet rs = st.executeQuery("SELECT * FROM crossword_puzzle;");
+                    jTable3.setModel(DbUtils.resultSetToTableModel(rs));
+                } catch (SQLException error) {
+                    JOptionPane.showMessageDialog(null, error);
+                }
+            }
+        });
+
     }//GEN-LAST:event_delete_ttsActionPerformed
 
     private void edit_ttsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_ttsActionPerformed
         // TODO add your handling code here:
-        new UpdateCrossword().setVisible(true);
+        UpdateCrossword updateCrossword = new UpdateCrossword();
+        updateCrossword.setVisible(true);
+        updateCrossword.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                System.out.println("UpdateCrossword window closed.");
+                try {
+                    Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
+                    Statement st = con.createStatement();
+                    ResultSet rs = st.executeQuery("SELECT * FROM crossword_puzzle;");
+                    jTable3.setModel(DbUtils.resultSetToTableModel(rs));
+                } catch (SQLException error) {
+                    JOptionPane.showMessageDialog(null, error);
+                }
+            }
+        });
     }//GEN-LAST:event_edit_ttsActionPerformed
 
     private void add_ttsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_ttsActionPerformed
         // TODO add your handling code here:
-        new AddCrossword().setVisible(true);
+        AddCrossword addCrossword = new AddCrossword();
+        addCrossword.setVisible(true);
+        addCrossword.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                System.out.println("AddCrossword window closed.");
+                try {
+                    Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
+                    Statement st = con.createStatement();
+                    ResultSet rs = st.executeQuery("SELECT * FROM crossword_puzzle;");
+                    jTable3.setModel(DbUtils.resultSetToTableModel(rs));
+                } catch (SQLException error) {
+                    JOptionPane.showMessageDialog(null, error);
+                }
+            }
+        });
     }//GEN-LAST:event_add_ttsActionPerformed
 
     /**
