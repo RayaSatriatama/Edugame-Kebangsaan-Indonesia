@@ -36,8 +36,6 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
 
     public CrosswordPuzzleFrame(String inputName) {
         this.newName = inputName;
-        //cek parsing data
-        //JOptionPane.showMessageDialog(null, inputName); 
         initComponents();
         crosswordPuzzlePanel1.generateCrosswordPuzzle();
         loadQuestions();
@@ -87,7 +85,7 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
     private void endGame() {
         timer.stop();
         gameEnded = true;
-        int newScore = calculateScore();
+        newMarks = calculateScore();
         SucceedGameFrame s = new SucceedGameFrame(this.newName, this.newMarks, this.newGameType);
         s.setVisible(true);
         this.dispose();

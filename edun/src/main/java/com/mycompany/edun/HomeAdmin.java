@@ -1716,7 +1716,7 @@ public class HomeAdmin extends javax.swing.JFrame {
 
         text_result1.setFont(new java.awt.Font("SF Pro Text", 0, 16)); // NOI18N
         text_result1.setForeground(new java.awt.Color(255, 255, 255));
-        text_result1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Puzzle.png"))); // NOI18N
+        text_result1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/IconPuzzle.png"))); // NOI18N
         text_result1.setText("Puzzle");
         text_result1.setIconTextGap(12);
 
@@ -1846,7 +1846,7 @@ public class HomeAdmin extends javax.swing.JFrame {
             Connection con;
             con = (Connection) DBConnection.konfigurasi_koneksiDB();
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM users;");
+            ResultSet rs = st.executeQuery("SELECT * FROM score;");
             jTable4.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -1857,18 +1857,60 @@ public class HomeAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         AddQuestion AddQuestion = new AddQuestion();
         AddQuestion.setVisible(true);
+        AddQuestion.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                System.out.println("AddQuestion window closed.");
+                try {
+                    Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
+                    Statement st = con.createStatement();
+                    ResultSet rs = st.executeQuery("SELECT * FROM questions;");
+                    jTable3.setModel(DbUtils.resultSetToTableModel(rs));
+                } catch (SQLException error) {
+                    JOptionPane.showMessageDialog(null, error);
+                }
+            }
+        });
     }//GEN-LAST:event_add_questionActionPerformed
 
     private void edit_questionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_questionActionPerformed
         // TODO add your handling code here:
         UpdateQuestion UpdateQuestion = new UpdateQuestion();
         UpdateQuestion.setVisible(true);
+        UpdateQuestion.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                System.out.println("UpdateQuestion window closed.");
+                try {
+                    Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
+                    Statement st = con.createStatement();
+                    ResultSet rs = st.executeQuery("SELECT * FROM questions;");
+                    jTable3.setModel(DbUtils.resultSetToTableModel(rs));
+                } catch (SQLException error) {
+                    JOptionPane.showMessageDialog(null, error);
+                }
+            }
+        });
     }//GEN-LAST:event_edit_questionActionPerformed
 
     private void delete_questionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_questionActionPerformed
         // TODO add your handling code here:
         DeleteQuestion DeleteQuestion = new DeleteQuestion();
         DeleteQuestion.setVisible(true);
+        DeleteQuestion.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                System.out.println("DeleteQuestion window closed.");
+                try {
+                    Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
+                    Statement st = con.createStatement();
+                    ResultSet rs = st.executeQuery("SELECT * FROM questions;");
+                    jTable3.setModel(DbUtils.resultSetToTableModel(rs));
+                } catch (SQLException error) {
+                    JOptionPane.showMessageDialog(null, error);
+                }
+            }
+        });
     }//GEN-LAST:event_delete_questionActionPerformed
 
     private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
@@ -1897,7 +1939,7 @@ public class HomeAdmin extends javax.swing.JFrame {
             Connection con;
             con = (Connection) DBConnection.konfigurasi_koneksiDB();
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM users;");
+            ResultSet rs = st.executeQuery("SELECT * FROM score;");
             jTable4.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -1909,7 +1951,21 @@ public class HomeAdmin extends javax.swing.JFrame {
     private void delete_modulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_modulActionPerformed
         // TODO add your handling code here:
         if (open == 0) {
-            new DeleteModule().setVisible(true);
+            DeleteModule deleteModule = new DeleteModule();
+            deleteModule.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    System.out.println("AddModule window closed.");
+                    try {
+                        Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
+                        Statement st = con.createStatement();
+                        ResultSet rs = st.executeQuery("SELECT * FROM modul;");
+                        list_modul.setModel(DbUtils.resultSetToTableModel(rs));
+                    } catch (SQLException error) {
+                        JOptionPane.showMessageDialog(null, error);
+                    }
+                }
+            });
             open = 1;
         } else {
             JFrame jf = new JFrame();
@@ -1921,7 +1977,22 @@ public class HomeAdmin extends javax.swing.JFrame {
     private void edit_modulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_modulActionPerformed
         // TODO add your handling code here:
         if (open == 0) {
-            new UpdateModule().setVisible(true);
+            UpdateModule updateModule = new UpdateModule();
+            updateModule.setVisible(true);
+            updateModule.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    System.out.println("UpdateModule window closed.");
+                    try {
+                        Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
+                        Statement st = con.createStatement();
+                        ResultSet rs = st.executeQuery("SELECT * FROM modul;");
+                        list_modul.setModel(DbUtils.resultSetToTableModel(rs));
+                    } catch (SQLException error) {
+                        JOptionPane.showMessageDialog(null, error);
+                    }
+                }
+            });
             open = 1;
         } else {
             JFrame jf = new JFrame();
@@ -1961,7 +2032,7 @@ public class HomeAdmin extends javax.swing.JFrame {
             try {
                 Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
                 Statement st = con.createStatement();
-                ResultSet rs = st.executeQuery("SELECT * FROM users WHERE marks >= " + marks + ";");
+                ResultSet rs = st.executeQuery("SELECT * FROM score WHERE marks >= " + marks + ";");
                 jTable4.setModel(DbUtils.resultSetToTableModel(rs));
 
             } catch (Exception e) {
@@ -2087,7 +2158,7 @@ public class HomeAdmin extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
