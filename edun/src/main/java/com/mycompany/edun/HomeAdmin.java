@@ -5,8 +5,8 @@
 package com.mycompany.edun;
 
 import com.mycompany.edun.database.AddCrossword;
-import com.mycompany.edun.database.AddModule;
 import com.mycompany.edun.database.AddJigsaw;
+import com.mycompany.edun.database.AddModule;
 import com.mycompany.edun.database.AddQuestion;
 import com.mycompany.edun.database.DeleteModule;
 import com.mycompany.edun.database.DeleteQuestion;
@@ -70,36 +70,7 @@ public class HomeAdmin extends javax.swing.JFrame {
         }
     }
 
-    private void read_puzzle() {
-        DefaultTableModel jigsawData = new DefaultTableModel();
-        jigsawData.addColumn("No");
-        jigsawData.addColumn("ID");
-        jigsawData.addColumn("Name");
-        jigsawData.addColumn("Path");
-        jigsawData.addColumn("Upload Time");
-
-        try {
-            String query = "SELECT * FROM jigsaw_puzzle";
-
-            Connection connection = (Connection) DBConnection.konfigurasi_koneksiDB();
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
-
-            int i = 1;
-            while (resultSet.next()) {
-                jigsawData.addRow(new Object[]{
-                    i++,
-                    resultSet.getString(1) != null ? resultSet.getString(1) : "",
-                    resultSet.getString(2) != null ? resultSet.getString(2) : "",
-                    resultSet.getString(3) != null ? resultSet.getString(3) : "",
-                    resultSet.getString(4) != null ? resultSet.getString(4) : ""
-                });
-                list_puzzle.setModel(jigsawData);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -112,16 +83,7 @@ public class HomeAdmin extends javax.swing.JFrame {
 
         container = new javax.swing.JPanel();
         content_dashboard = new javax.swing.JPanel();
-        active_user = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        rSPanelImage3 = new rojerusan.RSPanelImage();
-        user = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        rSPanelImage2 = new rojerusan.RSPanelImage();
         txt_question = new javax.swing.JLabel();
-        txt_general = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -169,7 +131,7 @@ public class HomeAdmin extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
         content_puzzle = new javax.swing.JPanel();
-        jLabel21 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         deletePuzzle = new javax.swing.JPanel();
         txt_deletePuzzle = new javax.swing.JLabel();
         image_deletePuzzle = new rojerusan.RSPanelImage();
@@ -185,7 +147,7 @@ public class HomeAdmin extends javax.swing.JFrame {
         scroll_puzzle = new javax.swing.JScrollPane();
         list_puzzle = new javax.swing.JTable();
         content_tts = new javax.swing.JPanel();
-        jLabel22 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         deleteTTS = new javax.swing.JPanel();
         txt_deleteTTS = new javax.swing.JLabel();
         image_deleteTTS = new rojerusan.RSPanelImage();
@@ -194,7 +156,7 @@ public class HomeAdmin extends javax.swing.JFrame {
         txt_editTTS = new javax.swing.JLabel();
         image_editTTS = new rojerusan.RSPanelImage();
         edit_tts = new rojerusan.RSMaterialButtonRectangle();
-        addTTS = new javax.swing.JPanel();
+        addModul2 = new javax.swing.JPanel();
         txt_addTTS = new javax.swing.JLabel();
         image_addTTS = new rojerusan.RSPanelImage();
         add_tts = new rojerusan.RSMaterialButtonRectangle();
@@ -203,8 +165,6 @@ public class HomeAdmin extends javax.swing.JFrame {
         sidebar = new javax.swing.JPanel();
         logout = new javax.swing.JPanel();
         text_logout = new javax.swing.JLabel();
-        jSeparator6 = new javax.swing.JSeparator();
-        jSeparator5 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
@@ -217,11 +177,13 @@ public class HomeAdmin extends javax.swing.JFrame {
         text_modul = new javax.swing.JLabel();
         hasil = new javax.swing.JPanel();
         text_result = new javax.swing.JLabel();
+        rSPanelImage1 = new rojerusan.RSPanelImage();
+        jSeparator5 = new javax.swing.JSeparator();
         puzzle = new javax.swing.JPanel();
         text_result1 = new javax.swing.JLabel();
         tts = new javax.swing.JPanel();
         text_result2 = new javax.swing.JLabel();
-        rSPanelImage1 = new rojerusan.RSPanelImage();
+        jSeparator6 = new javax.swing.JSeparator();
         navigation = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -231,119 +193,10 @@ public class HomeAdmin extends javax.swing.JFrame {
 
         content_dashboard.setBackground(new java.awt.Color(255, 255, 255));
 
-        active_user.setBackground(new java.awt.Color(240, 253, 250));
-
-        jLabel3.setFont(new java.awt.Font("SF Pro Text", 0, 16)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(17, 24, 39));
-        jLabel3.setText("<html> Pengguna Aktif </html>");
-
-        jLabel4.setFont(new java.awt.Font("SF Pro Text", 1, 36)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(17, 24, 39));
-        jLabel4.setText("[SUM User]");
-
-        rSPanelImage3.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-People.png"))); // NOI18N
-
-        javax.swing.GroupLayout rSPanelImage3Layout = new javax.swing.GroupLayout(rSPanelImage3);
-        rSPanelImage3.setLayout(rSPanelImage3Layout);
-        rSPanelImage3Layout.setHorizontalGroup(
-            rSPanelImage3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
-        );
-        rSPanelImage3Layout.setVerticalGroup(
-            rSPanelImage3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 123, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout active_userLayout = new javax.swing.GroupLayout(active_user);
-        active_user.setLayout(active_userLayout);
-        active_userLayout.setHorizontalGroup(
-            active_userLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(active_userLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(active_userLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addComponent(rSPanelImage3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55))
-        );
-        active_userLayout.setVerticalGroup(
-            active_userLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(active_userLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(jLabel4)
-                .addContainerGap(36, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, active_userLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(rSPanelImage3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        user.setBackground(new java.awt.Color(240, 249, 255));
-
-        jLabel1.setFont(new java.awt.Font("SF Pro Text", 0, 16)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(17, 24, 39));
-        jLabel1.setText("<html> Jumlah Pengguna Baru </html>");
-
-        jLabel2.setFont(new java.awt.Font("SF Pro Text", 1, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(17, 24, 39));
-        jLabel2.setText("[SUM User]");
-
-        rSPanelImage2.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Avatar.png"))); // NOI18N
-
-        javax.swing.GroupLayout rSPanelImage2Layout = new javax.swing.GroupLayout(rSPanelImage2);
-        rSPanelImage2.setLayout(rSPanelImage2Layout);
-        rSPanelImage2Layout.setHorizontalGroup(
-            rSPanelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 82, Short.MAX_VALUE)
-        );
-        rSPanelImage2Layout.setVerticalGroup(
-            rSPanelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 87, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout userLayout = new javax.swing.GroupLayout(user);
-        user.setLayout(userLayout);
-        userLayout.setHorizontalGroup(
-            userLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(userLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(userLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(userLayout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(userLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
-                        .addComponent(rSPanelImage2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47))))
-        );
-        userLayout.setVerticalGroup(
-            userLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(userLayout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(userLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(userLayout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(rSPanelImage2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)
-                        .addGap(30, 30, 30))))
-        );
-
         txt_question.setBackground(new java.awt.Color(255, 255, 255));
         txt_question.setFont(new java.awt.Font("SF Pro Text", 1, 24)); // NOI18N
         txt_question.setForeground(new java.awt.Color(17, 24, 39));
         txt_question.setText("Daftar Pengguna");
-
-        txt_general.setBackground(new java.awt.Color(255, 255, 255));
-        txt_general.setFont(new java.awt.Font("SF Pro Text", 1, 24)); // NOI18N
-        txt_general.setForeground(new java.awt.Color(17, 24, 39));
-        txt_general.setText("Informasi Umum");
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -355,22 +208,9 @@ public class HomeAdmin extends javax.swing.JFrame {
             new String [] {
                 "ID", "Nama"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTable2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTable2.setFocusable(false);
-        jTable2.setIntercellSpacing(new java.awt.Dimension(0, 0));
-        jTable2.setSelectionBackground(new java.awt.Color(241, 245, 249));
-        jTable2.setSelectionForeground(new java.awt.Color(15, 23, 42));
-        jTable2.setShowGrid(true);
-        jTable2.getTableHeader().setReorderingAllowed(false);
+        ));
+        jTable2.setRowHeight(32);
+        jTable2.setRowMargin(4);
         jScrollPane2.setViewportView(jTable2);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -421,30 +261,18 @@ public class HomeAdmin extends javax.swing.JFrame {
             content_dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(content_dashboardLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addGroup(content_dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_general)
+                .addGroup(content_dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(content_dashboardLayout.createSequentialGroup()
-                        .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(active_user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(content_dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(content_dashboardLayout.createSequentialGroup()
-                            .addComponent(txt_question)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 940, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txt_question)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 940, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(396, Short.MAX_VALUE))
         );
         content_dashboardLayout.setVerticalGroup(
             content_dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(content_dashboardLayout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addComponent(txt_general)
-                .addGap(21, 21, 21)
-                .addGroup(content_dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(active_user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(86, 86, 86)
                 .addGroup(content_dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, content_dashboardLayout.createSequentialGroup()
@@ -452,7 +280,7 @@ public class HomeAdmin extends javax.swing.JFrame {
                         .addGap(18, 18, 18)))
                 .addGap(35, 35, 35)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(273, Short.MAX_VALUE))
+                .addContainerGap(573, Short.MAX_VALUE))
         );
 
         content_question.setBackground(new java.awt.Color(255, 255, 255));
@@ -931,7 +759,7 @@ public class HomeAdmin extends javax.swing.JFrame {
         jLabel13.setBackground(new java.awt.Color(255, 255, 255));
         jLabel13.setFont(new java.awt.Font("SF Pro Text", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(17, 24, 39));
-        jLabel13.setText("Cari");
+        jLabel13.setText("KKM");
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100", "<86 Sampai <99", "<76 Sampai <85", ">75" }));
 
@@ -1013,17 +841,17 @@ public class HomeAdmin extends javax.swing.JFrame {
 
         content_puzzle.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel21.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel21.setFont(new java.awt.Font("SF Pro Text", 1, 24)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(17, 24, 39));
-        jLabel21.setText("Puzzle");
+        jLabel15.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel15.setFont(new java.awt.Font("SF Pro Text", 1, 24)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(17, 24, 39));
+        jLabel15.setText("Puzzle");
 
         deletePuzzle.setBackground(new java.awt.Color(255, 255, 255));
 
         txt_deletePuzzle.setBackground(new java.awt.Color(255, 255, 255));
         txt_deletePuzzle.setFont(new java.awt.Font("SF Pro Text", 1, 16)); // NOI18N
         txt_deletePuzzle.setForeground(new java.awt.Color(255, 255, 255));
-        txt_deletePuzzle.setText("<html> Hapus<br>Puzzle</html>");
+        txt_deletePuzzle.setText("<html> Hapus<br>Puzzle </html>");
 
         image_deletePuzzle.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Trash.png"))); // NOI18N
 
@@ -1085,7 +913,7 @@ public class HomeAdmin extends javax.swing.JFrame {
         txt_editPuzzle.setBackground(new java.awt.Color(255, 255, 255));
         txt_editPuzzle.setFont(new java.awt.Font("SF Pro Text", 1, 16)); // NOI18N
         txt_editPuzzle.setForeground(new java.awt.Color(255, 255, 255));
-        txt_editPuzzle.setText("<html> Perbarui<br>Puzzle</html>");
+        txt_editPuzzle.setText("<html> Perbarui<br>Puzzle </html>");
 
         image_editPuzzle.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Edit.png"))); // NOI18N
 
@@ -1208,15 +1036,7 @@ public class HomeAdmin extends javax.swing.JFrame {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         scroll_puzzle.setViewportView(list_puzzle);
 
         javax.swing.GroupLayout content_puzzleLayout = new javax.swing.GroupLayout(content_puzzle);
@@ -1230,18 +1050,18 @@ public class HomeAdmin extends javax.swing.JFrame {
                     .addGroup(content_puzzleLayout.createSequentialGroup()
                         .addGroup(content_puzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(addPuzzle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel21))
+                            .addComponent(jLabel15))
                         .addGap(18, 18, 18)
                         .addComponent(editPuzzle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(deletePuzzle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(254, Short.MAX_VALUE))
         );
         content_puzzleLayout.setVerticalGroup(
             content_puzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(content_puzzleLayout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addComponent(jLabel21)
+                .addComponent(jLabel15)
                 .addGap(31, 31, 31)
                 .addGroup(content_puzzleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(deletePuzzle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1249,15 +1069,15 @@ public class HomeAdmin extends javax.swing.JFrame {
                     .addComponent(editPuzzle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addComponent(scroll_puzzle, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(278, Short.MAX_VALUE))
+                .addContainerGap(238, Short.MAX_VALUE))
         );
 
         content_tts.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel22.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel22.setFont(new java.awt.Font("SF Pro Text", 1, 24)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(17, 24, 39));
-        jLabel22.setText("Teka-Teki Silang");
+        jLabel16.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel16.setFont(new java.awt.Font("SF Pro Text", 1, 24)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(17, 24, 39));
+        jLabel16.setText("Teka-Teki Silang");
 
         deleteTTS.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1381,12 +1201,12 @@ public class HomeAdmin extends javax.swing.JFrame {
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        addTTS.setBackground(new java.awt.Color(255, 255, 255));
+        addModul2.setBackground(new java.awt.Color(255, 255, 255));
 
         txt_addTTS.setBackground(new java.awt.Color(255, 255, 255));
         txt_addTTS.setFont(new java.awt.Font("SF Pro Text", 1, 16)); // NOI18N
         txt_addTTS.setForeground(new java.awt.Color(255, 255, 255));
-        txt_addTTS.setText("<html> Tambah<br>TTS </html>");
+        txt_addTTS.setText("<html> Tambah<br>TTS</html>");
 
         image_addTTS.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Add.png"))); // NOI18N
 
@@ -1409,31 +1229,31 @@ public class HomeAdmin extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout addTTSLayout = new javax.swing.GroupLayout(addTTS);
-        addTTS.setLayout(addTTSLayout);
-        addTTSLayout.setHorizontalGroup(
-            addTTSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(addTTSLayout.createSequentialGroup()
+        javax.swing.GroupLayout addModul2Layout = new javax.swing.GroupLayout(addModul2);
+        addModul2.setLayout(addModul2Layout);
+        addModul2Layout.setHorizontalGroup(
+            addModul2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addModul2Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(txt_addTTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(65, 65, 65)
                 .addComponent(image_addTTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(48, Short.MAX_VALUE))
-            .addGroup(addTTSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(addTTSLayout.createSequentialGroup()
+            .addGroup(addModul2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(addModul2Layout.createSequentialGroup()
                     .addComponent(add_tts, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
-        addTTSLayout.setVerticalGroup(
-            addTTSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(addTTSLayout.createSequentialGroup()
+        addModul2Layout.setVerticalGroup(
+            addModul2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addModul2Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addGroup(addTTSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(addModul2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(image_addTTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_addTTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
-            .addGroup(addTTSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(addTTSLayout.createSequentialGroup()
+            .addGroup(addModul2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(addModul2Layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(add_tts, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -1462,27 +1282,27 @@ public class HomeAdmin extends javax.swing.JFrame {
                     .addComponent(scroll_tts, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(content_ttsLayout.createSequentialGroup()
                         .addGroup(content_ttsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(addTTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel22))
+                            .addComponent(addModul2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16))
                         .addGap(18, 18, 18)
                         .addComponent(editTTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(deleteTTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(254, Short.MAX_VALUE))
         );
         content_ttsLayout.setVerticalGroup(
             content_ttsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(content_ttsLayout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addComponent(jLabel22)
+                .addComponent(jLabel16)
                 .addGap(31, 31, 31)
                 .addGroup(content_ttsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(deleteTTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addTTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addModul2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(editTTS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addComponent(scroll_tts, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(278, Short.MAX_VALUE))
+                .addContainerGap(238, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout containerLayout = new javax.swing.GroupLayout(container);
@@ -1516,12 +1336,12 @@ public class HomeAdmin extends javax.swing.JFrame {
                     .addContainerGap()
                     .addComponent(content_modul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(content_result, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(content_puzzle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(content_tts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(1036, Short.MAX_VALUE)))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(content_result, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(1116, Short.MAX_VALUE)))
         );
 
         getContentPane().add(container, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 1130, 960));
@@ -1561,23 +1381,17 @@ public class HomeAdmin extends javax.swing.JFrame {
 
         sidebar.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 750, 310, 50));
 
-        jSeparator6.setBackground(new java.awt.Color(255, 255, 255));
-        sidebar.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 640, 310, 10));
-
-        jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
-        sidebar.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 310, 10));
-
         jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
-        sidebar.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 310, 10));
+        sidebar.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 310, 10));
 
         jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
-        sidebar.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 310, 10));
+        sidebar.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, 310, 10));
 
         jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
-        sidebar.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 310, 10));
+        sidebar.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 310, 10));
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
-        sidebar.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 310, 10));
+        sidebar.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 310, 10));
 
         dashboard.setBackground(new java.awt.Color(67, 56, 202));
         dashboard.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1609,7 +1423,7 @@ public class HomeAdmin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        sidebar.add(dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 310, 50));
+        sidebar.add(dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 310, 50));
 
         question.setBackground(new java.awt.Color(67, 56, 202));
         question.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1641,7 +1455,7 @@ public class HomeAdmin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        sidebar.add(question, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 310, 50));
+        sidebar.add(question, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 310, 50));
 
         modul.setBackground(new java.awt.Color(67, 56, 202));
         modul.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1673,7 +1487,7 @@ public class HomeAdmin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        sidebar.add(modul, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 310, 50));
+        sidebar.add(modul, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 310, 50));
 
         hasil.setBackground(new java.awt.Color(67, 56, 202));
         hasil.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1705,7 +1519,13 @@ public class HomeAdmin extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        sidebar.add(hasil, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 310, 50));
+        sidebar.add(hasil, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 310, 50));
+
+        rSPanelImage1.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/logo eduN.png"))); // NOI18N
+        sidebar.add(rSPanelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -30, 320, 300));
+
+        jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
+        sidebar.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 580, 310, 10));
 
         puzzle.setBackground(new java.awt.Color(67, 56, 202));
         puzzle.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1737,7 +1557,7 @@ public class HomeAdmin extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        sidebar.add(puzzle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, 310, 50));
+        sidebar.add(puzzle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 310, 50));
 
         tts.setBackground(new java.awt.Color(67, 56, 202));
         tts.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1749,7 +1569,7 @@ public class HomeAdmin extends javax.swing.JFrame {
         text_result2.setFont(new java.awt.Font("SF Pro Text", 0, 16)); // NOI18N
         text_result2.setForeground(new java.awt.Color(255, 255, 255));
         text_result2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-TTS.png"))); // NOI18N
-        text_result2.setText("Teka-Teki Silang");
+        text_result2.setText("TTS");
         text_result2.setIconTextGap(12);
 
         javax.swing.GroupLayout ttsLayout = new javax.swing.GroupLayout(tts);
@@ -1759,7 +1579,7 @@ public class HomeAdmin extends javax.swing.JFrame {
             .addGroup(ttsLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(text_result2)
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap(209, Short.MAX_VALUE))
         );
         ttsLayout.setVerticalGroup(
             ttsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1769,10 +1589,10 @@ public class HomeAdmin extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        sidebar.add(tts, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 580, 310, 50));
+        sidebar.add(tts, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 310, -1));
 
-        rSPanelImage1.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/logo eduN.png"))); // NOI18N
-        sidebar.add(rSPanelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 320, 300));
+        jSeparator6.setBackground(new java.awt.Color(255, 255, 255));
+        sidebar.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 660, 310, 10));
 
         getContentPane().add(sidebar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 1030));
 
@@ -2134,7 +1954,7 @@ public class HomeAdmin extends javax.swing.JFrame {
                     Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
                     Statement st = con.createStatement();
                     ResultSet rs = st.executeQuery("SELECT * FROM jigsaw_puzzle;");
-                    jTable3.setModel(DbUtils.resultSetToTableModel(rs));
+                    list_puzzle.setModel(DbUtils.resultSetToTableModel(rs));
                 } catch (SQLException error) {
                     JOptionPane.showMessageDialog(null, error);
                 }
@@ -2154,7 +1974,7 @@ public class HomeAdmin extends javax.swing.JFrame {
                     Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
                     Statement st = con.createStatement();
                     ResultSet rs = st.executeQuery("SELECT * FROM jigsaw_puzzle;");
-                    jTable3.setModel(DbUtils.resultSetToTableModel(rs));
+                    list_puzzle.setModel(DbUtils.resultSetToTableModel(rs));
                 } catch (SQLException error) {
                     JOptionPane.showMessageDialog(null, error);
                 }
@@ -2174,7 +1994,7 @@ public class HomeAdmin extends javax.swing.JFrame {
                     Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
                     Statement st = con.createStatement();
                     ResultSet rs = st.executeQuery("SELECT * FROM jigsaw_puzzle;");
-                    jTable3.setModel(DbUtils.resultSetToTableModel(rs));
+                    list_puzzle.setModel(DbUtils.resultSetToTableModel(rs));
                 } catch (SQLException error) {
                     JOptionPane.showMessageDialog(null, error);
                 }
@@ -2194,7 +2014,7 @@ public class HomeAdmin extends javax.swing.JFrame {
                     Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
                     Statement st = con.createStatement();
                     ResultSet rs = st.executeQuery("SELECT * FROM crossword_puzzle;");
-                    jTable3.setModel(DbUtils.resultSetToTableModel(rs));
+                    list_tts.setModel(DbUtils.resultSetToTableModel(rs));
                 } catch (SQLException error) {
                     JOptionPane.showMessageDialog(null, error);
                 }
@@ -2215,7 +2035,7 @@ public class HomeAdmin extends javax.swing.JFrame {
                     Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
                     Statement st = con.createStatement();
                     ResultSet rs = st.executeQuery("SELECT * FROM crossword_puzzle;");
-                    jTable3.setModel(DbUtils.resultSetToTableModel(rs));
+                    list_tts.setModel(DbUtils.resultSetToTableModel(rs));
                 } catch (SQLException error) {
                     JOptionPane.showMessageDialog(null, error);
                 }
@@ -2235,7 +2055,7 @@ public class HomeAdmin extends javax.swing.JFrame {
                     Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
                     Statement st = con.createStatement();
                     ResultSet rs = st.executeQuery("SELECT * FROM crossword_puzzle;");
-                    jTable3.setModel(DbUtils.resultSetToTableModel(rs));
+                    list_tts.setModel(DbUtils.resultSetToTableModel(rs));
                 } catch (SQLException error) {
                     JOptionPane.showMessageDialog(null, error);
                 }
@@ -2282,11 +2102,10 @@ public class HomeAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel active_user;
     private javax.swing.JPanel addModul;
+    private javax.swing.JPanel addModul2;
     private javax.swing.JPanel addPuzzle;
     private javax.swing.JPanel addQuestion;
-    private javax.swing.JPanel addTTS;
     private rojerusan.RSMaterialButtonRectangle add_modul;
     private rojerusan.RSMaterialButtonRectangle add_puzzle;
     private rojerusan.RSMaterialButtonRectangle add_question;
@@ -2329,16 +2148,12 @@ public class HomeAdmin extends javax.swing.JFrame {
     private rojerusan.RSPanelImage image_editPuzzle;
     private rojerusan.RSPanelImage image_editTTS;
     private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
@@ -2366,8 +2181,6 @@ public class HomeAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel puzzle;
     private javax.swing.JPanel question;
     private rojerusan.RSPanelImage rSPanelImage1;
-    private rojerusan.RSPanelImage rSPanelImage2;
-    private rojerusan.RSPanelImage rSPanelImage3;
     private javax.swing.JScrollPane scroll_modul;
     private javax.swing.JScrollPane scroll_puzzle;
     private javax.swing.JScrollPane scroll_tts;
@@ -2392,8 +2205,6 @@ public class HomeAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel txt_editPuzzle;
     private javax.swing.JLabel txt_editQuestion;
     private javax.swing.JLabel txt_editTTS;
-    private javax.swing.JLabel txt_general;
     private javax.swing.JLabel txt_question;
-    private javax.swing.JPanel user;
     // End of variables declaration//GEN-END:variables
 }

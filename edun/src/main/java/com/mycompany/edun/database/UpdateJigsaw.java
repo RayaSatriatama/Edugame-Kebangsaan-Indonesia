@@ -294,7 +294,7 @@ public class UpdateJigsaw extends javax.swing.JFrame {
 
         background.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 600, 250));
 
-        upload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon_Upload.png"))); // NOI18N
+        upload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Upload.png"))); // NOI18N
         upload.setText("Klik Untuk Ganti Gambar");
         upload.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         upload.setIconTextGap(8);

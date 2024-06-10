@@ -235,7 +235,7 @@ public class AddJigsaw extends javax.swing.JFrame {
         jLabel9.setText("00");
         background.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, -1, -1));
 
-        upload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon_Upload.png"))); // NOI18N
+        upload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Upload.png"))); // NOI18N
         upload.setText("Klik Untuk Unggah Gambar");
         upload.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         upload.setIconTextGap(8);
