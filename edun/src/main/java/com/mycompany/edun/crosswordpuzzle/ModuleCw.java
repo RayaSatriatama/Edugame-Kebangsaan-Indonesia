@@ -43,7 +43,7 @@ public String inputName;
     
     public ModuleCw(String username1) {
         initComponents();
-        //inputName=username1;
+        inputName=username1;
         //cek parsing data
         //JOptionPane.showMessageDialog(null, username1);
         try {

@@ -43,7 +43,7 @@ public String inputName;
     
     public ModulePuzzle(String username1) {
         initComponents();
-        //inputName=username1;
+        inputName=username1;
         //JOptionPane.showMessageDialog(null, username1);
         try {
             Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
