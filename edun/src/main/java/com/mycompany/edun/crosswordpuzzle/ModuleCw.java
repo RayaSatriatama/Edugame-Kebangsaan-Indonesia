@@ -166,7 +166,9 @@ public String inputName;
     private void button_playActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_playActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        new CrosswordPuzzleFrame(inputName).setVisible(true);
+        this.dispose();
+        CrosswordPuzzleFrame cpf = new CrosswordPuzzleFrame(inputName);
+        cpf.setVisible(true);
     }//GEN-LAST:event_button_playActionPerformed
 
     /**
