@@ -9,11 +9,13 @@ import com.mycompany.edun.quiz.ModuleQuiz;
 import com.mycompany.edun.JigsawPuzzle.ModulePuzzle;
 import com.mycompany.edun.crosswordpuzzle.ModuleCw;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,22 +30,24 @@ public class ChooseGame extends javax.swing.JFrame {
      * Creates new form choose_game
      */
     public ChooseGame(String username1) {
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         initComponents();
+        
         username = username1;
         try {
             // Add Customize Font Button
             File fontBlack = new File("src/main/resources/fonts/Nunito-Black.ttf");
             Font font_button = Font.createFont(Font.TRUETYPE_FONT, fontBlack).deriveFont(24f);
-            button_Back.setFont(font_button);
+            button_Back1.setFont(font_button);
 
             // Add Customize Font 20 Bold
             File fontButton = new File("src/main/resources/fonts/Nunito-Bold.ttf");
             Font font_20 = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(20f);
-            question.setFont(font_20);
+            question2.setFont(font_20);
 
             // Add Customize Font 26 Black
             Font font_24 = Font.createFont(Font.TRUETYPE_FONT, fontButton).deriveFont(26f);
-            text_name.setFont(font_24);
+            text_name2.setFont(font_24);
 
             // Menampilkan username
             showUsername(username1);
@@ -63,161 +67,295 @@ public class ChooseGame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
-        icon_home = new rojerusan.RSPanelImage();
-        button_Home = new rojerusan.RSMaterialButtonRectangle();
-        icon_back = new rojerusan.RSPanelImage();
-        button_Back = new rojerusan.RSMaterialButtonRectangle();
-        txt_tts2 = new javax.swing.JLabel();
-        txt_tts3 = new javax.swing.JLabel();
-        tts1 = new javax.swing.JLabel();
-        button_MC = new rojerusan.RSMaterialButtonRectangle();
-        txt_tts1 = new javax.swing.JLabel();
-        txt_tts = new javax.swing.JLabel();
-        tts = new javax.swing.JLabel();
-        button_TTS = new rojerusan.RSMaterialButtonRectangle();
-        txt_puzzle2 = new javax.swing.JLabel();
-        txt_puzzle = new javax.swing.JLabel();
-        puzzle = new javax.swing.JLabel();
-        button_Puzzle = new rojerusan.RSMaterialButtonRectangle();
-        question = new javax.swing.JLabel();
-        text_name = new javax.swing.JLabel();
-        book = new javax.swing.JLabel();
-        bg_choose = new javax.swing.JLabel();
-        bg_pattern = new javax.swing.JLabel();
+        bg = new rojerusan.RSPanelImage();
+        content = new javax.swing.JPanel();
+        tts4 = new javax.swing.JLabel();
+        txt_puzzle4 = new javax.swing.JLabel();
+        txt_puzzle5 = new javax.swing.JLabel();
+        puzzle2 = new javax.swing.JLabel();
+        button_Puzzle2 = new rojerusan.RSMaterialButtonRectangle();
+        question2 = new javax.swing.JLabel();
+        text_name2 = new javax.swing.JLabel();
+        txt_tts8 = new javax.swing.JLabel();
+        txt_tts9 = new javax.swing.JLabel();
+        txt_tts10 = new javax.swing.JLabel();
+        txt_tts11 = new javax.swing.JLabel();
+        button_TTS2 = new rojerusan.RSMaterialButtonRectangle();
+        tts5 = new javax.swing.JLabel();
+        button_MC2 = new rojerusan.RSMaterialButtonRectangle();
+        book = new rojerusan.RSPanelImage();
+        bg_choose = new rojerusan.RSPanelImage();
+        cta = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        icon_back2 = new rojerusan.RSPanelImage();
+        button_Back1 = new rojerusan.RSMaterialButtonRectangle();
+        jPanel8 = new javax.swing.JPanel();
+        icon_home2 = new rojerusan.RSPanelImage();
+        button_Home1 = new rojerusan.RSMaterialButtonRectangle();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jDesktopPane1.setEnabled(false);
 
-        icon_home.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Home.png"))); // NOI18N
-        jPanel1.add(icon_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 110, 30, 30));
+        jPanel1.setOpaque(false);
 
-        button_Home.setBackground(new java.awt.Color(2, 132, 199));
-        button_Home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Home.png"))); // NOI18N
-        button_Home.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_HomeActionPerformed(evt);
-            }
-        });
-        jPanel1.add(button_Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 90, 90, -1));
+        bg.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/BG.png"))); // NOI18N
 
-        icon_back.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Back-Arrow.png"))); // NOI18N
-        jPanel1.add(icon_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 30, 30));
+        content.setOpaque(false);
+        content.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        button_Back.setBackground(new java.awt.Color(244, 63, 94));
-        button_Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Back-Arrow.png"))); // NOI18N
-        button_Back.setText("KEMBALI");
-        button_Back.setAlignmentX(0.5F);
-        button_Back.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        button_Back.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        button_Back.setIconTextGap(50);
-        button_Back.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_BackActionPerformed(evt);
-            }
-        });
-        jPanel1.add(button_Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 230, -1));
+        tts4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Crossword.png"))); // NOI18N
+        tts4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        content.add(tts4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 100, 100));
 
-        txt_tts2.setFont(new java.awt.Font("Nunito", 1, 22)); // NOI18N
-        txt_tts2.setForeground(new java.awt.Color(255, 255, 255));
-        txt_tts2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txt_tts2.setText("Ganda");
-        jPanel1.add(txt_tts2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 650, 110, -1));
+        txt_puzzle4.setFont(new java.awt.Font("Nunito", 1, 24)); // NOI18N
+        txt_puzzle4.setForeground(new java.awt.Color(255, 255, 255));
+        txt_puzzle4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_puzzle4.setText("Puzzle");
+        txt_puzzle4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        content.add(txt_puzzle4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 470, 110, -1));
 
-        txt_tts3.setFont(new java.awt.Font("Nunito", 1, 22)); // NOI18N
-        txt_tts3.setForeground(new java.awt.Color(255, 255, 255));
-        txt_tts3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txt_tts3.setText("Pilihan");
-        jPanel1.add(txt_tts3, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 620, 110, -1));
+        txt_puzzle5.setFont(new java.awt.Font("Nunito", 1, 24)); // NOI18N
+        txt_puzzle5.setForeground(new java.awt.Color(255, 255, 255));
+        txt_puzzle5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_puzzle5.setText("Susun");
+        txt_puzzle5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        content.add(txt_puzzle5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 440, 110, -1));
 
-        tts1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Multiple-Choice.png"))); // NOI18N
-        jPanel1.add(tts1, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 510, 100, 100));
+        puzzle2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Puzzle.png"))); // NOI18N
+        puzzle2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        content.add(puzzle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 110, 110));
 
-        button_MC.setBackground(new java.awt.Color(190, 24, 93));
-        button_MC.setHideActionText(true);
-        button_MC.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        button_MC.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        button_MC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_MCActionPerformed(evt);
-            }
-        });
-        jPanel1.add(button_MC, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 480, 150, 220));
-
-        txt_tts1.setFont(new java.awt.Font("Nunito", 1, 22)); // NOI18N
-        txt_tts1.setForeground(new java.awt.Color(255, 255, 255));
-        txt_tts1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txt_tts1.setText("Silang");
-        jPanel1.add(txt_tts1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 650, 110, -1));
-
-        txt_tts.setFont(new java.awt.Font("Nunito", 1, 22)); // NOI18N
-        txt_tts.setForeground(new java.awt.Color(255, 255, 255));
-        txt_tts.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txt_tts.setText("Teka Teki");
-        jPanel1.add(txt_tts, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 620, 110, -1));
-
-        tts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Crossword.png"))); // NOI18N
-        jPanel1.add(tts, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 510, 100, 100));
-
-        button_TTS.setBackground(new java.awt.Color(132, 204, 22));
-        button_TTS.setHideActionText(true);
-        button_TTS.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        button_TTS.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        button_TTS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_TTSActionPerformed(evt);
-            }
-        });
-        jPanel1.add(button_TTS, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 480, 150, 220));
-
-        txt_puzzle2.setFont(new java.awt.Font("Nunito", 1, 24)); // NOI18N
-        txt_puzzle2.setForeground(new java.awt.Color(255, 255, 255));
-        txt_puzzle2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txt_puzzle2.setText("Puzzle");
-        jPanel1.add(txt_puzzle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 650, 100, -1));
-
-        txt_puzzle.setFont(new java.awt.Font("Nunito", 1, 24)); // NOI18N
-        txt_puzzle.setForeground(new java.awt.Color(255, 255, 255));
-        txt_puzzle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txt_puzzle.setText("Susun");
-        jPanel1.add(txt_puzzle, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 620, 100, -1));
-
-        puzzle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Puzzle.png"))); // NOI18N
-        jPanel1.add(puzzle, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 500, 110, 110));
-
-        button_Puzzle.setBackground(new java.awt.Color(29, 78, 216));
-        button_Puzzle.setHideActionText(true);
-        button_Puzzle.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        button_Puzzle.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        button_Puzzle.addActionListener(new java.awt.event.ActionListener() {
+        button_Puzzle2.setBackground(new java.awt.Color(29, 78, 216));
+        button_Puzzle2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        button_Puzzle2.setHideActionText(true);
+        button_Puzzle2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        button_Puzzle2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        button_Puzzle2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button_PuzzleActionPerformed(evt);
             }
         });
-        jPanel1.add(button_Puzzle, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 480, 150, 220));
+        content.add(button_Puzzle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 150, 220));
 
-        question.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
-        question.setForeground(new java.awt.Color(100, 116, 139));
-        question.setText("Mau main apa hari ini?");
-        jPanel1.add(question, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 430, -1, -1));
+        question2.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
+        question2.setForeground(new java.awt.Color(100, 116, 139));
+        question2.setText("Mau main apa hari ini?");
+        content.add(question2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, -1, -1));
 
-        text_name.setFont(new java.awt.Font("Nunito", 1, 24)); // NOI18N
-        text_name.setForeground(new java.awt.Color(51, 65, 85));
-        text_name.setText("text_name");
-        jPanel1.add(text_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 390, -1, -1));
+        text_name2.setFont(new java.awt.Font("Nunito", 1, 24)); // NOI18N
+        text_name2.setForeground(new java.awt.Color(51, 65, 85));
+        text_name2.setText("text_name");
+        content.add(text_name2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, -1, -1));
 
-        book.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Illust - Book.png"))); // NOI18N
-        jPanel1.add(book, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 170, 230, 220));
+        txt_tts8.setFont(new java.awt.Font("Nunito", 1, 22)); // NOI18N
+        txt_tts8.setForeground(new java.awt.Color(255, 255, 255));
+        txt_tts8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_tts8.setText("Silang");
+        txt_tts8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        content.add(txt_tts8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 470, 110, -1));
 
-        bg_choose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BG-Choose.png"))); // NOI18N
-        jPanel1.add(bg_choose, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 300, -1, 470));
+        txt_tts9.setFont(new java.awt.Font("Nunito", 1, 22)); // NOI18N
+        txt_tts9.setForeground(new java.awt.Color(255, 255, 255));
+        txt_tts9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_tts9.setText("Teka Teki");
+        txt_tts9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        content.add(txt_tts9, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 110, -1));
 
-        bg_pattern.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BG.png"))); // NOI18N
-        jPanel1.add(bg_pattern, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1440, 1060));
+        txt_tts10.setFont(new java.awt.Font("Nunito", 1, 22)); // NOI18N
+        txt_tts10.setForeground(new java.awt.Color(255, 255, 255));
+        txt_tts10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_tts10.setText("Pilihan");
+        txt_tts10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        content.add(txt_tts10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 440, 110, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        txt_tts11.setFont(new java.awt.Font("Nunito", 1, 22)); // NOI18N
+        txt_tts11.setForeground(new java.awt.Color(255, 255, 255));
+        txt_tts11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_tts11.setText("Ganda");
+        txt_tts11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        content.add(txt_tts11, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 470, 110, -1));
+
+        button_TTS2.setBackground(new java.awt.Color(132, 204, 22));
+        button_TTS2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        button_TTS2.setHideActionText(true);
+        button_TTS2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        button_TTS2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        button_TTS2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_TTSActionPerformed(evt);
+            }
+        });
+        content.add(button_TTS2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 150, 220));
+
+        tts5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Multiple-Choice.png"))); // NOI18N
+        tts5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        content.add(tts5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, 100, 100));
+
+        button_MC2.setBackground(new java.awt.Color(190, 24, 93));
+        button_MC2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        button_MC2.setHideActionText(true);
+        button_MC2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        button_MC2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        button_MC2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_MCActionPerformed(evt);
+            }
+        });
+        content.add(button_MC2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, 150, 220));
+
+        book.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Illust - Book.png"))); // NOI18N
+
+        javax.swing.GroupLayout bookLayout = new javax.swing.GroupLayout(book);
+        book.setLayout(bookLayout);
+        bookLayout.setHorizontalGroup(
+            bookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 210, Short.MAX_VALUE)
+        );
+        bookLayout.setVerticalGroup(
+            bookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 210, Short.MAX_VALUE)
+        );
+
+        content.add(book, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 210, 210));
+
+        bg_choose.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/BG-Choose.png"))); // NOI18N
+
+        javax.swing.GroupLayout bg_chooseLayout = new javax.swing.GroupLayout(bg_choose);
+        bg_choose.setLayout(bg_chooseLayout);
+        bg_chooseLayout.setHorizontalGroup(
+            bg_chooseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+        );
+        bg_chooseLayout.setVerticalGroup(
+            bg_chooseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+        );
+
+        content.add(bg_choose, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 500, 500));
+
+        cta.setOpaque(false);
+
+        jPanel7.setOpaque(false);
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        icon_back2.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Back-Arrow.png"))); // NOI18N
+        jPanel7.add(icon_back2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 30, 30));
+
+        button_Back1.setBackground(new java.awt.Color(244, 63, 94));
+        button_Back1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Back-Arrow.png"))); // NOI18N
+        button_Back1.setText("KEMBALI");
+        button_Back1.setAlignmentX(0.5F);
+        button_Back1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        button_Back1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        button_Back1.setIconTextGap(50);
+        button_Back1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_Back1ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(button_Back1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 70));
+
+        jPanel8.setOpaque(false);
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        icon_home2.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Home.png"))); // NOI18N
+        jPanel8.add(icon_home2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 30, 30));
+
+        button_Home1.setBackground(new java.awt.Color(2, 132, 199));
+        button_Home1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Home.png"))); // NOI18N
+        button_Home1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_Home1ActionPerformed(evt);
+            }
+        });
+        jPanel8.add(button_Home1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 70));
+
+        javax.swing.GroupLayout ctaLayout = new javax.swing.GroupLayout(cta);
+        cta.setLayout(ctaLayout);
+        ctaLayout.setHorizontalGroup(
+            ctaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ctaLayout.createSequentialGroup()
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 714, Short.MAX_VALUE)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        ctaLayout.setVerticalGroup(
+            ctaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ctaLayout.createSequentialGroup()
+                .addGroup(ctaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
+        bg.setLayout(bgLayout);
+        bgLayout.setHorizontalGroup(
+            bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGap(132, 132, 132)
+                .addComponent(cta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(274, 274, 274))
+            .addGroup(bgLayout.createSequentialGroup()
+                .addContainerGap(449, Short.MAX_VALUE)
+                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(451, Short.MAX_VALUE))
+        );
+        bgLayout.setVerticalGroup(
+            bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addComponent(cta, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(154, 154, 154))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1440, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1018, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        jDesktopPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jDesktopPane1)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jDesktopPane1)
+        );
 
         pack();
         setLocationRelativeTo(null);
@@ -243,9 +381,9 @@ public class ChooseGame extends javax.swing.JFrame {
             // 06. Tampilkan data
             if (hasilSQL.next()) {
                 String nameDB = hasilSQL.getString("concatUsername");
-                text_name.setText(nameDB);
+                text_name2.setText(nameDB);
             } else {
-                text_name.setText("User not found");
+                text_name2.setText("User not found");
             }
         } catch (Exception e) {
             // 07. Salah system
@@ -254,40 +392,41 @@ public class ChooseGame extends javax.swing.JFrame {
         }
     }
 
-    private void button_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_BackActionPerformed
+    private void button_Back1ActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
         LoginUser user = new LoginUser();
         user.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_button_BackActionPerformed
+    }
 
-    private void button_HomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_HomeActionPerformed
+    private void button_Home1ActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
         LoginMenu menu = new LoginMenu();
         menu.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_button_HomeActionPerformed
+    }
 
-    private void button_PuzzleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_PuzzleActionPerformed
+    private void button_PuzzleActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
         ModulePuzzle puzzle = new ModulePuzzle(username);
         puzzle.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_button_PuzzleActionPerformed
+    }
 
-    private void button_MCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_MCActionPerformed
-        // TODO add your handling code here:
-        ModuleQuiz quiz = new ModuleQuiz(username);
-        quiz.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_button_MCActionPerformed
-
-    private void button_TTSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_TTSActionPerformed
+    private void button_TTSActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
         ModuleCw tts = new ModuleCw(username);
         tts.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_button_TTSActionPerformed
+    }
+    
+    private void button_MCActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+        ModuleQuiz quiz = new ModuleQuiz(username);
+        quiz.setVisible(true);
+        this.dispose();
+    }
+
 
     /**
      * @param args the command line arguments
@@ -329,27 +468,32 @@ public class ChooseGame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel bg_choose;
-    private javax.swing.JLabel bg_pattern;
-    private javax.swing.JLabel book;
-    private rojerusan.RSMaterialButtonRectangle button_Back;
-    private rojerusan.RSMaterialButtonRectangle button_Home;
-    private rojerusan.RSMaterialButtonRectangle button_MC;
-    private rojerusan.RSMaterialButtonRectangle button_Puzzle;
-    private rojerusan.RSMaterialButtonRectangle button_TTS;
-    private rojerusan.RSPanelImage icon_back;
-    private rojerusan.RSPanelImage icon_home;
+    private rojerusan.RSPanelImage bg;
+    private rojerusan.RSPanelImage bg_choose;
+    private rojerusan.RSPanelImage book;
+    private rojerusan.RSMaterialButtonRectangle button_Back1;
+    private rojerusan.RSMaterialButtonRectangle button_Home1;
+    private rojerusan.RSMaterialButtonRectangle button_MC2;
+    private rojerusan.RSMaterialButtonRectangle button_Puzzle2;
+    private rojerusan.RSMaterialButtonRectangle button_TTS2;
+    private javax.swing.JPanel content;
+    private javax.swing.JPanel cta;
+    private rojerusan.RSPanelImage icon_back2;
+    private rojerusan.RSPanelImage icon_home2;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel puzzle;
-    private javax.swing.JLabel question;
-    private javax.swing.JLabel text_name;
-    private javax.swing.JLabel tts;
-    private javax.swing.JLabel tts1;
-    private javax.swing.JLabel txt_puzzle;
-    private javax.swing.JLabel txt_puzzle2;
-    private javax.swing.JLabel txt_tts;
-    private javax.swing.JLabel txt_tts1;
-    private javax.swing.JLabel txt_tts2;
-    private javax.swing.JLabel txt_tts3;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JLabel puzzle2;
+    private javax.swing.JLabel question2;
+    private javax.swing.JLabel text_name2;
+    private javax.swing.JLabel tts4;
+    private javax.swing.JLabel tts5;
+    private javax.swing.JLabel txt_puzzle4;
+    private javax.swing.JLabel txt_puzzle5;
+    private javax.swing.JLabel txt_tts10;
+    private javax.swing.JLabel txt_tts11;
+    private javax.swing.JLabel txt_tts8;
+    private javax.swing.JLabel txt_tts9;
     // End of variables declaration//GEN-END:variables
 }

@@ -24,25 +24,23 @@ public class AddQuestion extends javax.swing.JFrame {
     public AddQuestion() {
         initComponents();
         try {
-            
-            String perintah_SQL =  "SELECT COUNT(id) FROM questions;";
-            Connection penghubung = (Connection)DBConnection.konfigurasi_koneksiDB();
+
+            String perintah_SQL = "SELECT COUNT(id) FROM questions;";
+            Connection penghubung = (Connection) DBConnection.konfigurasi_koneksiDB();
             Statement pernyataanSQL = penghubung.createStatement();
             ResultSet hasil_SQL = pernyataanSQL.executeQuery(perintah_SQL);
             if (hasil_SQL.next()) {
-                int id=hasil_SQL.getInt(1);
-                id=id+1;
-                String str=String.valueOf(id);
+                int id = hasil_SQL.getInt(1);
+                id = id + 1;
+                String str = String.valueOf(id);
                 txt_id.setText(str);
             } else {
                 txt_id.setText("1");
             }
-        } 
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
-            
-            JFrame jf=new JFrame();
+
+            JFrame jf = new JFrame();
             jf.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(jf, e);
         }
@@ -291,22 +289,22 @@ public class AddQuestion extends javax.swing.JFrame {
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
-        HomeAdmin.open=0;
+        HomeAdmin.open = 0;
         setVisible(false);
     }//GEN-LAST:event_closeMouseClicked
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         // TODO add your handling code here:
-        String id=txt_id.getText();
-        String name=question.getText();
-        String opt1=first_opt.getText();
-        String opt2=scnd_opt.getText();
-        String opt3=third_opt.getText();
-        String opt4=fourth_opt.getText();
-        String answer=correct_answer.getText();
+        String id = txt_id.getText();
+        String name = question.getText();
+        String opt1 = first_opt.getText();
+        String opt2 = scnd_opt.getText();
+        String opt3 = third_opt.getText();
+        String opt4 = fourth_opt.getText();
+        String answer = correct_answer.getText();
         try {
-            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
-            PreparedStatement ps = con.prepareStatement( "INSERT INTO questions VALUES (?,?,?,?,?,?,?);");
+            Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
+            PreparedStatement ps = con.prepareStatement("INSERT INTO questions VALUES (?,?,?,?,?,?,?);");
             ps.setString(1, id);
             ps.setString(2, name);
             ps.setString(3, opt1);
@@ -318,10 +316,8 @@ public class AddQuestion extends javax.swing.JFrame {
             JFrame jf = new JFrame();
             jf.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(jf, "Succesfully Updated!");
-            setVisible(false);
-            new AddQuestion().setVisible(true);
-        }
-        catch (Exception e) {
+            this.dispose();
+        } catch (Exception e) {
             JFrame jf = new JFrame();
             jf.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(jf, e);
@@ -338,43 +334,6 @@ public class AddQuestion extends javax.swing.JFrame {
         correct_answer.setText("");
     }//GEN-LAST:event_clearActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AddQuestion().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;

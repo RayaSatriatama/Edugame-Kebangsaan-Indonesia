@@ -47,7 +47,6 @@ public class Leaderboard extends javax.swing.JFrame {
             score4.setFont(font);
             score5.setFont(font);
 
-            jLabel1.setFont(font);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -183,6 +182,9 @@ public class Leaderboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
+        rSPanelImage2 = new rojerusan.RSPanelImage();
+        jPanel1 = new javax.swing.JPanel();
         title_peringkat = new javax.swing.JLabel();
         rSPanelImage1 = new rojerusan.RSPanelImage();
         button_home = new rojerusan.RSMaterialButtonRectangle();
@@ -212,13 +214,21 @@ public class Leaderboard extends javax.swing.JFrame {
         score5 = new javax.swing.JLabel();
         bg5 = new javax.swing.JLabel();
         bg_leaderboard = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setMaximumSize(new java.awt.Dimension(1440, 1024));
+        setMinimumSize(new java.awt.Dimension(0, 0));
+
+        jPanel2.setMinimumSize(new java.awt.Dimension(1440, 1024));
+
+        rSPanelImage2.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/BG2.png"))); // NOI18N
+        rSPanelImage2.setMinimumSize(new java.awt.Dimension(1440, 1024));
+
+        jPanel1.setOpaque(false);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         title_peringkat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Text-Peringkat.png"))); // NOI18N
-        getContentPane().add(title_peringkat, new org.netbeans.lib.awtextra.AbsoluteConstraints(518, 108, -1, -1));
+        jPanel1.add(title_peringkat, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, -1, -1));
 
         rSPanelImage1.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Home.png"))); // NOI18N
 
@@ -233,7 +243,7 @@ public class Leaderboard extends javax.swing.JFrame {
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        getContentPane().add(rSPanelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(452, 140, 30, 30));
+        jPanel1.add(rSPanelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 30, 30));
 
         button_home.setBackground(new java.awt.Color(2, 132, 199));
         button_home.addActionListener(new java.awt.event.ActionListener() {
@@ -241,10 +251,10 @@ public class Leaderboard extends javax.swing.JFrame {
                 button_homeActionPerformed(evt);
             }
         });
-        getContentPane().add(button_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(433, 121, 70, -1));
+        jPanel1.add(button_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 70, -1));
 
         icon_restart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icon restart.png"))); // NOI18N
-        getContentPane().add(icon_restart, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 812, -1, -1));
+        jPanel1.add(icon_restart, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 700, -1, -1));
 
         button_try.setBackground(new java.awt.Color(255, 204, 51));
         button_try.setText("MAIN LAGI");
@@ -253,10 +263,10 @@ public class Leaderboard extends javax.swing.JFrame {
                 button_tryActionPerformed(evt);
             }
         });
-        getContentPane().add(button_try, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 790, 249, -1));
+        jPanel1.add(button_try, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 680, 249, -1));
 
         icon_back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Back-Arrow.png"))); // NOI18N
-        getContentPane().add(icon_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 812, -1, -1));
+        jPanel1.add(icon_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 700, -1, -1));
 
         button_back.setBackground(new java.awt.Color(244, 63, 94));
         button_back.setText("KEMBALI");
@@ -265,89 +275,132 @@ public class Leaderboard extends javax.swing.JFrame {
                 button_backActionPerformed(evt);
             }
         });
-        getContentPane().add(button_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 790, 219, -1));
+        jPanel1.add(button_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 680, 219, -1));
 
         icon_peringkat1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/peringkat1.png"))); // NOI18N
-        getContentPane().add(icon_peringkat1, new org.netbeans.lib.awtextra.AbsoluteConstraints(459, 252, -1, -1));
+        jPanel1.add(icon_peringkat1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
 
         username1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         username1.setText("[USERNAME]");
-        getContentPane().add(username1, new org.netbeans.lib.awtextra.AbsoluteConstraints(563, 277, -1, -1));
+        jPanel1.add(username1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, -1, -1));
 
         score1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         score1.setText("[SCORE]");
-        getContentPane().add(score1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 277, -1, -1));
+        jPanel1.add(score1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, -1, -1));
 
         bg1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/bg_Rectangle1.png"))); // NOI18N
-        getContentPane().add(bg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(459, 252, -1, -1));
+        jPanel1.add(bg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
 
         icon_peringkat2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/peringkat2.png"))); // NOI18N
-        getContentPane().add(icon_peringkat2, new org.netbeans.lib.awtextra.AbsoluteConstraints(459, 353, -1, -1));
+        jPanel1.add(icon_peringkat2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
 
         username2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         username2.setText("[USERNAME]");
-        getContentPane().add(username2, new org.netbeans.lib.awtextra.AbsoluteConstraints(563, 378, -1, -1));
+        jPanel1.add(username2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, -1, -1));
 
         score2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         score2.setText("[SCORE]");
-        getContentPane().add(score2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 378, -1, -1));
+        jPanel1.add(score2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 270, -1, -1));
 
         bg2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/bg_Rectangle1.png"))); // NOI18N
-        getContentPane().add(bg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(459, 353, -1, -1));
+        jPanel1.add(bg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
 
         icon_peringkat3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/peringkat3.png"))); // NOI18N
-        getContentPane().add(icon_peringkat3, new org.netbeans.lib.awtextra.AbsoluteConstraints(459, 454, -1, -1));
+        jPanel1.add(icon_peringkat3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, -1, -1));
 
         username3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         username3.setText("[USERNAME]");
-        getContentPane().add(username3, new org.netbeans.lib.awtextra.AbsoluteConstraints(563, 479, -1, -1));
+        jPanel1.add(username3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, -1, -1));
 
         score3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         score3.setText("[SCORE]");
-        getContentPane().add(score3, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 479, -1, -1));
+        jPanel1.add(score3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("0");
         jLabel2.setToolTipText("");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 670, 70, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 560, 70, -1));
 
         bg3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/bg_Rectangle1.png"))); // NOI18N
-        getContentPane().add(bg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(459, 454, -1, -1));
+        jPanel1.add(bg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, -1, -1));
 
         icon_peringkat4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/peringkat4.png"))); // NOI18N
-        getContentPane().add(icon_peringkat4, new org.netbeans.lib.awtextra.AbsoluteConstraints(459, 555, -1, -1));
+        jPanel1.add(icon_peringkat4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, -1, -1));
 
         username4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         username4.setText("[USERNAME]");
-        getContentPane().add(username4, new org.netbeans.lib.awtextra.AbsoluteConstraints(563, 580, -1, -1));
+        jPanel1.add(username4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 470, -1, -1));
 
         score4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         score4.setText("[SCORE]");
-        getContentPane().add(score4, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 580, -1, -1));
+        jPanel1.add(score4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 470, -1, -1));
 
         bg4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/bg_Rectangle1.png"))); // NOI18N
-        getContentPane().add(bg4, new org.netbeans.lib.awtextra.AbsoluteConstraints(458, 555, -1, -1));
+        jPanel1.add(bg4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, -1, -1));
 
         icon_peringkat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/peringkat.png"))); // NOI18N
-        getContentPane().add(icon_peringkat, new org.netbeans.lib.awtextra.AbsoluteConstraints(459, 656, -1, -1));
+        jPanel1.add(icon_peringkat, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 540, -1, -1));
 
         username5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         username5.setText("[USERNAME]");
-        getContentPane().add(username5, new org.netbeans.lib.awtextra.AbsoluteConstraints(563, 681, -1, -1));
+        jPanel1.add(username5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 570, -1, -1));
 
         score5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         score5.setText("[SCORE]");
-        getContentPane().add(score5, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 681, -1, -1));
+        jPanel1.add(score5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 570, -1, -1));
 
         bg5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/bg_Rectangle2.png"))); // NOI18N
-        getContentPane().add(bg5, new org.netbeans.lib.awtextra.AbsoluteConstraints(459, 656, -1, -1));
+        jPanel1.add(bg5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 540, -1, -1));
 
         bg_leaderboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BG-Pop Up-leaderboard.png"))); // NOI18N
-        getContentPane().add(bg_leaderboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 157, 631, 686));
+        jPanel1.add(bg_leaderboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 631, 686));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BG2.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        javax.swing.GroupLayout rSPanelImage2Layout = new javax.swing.GroupLayout(rSPanelImage2);
+        rSPanelImage2.setLayout(rSPanelImage2Layout);
+        rSPanelImage2Layout.setHorizontalGroup(
+            rSPanelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rSPanelImage2Layout.createSequentialGroup()
+                .addContainerGap(432, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(368, Short.MAX_VALUE))
+        );
+        rSPanelImage2Layout.setVerticalGroup(
+            rSPanelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rSPanelImage2Layout.createSequentialGroup()
+                .addContainerGap(117, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(189, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(rSPanelImage2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(rSPanelImage2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -399,20 +452,6 @@ public class Leaderboard extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -439,9 +478,11 @@ public class Leaderboard extends javax.swing.JFrame {
     private javax.swing.JLabel icon_peringkat3;
     private javax.swing.JLabel icon_peringkat4;
     private javax.swing.JLabel icon_restart;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private rojerusan.RSPanelImage rSPanelImage1;
+    private rojerusan.RSPanelImage rSPanelImage2;
     private javax.swing.JLabel score1;
     private javax.swing.JLabel score2;
     private javax.swing.JLabel score3;

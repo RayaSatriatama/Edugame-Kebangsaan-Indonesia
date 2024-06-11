@@ -5,13 +5,8 @@
 package com.mycompany.edun.database;
 
 import com.mycompany.edun.HomeAdmin;
-import com.mysql.cj.xdevapi.Result;
-import java.awt.Font;
-import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.Statement;
-import java.sql.ResultSet;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -278,21 +273,21 @@ public class UpdateQuestion extends javax.swing.JFrame {
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
-        HomeAdmin.open=0;
+        HomeAdmin.open = 0;
         setVisible(false);
     }//GEN-LAST:event_closeMouseClicked
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         // TODO add your handling code here:
-        String id=jTextField1.getText();
-        String name=jTextField2.getText();
-        String opt1=first_opt.getText();
-        String opt2=scnd_opt.getText();
-        String opt3=third_opt.getText();
-        String opt4=fourth_opt.getText();
-        String answers=correct_answer.getText();
+        String id = jTextField1.getText();
+        String name = jTextField2.getText();
+        String opt1 = first_opt.getText();
+        String opt2 = scnd_opt.getText();
+        String opt3 = third_opt.getText();
+        String opt4 = fourth_opt.getText();
+        String answers = correct_answer.getText();
         try {
-            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
+            Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
             PreparedStatement ps = con.prepareStatement("UPDATE questions SET name=?,opt1=?,opt2=?,opt3=?,opt4=?,answers=? WHERE id=?;");
             ps.setString(1, name);
             ps.setString(2, opt1);
@@ -303,15 +298,14 @@ public class UpdateQuestion extends javax.swing.JFrame {
             ps.setString(7, id);
             ps.executeUpdate();
             JFrame jf = new JFrame();
-                jf.setAlwaysOnTop(true);
-                JOptionPane.showMessageDialog(jf, "Question Succesfully Updated!");
-                setVisible(false);
-                new UpdateQuestion().setVisible(true);
-        }
-        catch (Exception e) {
+            jf.setAlwaysOnTop(true);
+            JOptionPane.showMessageDialog(jf, "Question Succesfully Updated!");
+            setVisible(false);
+            new UpdateQuestion().setVisible(true);
+        } catch (Exception e) {
             JFrame jf = new JFrame();
-                jf.setAlwaysOnTop(true);
-                JOptionPane.showMessageDialog(jf, e);
+            jf.setAlwaysOnTop(true);
+            JOptionPane.showMessageDialog(jf, e);
         }
     }//GEN-LAST:event_saveActionPerformed
 
@@ -333,27 +327,36 @@ public class UpdateQuestion extends javax.swing.JFrame {
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
         // TODO add your handling code here:
-        String id=jTextField1.getText();
+        String id = jTextField1.getText();
+        String name = jTextField2.getText();
+        String opt1 = first_opt.getText();
+        String opt2 = scnd_opt.getText();
+        String opt3 = third_opt.getText();
+        String opt4 = fourth_opt.getText();
+        String answers = correct_answer.getText();
         try {
-            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM questions WHERE id = '"+id+"'");
-            if (rs.next()) {
-                jTextField2.setText(rs.getString(2));
-                first_opt.setText(rs.getString(3));
-                scnd_opt.setText(rs.getString(4));
-                third_opt.setText(rs.getString(5));
-                fourth_opt.setText(rs.getString(6));
-                correct_answer.setText(rs.getString(7));
-                jTextField1.setEditable(false);
+            Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
+            PreparedStatement ps = con.prepareStatement("UPDATE questions SET name=?, opt1=?, opt2=?, opt3=?, opt4=?, answers=? WHERE id=?;");
+            ps.setString(1, name);
+            ps.setString(2, opt1);
+            ps.setString(3, opt2);
+            ps.setString(4, opt3);
+            ps.setString(5, opt4);
+            ps.setString(6, answers);
+            ps.setString(7, id);
+            int affectedRows = ps.executeUpdate();
+
+            // REVISIIIIII
+            JFrame jf = new JFrame();
+            jf.setAlwaysOnTop(true);
+            if (affectedRows > 0) {
+                JOptionPane.showMessageDialog(jf, "Question Successfully Updated!");
+                setVisible(false);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(jf, "Data not found");
             }
-            else {
-                JFrame jf = new JFrame();
-                jf.setAlwaysOnTop(true);
-                JOptionPane.showMessageDialog(jf, "Question ID does not Exist!");
-            }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             JFrame jf = new JFrame();
             jf.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(jf, e);
@@ -371,48 +374,6 @@ public class UpdateQuestion extends javax.swing.JFrame {
     private void fourth_optActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fourth_optActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fourth_optActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UpdateQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UpdateQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UpdateQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UpdateQuestion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new UpdateQuestion().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;

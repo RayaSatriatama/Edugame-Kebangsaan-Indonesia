@@ -19,8 +19,6 @@ com\mycompany\edun\JigsawPuzzle\PuzzlePiece$1.class
 com\mycompany\edun\database\CrosswordControlPanel$4.class
 com\mycompany\edun\LoginUser$6.class
 com\mycompany\edun\HomeAdmin$17.class
-com\mycompany\edun\database\DeleteModule$6.class
-com\mycompany\edun\database\UpdateModule$6.class
 com\mycompany\edun\database\JigsawControlPanel$9.class
 com\mycompany\edun\JigsawPuzzle\ModulePuzzle.class
 com\mycompany\edun\CrosswordPuzzleFrame$5.class
@@ -41,7 +39,6 @@ com\mycompany\edun\SplashScreen$1.class
 com\mycompany\edun\quiz\SoalQuiz$3.class
 com\mycompany\edun\database\UpdateQuestion$7.class
 com\mycompany\edun\crosswordpuzzle\CrosswordPuzzleGenerator.class
-com\mycompany\edun\database\DeleteJigsaw$6.class
 com\mycompany\edun\HomeAdmin$4.class
 com\mycompany\edun\crosswordpuzzle\ModuleCw$1.class
 com\mycompany\edun\HomeAdmin$13.class
@@ -61,7 +58,6 @@ com\mycompany\edun\database\DeleteQuestion$6.class
 com\mycompany\edun\database\AddQuestion$3.class
 com\mycompany\edun\database\CrosswordControlPanel$5.class
 com\mycompany\edun\LoginUser$5.class
-com\mycompany\edun\database\UpdateJigsaw$7.class
 com\mycompany\edun\database\AddCrossword$2.class
 com\mycompany\edun\ChooseGame$4.class
 com\mycompany\edun\HomeAdmin$26.class
@@ -73,9 +69,7 @@ com\mycompany\edun\LoginUser$8.class
 com\mycompany\edun\SplashScreen.class
 com\mycompany\edun\CrosswordPuzzleFrame$6.class
 com\mycompany\edun\database\UpdateJigsaw$4.class
-com\mycompany\edun\database\AddQuestion$7.class
 com\mycompany\edun\crosswordpuzzle\DownQuestionPanel.class
-com\mycompany\edun\database\DeleteCrossword$6.class
 com\mycompany\edun\database\JigsawControlPanel$2.class
 com\mycompany\edun\database\DeleteJigsaw$1.class
 com\mycompany\edun\database\DeleteJigsaw$4.class
@@ -91,7 +85,6 @@ com\mycompany\edun\LoginMenu.class
 com\mycompany\edun\database\UpdateQuestion.class
 com\mycompany\edun\database\UpdateCrossword$3.class
 com\mycompany\edun\database\UpdateQuestion$2.class
-com\mycompany\edun\database\UpdateCrossword$6.class
 com\mycompany\edun\JigsawPuzzle\PuzzlePiece.class
 com\mycompany\edun\HomeAdmin$29.class
 com\mycompany\edun\ImagePuzzleFrame$2.class
@@ -104,6 +97,7 @@ com\mycompany\edun\database\UpdateCrossword$4.class
 com\mycompany\edun\LoginUser$7.class
 com\mycompany\edun\About.class
 com\mycompany\edun\database\UpdateJigsaw.class
+com\mycompany\edun\database\UpdateJigsaw$ImageFileFilter.class
 com\mycompany\edun\HomeAdmin$28.class
 com\mycompany\edun\HomeAdmin$2.class
 com\mycompany\edun\LoginMenu$2.class
@@ -124,7 +118,6 @@ com\mycompany\edun\HomeAdmin$27.class
 com\mycompany\edun\About$2.class
 com\mycompany\edun\CrosswordPuzzleFrame$8.class
 com\mycompany\edun\database\DeleteJigsaw$3.class
-com\mycompany\edun\database\DeleteQuestion$9.class
 com\mycompany\edun\database\AddQuestion$6.class
 com\mycompany\edun\database\AddCrossword$3.class
 com\mycompany\edun\quiz\SoalQuiz$7.class
@@ -151,7 +144,6 @@ com\mycompany\edun\database\AddCrossword$1.class
 com\mycompany\edun\database\DeleteQuestion$8.class
 com\mycompany\edun\database\GetModule$2.class
 com\mycompany\edun\Credits$1.class
-com\mycompany\edun\database\UpdateQuestion$9.class
 com\mycompany\edun\database\AllStudentResult.class
 com\mycompany\edun\database\AllStudentResult$3.class
 com\mycompany\edun\crosswordpuzzle\GridPanel.class
@@ -193,7 +185,6 @@ com\mycompany\edun\LoginAdmin$6.class
 com\mycompany\edun\database\UpdateQuestion$8.class
 com\mycompany\edun\database\DeleteCrossword$3.class
 com\mycompany\edun\quiz\SoalQuiz$2.class
-com\mycompany\edun\database\AddModule$5.class
 com\mycompany\edun\HomeAdmin$16.class
 com\mycompany\edun\database\DeleteModule$4.class
 com\mycompany\edun\database\CrosswordControlPanel$10.class
@@ -227,6 +218,7 @@ com\mycompany\edun\database\AddModule$3.class
 com\mycompany\edun\database\JigsawControlPanel$8.class
 com\mycompany\edun\database\UpdateModule$4.class
 com\mycompany\edun\Leaderboard.class
+com\mycompany\edun\database\AddJigsaw$ImageFileFilter.class
 com\mycompany\edun\LoginAdmin$4.class
 com\mycompany\edun\crosswordpuzzle\AcrossQuestionPanel.class
 com\mycompany\edun\database\AddJigsaw$1.class

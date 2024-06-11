@@ -22,8 +22,9 @@ public class LoginUser extends javax.swing.JFrame {
      * Creates new form login_user
      */
     public LoginUser() {
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         initComponents();
-
+        
         try {
             // Add Customize Font Button
             File fontButton = new File("src/main/resources/fonts/Nunito-Black.ttf");
@@ -55,18 +56,23 @@ public class LoginUser extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
+        bg = new rojerusan.RSPanelImage();
+        content = new javax.swing.JPanel();
         input_name = new javax.swing.JTextField();
         text_name = new javax.swing.JLabel();
         icon_play = new rojerusan.RSPanelImage();
         button_Play = new rojerusan.RSMaterialButtonRectangle();
-        bg_name = new javax.swing.JLabel();
-        character_kids = new javax.swing.JLabel();
+        bg_name = new rojerusan.RSPanelImage();
+        character_kids = new rojerusan.RSPanelImage();
+        cta = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
         icon_back = new rojerusan.RSPanelImage();
         button_Back = new rojerusan.RSMaterialButtonRectangle();
+        jPanel5 = new javax.swing.JPanel();
         icon_home = new rojerusan.RSPanelImage();
         button_Home = new rojerusan.RSMaterialButtonRectangle();
-        bg_pattern = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         eduN = new javax.swing.JMenu();
         credits = new javax.swing.JMenuItem();
@@ -78,9 +84,15 @@ public class LoginUser extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login User");
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jDesktopPane1.setEnabled(false);
+
+        jPanel1.setOpaque(false);
+
+        bg.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/BG.png"))); // NOI18N
+
+        content.setOpaque(false);
+        content.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         input_name.setFont(new java.awt.Font("Nunito", 1, 24)); // NOI18N
         input_name.setForeground(new java.awt.Color(15, 23, 42));
@@ -94,18 +106,19 @@ public class LoginUser extends javax.swing.JFrame {
                 input_nameActionPerformed(evt);
             }
         });
-        jPanel1.add(input_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 500, 430, 60));
+        content.add(input_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 430, 60));
 
         text_name.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
         text_name.setForeground(new java.awt.Color(51, 65, 85));
         text_name.setText("SIAPA NAMA KAMU?");
-        jPanel1.add(text_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 460, -1, -1));
+        content.add(text_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
 
         icon_play.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Play.png"))); // NOI18N
-        jPanel1.add(icon_play, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 700, 30, 30));
+        content.add(icon_play, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 540, 30, 30));
 
         button_Play.setBackground(new java.awt.Color(124, 58, 237));
         button_Play.setText("MULAI PERMAINAN");
+        button_Play.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         button_Play.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
         button_Play.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         button_Play.addActionListener(new java.awt.event.ActionListener() {
@@ -113,16 +126,21 @@ public class LoginUser extends javax.swing.JFrame {
                 button_PlayActionPerformed(evt);
             }
         });
-        jPanel1.add(button_Play, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 680, 410, -1));
+        content.add(button_Play, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 520, 410, -1));
 
-        bg_name.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BG-Name.png"))); // NOI18N
-        jPanel1.add(bg_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 390, 510, 330));
+        bg_name.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/BG-Name.png"))); // NOI18N
+        content.add(bg_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 460, 340));
 
-        character_kids.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Cartoon.png"))); // NOI18N
-        jPanel1.add(character_kids, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 130, 460, 340));
+        character_kids.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Cartoon.png"))); // NOI18N
+        content.add(character_kids, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 450, 300));
+
+        cta.setOpaque(false);
+
+        jPanel3.setOpaque(false);
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         icon_back.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Back-Arrow.png"))); // NOI18N
-        jPanel1.add(icon_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 30, 30));
+        jPanel3.add(icon_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 30, 30));
 
         button_Back.setBackground(new java.awt.Color(244, 63, 94));
         button_Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Back-Arrow.png"))); // NOI18N
@@ -136,10 +154,13 @@ public class LoginUser extends javax.swing.JFrame {
                 button_BackActionPerformed(evt);
             }
         });
-        jPanel1.add(button_Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 230, -1));
+        jPanel3.add(button_Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, -1));
+
+        jPanel5.setOpaque(false);
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         icon_home.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Home.png"))); // NOI18N
-        jPanel1.add(icon_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 110, 30, 30));
+        jPanel5.add(icon_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 30, 30));
 
         button_Home.setBackground(new java.awt.Color(2, 132, 199));
         button_Home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Home.png"))); // NOI18N
@@ -148,12 +169,73 @@ public class LoginUser extends javax.swing.JFrame {
                 button_HomeActionPerformed(evt);
             }
         });
-        jPanel1.add(button_Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 90, 90, -1));
+        jPanel5.add(button_Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, -1));
 
-        bg_pattern.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BG.png"))); // NOI18N
-        jPanel1.add(bg_pattern, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1440, 1060));
+        javax.swing.GroupLayout ctaLayout = new javax.swing.GroupLayout(cta);
+        cta.setLayout(ctaLayout);
+        ctaLayout.setHorizontalGroup(
+            ctaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ctaLayout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        ctaLayout.setVerticalGroup(
+            ctaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(ctaLayout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
+        bg.setLayout(bgLayout);
+        bgLayout.setHorizontalGroup(
+            bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgLayout.createSequentialGroup()
+                .addContainerGap(480, Short.MAX_VALUE)
+                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(480, Short.MAX_VALUE))
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGap(132, 132, 132)
+                .addComponent(cta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(242, 242, 242))
+        );
+        bgLayout.setVerticalGroup(
+            bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgLayout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addComponent(cta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(47, 47, 47)
+                .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(226, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jDesktopPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         eduN.setText("eduN");
 
@@ -203,7 +285,24 @@ public class LoginUser extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        pack();
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jDesktopPane1)
+                .addGap(0, 0, 0))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jDesktopPane1)
+                .addGap(0, 0, 0))
+        );
+
+        setSize(new java.awt.Dimension(1440, 1052));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -211,13 +310,6 @@ public class LoginUser extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_input_nameActionPerformed
-
-    private void button_HomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_HomeActionPerformed
-        // TODO add your handling code here:
-        LoginMenu menu = new LoginMenu();
-        menu.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_button_HomeActionPerformed
 
     private void button_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_BackActionPerformed
         // TODO add your handling code here:
@@ -286,6 +378,13 @@ public class LoginUser extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_aboutActionPerformed
 
+    private void button_HomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_HomeActionPerformed
+        // TODO add your handling code here:
+        LoginMenu menu = new LoginMenu();
+        menu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_button_HomeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -322,20 +421,25 @@ public class LoginUser extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem about;
-    private javax.swing.JLabel bg_name;
-    private javax.swing.JLabel bg_pattern;
+    private rojerusan.RSPanelImage bg;
+    private rojerusan.RSPanelImage bg_name;
     private rojerusan.RSMaterialButtonRectangle button_Back;
     private rojerusan.RSMaterialButtonRectangle button_Home;
     private rojerusan.RSMaterialButtonRectangle button_Play;
-    private javax.swing.JLabel character_kids;
+    private rojerusan.RSPanelImage character_kids;
+    private javax.swing.JPanel content;
     private javax.swing.JMenuItem credits;
+    private javax.swing.JPanel cta;
     private javax.swing.JMenu eduN;
     private rojerusan.RSPanelImage icon_back;
     private rojerusan.RSPanelImage icon_home;
     private rojerusan.RSPanelImage icon_play;
     private javax.swing.JTextField input_name;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JMenuItem loginAdmin;
     private javax.swing.JMenuItem logoutAdmin;
     private javax.swing.JMenuItem quit;

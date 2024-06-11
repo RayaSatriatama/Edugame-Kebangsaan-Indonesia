@@ -762,6 +762,11 @@ public class HomeAdmin extends javax.swing.JFrame {
         jLabel13.setText("KKM");
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100", "<86 Sampai <99", "<76 Sampai <85", ">75" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
 
         jLabel14.setBackground(new java.awt.Color(255, 255, 255));
         jLabel14.setFont(new java.awt.Font("SF Pro Text", 0, 14)); // NOI18N
@@ -2063,44 +2068,64 @@ public class HomeAdmin extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_add_ttsActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HomeAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HomeAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HomeAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HomeAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+        String selectedRange = (String) jComboBox2.getSelectedItem();
+        String query = "";
+
+        switch (selectedRange) {
+            case "100":
+                query = "SELECT * FROM score WHERE marks = 100";
+                break;
+            case "<86 Sampai <99":
+                query = "SELECT * FROM score WHERE marks >= 86 AND marks < 99";
+                break;
+            case "<76 Sampai <85":
+                query = "SELECT * FROM score WHERE marks >= 76 AND marks < 86";
+                break;
+            case ">75":
+                query = "SELECT * FROM score WHERE marks > 75";
+                break;
+            default:
+                query = "SELECT * FROM score";
+                break;
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new HomeAdmin().setVisible(true);
+        try {
+            Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query);
+
+            // Assuming you have a method to populate the table with ResultSet data
+            populateTable(rs);
+        } catch (Exception e) {
+            JFrame jf = new JFrame();
+            jf.setAlwaysOnTop(true);
+            JOptionPane.showMessageDialog(jf, e);
+        }
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+    
+    private void populateTable(ResultSet rs) {
+        try {
+            // Assuming you have a JTable named 'table'
+            DefaultTableModel model = (DefaultTableModel) jTable4.getModel();
+            model.setRowCount(0); // Clear existing data
+
+            while (rs.next()) {
+                Object[] row = {
+                    rs.getInt("id"), // replace with actual column names
+                    rs.getTimestamp("create_time"),
+                    rs.getString("name"),
+                    rs.getInt("marks"),
+                    rs.getString("game_type"), // add other columns as needed
+                };
+                model.addRow(row);
             }
-        });
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addModul;
     private javax.swing.JPanel addModul2;

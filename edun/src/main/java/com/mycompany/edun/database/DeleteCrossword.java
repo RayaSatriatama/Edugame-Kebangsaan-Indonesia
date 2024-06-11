@@ -20,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
  * @author nadiaag
  */
 public class DeleteCrossword extends javax.swing.JFrame {
+
     /**
      * Creates new form DeletePuzzle
      */
@@ -28,7 +29,7 @@ public class DeleteCrossword extends javax.swing.JFrame {
         read();
         refreshForm();
     }
-    
+
     private void refreshForm() {
         // Menyegarkan JFrame
         textArea_question.setText("");
@@ -50,19 +51,19 @@ public class DeleteCrossword extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
-    private void read(){
+
+    private void read() {
         DefaultTableModel jigsawData = new DefaultTableModel();
         jigsawData.addColumn("No");
         jigsawData.addColumn("ID");
         jigsawData.addColumn("Question");
         jigsawData.addColumn("Answer");
         jigsawData.addColumn("Upload Time");
-        
+
         try {
             String query = "SELECT * FROM crossword_puzzle";
 
-            Connection connection = (Connection)DBConnection.konfigurasi_koneksiDB();
+            Connection connection = (Connection) DBConnection.konfigurasi_koneksiDB();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
 
@@ -295,8 +296,8 @@ public class DeleteCrossword extends javax.swing.JFrame {
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
-        HomeAdmin.open=0;
-        setVisible(false);
+        HomeAdmin.open = 0;
+        this.dispose();
     }//GEN-LAST:event_closeMouseClicked
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
@@ -317,15 +318,14 @@ public class DeleteCrossword extends javax.swing.JFrame {
         // TODO add your handling code here:
         String id = jLabel9.getText();
         try {
-            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
-            PreparedStatement ps = con.prepareStatement( "DELETE FROM crossword_puzzle WHERE id=?");
+            Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
+            PreparedStatement ps = con.prepareStatement("DELETE FROM crossword_puzzle WHERE id=?");
             ps.setString(1, id);
             ps.executeUpdate();
             JFrame jf = new JFrame();
             jf.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(jf, "Succesfully Deleted");
-        }
-        catch (HeadlessException | SecurityException | SQLException e) {
+        } catch (HeadlessException | SecurityException | SQLException e) {
             JFrame jf = new JFrame();
             jf.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(jf, e);
@@ -340,43 +340,6 @@ public class DeleteCrossword extends javax.swing.JFrame {
         refreshForm();
     }//GEN-LAST:event_clearActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DeleteCrossword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DeleteCrossword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DeleteCrossword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DeleteCrossword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DeleteCrossword().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;

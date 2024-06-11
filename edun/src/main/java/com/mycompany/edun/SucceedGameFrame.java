@@ -103,6 +103,9 @@ public class SucceedGameFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
+        rSPanelImage2 = new rojerusan.RSPanelImage();
+        jPanel1 = new javax.swing.JPanel();
         text_hebat = new javax.swing.JLabel();
         icon_piala = new javax.swing.JLabel();
         icon_star1 = new javax.swing.JLabel();
@@ -119,25 +122,35 @@ public class SucceedGameFrame extends javax.swing.JFrame {
         mask_group = new javax.swing.JLabel();
         background_front = new javax.swing.JLabel();
         background_back = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setMinimumSize(new java.awt.Dimension(1440, 1024));
+        setPreferredSize(new java.awt.Dimension(1440, 1024));
+
+        jPanel2.setMinimumSize(new java.awt.Dimension(1440, 1024));
+        jPanel2.setPreferredSize(new java.awt.Dimension(1440, 1024));
+
+        rSPanelImage2.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/BG2.png"))); // NOI18N
+        rSPanelImage2.setMinimumSize(new java.awt.Dimension(1440, 1024));
+        rSPanelImage2.setPreferredSize(new java.awt.Dimension(1440, 1024));
+
+        jPanel1.setOpaque(false);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         text_hebat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Text Hebat.png"))); // NOI18N
-        getContentPane().add(text_hebat, new org.netbeans.lib.awtextra.AbsoluteConstraints(503, 523, -1, -1));
+        jPanel1.add(text_hebat, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
 
         icon_piala.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icon piala.png"))); // NOI18N
-        getContentPane().add(icon_piala, new org.netbeans.lib.awtextra.AbsoluteConstraints(626, 402, -1, -1));
+        jPanel1.add(icon_piala, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, -1, -1));
 
         icon_star1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/star1.png"))); // NOI18N
-        getContentPane().add(icon_star1, new org.netbeans.lib.awtextra.AbsoluteConstraints(559, 253, -1, -1));
+        jPanel1.add(icon_star1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, -1));
 
         icon_star2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/star2.png"))); // NOI18N
-        getContentPane().add(icon_star2, new org.netbeans.lib.awtextra.AbsoluteConstraints(647, 223, -1, -1));
+        jPanel1.add(icon_star2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, -1, -1));
 
         icon_star3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/star1.png"))); // NOI18N
-        getContentPane().add(icon_star3, new org.netbeans.lib.awtextra.AbsoluteConstraints(767, 253, -1, -1));
+        jPanel1.add(icon_star3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, -1, -1));
 
         rSPanelImage1.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Home.png"))); // NOI18N
 
@@ -152,7 +165,7 @@ public class SucceedGameFrame extends javax.swing.JFrame {
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        getContentPane().add(rSPanelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(498, 330, 30, 30));
+        jPanel1.add(rSPanelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 30, 30));
 
         button_home.setBackground(new java.awt.Color(2, 132, 199));
         button_home.addActionListener(new java.awt.event.ActionListener() {
@@ -160,22 +173,22 @@ public class SucceedGameFrame extends javax.swing.JFrame {
                 button_homeActionPerformed(evt);
             }
         });
-        getContentPane().add(button_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(479, 312, 70, -1));
+        jPanel1.add(button_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 70, -1));
 
         text_skorKamu.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         text_skorKamu.setText("SKOR KAMU");
-        getContentPane().add(text_skorKamu, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 660, -1, -1));
+        jPanel1.add(text_skorKamu, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, -1, -1));
 
         skor_pengguna.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         skor_pengguna.setText("[SKOR PENGGUNA]");
-        getContentPane().add(skor_pengguna, new org.netbeans.lib.awtextra.AbsoluteConstraints(615, 710, -1, -1));
+        jPanel1.add(skor_pengguna, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 490, -1, -1));
 
         text_PTS.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         text_PTS.setText("PTS");
-        getContentPane().add(text_PTS, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 710, -1, -1));
+        jPanel1.add(text_PTS, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 490, -1, -1));
 
         icon_restart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icon restart.png"))); // NOI18N
-        getContentPane().add(icon_restart, new org.netbeans.lib.awtextra.AbsoluteConstraints(492, 822, -1, -1));
+        jPanel1.add(icon_restart, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 600, -1, -1));
 
         button_try.setBackground(new java.awt.Color(255, 204, 51));
         button_try.setText("MAIN LAGI");
@@ -185,7 +198,7 @@ public class SucceedGameFrame extends javax.swing.JFrame {
                 button_tryActionPerformed(evt);
             }
         });
-        getContentPane().add(button_try, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 800, 249, -1));
+        jPanel1.add(button_try, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 580, 249, -1));
 
         button_next.setBackground(new java.awt.Color(0, 153, 102));
         button_next.setText("SELANJUTNYA");
@@ -195,19 +208,63 @@ public class SucceedGameFrame extends javax.swing.JFrame {
                 button_nextActionPerformed(evt);
             }
         });
-        getContentPane().add(button_next, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 800, 272, -1));
+        jPanel1.add(button_next, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 580, 272, -1));
 
         mask_group.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Mask group.png"))); // NOI18N
-        getContentPane().add(mask_group, new org.netbeans.lib.awtextra.AbsoluteConstraints(467, 345, -1, -1));
+        jPanel1.add(mask_group, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, -1, -1));
 
         background_front.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Background Front.png"))); // NOI18N
-        getContentPane().add(background_front, new org.netbeans.lib.awtextra.AbsoluteConstraints(467, 345, -1, -1));
+        jPanel1.add(background_front, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, -1, -1));
 
         background_back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Background Back.png"))); // NOI18N
-        getContentPane().add(background_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(467, 352, -1, -1));
+        jPanel1.add(background_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BG2.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        javax.swing.GroupLayout rSPanelImage2Layout = new javax.swing.GroupLayout(rSPanelImage2);
+        rSPanelImage2.setLayout(rSPanelImage2Layout);
+        rSPanelImage2Layout.setHorizontalGroup(
+            rSPanelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rSPanelImage2Layout.createSequentialGroup()
+                .addGap(460, 460, 460)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(468, Short.MAX_VALUE))
+        );
+        rSPanelImage2Layout.setVerticalGroup(
+            rSPanelImage2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rSPanelImage2Layout.createSequentialGroup()
+                .addGap(153, 153, 153)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(221, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(rSPanelImage2, javax.swing.GroupLayout.DEFAULT_SIZE, 1446, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(rSPanelImage2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1446, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -293,9 +350,11 @@ public class SucceedGameFrame extends javax.swing.JFrame {
     private javax.swing.JLabel icon_star1;
     private javax.swing.JLabel icon_star2;
     private javax.swing.JLabel icon_star3;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel mask_group;
     private rojerusan.RSPanelImage rSPanelImage1;
+    private rojerusan.RSPanelImage rSPanelImage2;
     private javax.swing.JLabel skor_pengguna;
     private javax.swing.JLabel text_PTS;
     private javax.swing.JLabel text_hebat;

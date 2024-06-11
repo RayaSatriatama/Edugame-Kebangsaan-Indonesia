@@ -23,7 +23,7 @@ public class UpdateModule extends javax.swing.JFrame {
      */
     public UpdateModule() {
         initComponents();
-        
+
     }
 
     /**
@@ -218,32 +218,34 @@ public class UpdateModule extends javax.swing.JFrame {
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
-        HomeAdmin.open=0;
-        setVisible(false);
+        HomeAdmin.open = 0;
+        this.dispose();
     }//GEN-LAST:event_closeMouseClicked
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         // TODO add your handling code here:
-        String id=jTextField1.getText();
-        String tema=(String)jComboBox1.getSelectedItem();
-        String materi=jTextArea1.getText();
+        String id = jTextField1.getText();
+        String tema = (String) jComboBox1.getSelectedItem();
+        String materi = jTextArea1.getText();
         try {
-            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
-            PreparedStatement ps = con.prepareStatement("UPDATE modul SET tema=?,materi=? WHERE id=?;");
+            Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
+            PreparedStatement ps = con.prepareStatement("UPDATE modul SET tema=?, materi=? WHERE id=?;");
             ps.setString(1, tema);
             ps.setString(2, materi);
             ps.setString(3, id);
-            ps.executeUpdate();
+            int affectedRows = ps.executeUpdate();
+
             JFrame jf = new JFrame();
             jf.setAlwaysOnTop(true);
-            JOptionPane.showMessageDialog(jf, "Module Succesfully Updated!");
-            setVisible(false);
-            new UpdateModule().setVisible(true);
-        }
-        catch (Exception e) {
+            if (affectedRows > 0) {
+                JOptionPane.showMessageDialog(jf, "Module Successfully Updated!");
+            } else {
+                JOptionPane.showMessageDialog(jf, "Data not found");
+            }
+        } catch (Exception e) {
             JFrame jf = new JFrame();
-                jf.setAlwaysOnTop(true);
-                JOptionPane.showMessageDialog(jf, e);
+            jf.setAlwaysOnTop(true);
+            JOptionPane.showMessageDialog(jf, e);
         }
     }//GEN-LAST:event_saveActionPerformed
 
@@ -257,63 +259,26 @@ public class UpdateModule extends javax.swing.JFrame {
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
         // TODO add your handling code here:
-        String id=jTextField1.getText();
+        String id = jTextField1.getText();
         try {
-            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
+            Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM modul WHERE id = '"+id+"'");
+            ResultSet rs = st.executeQuery("SELECT * FROM modul WHERE id = '" + id + "'");
             if (rs.next()) {
                 jComboBox1.setSelectedItem(rs.getString(2));
                 jTextArea1.setText(rs.getString(3));
                 jTextField1.setEditable(false);
-            }
-            else {
+            } else {
                 JFrame jf = new JFrame();
                 jf.setAlwaysOnTop(true);
                 JOptionPane.showMessageDialog(jf, "Module ID does not Exist!");
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             JFrame jf = new JFrame();
             jf.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(jf, e);
         }
     }//GEN-LAST:event_searchActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UpdateModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UpdateModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UpdateModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UpdateModule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new UpdateModule().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;

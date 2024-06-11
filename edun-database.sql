@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2024 at 06:10 PM
+-- Generation Time: Jun 11, 2024 at 08:38 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -136,7 +136,7 @@ CREATE TABLE `jigsaw_puzzle` (
 --
 
 INSERT INTO `jigsaw_puzzle` (`id`, `name`, `path`, `upload_time`) VALUES
-(15, 'iiuidthedmhxa8yhcdxb.jpg', 'src\\main\\resources\\assets\\JigsawPuzzleImages\\iiuidthedmhxa8yhcdxb.jpg', '2024-06-08 15:28:34');
+(1, 'iiuidthedmhxa8yhcdxa.jpg', 'src\\main\\resources\\assets\\JigsawPuzzleImages\\iiuidthedmhxa8yhcdxa.jpg', '2024-06-11 18:34:44');
 
 -- --------------------------------------------------------
 
@@ -216,7 +216,21 @@ INSERT INTO `score` (`id`, `create_time`, `name`, `marks`, `game_type`) VALUES
 (32, '2024-06-05 09:56:52', 'Frank', 70, 'GAMBAR'),
 (33, '2024-06-05 09:56:52', 'Charlie', 75, 'GAMBAR'),
 (34, '2024-06-05 09:56:52', 'Grace', 88, 'GAMBAR'),
-(35, '2024-06-05 09:56:52', 'Hank', 78, 'TTS');
+(35, '2024-06-05 09:56:52', 'Hank', 78, 'TTS'),
+(46, '2024-06-09 12:31:37', 'asd', 0, 'quiz'),
+(47, '2024-06-09 12:31:39', 'asd', 0, 'QUIZ'),
+(48, '2024-06-10 06:00:37', 'asep', 4, 'quiz'),
+(49, '2024-06-10 06:00:42', 'asep', 80, 'QUIZ'),
+(50, '2024-06-10 06:02:07', NULL, 0, 'TTS'),
+(51, '2024-06-10 09:02:21', 'abcde', 2, 'quiz'),
+(52, '2024-06-11 04:09:42', 'raya', 38, 'GAMBAR'),
+(53, '2024-06-11 05:04:03', 'raya', 37, 'TTS'),
+(54, '2024-06-11 15:41:17', 'abcd', 14, 'TTS'),
+(55, '2024-06-11 15:41:38', 'abcd', 0, 'GAMBAR'),
+(56, '2024-06-11 15:42:01', 'abcd', 1, 'quiz'),
+(57, '2024-06-11 15:42:03', 'abcd', 20, 'QUIZ'),
+(58, '2024-06-11 18:25:29', 'rakan', 0, 'GAMBAR'),
+(59, '2024-06-11 18:27:30', 'rakan', 100, 'TTS');
 
 -- --------------------------------------------------------
 
@@ -234,7 +248,45 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`) VALUES
-(1, 'jaja');
+(1, 'jaja'),
+(18, 'fajar'),
+(19, 'asd'),
+(20, 'asd'),
+(21, 'asd'),
+(22, 'asep'),
+(23, 'asep'),
+(24, 'rafa'),
+(25, 'rafa'),
+(26, 'asd'),
+(27, ''),
+(28, 'abcd'),
+(29, 'abcde'),
+(30, 'abcde'),
+(31, 'abcde'),
+(32, 'abcde'),
+(33, 'ABCDE'),
+(34, 'ABCDE'),
+(35, 'ABCDE'),
+(36, 'raya'),
+(37, 'raya'),
+(38, 'rafa'),
+(39, 'rafa'),
+(40, 'rt'),
+(41, 'raya'),
+(42, 'rata'),
+(43, 'raya'),
+(44, 'y'),
+(45, 'mn'),
+(46, 'raya'),
+(47, 'fajar'),
+(48, 'gung'),
+(49, 'abcd'),
+(50, 'abcd'),
+(51, 'a'),
+(52, 'abcd'),
+(53, 'abcd'),
+(54, 'abcd'),
+(55, 'rakan');
 
 --
 -- Indexes for dumped tables
@@ -284,19 +336,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `modul`
 --
 ALTER TABLE `modul`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `score`
 --
 ALTER TABLE `score`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(155) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(155) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
