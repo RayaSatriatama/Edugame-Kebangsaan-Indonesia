@@ -27,7 +27,7 @@ public class AddCrossword extends javax.swing.JFrame {
     public AddCrossword() {
         initComponents();
     }
-    
+
     private void refreshForm() {
         textArea_question.setText("");
         field_answer.setText("");
@@ -48,7 +48,7 @@ public class AddCrossword extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
+
 //    private void read() {
 //        DefaultTableModel jigsawData = new DefaultTableModel();
 //        jigsawData.addColumn("No");
@@ -79,7 +79,6 @@ public class AddCrossword extends javax.swing.JFrame {
 //            e.printStackTrace();
 //        }
 //    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -251,8 +250,8 @@ public class AddCrossword extends javax.swing.JFrame {
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
-        HomeAdmin.open=0;
-        setVisible(false);
+        HomeAdmin.open = 0;
+        this.dispose();
     }//GEN-LAST:event_closeMouseClicked
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
@@ -272,6 +271,7 @@ public class AddCrossword extends javax.swing.JFrame {
                 JFrame jf = new JFrame();
                 jf.setAlwaysOnTop(true);
                 JOptionPane.showMessageDialog(jf, "Successfully Added!");
+                this.dispose();
             } catch (HeadlessException | SecurityException | SQLException e) {
                 JFrame jf = new JFrame();
                 jf.setAlwaysOnTop(true);
@@ -289,41 +289,6 @@ public class AddCrossword extends javax.swing.JFrame {
         // TODO add your handling code here:
         refreshForm();
     }//GEN-LAST:event_clearActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddCrossword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddCrossword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddCrossword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddCrossword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AddCrossword().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;

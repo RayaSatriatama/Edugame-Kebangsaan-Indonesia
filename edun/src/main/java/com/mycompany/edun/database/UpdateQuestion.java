@@ -21,9 +21,6 @@ import javax.swing.JOptionPane;
  */
 public class UpdateQuestion extends javax.swing.JFrame {
 
-    /**
-     * Creates new form updateQuestion
-     */
     public UpdateQuestion() {
         initComponents();
         try {
@@ -278,21 +275,21 @@ public class UpdateQuestion extends javax.swing.JFrame {
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
-        HomeAdmin.open=0;
-        setVisible(false);
+        HomeAdmin.open = 0;
+        this.dispose();
     }//GEN-LAST:event_closeMouseClicked
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         // TODO add your handling code here:
-        String id=jTextField1.getText();
-        String name=jTextField2.getText();
-        String opt1=first_opt.getText();
-        String opt2=scnd_opt.getText();
-        String opt3=third_opt.getText();
-        String opt4=fourth_opt.getText();
-        String answers=correct_answer.getText();
+        String id = jTextField1.getText();
+        String name = jTextField2.getText();
+        String opt1 = first_opt.getText();
+        String opt2 = scnd_opt.getText();
+        String opt3 = third_opt.getText();
+        String opt4 = fourth_opt.getText();
+        String answers = correct_answer.getText();
         try {
-            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
+            Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
             PreparedStatement ps = con.prepareStatement("UPDATE questions SET name=?,opt1=?,opt2=?,opt3=?,opt4=?,answers=? WHERE id=?;");
             ps.setString(1, name);
             ps.setString(2, opt1);
@@ -303,15 +300,12 @@ public class UpdateQuestion extends javax.swing.JFrame {
             ps.setString(7, id);
             ps.executeUpdate();
             JFrame jf = new JFrame();
-                jf.setAlwaysOnTop(true);
-                JOptionPane.showMessageDialog(jf, "Question Succesfully Updated!");
-                setVisible(false);
-                new UpdateQuestion().setVisible(true);
-        }
-        catch (Exception e) {
+            jf.setAlwaysOnTop(true);
+            JOptionPane.showMessageDialog(jf, "Question Succesfully Updated!");
+        } catch (Exception e) {
             JFrame jf = new JFrame();
-                jf.setAlwaysOnTop(true);
-                JOptionPane.showMessageDialog(jf, e);
+            jf.setAlwaysOnTop(true);
+            JOptionPane.showMessageDialog(jf, e);
         }
     }//GEN-LAST:event_saveActionPerformed
 
@@ -333,11 +327,11 @@ public class UpdateQuestion extends javax.swing.JFrame {
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
         // TODO add your handling code here:
-        String id=jTextField1.getText();
+        String id = jTextField1.getText();
         try {
-            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
+            Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM questions WHERE id = '"+id+"'");
+            ResultSet rs = st.executeQuery("SELECT * FROM questions WHERE id = '" + id + "'");
             if (rs.next()) {
                 jTextField2.setText(rs.getString(2));
                 first_opt.setText(rs.getString(3));
@@ -346,14 +340,12 @@ public class UpdateQuestion extends javax.swing.JFrame {
                 fourth_opt.setText(rs.getString(6));
                 correct_answer.setText(rs.getString(7));
                 jTextField1.setEditable(false);
-            }
-            else {
+            } else {
                 JFrame jf = new JFrame();
                 jf.setAlwaysOnTop(true);
                 JOptionPane.showMessageDialog(jf, "Question ID does not Exist!");
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             JFrame jf = new JFrame();
             jf.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(jf, e);

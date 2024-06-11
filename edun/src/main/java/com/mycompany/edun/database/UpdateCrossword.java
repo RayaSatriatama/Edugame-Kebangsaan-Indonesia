@@ -6,7 +6,6 @@ package com.mycompany.edun.database;
 
 import com.mycompany.edun.HomeAdmin;
 import java.awt.HeadlessException;
-import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,27 +20,24 @@ import javax.swing.table.DefaultTableModel;
  * @author nadiaag
  */
 public class UpdateCrossword extends javax.swing.JFrame {
-    /**
-     * Creates new form UpdatePuzzle
-     */
+
     public UpdateCrossword() {
         initComponents();
         read();
         refreshForm();
     }
-    
-    private void read(){
+
+    private void read() {
         DefaultTableModel jigsawData = new DefaultTableModel();
         jigsawData.addColumn("No");
         jigsawData.addColumn("ID");
         jigsawData.addColumn("Question");
         jigsawData.addColumn("Answer");
         jigsawData.addColumn("Upload Time");
-        
+
         try {
             String query = "SELECT * FROM crossword_puzzle";
-
-            Connection connection = (Connection)DBConnection.konfigurasi_koneksiDB();
+            Connection connection = (Connection) DBConnection.konfigurasi_koneksiDB();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
 
@@ -60,8 +56,8 @@ public class UpdateCrossword extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+
     private void refreshForm() {
-        // Menyegarkan JFrame
         textArea_question.setText("");
         field_answer.setText("");
         try {
@@ -295,8 +291,8 @@ public class UpdateCrossword extends javax.swing.JFrame {
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
-        HomeAdmin.open=0;
-        setVisible(false);
+        HomeAdmin.open = 0;
+        this.dispose();
     }//GEN-LAST:event_closeMouseClicked
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
@@ -306,24 +302,23 @@ public class UpdateCrossword extends javax.swing.JFrame {
         String answer = field_answer.getText();
         if (!id.isBlank() && !question.isBlank() && !answer.isBlank()) {
             try {
-                Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
+                Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
                 PreparedStatement ps = con.prepareStatement("UPDATE crossword_puzzle SET question=?,answer=? WHERE id=?;");
                 ps.setString(1, question);
-                ps.setString(2, answer);            
+                ps.setString(2, answer);
                 ps.setString(3, id);
                 ps.executeUpdate();
                 JFrame jf = new JFrame();
                 jf.setAlwaysOnTop(true);
                 JOptionPane.showMessageDialog(jf, "Question Succesfully Updated!");
-            }
-            catch (HeadlessException | SecurityException | SQLException e) {
+            } catch (HeadlessException | SecurityException | SQLException e) {
                 JFrame jf = new JFrame();
                 jf.setAlwaysOnTop(true);
                 JOptionPane.showMessageDialog(jf, e);
             } finally {
                 read();
             }
-        } else if (id.isBlank()){
+        } else if (id.isBlank()) {
             JOptionPane.showMessageDialog(this, "Please choose from table before update.", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this, "Fill the text field.", "Warning", JOptionPane.WARNING_MESSAGE);

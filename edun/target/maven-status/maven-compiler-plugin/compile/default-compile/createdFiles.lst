@@ -103,13 +103,13 @@ com\mycompany\edun\database\UpdateCrossword$4.class
 com\mycompany\edun\LoginUser$7.class
 com\mycompany\edun\About.class
 com\mycompany\edun\database\UpdateJigsaw.class
+com\mycompany\edun\database\UpdateJigsaw$ImageFileFilter.class
 com\mycompany\edun\HomeAdmin$28.class
 com\mycompany\edun\HomeAdmin$2.class
 com\mycompany\edun\LoginMenu$2.class
 com\mycompany\edun\HomeAdmin$10.class
 com\mycompany\edun\ChooseGame$6.class
 com\mycompany\edun\database\UpdateQuestion$3.class
-com\mycompany\edun\database\AddCrossword$4.class
 com\mycompany\edun\database\UpdateJigsaw$6.class
 com\mycompany\edun\database\UpdateCrossword$5.class
 com\mycompany\edun\database\DeleteModule.class
@@ -225,6 +225,7 @@ com\mycompany\edun\database\AddModule$3.class
 com\mycompany\edun\database\JigsawControlPanel$8.class
 com\mycompany\edun\database\UpdateModule$4.class
 com\mycompany\edun\Leaderboard.class
+com\mycompany\edun\database\AddJigsaw$ImageFileFilter.class
 com\mycompany\edun\LoginAdmin$4.class
 com\mycompany\edun\crosswordpuzzle\AcrossQuestionPanel.class
 com\mycompany\edun\database\AddJigsaw$1.class

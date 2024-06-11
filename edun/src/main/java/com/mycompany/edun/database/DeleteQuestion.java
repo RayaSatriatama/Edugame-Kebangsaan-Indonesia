@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 package com.mycompany.edun.database;
 
 import com.mycompany.edun.HomeAdmin;
@@ -277,8 +276,8 @@ public class DeleteQuestion extends javax.swing.JFrame {
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
-        HomeAdmin.open=0;
-        setVisible(false);
+        HomeAdmin.open = 0;
+        this.dispose();
     }//GEN-LAST:event_closeMouseClicked
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -287,11 +286,11 @@ public class DeleteQuestion extends javax.swing.JFrame {
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
         // TODO add your handling code here:
-        String id=jTextField1.getText();
+        String id = jTextField1.getText();
         try {
-            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
+            Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM questions WHERE id = '"+id+"'");
+            ResultSet rs = st.executeQuery("SELECT * FROM questions WHERE id = '" + id + "'");
             if (rs.next()) {
                 jTextField2.setText(rs.getString(2));
                 first_opt.setText(rs.getString(3));
@@ -300,14 +299,12 @@ public class DeleteQuestion extends javax.swing.JFrame {
                 fourth_opt.setText(rs.getString(6));
                 correct_answer.setText(rs.getString(7));
                 jTextField1.setEditable(false);
-            }
-            else {
+            } else {
                 JFrame jf = new JFrame();
                 jf.setAlwaysOnTop(true);
                 JOptionPane.showMessageDialog(jf, "Question ID does not Exist!");
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             JFrame jf = new JFrame();
             jf.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(jf, e);
@@ -328,19 +325,16 @@ public class DeleteQuestion extends javax.swing.JFrame {
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         // TODO add your handling code here:
-        String id=jTextField1.getText();
+        String id = jTextField1.getText();
         try {
-            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
-            PreparedStatement ps = con.prepareStatement( "DELETE FROM questions WHERE id=?");
+            Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
+            PreparedStatement ps = con.prepareStatement("DELETE FROM questions WHERE id=?");
             ps.setString(1, id);
             ps.executeUpdate();
             JFrame jf = new JFrame();
             jf.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(jf, "Question Succesfully Deleted");
-            setVisible(false);
-            new DeleteQuestion().setVisible(true);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             JFrame jf = new JFrame();
             jf.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(jf, e);

@@ -295,7 +295,7 @@ public class AddJigsaw extends javax.swing.JFrame {
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
         HomeAdmin.open = 0;
-        setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_closeMouseClicked
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
@@ -324,13 +324,13 @@ public class AddJigsaw extends javax.swing.JFrame {
                 JFrame jf = new JFrame();
                 jf.setAlwaysOnTop(true);
                 JOptionPane.showMessageDialog(jf, "Successfully Added!");
+                this.dispose();
             } catch (HeadlessException | IOException | SecurityException | SQLException e) {
                 JFrame jf = new JFrame();
                 jf.setAlwaysOnTop(true);
                 JOptionPane.showMessageDialog(jf, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             } finally {
                 refreshForm();
-                this.dispose();
             }
         } else if (newFileName.isBlank()) {
             JOptionPane.showMessageDialog(this, "Fill the text field.", "Warning", JOptionPane.WARNING_MESSAGE);

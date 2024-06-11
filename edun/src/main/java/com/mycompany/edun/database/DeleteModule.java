@@ -214,25 +214,22 @@ public class DeleteModule extends javax.swing.JFrame {
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
-        HomeAdmin.open=0;
-        setVisible(false);
+        HomeAdmin.open = 0;
+        this.dispose();
     }//GEN-LAST:event_closeMouseClicked
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         // TODO add your handling code here:
-        String id=jTextField1.getText();
+        String id = jTextField1.getText();
         try {
-            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
-            PreparedStatement ps = con.prepareStatement( "DELETE FROM modul WHERE id=?");
+            Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
+            PreparedStatement ps = con.prepareStatement("DELETE FROM modul WHERE id=?");
             ps.setString(1, id);
             ps.executeUpdate();
             JFrame jf = new JFrame();
             jf.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(jf, "Module Succesfully Deleted");
-            setVisible(false);
-            new DeleteModule().setVisible(true);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             JFrame jf = new JFrame();
             jf.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(jf, e);
@@ -253,23 +250,21 @@ public class DeleteModule extends javax.swing.JFrame {
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
         // TODO add your handling code here:
-        String id=jTextField1.getText();
+        String id = jTextField1.getText();
         try {
-            Connection con = (Connection)DBConnection.konfigurasi_koneksiDB();
+            Connection con = (Connection) DBConnection.konfigurasi_koneksiDB();
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM modul WHERE id = '"+id+"'");
+            ResultSet rs = st.executeQuery("SELECT * FROM modul WHERE id = '" + id + "'");
             if (rs.next()) {
                 jComboBox1.setSelectedItem(rs.getString(2));
                 jTextArea1.setText(rs.getString(3));
                 jTextField1.setEditable(false);
-            }
-            else {
+            } else {
                 JFrame jf = new JFrame();
                 jf.setAlwaysOnTop(true);
                 JOptionPane.showMessageDialog(jf, "Module ID does not Exist!");
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             JFrame jf = new JFrame();
             jf.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(jf, e);

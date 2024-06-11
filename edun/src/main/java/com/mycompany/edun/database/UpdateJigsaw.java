@@ -317,7 +317,7 @@ public class UpdateJigsaw extends javax.swing.JFrame {
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
         HomeAdmin.open = 0;
-        setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_closeMouseClicked
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
@@ -365,25 +365,21 @@ public class UpdateJigsaw extends javax.swing.JFrame {
                 ps.setString(paramIndex, id);
                 ps.executeUpdate();
 
-                // Get the old path before updating
                 String oldPath = file_path.getText();
                 File oldFile = new File(oldPath);
                 File newFile = new File(newPath);
 
-                // Ensure the destination folder exists
                 File destinationFolder = newFile.getParentFile();
                 if (!destinationFolder.exists()) {
                     destinationFolder.mkdirs();
                 }
 
-                // If a new file is selected, copy it to the new path
                 if (selectedFile != null) {
                     if (newFile.exists()) {
                         newFile.delete();
                     }
                     FileUtils.copyFile(selectedFile, newFile);
                 } else {
-                    // If no new file is selected, rename the old file to the new name
                     if (oldFile.exists() && !oldFile.equals(newFile)) {
                         if (newFile.exists()) {
                             newFile.delete();
@@ -414,8 +410,8 @@ public class UpdateJigsaw extends javax.swing.JFrame {
 
     private void uploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadActionPerformed
         JFileChooser fileChooser = new JFileChooser();
-
-        fileChooser.setFileFilter(new AddJigsaw.ImageFileFilter());
+        
+        fileChooser.setFileFilter(new ImageFileFilter());
 
         int result = fileChooser.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
@@ -441,8 +437,8 @@ public class UpdateJigsaw extends javax.swing.JFrame {
             }
 
             String fileName = file.getName().toLowerCase();
-            return fileName.endsWith(".jpg") || fileName.endsWith(".jpeg")
-                    || fileName.endsWith(".png") || fileName.endsWith(".gif");
+            return fileName.endsWith(".jpg") || fileName.endsWith(".jpeg") ||
+                   fileName.endsWith(".png") || fileName.endsWith(".gif");
         }
 
         @Override

@@ -293,6 +293,7 @@ public class AddQuestion extends javax.swing.JFrame {
         // TODO add your handling code here:
         HomeAdmin.open=0;
         setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_closeMouseClicked
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
@@ -318,8 +319,7 @@ public class AddQuestion extends javax.swing.JFrame {
             JFrame jf = new JFrame();
             jf.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(jf, "Succesfully Updated!");
-            setVisible(false);
-            new AddQuestion().setVisible(true);
+            this.dispose();
         }
         catch (Exception e) {
             JFrame jf = new JFrame();
