@@ -41,27 +41,34 @@ public class LoginMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        button_exit = new rojerusan.RSMaterialButtonRectangle();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jPanel1 = new javax.swing.JPanel();
+        bg = new rojerusan.RSPanelImage();
+        jPanel3 = new javax.swing.JPanel();
+        title = new javax.swing.JLabel();
         icon_play = new rojerusan.RSPanelImage();
         button_Play = new rojerusan.RSMaterialButtonRectangle();
-        title = new javax.swing.JLabel();
-        bg_pattern = new javax.swing.JLabel();
+        button_exit = new rojerusan.RSMaterialButtonRectangle();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        button_exit.setBackground(new java.awt.Color(255, 51, 102));
-        button_exit.setText("KELUAR");
-        button_exit.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
-        button_exit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_exitActionPerformed(evt);
-            }
-        });
-        getContentPane().add(button_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 640, 171, 60));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        bg.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/BG.png"))); // NOI18N
+        bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel3.setOpaque(false);
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        title.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Title.png"))); // NOI18N
+        title.setMaximumSize(new java.awt.Dimension(681, 325));
+        title.setMinimumSize(new java.awt.Dimension(681, 325));
+        title.setPreferredSize(new java.awt.Dimension(681, 325));
+        jPanel3.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 700, 325));
 
         icon_play.setImagen(new javax.swing.ImageIcon(getClass().getResource("/assets/Icon-Play.png"))); // NOI18N
-        getContentPane().add(icon_play, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 580, 30, 30));
+        jPanel3.add(icon_play, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, 30, 30));
 
         button_Play.setBackground(new java.awt.Color(124, 58, 237));
         button_Play.setText("MULAI PERMAINAN");
@@ -72,16 +79,46 @@ public class LoginMenu extends javax.swing.JFrame {
                 button_PlayActionPerformed(evt);
             }
         });
-        getContentPane().add(button_Play, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 560, 410, -1));
+        jPanel3.add(button_Play, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, 410, -1));
 
-        title.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Title.png"))); // NOI18N
-        title.setMaximumSize(new java.awt.Dimension(681, 325));
-        title.setMinimumSize(new java.awt.Dimension(681, 325));
-        title.setPreferredSize(new java.awt.Dimension(681, 325));
-        getContentPane().add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 187, 700, 325));
+        button_exit.setBackground(new java.awt.Color(255, 51, 102));
+        button_exit.setText("KELUAR");
+        button_exit.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        button_exit.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                button_exitComponentAdded(evt);
+            }
+        });
+        button_exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_exitActionPerformed(evt);
+            }
+        });
+        jPanel3.add(button_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 430, 171, 60));
 
-        bg_pattern.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/BG.png"))); // NOI18N
-        getContentPane().add(bg_pattern, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        bg.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, 760, 510));
+
+        jPanel1.add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 1024));
+        bg.getAccessibleContext().setAccessibleName("");
+
+        jDesktopPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
+        );
+
+        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 1024));
 
         pack();
         setLocationRelativeTo(null);
@@ -102,6 +139,10 @@ public class LoginMenu extends javax.swing.JFrame {
         user.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_button_PlayActionPerformed
+
+    private void button_exitComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_button_exitComponentAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_button_exitComponentAdded
 
     /**
      * @param args the command line arguments
@@ -140,10 +181,13 @@ public class LoginMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel bg_pattern;
+    private rojerusan.RSPanelImage bg;
     private rojerusan.RSMaterialButtonRectangle button_Play;
     private rojerusan.RSMaterialButtonRectangle button_exit;
     private rojerusan.RSPanelImage icon_play;
+    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }
