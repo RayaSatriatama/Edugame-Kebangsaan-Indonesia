@@ -16,6 +16,7 @@ import java.sql.Statement;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileFilter;
 import javax.swing.table.DefaultTableModel;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -25,7 +26,9 @@ import org.apache.commons.io.FilenameUtils;
  * @author nadiaag
  */
 public class UpdateJigsaw extends javax.swing.JFrame {
+
     private File selectedFile;
+
     /**
      * Creates new form UpdatePuzzle
      */
@@ -33,7 +36,7 @@ public class UpdateJigsaw extends javax.swing.JFrame {
         initComponents();
         read();
     }
-    
+
     private void refreshForm() {
         // Menyegarkan JFrame
         selectedFile = null;
@@ -56,24 +59,24 @@ public class UpdateJigsaw extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
+
     private boolean isImageFile(File file) {
         String extension = FilenameUtils.getExtension(file.getName()).toLowerCase();
         return extension.equals("jpg") || extension.equals("jpeg") || extension.equals("png") || extension.equals("gif");
     }
-    
-    private void read(){
+
+    private void read() {
         DefaultTableModel jigsawData = new DefaultTableModel();
         jigsawData.addColumn("No");
         jigsawData.addColumn("ID");
         jigsawData.addColumn("Name");
         jigsawData.addColumn("Path");
         jigsawData.addColumn("Upload Time");
-        
+
         try {
             String query = "SELECT * FROM jigsaw_puzzle";
 
-            Connection connection = (Connection)DBConnection.konfigurasi_koneksiDB();
+            Connection connection = (Connection) DBConnection.konfigurasi_koneksiDB();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
 
@@ -313,7 +316,7 @@ public class UpdateJigsaw extends javax.swing.JFrame {
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
-        HomeAdmin.open=0;
+        HomeAdmin.open = 0;
         setVisible(false);
     }//GEN-LAST:event_closeMouseClicked
 
@@ -410,15 +413,16 @@ public class UpdateJigsaw extends javax.swing.JFrame {
     }//GEN-LAST:event_clearActionPerformed
 
     private void uploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadActionPerformed
-        // TODO add your handling code here:
         JFileChooser fileChooser = new JFileChooser();
+
+        fileChooser.setFileFilter(new AddJigsaw.ImageFileFilter());
+
         int result = fileChooser.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
-            selectedFile = fileChooser.getSelectedFile();
+            File selectedFile = fileChooser.getSelectedFile();
             if (isImageFile(selectedFile)) {
                 JOptionPane.showMessageDialog(this, "File selected: " + selectedFile.getName());
                 puzzle_name.setText(selectedFile.getName());
-                file_path.setText(selectedFile.getAbsolutePath());
             } else {
                 selectedFile = null;
                 JOptionPane.showMessageDialog(this, "Please select a valid image file (jpg, jpeg, png, gif).");
@@ -427,6 +431,25 @@ public class UpdateJigsaw extends javax.swing.JFrame {
             selectedFile = null;
         }
     }//GEN-LAST:event_uploadActionPerformed
+
+    static class ImageFileFilter extends FileFilter {
+
+        @Override
+        public boolean accept(File file) {
+            if (file.isDirectory()) {
+                return true;
+            }
+
+            String fileName = file.getName().toLowerCase();
+            return fileName.endsWith(".jpg") || fileName.endsWith(".jpeg")
+                    || fileName.endsWith(".png") || fileName.endsWith(".gif");
+        }
+
+        @Override
+        public String getDescription() {
+            return "Image Files (*.jpg, *.jpeg, *.png, *.gif)";
+        }
+    }
 
     /**
      * @param args the command line arguments

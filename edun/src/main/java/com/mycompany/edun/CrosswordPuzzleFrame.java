@@ -32,6 +32,7 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
      */
     public CrosswordPuzzleFrame() {
         initComponents();
+        initializeGame();
     }
 
     public CrosswordPuzzleFrame(String inputName) {
@@ -85,14 +86,12 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
     private void endGame() {
         timer.stop();
         gameEnded = true;
-        newMarks = calculateScore();
+        double a = crosswordPuzzlePanel1.getCorrectAnswers();
+        double b = crosswordPuzzlePanel1.getPlacedWords().size();
+        this.newMarks = (int) ((a / b) * 100);
         SucceedGameFrame s = new SucceedGameFrame(this.newName, this.newMarks, this.newGameType);
         s.setVisible(true);
         this.dispose();
-    }
-
-    private int calculateScore() {
-        return (int) ((correctAnswers / (double) totalQuestions) * 100);
     }
 
     private void loadQuestions() {
@@ -101,22 +100,6 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
 
         questionPanela1.setAcrossQuestions(acrossQuestions);
         questionPanel2.setDownQuestions(downQuestions);
-    }
-
-    public boolean checkWord(String word) {
-        if (gameEnded) {
-            return false;
-        }
-
-        boolean correct = crosswordPuzzlePanel1.checkWord(word);
-        if (correct) {
-            correctAnswers++;
-            statusLabel.setText("Status: Correct! Keep going.");
-            if (gridPanel1.isPuzzleCompleted()) {
-                endGame();
-            }
-        }
-        return correct;
     }
 
     /**
@@ -290,7 +273,7 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
-                String word = jTextField1.getText().trim().toUpperCase();
+        String word = jTextField1.getText().trim().toUpperCase();
         if (!word.isEmpty()) {
             crosswordPuzzlePanel1.checkWord(word);
             jTextField1.setText("");
@@ -354,10 +337,7 @@ public class CrosswordPuzzleFrame extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new CrosswordPuzzleFrame().setVisible(true);

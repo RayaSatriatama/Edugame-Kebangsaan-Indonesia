@@ -21,6 +21,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileFilter;
 import javax.swing.table.DefaultTableModel;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -30,8 +31,9 @@ import org.apache.commons.io.FilenameUtils;
  * @author nadiaag
  */
 public class AddJigsaw extends javax.swing.JFrame {
-    
+
     private File selectedFile;
+
     /**
      * Creates new form AddPuzzle
      */
@@ -39,7 +41,7 @@ public class AddJigsaw extends javax.swing.JFrame {
         initComponents();
         refreshForm();
     }
-    
+
     private void refreshForm() {
         // Menyegarkan JFrame
         selectedFile = null;
@@ -63,24 +65,27 @@ public class AddJigsaw extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
+
     private boolean isImageFile(File file) {
         String extension = FilenameUtils.getExtension(file.getName()).toLowerCase();
         return extension.equals("jpg") || extension.equals("jpeg") || extension.equals("png") || extension.equals("gif");
     }
-    
+
     private void displayImagePreview(File file) {
         try {
             ImageIcon icon = new ImageIcon(ImageIO.read(file));
             Image image = icon.getImage();
-            Image scaledImage = image.getScaledInstance(preview_image.getWidth(), preview_image.getHeight(), Image.SCALE_SMOOTH);
-            preview_image.setIcon(new ImageIcon(scaledImage));
+            if (image != null) {
+                Image scaledImage = image.getScaledInstance(preview_image.getWidth(), preview_image.getHeight(), Image.SCALE_SMOOTH);
+                preview_image.setIcon(new ImageIcon(scaledImage));
+            } else {
+                throw new IOException("Image could not be read");
+            }
         } catch (IOException e) {
             JOptionPane.showMessageDialog(this, "Error displaying image preview: " + e.getMessage());
         }
     }
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -267,15 +272,11 @@ public class AddJigsaw extends javax.swing.JFrame {
         preview.setLayout(previewLayout);
         previewLayout.setHorizontalGroup(
             previewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-            .addGroup(previewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(preview_image, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE))
+            .addComponent(preview_image, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
         previewLayout.setVerticalGroup(
             previewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 260, Short.MAX_VALUE)
-            .addGroup(previewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(preview_image, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE))
+            .addComponent(preview_image, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
         );
 
         background.add(preview, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 600, 260));
@@ -293,7 +294,7 @@ public class AddJigsaw extends javax.swing.JFrame {
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
-        HomeAdmin.open=0;
+        HomeAdmin.open = 0;
         setVisible(false);
     }//GEN-LAST:event_closeMouseClicked
 
@@ -306,9 +307,10 @@ public class AddJigsaw extends javax.swing.JFrame {
 
             try {
                 Connection con = DBConnection.konfigurasi_koneksiDB();
-                PreparedStatement ps = con.prepareStatement("INSERT INTO jigsaw_puzzle (name, path) VALUES (?, ?);");
-                ps.setString(1, newFileName);
-                ps.setString(2, path);
+                PreparedStatement ps = con.prepareStatement("INSERT INTO jigsaw_puzzle (id, name, path) VALUES (?, ?, ?);");
+                ps.setString(1, jLabel9.getText());
+                ps.setString(2, newFileName);
+                ps.setString(3, path);
                 ps.executeUpdate();
 
                 // Ensure the destination folder exists
@@ -343,11 +345,13 @@ public class AddJigsaw extends javax.swing.JFrame {
     }//GEN-LAST:event_clearActionPerformed
 
     private void uploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadActionPerformed
-        // TODO add your handling code here:
         JFileChooser fileChooser = new JFileChooser();
+
+        fileChooser.setFileFilter(new ImageFileFilter());
+
         int result = fileChooser.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
-            selectedFile = fileChooser.getSelectedFile();
+            File selectedFile = fileChooser.getSelectedFile();
             if (isImageFile(selectedFile)) {
                 JOptionPane.showMessageDialog(this, "File selected: " + selectedFile.getName());
                 puzzle_name.setText(selectedFile.getName());
@@ -362,6 +366,25 @@ public class AddJigsaw extends javax.swing.JFrame {
             selectedFile = null;
         }
     }//GEN-LAST:event_uploadActionPerformed
+
+    static class ImageFileFilter extends FileFilter {
+
+        @Override
+        public boolean accept(File file) {
+            if (file.isDirectory()) {
+                return true;
+            }
+
+            String fileName = file.getName().toLowerCase();
+            return fileName.endsWith(".jpg") || fileName.endsWith(".jpeg")
+                    || fileName.endsWith(".png") || fileName.endsWith(".gif");
+        }
+
+        @Override
+        public String getDescription() {
+            return "Image Files (*.jpg, *.jpeg, *.png, *.gif)";
+        }
+    }
 
     /**
      * @param args the command line arguments

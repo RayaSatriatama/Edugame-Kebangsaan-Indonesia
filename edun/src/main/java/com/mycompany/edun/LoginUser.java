@@ -9,7 +9,6 @@ import java.awt.Font;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,9 +17,6 @@ import javax.swing.JOptionPane;
  */
 public class LoginUser extends javax.swing.JFrame {
 
-    /**
-     * Creates new form login_user
-     */
     public LoginUser() {
         initComponents();
 

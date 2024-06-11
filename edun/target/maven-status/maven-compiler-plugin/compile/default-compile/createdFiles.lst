@@ -96,7 +96,6 @@ com\mycompany\edun\JigsawPuzzle\PuzzlePiece.class
 com\mycompany\edun\HomeAdmin$29.class
 com\mycompany\edun\ImagePuzzleFrame$2.class
 com\mycompany\edun\database\JigsawControlPanel$1.class
-com\mycompany\edun\HomeAdmin$34.class
 com\mycompany\edun\ImagePuzzleFrame$1.class
 com\mycompany\edun\database\UpdateJigsaw$5.class
 com\mycompany\edun\About$1.class
@@ -159,7 +158,6 @@ com\mycompany\edun\database\CrosswordControlPanel$1.class
 com\mycompany\edun\database\DeleteQuestion.class
 com\mycompany\edun\database\JigsawControlPanel.class
 com\mycompany\edun\database\DeleteCrossword$2.class
-com\mycompany\edun\LoginMenu$3.class
 com\mycompany\edun\LoginUser$9.class
 com\mycompany\edun\database\GetQuestion$2.class
 com\mycompany\edun\database\JigsawControlPanel$10.class

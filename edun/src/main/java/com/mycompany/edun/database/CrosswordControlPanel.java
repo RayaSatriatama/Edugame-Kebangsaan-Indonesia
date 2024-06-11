@@ -22,9 +22,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CrosswordControlPanel extends javax.swing.JFrame {
 
-    /**
-     * Creates new form addNewQuestion
-     */
     public CrosswordControlPanel() {
         initComponents();
         read();
