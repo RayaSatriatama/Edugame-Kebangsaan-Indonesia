@@ -13,7 +13,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -48,37 +47,6 @@ public class AddCrossword extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
-//    private void read() {
-//        DefaultTableModel jigsawData = new DefaultTableModel();
-//        jigsawData.addColumn("No");
-//        jigsawData.addColumn("ID");
-//        jigsawData.addColumn("Question");
-//        jigsawData.addColumn("Answer");
-//        jigsawData.addColumn("Upload Time");
-//
-//        try {
-//            String query = "SELECT * FROM crossword_puzzle";
-//
-//            Connection connection = (Connection) DBConnection.konfigurasi_koneksiDB();
-//            Statement statement = connection.createStatement();
-//            ResultSet resultSet = statement.executeQuery(query);
-//
-//            int i = 1;
-//            while (resultSet.next()) {
-//                jigsawData.addRow(new Object[]{
-//                    i++,
-//                    resultSet.getString(1) != null ? resultSet.getString(1) : "",
-//                    resultSet.getString(2) != null ? resultSet.getString(2) : "",
-//                    resultSet.getString(3) != null ? resultSet.getString(3) : "",
-//                    resultSet.getString(4) != null ? resultSet.getString(4) : ""
-//                });
-//                list_tts.setModel(jigsawData);
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -277,8 +245,8 @@ public class AddCrossword extends javax.swing.JFrame {
                 jf.setAlwaysOnTop(true);
                 JOptionPane.showMessageDialog(jf, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             } finally {
-//                read();
                 refreshForm();
+                this.dispose();
             }
         } else {
             JOptionPane.showMessageDialog(this, "Fill the text field.", "Warning", JOptionPane.WARNING_MESSAGE);

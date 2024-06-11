@@ -249,9 +249,8 @@ public static int open=0;
             ps.executeUpdate();
             JFrame jf = new JFrame();
             jf.setAlwaysOnTop(true);
-            JOptionPane.showMessageDialog(jf, "Succesfully Updated!");
-            setVisible(false);
-            new AddModule().setVisible(true);
+            JOptionPane.showMessageDialog(jf, "Succesfully Added!");
+            this.dispose();
         }
         catch (Exception e) {
             JFrame jf = new JFrame();

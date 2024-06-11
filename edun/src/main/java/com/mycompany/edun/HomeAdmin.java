@@ -43,6 +43,7 @@ public class HomeAdmin extends javax.swing.JFrame {
      */
     public HomeAdmin() {
         initComponents();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         try {
             content_dashboard.setVisible(true);
@@ -1484,7 +1485,7 @@ public class HomeAdmin extends javax.swing.JFrame {
             .addGroup(modulLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(text_modul)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         sidebar.add(modul, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 310, 50));

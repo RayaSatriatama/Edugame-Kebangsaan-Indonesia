@@ -219,7 +219,7 @@ public class UpdateModule extends javax.swing.JFrame {
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
         HomeAdmin.open=0;
-        setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_closeMouseClicked
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
@@ -237,8 +237,7 @@ public class UpdateModule extends javax.swing.JFrame {
             JFrame jf = new JFrame();
             jf.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(jf, "Module Succesfully Updated!");
-            setVisible(false);
-            new UpdateModule().setVisible(true);
+            this.dispose();
         }
         catch (Exception e) {
             JFrame jf = new JFrame();

@@ -278,7 +278,7 @@ public class DeleteJigsaw extends javax.swing.JFrame {
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
         HomeAdmin.open=0;
-        setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_closeMouseClicked
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked

@@ -215,7 +215,7 @@ public class DeleteModule extends javax.swing.JFrame {
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
         HomeAdmin.open=0;
-        setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_closeMouseClicked
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
@@ -229,8 +229,7 @@ public class DeleteModule extends javax.swing.JFrame {
             JFrame jf = new JFrame();
             jf.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(jf, "Module Succesfully Deleted");
-            setVisible(false);
-            new DeleteModule().setVisible(true);
+            this.dispose();
         }
         catch (Exception e) {
             JFrame jf = new JFrame();
