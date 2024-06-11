@@ -301,6 +301,8 @@ public class AddJigsaw extends javax.swing.JFrame {
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         // TODO add your handling code here:
         String newFileName = puzzle_name.getText();
+        boolean t = selectedFile == null;
+        System.out.println(t);
         if (selectedFile != null && !newFileName.isBlank()) {
             File destinationFolder = new File("src/main/resources/assets/JigsawPuzzleImages/");
             String path = destinationFolder.getPath() + File.separator + newFileName;
@@ -365,6 +367,8 @@ public class AddJigsaw extends javax.swing.JFrame {
         } else {
             selectedFile = null;
         }
+        boolean t = selectedFile == null;
+        System.out.println(t);
     }//GEN-LAST:event_uploadActionPerformed
 
     static class ImageFileFilter extends FileFilter {
